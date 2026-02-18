@@ -198,8 +198,13 @@
 .timeline__toggle {
   display: flex;
   gap: 0.25rem;
-  padding: 0.75rem 2.5rem 0.75rem; /* Increased vertical balance */
-  margin-bottom: 1.5rem; /* Space before timeline nodes or content */
+  padding: 0.75rem 2.5rem 0;
+}
+
+/* Add margin only when on CV tab to avoid sticking to CV content */
+.timeline-wrapper--cv .timeline__toggle {
+  padding-bottom: 0.75rem;
+  margin-bottom: 2rem;
 }
 
 .timeline__pill {
@@ -974,20 +979,13 @@
   html, body {
     margin: 0 !important;
     padding: 0 !important;
-    height: auto !important;
+    height: 100% !important;
     width: 100% !important;
-  }
-
-  .portfolio,
-  .portfolio__main {
-    padding: 0 !important;
-    margin: 0 !important;
-    display: block !important;
-    position: static !important;
-    height: auto !important;
+    overflow: visible !important;
   }
 
   /* ─── Default Print (Light) ─── */
+  html,
   body.print-theme-light,
   body:not(.print-theme-dark) {
     background: #ffffff !important;
@@ -1006,7 +1004,8 @@
   }
 
   /* ─── Dark Print ─── */
-  body.print-theme-dark {
+  body.print-theme-dark,
+  html.print-theme-dark {
     background: #111111 !important;
     color: #f9fafb !important;
     -webkit-print-color-adjust: exact !important;
@@ -1066,7 +1065,8 @@
   /* Chrome/Safari fix for gradient text in print */
   @supports (-webkit-background-clip: text) {
     .cv-header__name {
-      -webkit-print-color-adjust: exact;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
     }
   }
 

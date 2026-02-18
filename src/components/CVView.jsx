@@ -16,12 +16,14 @@ export default function CVView() {
 
     /* Also add a class to force colors in print */
     document.body.classList.add(`print-theme-${theme}`);
+    document.documentElement.classList.add(`print-theme-${theme}`);
 
     setTimeout(() => {
       window.print();
       /* Restore original theme after print dialog */
       if (root) root.setAttribute("data-theme", original || "dark");
       document.body.classList.remove(`print-theme-${theme}`);
+      document.documentElement.classList.remove(`print-theme-${theme}`);
       setShowExportMenu(false);
     }, 100);
   }, []);

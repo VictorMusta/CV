@@ -38,7 +38,7 @@ export default function Timeline({ data, selectedId, onSelect, activeTrack, onTr
   };
 
   return (
-    <div className="timeline-wrapper">
+    <div className={`timeline-wrapper ${activeTrack === "cv" ? "timeline-wrapper--cv" : ""}`}>
       {/* Track toggle pills */}
       <div className="timeline__toggle">
         {Object.entries(TRACK_LABELS).map(([key, label]) => (
