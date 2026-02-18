@@ -2,6 +2,7 @@ import { useState, useRef, useCallback } from "react";
 import { LayoutGroup } from "framer-motion";
 import Timeline from "./components/Timeline";
 import ContentView from "./components/ContentView";
+import CVView from "./components/CVView";
 import ThemeToggle from "./components/ThemeToggle";
 import LangToggle from "./components/LangToggle";
 import { LanguageProvider, useLang } from "./i18n/LanguageContext";
@@ -22,7 +23,7 @@ function PortfolioApp() {
     });
   }, []);
 
-  /* ─── Track toggle (career / project) ─── */
+  /* ─── Track toggle (career / project / cv) ─── */
   const [activeTrack, setActiveTrack] = useState("career");
 
   /* ─── Selected item ─── */
@@ -46,15 +47,18 @@ function PortfolioApp() {
     (track) => {
       if (track === activeTrack) return;
       setActiveTrack(track);
-      const items = track === "career" ? careerData : projectData;
-      setSelectedId(items[0]?.id);
-      prevIndexRef.current = 0;
-      setDirection(0);
+      if (track !== "cv") {
+        const items = track === "career" ? careerData : projectData;
+        setSelectedId(items[0]?.id);
+        prevIndexRef.current = 0;
+        setDirection(0);
+      }
     },
     [activeTrack]
   );
 
   const selectedItem = timelineData.find((d) => d.id === selectedId);
+  const showCV = activeTrack === "cv";
 
   return (
     <div className="portfolio" data-theme={theme}>
@@ -62,7 +66,7 @@ function PortfolioApp() {
       <div className="portfolio__ambient" />
 
       {/* Header */}
-      <header className="portfolio__header">
+      <header className="portfolio__header no-print">
         <div className="portfolio__brand">
           <h1 className="portfolio__name">
             Victor <span className="portfolio__name--accent">Grabowski</span>
@@ -75,22 +79,26 @@ function PortfolioApp() {
         </div>
       </header>
 
-      {/* Main: timeline strip → full-screen content */}
+      {/* Main */}
       <main className="portfolio__main">
-        <LayoutGroup>
-          <Timeline
-            data={timelineData}
-            selectedId={selectedId}
-            onSelect={handleSelect}
-            activeTrack={activeTrack}
-            onTrackChange={handleTrackChange}
-          />
-          <ContentView item={selectedItem} direction={direction} />
-        </LayoutGroup>
+        {showCV ? (
+          <CVView onBack={() => handleTrackChange("career")} />
+        ) : (
+          <LayoutGroup>
+            <Timeline
+              data={timelineData}
+              selectedId={selectedId}
+              onSelect={handleSelect}
+              activeTrack={activeTrack}
+              onTrackChange={handleTrackChange}
+            />
+            <ContentView item={selectedItem} direction={direction} />
+          </LayoutGroup>
+        )}
       </main>
 
       {/* Footer */}
-      <footer className="portfolio__footer">
+      <footer className="portfolio__footer no-print">
         <p>{t.footer(new Date().getFullYear())}</p>
       </footer>
     </div>

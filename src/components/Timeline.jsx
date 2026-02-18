@@ -8,7 +8,7 @@ export default function Timeline({ data, selectedId, onSelect, activeTrack, onTr
   const scrollRef = useRef(null);
   const activeNodeRef = useRef(null);
 
-  const TRACK_LABELS = { career: t.trackCareer, project: t.trackProjects };
+  const TRACK_LABELS = { career: t.trackCareer, project: t.trackProjects, cv: "CV" };
 
   /* auto-scroll to keep the active node visible */
   useEffect(() => {
