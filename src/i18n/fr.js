@@ -1,8 +1,8 @@
 const fr = {
   /* ── UI ── */
   tagline: "Développeur Back-End",
-  trackCareer: "Parcours",
-  trackProjects: "Projets",
+  trackCareer: "Parcours Pro",
+  trackProjects: "Projets Divers",
   viewOnGithub: "Voir sur GitHub",
   addImage: "Ajouter une image dans",
   footer: (year) => `© ${year} Victor Grabowski — Construit avec React & Framer Motion`,

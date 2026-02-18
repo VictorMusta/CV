@@ -198,7 +198,8 @@
 .timeline__toggle {
   display: flex;
   gap: 0.25rem;
-  padding: 0.75rem 2.5rem 0;
+  padding: 0.75rem 2.5rem 0.75rem; /* Increased vertical balance */
+  margin-bottom: 1.5rem; /* Space before timeline nodes or content */
 }
 
 .timeline__pill {
@@ -965,38 +966,51 @@
   .portfolio__footer,
   .portfolio__ambient,
   .cv-export-wrapper,
-  .timeline__toggle {
+  .timeline__wrapper {
     display: none !important;
   }
 
-  body,
+  /* Force background colors on HTML/Body */
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    width: 100% !important;
+  }
+
   .portfolio,
   .portfolio__main {
     padding: 0 !important;
     margin: 0 !important;
+    display: block !important;
+    position: static !important;
+    height: auto !important;
   }
 
   /* ─── Default Print (Light) ─── */
   body.print-theme-light,
   body:not(.print-theme-dark) {
-    background: #fff !important;
+    background: #ffffff !important;
     color: #1a1a1a !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
   body.print-theme-light .cv-page,
   body:not(.print-theme-dark) .cv-page {
-    background: #fff !important;
+    background: #ffffff !important;
     color: #1a1a1a !important;
     border: none !important;
     box-shadow: none !important;
+    padding: 0 !important;
   }
 
   /* ─── Dark Print ─── */
   body.print-theme-dark {
-    background: #111 !important;
+    background: #111111 !important;
     color: #f9fafb !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
   body.print-theme-dark .cv-page {
@@ -1004,6 +1018,7 @@
     color: #f9fafb !important;
     border: none !important;
     box-shadow: none !important;
+    padding: 0 !important;
   }
 
   body.print-theme-dark .cv-entry__tag {
@@ -1029,14 +1044,19 @@
   }
 
   .cv-view {
-    padding: 0;
-    max-width: 100%;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    position: static !important;
   }
 
   .cv-page {
     backdrop-filter: none !important;
     padding: 0 !important;
+    margin: 0 !important;
     border-radius: 0 !important;
+    position: static !important;
   }
 
   .cv-entry, .cv-project {
