@@ -9,59 +9,59 @@ const en = {
 
   /* ── Career ── */
   betclic: {
-    role: "Back-End Developer",
+    role: "Back-End Developer (.NET / TypeScript)",
     description:
-      "Building high-performance microservices for one of Europe's leading online betting platforms.",
+      "Within the SQIPI squad (Identity & Payment Integrity), I contributed to fraud prevention and anti-money laundering at one of Europe's leading online sports betting platforms. I joined the SQEXP team to work on an AI-powered user profile analysis project — a strategic bet that paid off: AML investigation reviews that were once fully manual are now largely automated.",
     highlights: [
-      "Developed compliance & AML micro-services in Go and Java",
-      "Designed event-driven architectures with Kafka",
-      "Implemented fraud-detection pipelines processing millions of daily transactions",
-      "Collaborated cross-team on regulatory integrations across multiple jurisdictions",
+      "Built AML alert management, investigation creation & resolution, and player profile impact tracking",
+      "Contributed to Fraud-PEP: identity verification and conflict-of-interest detection to block risky accounts at creation",
+      "Multi-jurisdiction handling: differentiated thresholds, treatments, and restrictions per country / regulator",
+      "AI pioneer at Betclic: created Skills, Agent-instructions, and MCPs to automate 30% of PRs",
     ],
   },
   delfox: {
-    role: "Back-End Developer",
+    role: "Full-Stack Developer (React / Python / gRPC)",
     description:
-      "AI-driven startup leveraging reinforcement learning to create smarter autonomous systems.",
+      "Aerospace & defense startup building autonomous ML agents for weapons systems (missiles, drones, aircraft). I worked on Realmind, a platform enabling users to create scenarios, launch training sessions, and monitor AI agent training across multiple simulation engines (Unity, Unreal Engine, proprietary engines).",
     highlights: [
-      "Built REST & gRPC APIs powering real-time AI inference",
-      "Managed training data pipelines with Python and Go",
-      "Deployed ML models through CI/CD to AWS ECS",
-      "Optimised latency-critical paths for sub-50ms response times",
+      "ReactJS front-end + Python back-end (no framework), 100% gRPC communication",
+      "Designed the application's visual identity — well-received by clients during demos",
+      "Scenario creation, real-time training monitoring, reward tuning, and agent comparison features",
+      "Technical demos to defense clients and active participation in Agile discussions",
     ],
   },
   tild: {
-    role: "Full-Stack Developer",
+    role: "Full-Stack Developer (VueJS / Python)",
     description:
-      "Digital agency delivering bespoke web applications for enterprise clients.",
+      "IT services agency specializing in custom software development. I contributed to Alma Mater, a modular school CRM built for the Collège de Paris, featuring a lazy loading system designed to ensure smooth access even on very low-bandwidth connections (notably across Africa).",
     highlights: [
-      "Developed custom CMS platforms with React & Node.js",
-      "Integrated third-party APIs (payment, shipping, CRM)",
-      "Led front-end architecture decisions for client projects",
-      "Mentored junior developers on best practices",
+      "Full-stack development: VueJS front-end, Python back-end",
+      "Built the calendar / timetable module of the CRM",
+      "Lazy loading optimization for schools with limited connectivity",
+      "Collaborated within one of two teams dedicated to the Alma Mater project",
     ],
   },
   cosderma: {
-    role: "Full-Stack Developer (Intern)",
+    role: "Full-Stack Developer (Internship / Consulting)",
     description:
-      "Cosmetics e-commerce platform — first professional full-stack experience.",
+      "Company specializing in clinical cosmetic testing on volunteers for brands and labs. My first professional experience as a consultant deployed on-site — I was tasked with solving a critical oversized database problem, with no existing documentation or data model.",
     highlights: [
-      "Built a complete e-commerce front-end with React",
-      "Designed RESTful APIs with Node.js & Express",
-      "Implemented product catalog search and filter features",
-      "Managed deployment on cloud infrastructure",
+      "Complete reverse-engineering of a DB with no foreign keys or indexes — created a full relational model (Merise) printed across 3 A2 sheets",
+      "Built an archival application to split and migrate data while preserving historical records",
+      "Implemented a GDPR anonymization system for volunteer personal data",
+      "Full autonomy in a client environment — first taste of professional life",
     ],
   },
   education: {
     title: "Education",
     role: "Epitech · Sup de Vinci",
     description:
-      "Dual-track Computer Science education combining hands-on project methodology with academic foundations.",
+      "Dual-track Computer Science education combining Epitech's project-based pedagogy (autonomy, low-level C/C++) with Sup de Vinci's human-centric approach (industry professionals from diverse sectors, enriching exchanges on real-world business challenges). Thesis: \"The Impact of Generative AI on Junior Developers.\"",
     highlights: [
-      "Epitech — Project-based curriculum emphasising autonomy and low-level C/C++",
-      "Sup de Vinci — Master's in Software Engineering & Cloud Computing",
-      "Capstone projects in distributed systems and DevOps",
-      "Active participation in hackathons and coding competitions",
+      "Epitech — Autonomy and project-based learning, low-level C/C++ programming",
+      "Sup de Vinci — Master's in Software Engineering & Cloud, exchanges with professionals from all industries",
+      "Personal side-projects more polished than school assignments — driven by passion and a long-term roadmap",
+      "Thesis: hands-on feedback and best practices for juniors navigating generative AI",
     ],
   },
 

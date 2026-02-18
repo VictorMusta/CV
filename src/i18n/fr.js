@@ -5,63 +5,63 @@ const fr = {
   trackProjects: "Projets",
   viewOnGithub: "Voir sur GitHub",
   addImage: "Ajouter une image dans",
-  footer: (year) => `© ${year} Victor Grabowski — Créé avec React & Framer Motion`,
+  footer: (year) => `© ${year} Victor Grabowski — Construit avec React & Framer Motion`,
 
   /* ── Parcours ── */
   betclic: {
-    role: "Développeur Back-End",
+    role: "Développeur Back-End (.NET / TypeScript)",
     description:
-      "Conception de micro-services haute performance pour l'une des principales plateformes européennes de paris sportifs en ligne.",
+      "Au sein de la squad SQIPI (Identity & Payment Integrity), j'ai contribué à la lutte contre la fraude et le blanchiment d'argent chez l'un des leaders européens des paris sportifs en ligne. J'ai rejoint l'équipe SQEXP pour travailler sur un projet d'analyse de profils utilisateurs par IA — un pari qui s'est révélé stratégique : les revues d'investigation AML autrefois manuelles sont aujourd'hui en grande partie automatisées.",
     highlights: [
-      "Développement de micro-services de conformité & AML en Go et Java",
-      "Conception d'architectures événementielles avec Kafka",
-      "Mise en place de pipelines de détection de fraude traitant des millions de transactions quotidiennes",
-      "Collaboration inter-équipes sur les intégrations réglementaires multi-juridictions",
+      "Développement des alertes AML, création & résolution des investigations, et impacts sur les profils joueurs",
+      "Contribution au projet Fraud-PEP : vérification d'identité et détection de conflits d'intérêts pour bloquer les comptes à risque dès leur création",
+      "Gestion multi-juridictions : thresholds, traitements et restrictions différenciés par pays / régulateur",
+      "Pionnier IA chez Betclic : création de Skills, Agent-instructions et MCPs pour automatiser 30% des PR",
     ],
   },
   delfox: {
-    role: "Développeur Back-End",
+    role: "Développeur Full-Stack (React / Python / gRPC)",
     description:
-      "Startup IA utilisant l'apprentissage par renforcement pour créer des systèmes autonomes plus intelligents.",
+      "Startup aérospatiale & défense développant des agents autonomes par machine learning pour l'armement (missiles, drones, aéronefs). J'ai travaillé sur Realmind, une plateforme permettant aux utilisateurs de créer des scénarios, lancer des apprentissages et monitorer l'entraînement d'agents IA dans des moteurs de simulation variés (Unity, Unreal Engine, moteurs propriétaires).",
     highlights: [
-      "Construction d'APIs REST & gRPC pour l'inférence IA en temps réel",
-      "Gestion de pipelines de données d'entraînement en Python et Go",
-      "Déploiement de modèles ML via CI/CD sur AWS ECS",
-      "Optimisation des chemins critiques en latence sous 50ms",
+      "Front-end ReactJS + back-end Python sans framework, communication 100% gRPC",
+      "Conception de la charte graphique de l'application, très appréciée par les clients lors des démos",
+      "Création de scénarios d'entraînement, monitoring temps réel, modification de récompenses et comparaison d'agents",
+      "Démonstrations techniques aux clients et participation aux discussions Agile",
     ],
   },
   tild: {
-    role: "Développeur Full-Stack",
+    role: "Développeur Full-Stack (VueJS / Python)",
     description:
-      "Agence digitale délivrant des applications web sur mesure pour des clients grands comptes.",
+      "Agence de prestation de services spécialisée dans le développement sur mesure. J'ai contribué au développement d'Alma Mater, un CRM modulaire destiné aux écoles, conçu pour le Collège de Paris, avec un système de lazy loading permettant un accès fluide même à très faible débit internet (notamment en Afrique).",
     highlights: [
-      "Développement de plateformes CMS personnalisées avec React & Node.js",
-      "Intégration d'APIs tierces (paiement, livraison, CRM)",
-      "Pilotage des choix d'architecture front-end pour les projets clients",
-      "Mentorat de développeurs juniors sur les bonnes pratiques",
+      "Développement full-stack : front-end VueJS, back-end Python",
+      "Implémentation du module agenda / emploi du temps du CRM",
+      "Optimisation lazy loading pour les écoles à connectivité limitée",
+      "Collaboration au sein d'une des deux équipes dédiées au projet Alma Mater",
     ],
   },
   cosderma: {
-    role: "Développeur Full-Stack (Stage)",
+    role: "Développeur Full-Stack (Stage / Prestation)",
     description:
-      "Plateforme e-commerce de cosmétiques — première expérience professionnelle full-stack.",
+      "Entreprise spécialisée dans les tests cliniques cosmétiques sur volontaires pour des marques et laboratoires. Première expérience professionnelle en tant que prestataire déployé sur site client — j'ai été missionné pour résoudre un problème critique de base de données surdimensionnée, sans aucune documentation ni modélisation existante.",
     highlights: [
-      "Construction d'un front-end e-commerce complet avec React",
-      "Conception d'APIs RESTful avec Node.js & Express",
-      "Implémentation de fonctionnalités de recherche et filtrage du catalogue produits",
-      "Gestion du déploiement sur infrastructure cloud",
+      "Reverse-engineering complet d'une BDD sans clés étrangères ni index — création d'un MDR (Merise) imprimé sur 3 feuilles A2",
+      "Développement d'une application d'archivage pour découper et migrer les données tout en préservant l'historique",
+      "Implémentation d'un système d'anonymisation RGPD pour les données personnelles des volontaires",
+      "Autonomie totale en environnement client, première expérience de la vie en entreprise",
     ],
   },
   education: {
     title: "Formation",
     role: "Epitech · Sup de Vinci",
     description:
-      "Double cursus en informatique alliant méthodologie projet et fondations académiques.",
+      "Double cursus informatique combinant la pédagogie par projets d'Epitech (autonomie, C/C++ bas niveau) et la dimension humaine de Sup de Vinci (intervenants professionnels de secteurs variés, échanges enrichissants sur des problématiques métier réelles). Mémoire de fin d'études : « L'impact de l'IA générative sur les développeurs Juniors ».",
     highlights: [
-      "Epitech — Cursus par projets favorisant l'autonomie et le C/C++ bas niveau",
-      "Sup de Vinci — Master en Ingénierie Logicielle & Cloud Computing",
-      "Projets de fin d'études en systèmes distribués et DevOps",
-      "Participation active aux hackathons et compétitions de code",
+      "Epitech — Autonomie et apprentissage par projets, programmation bas niveau C/C++",
+      "Sup de Vinci — Master Ingénierie Logicielle & Cloud, échanges avec des professionnels de tous horizons",
+      "Side-projects personnels plus aboutis que les projets scolaires — portés par la passion et une vision long terme",
+      "Mémoire : retour d'expérience et bonnes pratiques face à l'IA générative pour les juniors",
     ],
   },
 
@@ -80,29 +80,29 @@ const fr = {
   discordkiller: {
     role: "Messagerie P2P",
     description:
-      "Une application de messagerie pair-à-pair entièrement décentralisée écrite en Rust — sans serveur, sans intermédiaire.",
+      "Une application de messagerie décentralisée peer-to-peer écrite en Rust — sans serveurs, sans intermédiaires.",
     highlights: [
       "Découverte de pairs via mDNS et connexion manuelle",
       "Communication chiffrée de bout en bout",
-      "Support de canal audio en temps réel",
-      "Client desktop multi-plateforme",
+      "Support de canaux audio en temps réel",
+      "Client desktop cross-platform",
     ],
   },
   aicontentremover: {
-    role: "API Extension Navigateur",
+    role: "API + Extension Navigateur",
     description:
-      "Une API communautaire + extension navigateur qui signale les tweets générés par IA via un vote participatif. Rate limiting, vérification par lot et documentation Swagger.",
+      "Une API communautaire + extension navigateur qui signale les tweets générés par IA via un système de vote collaboratif. Rate limiting, vérification par lots et documentation Swagger.",
     highlights: [
-      "API REST avec système de vote communautaire",
+      "API REST avec système de votes communautaires",
       "Intégration extension navigateur (Chrome, Firefox)",
-      "SQLite en dev / PostgreSQL en prod avec EF Core",
+      "SQLite dev / PostgreSQL prod avec EF Core",
       "Seuil de détection IA basé sur le consensus",
     ],
   },
   loutaupia: {
     role: "Backend Géocaching",
     description:
-      "Une API backend .NET pour Loutaupia V2 — une application collaborative de géocaching avec des chasses au trésor sur carte.",
+      "Un backend API .NET pour Loutaupia V2 — une application collaborative de géocaching avec des chasses au trésor sur carte.",
     highlights: [
       "API RESTful en .NET / C#",
       "Mécaniques de jeu basées sur la géolocalisation",
@@ -111,13 +111,13 @@ const fr = {
     ],
   },
   imapunsub: {
-    role: "Automatisation Email",
+    role: "Automatisation E-mail",
     description:
-      "Un script Python qui scanne votre boîte mail via IMAP, trouve les liens de désinscription dans les newsletters et les suit automatiquement — réduisant l'encombrement email et l'empreinte carbone.",
+      "Un script Python qui scanne votre boîte mail via IMAP, trouve les liens de désinscription dans les newsletters et les suit automatiquement — réduisant le désordre e-mail et l'empreinte carbone.",
     highlights: [
       "Intégration IMAP avec mots de passe d'application Gmail",
       "Parsing HTML avec BeautifulSoup",
-      "Suivi automatique des liens via requests",
+      "Suivi automatisé des liens via requests",
       "Sensibilisation à l'impact environnemental",
     ],
   },
@@ -127,20 +127,20 @@ const fr = {
       "Un bot Discord multi-usage pour le fun et l'utilitaire — construit en Python et géré via Jira pour un développement structuré.",
     highlights: [
       "Architecture de commandes modulaire",
-      "Workflow de développement suivi sur Jira",
+      "Développement tracké via Jira",
       "Intégration événementielle Discord.py",
       "Système de plugins extensible",
     ],
   },
   knightjumper: {
-    role: "Jeu de Plateforme",
+    role: "Jeu de Plateformes",
     description:
-      "Un jeu de plateforme 2D construit avec le moteur Godot, mettant en scène un chevalier avec des mécaniques de saut et une progression par niveaux.",
+      "Un jeu de plateformes 2D développé avec le moteur Godot, mettant en scène un chevalier avec des mécaniques de saut et une progression par niveaux.",
     highlights: [
       "Moteur Godot 4 avec GDScript",
-      "Level design basé sur des tuiles",
-      "Physique & animation du personnage",
-      "Arrière-plans en parallaxe défilante",
+      "Level design basé sur des tiles",
+      "Physique du personnage & animations",
+      "Backgrounds en parallax scrolling",
     ],
   },
 };
