@@ -1,6 +1,6 @@
 const en = {
   /* ── UI ── */
-  tagline: "Back-End Developer",
+  tagline: "Fullstack Developer",
   trackCareer: "Career",
   trackProjects: "Projects",
   viewOnGithub: "View on GitHub",
@@ -9,7 +9,7 @@ const en = {
 
   /* ── Career ── */
   betclic: {
-    role: "Back-End Developer (.NET / TypeScript)",
+    role: "Fullstack Developer (.NET C# / TypeScript)",
     description:
       "Within the SQIPI squad (Identity & Payment Integrity), I contributed to fraud prevention and anti-money laundering at one of Europe's leading online sports betting platforms. I joined the SQEXP team to work on an AI-powered user profile analysis project — a strategic bet that paid off: AML investigation reviews that were once fully manual are now largely automated.",
     highlights: [
@@ -33,11 +33,10 @@ const en = {
   tild: {
     role: "Full-Stack Developer (VueJS / Python)",
     description:
-      "IT services agency specializing in custom software development. I contributed to Alma Mater, a modular school CRM built for the Collège de Paris, featuring a lazy loading system designed to ensure smooth access even on very low-bandwidth connections (notably across Africa).",
+      "IT services agency specializing in custom software development. I contributed to Alma Mater, a modular school CRM built for the Collège de Paris.",
     highlights: [
       "Full-stack development: VueJS front-end, Python back-end",
       "Built the calendar / timetable module of the CRM",
-      "Lazy loading optimization for schools with limited connectivity",
       "Collaborated within one of two teams dedicated to the Alma Mater project",
     ],
   },
@@ -52,16 +51,26 @@ const en = {
       "Full autonomy in a client environment — first taste of professional life",
     ],
   },
-  education: {
-    title: "Education",
-    role: "Epitech · Sup de Vinci",
+  supdevinci: {
+    title: "Sup de Vinci",
+    role: "Master's in Software Engineering & Cloud",
     description:
-      "Dual-track Computer Science education combining Epitech's project-based pedagogy (autonomy, C#, TypeScript) with Sup de Vinci's human-centric approach (industry professionals from diverse sectors, enriching exchanges on real-world business challenges). Thesis: \"The Impact of Generative AI on Junior Developers.\"",
+      "Software Engineering Expert (RNCP Level 7). Work-study program focusing on Cloud architecture, technical management, and complex real-world business challenges. Thesis: \"The Impact of Generative AI on Junior Developers.\"",
     highlights: [
-      "Epitech — Autonomy and project-based learning, C#, TypeScript programming",
-      "Sup de Vinci — Master's in Software Engineering & Cloud, exchanges with professionals from all industries",
-      "Personal side-projects more polished than school assignments — driven by passion and a long-term roadmap",
+      "Master's in Software Engineering & Cloud",
+      "Exchanges with industry professionals from diverse sectors",
       "Thesis: hands-on feedback and best practices for juniors navigating generative AI",
+    ],
+  },
+  epitech: {
+    title: "Epitech Technology",
+    role: "Expert in Information Technology",
+    description:
+      "Intensive project-based learning. Developed autonomy, rigor, and complex problem-solving skills. Progressive specialization in C# and TypeScript through major annual projects.",
+    highlights: [
+      "IT Expert (RNCP Level 7)",
+      "Project-based pedagogy: autonomy and teamwork",
+      "Personal side-projects driven by passion and a long-term roadmap",
     ],
   },
 

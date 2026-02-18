@@ -17,14 +17,18 @@ function PortfolioApp() {
   const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "dark");
   const toggleTheme = useCallback(() => {
     setTheme((prev) => {
-      const next = prev === "dark" ? "light" : "dark";
+      let next = "dark";
+      if (prev === "dark") next = "light";
+      else if (prev === "light") next = "sunset";
+      else next = "dark";
+
       localStorage.setItem("theme", next);
       return next;
     });
   }, []);
 
   /* ─── Track toggle (career / project / cv) ─── */
-  const [activeTrack, setActiveTrack] = useState("career");
+  const [activeTrack, setActiveTrack] = useState("cv");
 
   /* ─── Selected item ─── */
   const currentTrackData = activeTrack === "career" ? careerData : projectData;

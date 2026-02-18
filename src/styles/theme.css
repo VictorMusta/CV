@@ -9,9 +9,9 @@
   --bg-card: #ffffff;
   --bg-card-hover: #f5f5f5;
 
-  --text-primary: #1a1a2e;
-  --text-secondary: #4a4a68;
-  --text-muted: #8888a0;
+  --text-primary: #121224;
+  --text-secondary: #3d3d5c;
+  --text-muted: #5c5c7a;
 
   --border: rgba(0, 0, 0, 0.08);
   --border-strong: rgba(0, 0, 0, 0.14);
@@ -55,9 +55,9 @@
   --bg-card: #18183a;
   --bg-card-hover: #22224a;
 
-  --text-primary: #e8e8f0;
-  --text-secondary: #a0a0bc;
-  --text-muted: #6a6a84;
+  --text-primary: #f8f8fc;
+  --text-secondary: #b8b8d0;
+  --text-muted: #8e8eb0;
 
   --border: rgba(255, 255, 255, 0.06);
   --border-strong: rgba(255, 255, 255, 0.12);
@@ -80,4 +80,38 @@
 
   --tag-bg: rgba(255, 255, 255, 0.06);
   --tag-text: #a0a0bc;
+}
+
+/* ---------- Sunset Mode ---------- */
+[data-theme="sunset"] {
+  --bg-primary: #150f1f;
+  --bg-secondary: #1d162b;
+  --bg-card: #251c33;
+  --bg-card-hover: #2d243d;
+
+  --text-primary: #ffffff;
+  --text-secondary: #e8c4c4;
+  --text-muted: #b5899b;
+
+  --border: rgba(255, 126, 95, 0.12);
+  --border-strong: rgba(255, 126, 95, 0.24);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 40px rgba(255, 126, 95, 0.08);
+
+  --timeline-line: #3a2a44;
+  --timeline-dot: #4a3a54;
+
+  --accent: #ff7e5f;
+  --accent-soft: rgba(255, 126, 95, 0.15);
+
+  /* Glassmorphism — sunset */
+  --glass-bg: rgba(29, 22, 43, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.04);
+  --glass-blur: 20px;
+
+  --tag-bg: rgba(255, 126, 95, 0.1);
+  --tag-text: #f8e9d4;
 }

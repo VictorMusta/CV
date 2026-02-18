@@ -1,6 +1,6 @@
 const fr = {
   /* ── UI ── */
-  tagline: "Développeur Back-End",
+  tagline: "Développeur Fullstack",
   trackCareer: "Parcours Pro",
   trackProjects: "Projets Divers",
   viewOnGithub: "Voir sur GitHub",
@@ -9,7 +9,7 @@ const fr = {
 
   /* ── Parcours ── */
   betclic: {
-    role: "Développeur Back-End (.NET / TypeScript)",
+    role: "Développeur Fullstack (.NET C# / TypeScript)",
     description:
       "Au sein de la squad SQIPI (Identity & Payment Integrity), j'ai contribué à la lutte contre la fraude et le blanchiment d'argent chez l'un des leaders européens des paris sportifs en ligne. J'ai rejoint l'équipe SQEXP pour travailler sur un projet d'analyse de profils utilisateurs par IA — un pari qui s'est révélé stratégique : les revues d'investigation AML autrefois manuelles sont aujourd'hui en grande partie automatisées.",
     highlights: [
@@ -33,11 +33,10 @@ const fr = {
   tild: {
     role: "Développeur Full-Stack (VueJS / Python)",
     description:
-      "Agence de prestation de services spécialisée dans le développement sur mesure. J'ai contribué au développement d'Alma Mater, un CRM modulaire destiné aux écoles, conçu pour le Collège de Paris, avec un système de lazy loading permettant un accès fluide même à très faible débit internet (notamment en Afrique).",
+      "Agence de prestation de services spécialisée dans le développement sur mesure. J'ai contribué au développement d'Alma Mater, un CRM modulaire destiné aux écoles, conçu pour le Collège de Paris.",
     highlights: [
       "Développement full-stack : front-end VueJS, back-end Python",
       "Implémentation du module agenda / emploi du temps du CRM",
-      "Optimisation lazy loading pour les écoles à connectivité limitée",
       "Collaboration au sein d'une des deux équipes dédiées au projet Alma Mater",
     ],
   },
@@ -52,16 +51,26 @@ const fr = {
       "Autonomie totale en environnement client, première expérience de la vie en entreprise",
     ],
   },
-  education: {
-    title: "Formation",
-    role: "Epitech · Sup de Vinci",
+  supdevinci: {
+    title: "Sup de Vinci",
+    role: "Master Ingénierie Logicielle & Cloud",
     description:
-      "Double cursus informatique combinant la pédagogie par projets d'Epitech (autonomie, C#, TypeScript) et la dimension humaine de Sup de Vinci (intervenants professionnels de secteurs variés, échanges enrichissants sur des problématiques métier réelles). Mémoire de fin d'études : « L'impact de l'IA générative sur les développeurs Juniors ».",
+      "Expert en Ingénierie Logicielle (Titre RNCP Niveau 7). Formation en alternance permettant d'approfondir les problématiques de Cloud, de management technique et d'architecture complexe en environnement professionnel. Mémoire : « L'impact de l'IA générative sur les développeurs Juniors ».",
     highlights: [
-      "Epitech — Autonomie et apprentissage par projets, programmation C#, TypeScript",
-      "Sup de Vinci — Master Ingénierie Logicielle & Cloud, échanges avec des professionnels de tous horizons",
-      "Side-projects personnels plus aboutis que les projets scolaires — portés par la passion et une vision long terme",
-      "Mémoire : retour d'expérience et bonnes pratiques face à l'IA générative pour les juniors",
+      "Master Ingénierie Logicielle & Cloud",
+      "Échanges avec des intervenants professionnels de divers secteurs",
+      "Mémoire : retour d'expérience et bonnes pratiques face à l'IA générative",
+    ],
+  },
+  epitech: {
+    title: "Epitech Technology",
+    role: "Expert en Technologies de l'Information",
+    description:
+      "Formation intensive basée sur la pédagogie par projets. Apprentissage de l'autonomie, de la rigueur et de la résolution de problèmes techniques complexes. Spécialisation progressive vers le C# et le TypeScript via des projets d'envergure annuelle.",
+    highlights: [
+      "Expert en Technologies de l'Information (Titre RNCP Niveau 7)",
+      "Pédagogie par projets : autonomie et travail en équipe",
+      "Side-projects personnels portés par la passion et une vision long terme",
     ],
   },
 

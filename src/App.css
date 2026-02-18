@@ -46,6 +46,19 @@
     );
 }
 
+[data-theme="sunset"] .portfolio__ambient {
+  background: radial-gradient(
+      ellipse 80% 50% at 20% 10%,
+      rgba(255, 126, 95, 0.12) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 80% 90%,
+      rgba(124, 58, 237, 0.08) 0%,
+      transparent 50%
+    );
+}
+
 /* ---- Header ---- */
 .portfolio__header {
   position: relative;
@@ -197,7 +210,7 @@
 /* Track toggle pills */
 .timeline__toggle {
   display: flex;
-  gap: 0.25rem;
+  gap: 1rem;
   padding: 0.75rem 2.5rem 0;
 }
 
@@ -242,7 +255,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 1rem;
   padding: 1rem 2.5rem 1.25rem;
   overflow-x: auto;
   scroll-behavior: smooth;
@@ -335,13 +348,9 @@
 }
 
 /* Bottom active indicator */
+/* Bottom active indicator - Removed per user request */
 .timeline__indicator {
-  position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: -1px;
-  height: 2px;
-  border-radius: 2px;
+  display: none;
 }
 
 /* ============================================
