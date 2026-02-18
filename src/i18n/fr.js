@@ -56,9 +56,9 @@ const fr = {
     title: "Formation",
     role: "Epitech · Sup de Vinci",
     description:
-      "Double cursus informatique combinant la pédagogie par projets d'Epitech (autonomie, C/C++ bas niveau) et la dimension humaine de Sup de Vinci (intervenants professionnels de secteurs variés, échanges enrichissants sur des problématiques métier réelles). Mémoire de fin d'études : « L'impact de l'IA générative sur les développeurs Juniors ».",
+      "Double cursus informatique combinant la pédagogie par projets d'Epitech (autonomie, C#, TypeScript) et la dimension humaine de Sup de Vinci (intervenants professionnels de secteurs variés, échanges enrichissants sur des problématiques métier réelles). Mémoire de fin d'études : « L'impact de l'IA générative sur les développeurs Juniors ».",
     highlights: [
-      "Epitech — Autonomie et apprentissage par projets, programmation bas niveau C/C++",
+      "Epitech — Autonomie et apprentissage par projets, programmation C#, TypeScript",
       "Sup de Vinci — Master Ingénierie Logicielle & Cloud, échanges avec des professionnels de tous horizons",
       "Side-projects personnels plus aboutis que les projets scolaires — portés par la passion et une vision long terme",
       "Mémoire : retour d'expérience et bonnes pratiques face à l'IA générative pour les juniors",

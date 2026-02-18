@@ -73,7 +73,7 @@ const careerData = [
     sortYear: 2019,
     icon: GraduationCap,
     color: "#A8DADC",
-    stack: ["C", "C++", "Python", "Linux", "Docker", "Terraform"],
+    stack: ["C#", "TypeScript", "Python", "Linux", "Docker", "Terraform"],
     image: "https://logo.clearbit.com/epitech.eu",
     imageAlt: "Epitech logo",
   },

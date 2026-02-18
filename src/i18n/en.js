@@ -56,9 +56,9 @@ const en = {
     title: "Education",
     role: "Epitech · Sup de Vinci",
     description:
-      "Dual-track Computer Science education combining Epitech's project-based pedagogy (autonomy, low-level C/C++) with Sup de Vinci's human-centric approach (industry professionals from diverse sectors, enriching exchanges on real-world business challenges). Thesis: \"The Impact of Generative AI on Junior Developers.\"",
+      "Dual-track Computer Science education combining Epitech's project-based pedagogy (autonomy, C#, TypeScript) with Sup de Vinci's human-centric approach (industry professionals from diverse sectors, enriching exchanges on real-world business challenges). Thesis: \"The Impact of Generative AI on Junior Developers.\"",
     highlights: [
-      "Epitech — Autonomy and project-based learning, low-level C/C++ programming",
+      "Epitech — Autonomy and project-based learning, C#, TypeScript programming",
       "Sup de Vinci — Master's in Software Engineering & Cloud, exchanges with professionals from all industries",
       "Personal side-projects more polished than school assignments — driven by passion and a long-term roadmap",
       "Thesis: hands-on feedback and best practices for juniors navigating generative AI",
