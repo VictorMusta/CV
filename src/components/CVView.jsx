@@ -1,14 +1,30 @@
+import { useState, useCallback } from "react";
 import { useLang } from "../i18n/LanguageContext";
-import { motion } from "framer-motion";
-import { Download, MapPin, Mail, Github, ExternalLink } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Download, MapPin, Mail, Github, Phone, ExternalLink, Sun, Moon } from "lucide-react";
 import { careerData, projectData } from "../data/timelineData";
 
 export default function CVView() {
   const { t, lang } = useLang();
+  const [showExportMenu, setShowExportMenu] = useState(false);
 
-  const handleExportPDF = () => {
-    window.print();
-  };
+  const handleExport = useCallback((theme) => {
+    /* Temporarily apply theme for print */
+    const root = document.querySelector(".portfolio");
+    const original = root?.getAttribute("data-theme");
+    if (root) root.setAttribute("data-theme", theme);
+
+    /* Also add a class to force colors in print */
+    document.body.classList.add(`print-theme-${theme}`);
+
+    setTimeout(() => {
+      window.print();
+      /* Restore original theme after print dialog */
+      if (root) root.setAttribute("data-theme", original || "dark");
+      document.body.classList.remove(`print-theme-${theme}`);
+      setShowExportMenu(false);
+    }, 100);
+  }, []);
 
   /* career sorted most recent first */
   const career = [...careerData].sort((a, b) => b.sortYear - a.sortYear);
@@ -16,16 +32,39 @@ export default function CVView() {
 
   return (
     <div className="cv-view" id="cv-view">
-      {/* Export button — hidden in print */}
-      <motion.button
-        className="cv-export-btn no-print"
-        onClick={handleExportPDF}
-        whileHover={{ scale: 1.04 }}
-        whileTap={{ scale: 0.96 }}
-      >
-        <Download size={16} />
-        {lang === "fr" ? "Exporter en PDF" : "Export to PDF"}
-      </motion.button>
+      {/* Export button with theme picker — hidden in print */}
+      <div className="cv-export-wrapper no-print">
+        <motion.button
+          className="cv-export-btn"
+          onClick={() => setShowExportMenu((p) => !p)}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.96 }}
+        >
+          <Download size={16} />
+          {lang === "fr" ? "Exporter en PDF" : "Export to PDF"}
+        </motion.button>
+
+        <AnimatePresence>
+          {showExportMenu && (
+            <motion.div
+              className="cv-export-menu"
+              initial={{ opacity: 0, y: 8, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 8, scale: 0.95 }}
+              transition={{ duration: 0.15 }}
+            >
+              <button className="cv-export-option" onClick={() => handleExport("light")}>
+                <Sun size={14} />
+                {lang === "fr" ? "Thème clair" : "Light theme"}
+              </button>
+              <button className="cv-export-option" onClick={() => handleExport("dark")}>
+                <Moon size={14} />
+                {lang === "fr" ? "Thème sombre" : "Dark theme"}
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
 
       <div className="cv-page">
         {/* ─── Header ─── */}
@@ -36,7 +75,8 @@ export default function CVView() {
           </div>
           <div className="cv-header__contact">
             <span><MapPin size={13} /> Bordeaux, France</span>
-            <a href="mailto:victor.grabowski@outlook.com"><Mail size={13} /> victor.grabowski@outlook.com</a>
+            <a href="mailto:victorgrabowski33@gmail.com"><Mail size={13} /> victorgrabowski33@gmail.com</a>
+            <a href="tel:+33767302293"><Phone size={13} /> 07 67 30 22 93</a>
             <a href="https://github.com/VictorMusta" target="_blank" rel="noopener noreferrer"><Github size={13} /> github.com/VictorMusta</a>
           </div>
         </header>
@@ -162,6 +202,15 @@ export default function CVView() {
             </p>
           </article>
         </section>
+
+        <hr className="cv-divider" />
+
+        {/* ─── Footer link ─── */}
+        <div className="cv-footer">
+          <a href="https://victormusta.github.io/CV/" target="_blank" rel="noopener noreferrer">
+            <ExternalLink size={12} /> victormusta.github.io/CV
+          </a>
+        </div>
       </div>
     </div>
   );

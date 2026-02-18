@@ -59,13 +59,14 @@ export default function Timeline({ data, selectedId, onSelect, activeTrack, onTr
         ))}
       </div>
 
-      {/* Horizontal scrollable node strip */}
+      {/* Horizontal scrollable node strip — hidden on CV tab */}
+      {activeTrack !== "cv" && (
       <div className="timeline" ref={scrollRef} role="tablist" aria-label="Timeline">
         <div className="timeline__line" />
 
         {tracks
           .find((tr) => tr.key === activeTrack)
-          .items.map((item, index) => {
+          ?.items.map((item, index) => {
             const isActive = selectedId === item.id;
             const Icon = item.icon;
             const title = getTitle(item);
@@ -121,6 +122,7 @@ export default function Timeline({ data, selectedId, onSelect, activeTrack, onTr
             );
           })}
       </div>
+      )}
     </div>
   );
 }

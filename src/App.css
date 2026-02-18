@@ -608,11 +608,18 @@
   padding: 2rem 1.5rem;
 }
 
-.cv-export-btn {
+.cv-export-wrapper {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
   z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.cv-export-btn {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -631,6 +638,62 @@
 
 .cv-export-btn:hover {
   box-shadow: 0 6px 28px rgba(99, 102, 241, 0.55);
+}
+
+.cv-export-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 0.5rem;
+  box-shadow: var(--shadow-lg);
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  margin-bottom: 0.5rem;
+  min-width: 160px;
+}
+
+.cv-export-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.cv-export-option:hover {
+  background: var(--bg-secondary);
+}
+
+/* ─── CV footer link ─── */
+.cv-footer {
+  text-align: center;
+  padding-top: 0.5rem;
+}
+
+.cv-footer a {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: color var(--transition-fast);
+}
+
+.cv-footer a:hover {
+  color: var(--accent);
 }
 
 .cv-page {
@@ -901,17 +964,68 @@
   .portfolio__header,
   .portfolio__footer,
   .portfolio__ambient,
-  .cv-export-btn {
+  .cv-export-wrapper,
+  .timeline__toggle {
     display: none !important;
   }
 
   body,
   .portfolio,
   .portfolio__main {
-    background: #fff !important;
-    color: #1a1a1a !important;
     padding: 0 !important;
     margin: 0 !important;
+  }
+
+  /* ─── Default Print (Light) ─── */
+  body.print-theme-light,
+  body:not(.print-theme-dark) {
+    background: #fff !important;
+    color: #1a1a1a !important;
+  }
+
+  body.print-theme-light .cv-page,
+  body:not(.print-theme-dark) .cv-page {
+    background: #fff !important;
+    color: #1a1a1a !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* ─── Dark Print ─── */
+  body.print-theme-dark {
+    background: #111 !important;
+    color: #f9fafb !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body.print-theme-dark .cv-page {
+    background: #1a1b26 !important;
+    color: #f9fafb !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  body.print-theme-dark .cv-entry__tag {
+    background: #2d2e3f !important;
+    border-color: #3f415a !important;
+    color: #d1d5db !important;
+  }
+
+  body.print-theme-dark .cv-project {
+    background: #242535 !important;
+    border-color: #3f415a !important;
+  }
+
+  body.print-theme-dark .cv-divider {
+    border-top: 1px solid #3f415a !important;
+  }
+
+  body.print-theme-dark .cv-header__name {
+    background: linear-gradient(135deg, #6366f1, #a78bfa) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
   }
 
   .cv-view {
@@ -920,65 +1034,24 @@
   }
 
   .cv-page {
-    background: #fff !important;
-    border: none !important;
-    box-shadow: none !important;
     backdrop-filter: none !important;
     padding: 0 !important;
     border-radius: 0 !important;
-  }
-
-  .cv-header__name {
-    background: none !important;
-    -webkit-text-fill-color: #1a1a1a !important;
-    color: #1a1a1a !important;
-  }
-
-  .cv-section__title {
-    color: #4338ca !important;
-  }
-
-  .cv-entry__highlights li::before {
-    color: #4338ca !important;
   }
 
   .cv-entry, .cv-project {
     break-inside: avoid;
   }
 
-  .cv-project {
-    border-color: #e5e5e5 !important;
-    background: #fafafa !important;
-  }
-
-  .cv-entry__tag {
-    background: #f3f4f6 !important;
-    border-color: #e5e5e5 !important;
-    color: #555 !important;
-  }
-
-  .cv-divider {
-    border-color: #e5e5e5 !important;
-  }
-
-  * {
-    color: #1a1a1a !important;
-  }
-
-  .cv-header__contact a,
-  .cv-header__contact span,
-  .cv-entry__role,
-  .cv-entry__desc,
-  .cv-entry__period,
-  .cv-entry__highlights li,
-  .cv-project__desc,
-  .cv-project__role,
-  .cv-skill-group p {
-    color: #555 !important;
+  /* Chrome/Safari fix for gradient text in print */
+  @supports (-webkit-background-clip: text) {
+    .cv-header__name {
+      -webkit-print-color-adjust: exact;
+    }
   }
 
   @page {
-    margin: 1.5cm;
+    margin: 1cm;
     size: A4;
   }
 }

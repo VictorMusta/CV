@@ -81,20 +81,20 @@ function PortfolioApp() {
 
       {/* Main */}
       <main className="portfolio__main">
-        {showCV ? (
-          <CVView onBack={() => handleTrackChange("career")} />
-        ) : (
-          <LayoutGroup>
-            <Timeline
-              data={timelineData}
-              selectedId={selectedId}
-              onSelect={handleSelect}
-              activeTrack={activeTrack}
-              onTrackChange={handleTrackChange}
-            />
+        <LayoutGroup>
+          <Timeline
+            data={timelineData}
+            selectedId={selectedId}
+            onSelect={handleSelect}
+            activeTrack={activeTrack}
+            onTrackChange={handleTrackChange}
+          />
+          {showCV ? (
+            <CVView />
+          ) : (
             <ContentView item={selectedItem} direction={direction} />
-          </LayoutGroup>
-        )}
+          )}
+        </LayoutGroup>
       </main>
 
       {/* Footer */}
