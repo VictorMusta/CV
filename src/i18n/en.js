@@ -14,19 +14,18 @@ const en = {
   /* ── Career ── */
   betclic: {
     role: "Fullstack Developer .NET + JS",
-    description: "At the heart of innovation at Betclic, I work within the SQIPI Squad (Service Quality, Innovation & Productivity Initiative). Our mission is to transform the most complex business processes through technical excellence and AI. We operate in a highly collaborative Agile (Scrum) environment where transparency and continuous feedback are the standards.",
+    description: "Within the SQIPI squad (Identity & Payment Integrity), I contributed to the fight against fraud and money laundering at one of Europe's leading online sports betting platforms. I joined the SQEXP team to work on an AI-driven user profile analysis project — a strategic bet that paid off: AML investigation reviews, once manual, are now largely automated.",
     highlights: [
-      "AML Automation: Designing and deploying AI agents to automate investigation reviews, resulting in a 30% gain on the global validation workflow.",
-      "Fraud-PEP Project: Architecture and development of a real-time detection system for Politically Exposed Persons (PEP) and conflicts of interest during onboarding.",
-      "Modern Stack & Cloud: Mastery of the .NET 8 ecosystem, AWS (Lambda, DynamoDB, SNS/SQS) and Terraform for robust and scalable infrastructure.",
-      "AI-Assisted Productivity: Leading the use of CursorAI within engineering, creating custom MCPs and Skills to optimize the development cycle for the team.",
-      "Quality & Security: Strict application of TDD and Clean Architecture principles in a high-criticality context involving sensitive data.",
+      "Development of AML alerts, creation & resolution of investigations, and impact on player profiles",
+      "Contribution to the Fraud-PEP project: identity verification and detection of conflicts of interest to block high-risk accounts at creation",
+      "Multi-jurisdiction management: thresholds, processing, and restrictions tailored by country/regulator",
+      "AI Pioneer at Betclic: creation of Skills, Agent-instructions, and MCPs to automate 30% of PRs",
     ],
-    cvDescription: "SQIPI Squad. Automated AML investigation reviews via AI agents (30% of PRs automated).",
+    cvDescription: "Fraud fighting (SQIPI). Automated AML investigation reviews via AI (30% of PRs automated).",
     cvHighlights: [
       "Built AML alert management and multi-jurisdiction handling",
       "Fraud-PEP Project: conflict-of-interest detection",
-      "Responsible AI Pioneer: Productivity gains reinvested in architecture and security",
+      "AI Pioneer: Creation of Skills & Agent-instructions (CursorAI)",
     ],
   },
   delfox: {
