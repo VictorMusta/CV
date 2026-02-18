@@ -1,0 +1,186 @@
+import {
+  Gamepad2,
+  Brain,
+  Globe,
+  Pill,
+  GraduationCap,
+  Cpu,
+  MessageSquare,
+  ShieldAlert,
+  MailMinus,
+  Bot,
+  Sword,
+  Map,
+} from "lucide-react";
+
+/* ──────────────────────────────────────────────
+   Career track — professional experiences
+   ────────────────────────────────────────────── */
+
+const careerData = [
+  {
+    id: "betclic",
+    type: "career",
+    year: "2024 – 2026",
+    sortYear: 2024,
+    title: "Betclic Group",
+    icon: Gamepad2,
+    color: "#E63946",
+    stack: ["Go", "Java", "Kafka", "PostgreSQL", "Docker", "Kubernetes"],
+    image: "https://logo.clearbit.com/betclic.com",
+    imageAlt: "Betclic Group logo",
+  },
+  {
+    id: "delfox",
+    type: "career",
+    year: "2022 – 2024",
+    sortYear: 2022,
+    title: "Delfox",
+    icon: Brain,
+    color: "#457B9D",
+    stack: ["Go", "Python", "gRPC", "AWS", "Docker", "MongoDB"],
+    image: "https://logo.clearbit.com/delfox.net",
+    imageAlt: "Delfox AI logo",
+  },
+  {
+    id: "tild",
+    type: "career",
+    year: "2021 – 2022",
+    sortYear: 2021,
+    title: "Tild",
+    icon: Globe,
+    color: "#2A9D8F",
+    stack: ["React", "Node.js", "TypeScript", "PostgreSQL", "AWS"],
+    image: "https://logo.clearbit.com/tild.fr",
+    imageAlt: "Tild agency logo",
+  },
+  {
+    id: "cosderma",
+    type: "career",
+    year: "2020",
+    sortYear: 2020,
+    title: "Cosderma",
+    icon: Pill,
+    color: "#E9C46A",
+    stack: ["React", "Node.js", "Express", "MongoDB", "Heroku"],
+    image: "https://logo.clearbit.com/cosderma.com",
+    imageAlt: "Cosderma logo",
+  },
+  {
+    id: "education",
+    type: "career",
+    year: "2019 – 2024",
+    sortYear: 2019,
+    icon: GraduationCap,
+    color: "#A8DADC",
+    stack: ["C", "C++", "Python", "Linux", "Docker", "Terraform"],
+    image: "https://logo.clearbit.com/epitech.eu",
+    imageAlt: "Epitech logo",
+  },
+];
+
+/* ──────────────────────────────────────────────
+   Projects track — side projects from GitHub
+   ────────────────────────────────────────────── */
+
+const projectData = [
+  {
+    id: "tamagotchi",
+    type: "project",
+    year: "2025",
+    sortYear: 2025,
+    title: "potato_rotato",
+    icon: Cpu,
+    color: "#F4A261",
+    github: "https://github.com/VictorMusta/Tamagotchi-in-ElectronJS",
+    stack: ["TypeScript", "Electron", "HTML/CSS", "Node.js"],
+    image: "https://opengraph.githubassets.com/1/VictorMusta/Tamagotchi-in-ElectronJS",
+    imageAlt: "potato_rotato GitHub preview",
+  },
+  {
+    id: "discordkiller",
+    type: "project",
+    year: "2026",
+    sortYear: 2026,
+    title: "DiscordKiller",
+    icon: MessageSquare,
+    color: "#7C3AED",
+    github: "https://github.com/VictorMusta/DiscordKiller",
+    stack: ["Rust", "libp2p", "Tokio", "egui"],
+    image: "https://opengraph.githubassets.com/1/VictorMusta/DiscordKiller",
+    imageAlt: "DiscordKiller GitHub preview",
+  },
+  {
+    id: "aicontentremover",
+    type: "project",
+    year: "2025",
+    sortYear: 2025.5,
+    title: "AIContentRemover",
+    icon: ShieldAlert,
+    color: "#EF4444",
+    github: "https://github.com/VictorMusta/AIContentRemover",
+    stack: ["C#", ".NET", "Entity Framework", "PostgreSQL", "Swagger"],
+    image: "https://opengraph.githubassets.com/1/VictorMusta/AIContentRemover",
+    imageAlt: "AIContentRemover GitHub preview",
+  },
+  {
+    id: "loutaupia",
+    type: "project",
+    year: "2025",
+    sortYear: 2024.5,
+    title: "Loutaupia V2",
+    icon: Map,
+    color: "#10B981",
+    github: "https://github.com/VictorMusta/Loutaupia-V2-dotnet-api",
+    stack: ["C#", ".NET", "Entity Framework", "SQL Server"],
+    image: "https://opengraph.githubassets.com/1/VictorMusta/Loutaupia-V2-dotnet-api",
+    imageAlt: "Loutaupia V2 GitHub preview",
+  },
+  {
+    id: "imapunsub",
+    type: "project",
+    year: "2024",
+    sortYear: 2024.2,
+    title: "ImapUnsubscriber",
+    icon: MailMinus,
+    color: "#06B6D4",
+    github: "https://github.com/VictorMusta/ImapUnsubscriber",
+    stack: ["Python", "imaplib", "BeautifulSoup", "requests"],
+    image: "https://opengraph.githubassets.com/1/VictorMusta/ImapUnsubscriber",
+    imageAlt: "ImapUnsubscriber GitHub preview",
+  },
+  {
+    id: "bonobot",
+    type: "project",
+    year: "2023",
+    sortYear: 2023,
+    title: "Bonobot",
+    icon: Bot,
+    color: "#8B5CF6",
+    github: "https://github.com/VictorMusta/Bonobot",
+    stack: ["Python", "Discord.py", "dotenv"],
+    image: "https://opengraph.githubassets.com/1/VictorMusta/Bonobot",
+    imageAlt: "Bonobot GitHub preview",
+  },
+  {
+    id: "knightjumper",
+    type: "project",
+    year: "2024",
+    sortYear: 2024.1,
+    title: "KnightJumper",
+    icon: Sword,
+    color: "#F59E0B",
+    github: "https://github.com/VictorMusta/KnightJumper",
+    stack: ["GDScript", "Godot 4", "Aseprite"],
+    image: "https://opengraph.githubassets.com/1/VictorMusta/KnightJumper",
+    imageAlt: "KnightJumper GitHub preview",
+  },
+];
+
+/* Merge both tracks into a single array — components filter by `type` */
+const timelineData = [...careerData, ...projectData].sort(
+  (a, b) => a.sortYear - b.sortYear
+);
+
+export { careerData, projectData };
+export default timelineData;

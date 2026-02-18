@@ -1,0 +1,598 @@
+/* ============================================
+   App.css — Premium Landscape Layout
+   ============================================ */
+
+/* ---- Portfolio Shell ---- */
+.portfolio {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  transition: background-color var(--transition-smooth), color var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient gradient */
+.portfolio__ambient {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+      ellipse 80% 50% at 20% 10%,
+      rgba(69, 123, 157, 0.06) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 80% 90%,
+      rgba(230, 57, 70, 0.04) 0%,
+      transparent 50%
+    );
+}
+
+[data-theme="dark"] .portfolio__ambient {
+  background: radial-gradient(
+      ellipse 80% 50% at 20% 10%,
+      rgba(100, 181, 246, 0.07) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 80% 90%,
+      rgba(124, 58, 237, 0.05) 0%,
+      transparent 50%
+    );
+}
+
+/* ---- Header ---- */
+.portfolio__header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2.5rem;
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(var(--glass-blur));
+  background: var(--glass-bg);
+}
+
+.portfolio__brand {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.portfolio__name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.portfolio__name--accent {
+  background: linear-gradient(135deg, var(--accent), #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.portfolio__tagline {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ---- Controls group (lang + theme) ---- */
+.portfolio__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ---- Theme toggle ---- */
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-soft);
+}
+
+/* ---- Language toggle ---- */
+.lang-toggle {
+  height: 36px;
+  padding: 0 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lang-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-soft);
+}
+
+.lang-toggle__label {
+  display: block;
+}
+
+.lang-toggle-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lang-toggle__hint {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-style: italic;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.lang-toggle__hint-arrow {
+  display: inline-block;
+  animation: hint-bounce 1.2s ease-in-out infinite;
+  font-style: normal;
+  font-size: 0.85rem;
+}
+
+@keyframes hint-bounce {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+/* ---- Main Layout ---- */
+.portfolio__main {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ============================================
+   TIMELINE — Horizontal Strip
+   ============================================ */
+
+.timeline-wrapper {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+}
+
+/* Track toggle pills */
+.timeline__toggle {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.75rem 2.5rem 0;
+}
+
+.timeline__pill {
+  position: relative;
+  padding: 0.35rem 1rem;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  border-radius: var(--radius-lg);
+  z-index: 1;
+  transition: color var(--transition-fast);
+}
+
+.timeline__pill--active {
+  color: var(--text-primary);
+}
+
+.timeline__pill-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  z-index: -1;
+}
+
+/* Scrollable horizontal strip */
+.timeline {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1rem 2.5rem 1.25rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.timeline::-webkit-scrollbar {
+  display: none;
+}
+
+/* Horizontal axis line */
+.timeline__line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--timeline-line);
+}
+
+/* Node button */
+.timeline__node {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.timeline__node:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: var(--border);
+}
+
+.timeline__node--active {
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+/* Glow ring */
+.timeline__glow {
+  position: absolute;
+  inset: -3px;
+  border-radius: calc(var(--radius-md) + 3px);
+  border: 2px solid;
+  pointer-events: none;
+}
+
+/* Icon */
+.timeline__icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--node-color) 12%, transparent);
+  color: var(--node-color);
+  flex-shrink: 0;
+}
+
+/* Label block */
+.timeline__label {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.timeline__title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.timeline__year {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* Bottom active indicator */
+.timeline__indicator {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: -1px;
+  height: 2px;
+  border-radius: 2px;
+}
+
+/* ============================================
+   CONTENT VIEW — Full Viewport Panel
+   ============================================ */
+
+.content-view {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  overflow-y: auto;
+}
+
+.content-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "image image"
+    "meta  body";
+  gap: 2rem;
+  max-width: 960px;
+  width: 100%;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ---- Image showcase ---- */
+.content-card__image {
+  grid-area: image;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+}
+
+.content-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.content-card__image--placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.content-card__image-hint {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  opacity: 0.6;
+}
+
+.content-card__image-skeleton {
+  position: absolute;
+  inset: 0;
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+/* ---- Meta column ---- */
+.content-card__meta {
+  grid-area: meta;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.content-card__icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  display: grid;
+  place-items: center;
+}
+
+.content-card__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-top: 0.4rem;
+}
+
+.content-card__role {
+  font-size: 0.85rem;
+  color: var(--card-accent, var(--accent));
+  font-weight: 500;
+}
+
+.content-card__year {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  font-family: var(--font-mono);
+}
+
+.content-card__github {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  width: fit-content;
+}
+
+.content-card__github:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-soft);
+}
+
+/* ---- Body column ---- */
+.content-card__body {
+  grid-area: body;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.content-card__desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.content-card__highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.content-card__highlights li {
+  position: relative;
+  padding-left: 1.2rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.content-card__highlights li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--card-accent, var(--accent));
+  opacity: 0.7;
+}
+
+.content-card__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+
+.content-card__tag {
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  font-size: 0.7rem;
+  font-weight: 500;
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+/* ---- Footer ---- */
+.portfolio__footer {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 1rem 2rem;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .portfolio__header {
+    padding: 1rem 1.25rem;
+  }
+
+  .portfolio__brand {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .timeline__toggle {
+    padding: 0.5rem 1.25rem 0;
+  }
+
+  .timeline {
+    padding: 0.75rem 1.25rem 1rem;
+  }
+
+  .content-view {
+    padding: 1.25rem;
+  }
+
+  .content-card {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "image"
+      "meta"
+      "body";
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .content-card__image {
+    aspect-ratio: 16 / 9;
+  }
+
+  .content-card__meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .content-card__title {
+    font-size: 1.15rem;
+  }
+}
+
