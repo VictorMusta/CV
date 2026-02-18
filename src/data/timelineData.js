@@ -11,6 +11,12 @@ import {
   Bot,
   Sword,
   Map,
+  Coins,
+  Layout,
+  Zap,
+  Smartphone,
+  Dice6,
+  Code2,
 } from "lucide-react";
 
 /* ──────────────────────────────────────────────
@@ -27,8 +33,8 @@ const careerData = [
     icon: Gamepad2,
     color: "#E63946",
     stack: [".NET C#", "TypeScript", "DynamoDB", "MongoDB", "SQS/SNS", "Terraform", "Jenkins"],
-    image: "https://logo.clearbit.com/betclic.com",
-    imageAlt: "Betclic Group logo",
+    image: "/images/betclic_banner.png",
+    imageAlt: "Betclic website screenshot",
   },
   {
     id: "delfox",
@@ -39,8 +45,9 @@ const careerData = [
     icon: Brain,
     color: "#457B9D",
     stack: ["React", "Python", "gRPC", "Unity", "Unreal Engine"],
-    image: "https://logo.clearbit.com/delfox.net",
-    imageAlt: "Delfox AI logo",
+    image: "/images/delfox_banner.png",
+    imageAlt: "Delfox platform screenshot",
+    imagePosition: "top",
   },
   {
     id: "tild",
@@ -51,8 +58,8 @@ const careerData = [
     icon: Globe,
     color: "#2A9D8F",
     stack: ["VueJS", "Python"],
-    image: "https://logo.clearbit.com/tild.fr",
-    imageAlt: "Tild agency logo",
+    image: "/images/tild_banner.png",
+    imageAlt: "Agence Tild website screenshot",
   },
   {
     id: "cosderma",
@@ -63,12 +70,15 @@ const careerData = [
     icon: Pill,
     color: "#E9C46A",
     stack: ["SQL", "Merise", "RGPD", "Archivage"],
-    image: "https://logo.clearbit.com/cosderma.com",
-    imageAlt: "Cosderma logo",
+    image: "/images/cosderma_banner.png",
+    imageAlt: "Cosderma portal screenshot",
   },
+];
+
+const educationData = [
   {
     id: "supdevinci",
-    type: "career",
+    type: "education",
     year: "2022 – 2024",
     sortYear: 2022.1,
     title: "Sup de Vinci",
@@ -80,9 +90,9 @@ const careerData = [
   },
   {
     id: "epitech",
-    type: "career",
-    year: "2019 – 2022",
-    sortYear: 2019,
+    type: "education",
+    year: "2021 – 2022",
+    sortYear: 2021,
     title: "Epitech Technology",
     icon: GraduationCap,
     color: "#5FBADC",
@@ -100,28 +110,19 @@ const projectData = [
   {
     id: "tamagotchi",
     type: "project",
-    year: "2025",
-    sortYear: 2025,
-    title: "potato_rotato",
+    year: "2025 – 2026",
+    sortYear: 2025.9,
+    title: "AutoBattler 2D",
     icon: Cpu,
     color: "#F4A261",
     github: "https://github.com/VictorMusta/Tamagotchi-in-ElectronJS",
+    benchmark: "https://victormusta.github.io/Tamagotchi-in-ElectronJS/",
+    screenshots: [
+      "https://opengraph.githubassets.com/1/VictorMusta/Tamagotchi-in-ElectronJS",
+    ],
     stack: ["TypeScript", "Electron", "HTML/CSS", "Node.js"],
     image: "https://opengraph.githubassets.com/1/VictorMusta/Tamagotchi-in-ElectronJS",
-    imageAlt: "potato_rotato GitHub preview",
-  },
-  {
-    id: "discordkiller",
-    type: "project",
-    year: "2026",
-    sortYear: 2026,
-    title: "DiscordKiller",
-    icon: MessageSquare,
-    color: "#7C3AED",
-    github: "https://github.com/VictorMusta/DiscordKiller",
-    stack: ["Rust", "libp2p", "Tokio", "egui"],
-    image: "https://opengraph.githubassets.com/1/VictorMusta/DiscordKiller",
-    imageAlt: "DiscordKiller GitHub preview",
+    imageAlt: "AutoBattler 2D GitHub preview",
   },
   {
     id: "aicontentremover",
@@ -154,46 +155,103 @@ const projectData = [
     type: "project",
     year: "2024",
     sortYear: 2024.2,
-    title: "ImapUnsubscriber",
+    title: "Newsletter Killer",
     icon: MailMinus,
     color: "#06B6D4",
     github: "https://github.com/VictorMusta/ImapUnsubscriber",
+    screenshots: [
+      "https://opengraph.githubassets.com/1/VictorMusta/ImapUnsubscriber",
+    ],
     stack: ["Python", "imaplib", "BeautifulSoup", "requests"],
     image: "https://opengraph.githubassets.com/1/VictorMusta/ImapUnsubscriber",
-    imageAlt: "ImapUnsubscriber GitHub preview",
+    imageAlt: "Newsletter Killer GitHub preview",
   },
   {
     id: "bonobot",
     type: "project",
     year: "2023",
     sortYear: 2023,
-    title: "Bonobot",
+    title: "Bot Discord",
     icon: Bot,
     color: "#8B5CF6",
     github: "https://github.com/VictorMusta/Bonobot",
     stack: ["Python", "Discord.py", "dotenv"],
     image: "https://opengraph.githubassets.com/1/VictorMusta/Bonobot",
-    imageAlt: "Bonobot GitHub preview",
+    imageAlt: "Bot Discord GitHub preview",
   },
   {
     id: "knightjumper",
     type: "project",
     year: "2024",
     sortYear: 2024.1,
-    title: "KnightJumper",
+    title: "Platformer2D",
     icon: Sword,
     color: "#F59E0B",
     github: "https://github.com/VictorMusta/KnightJumper",
+    screenshots: [
+      "https://opengraph.githubassets.com/1/VictorMusta/KnightJumper",
+    ],
     stack: ["GDScript", "Godot 4", "Aseprite"],
     image: "https://opengraph.githubassets.com/1/VictorMusta/KnightJumper",
-    imageAlt: "KnightJumper GitHub preview",
+    imageAlt: "Platformer2D GitHub preview",
+  },
+  {
+    id: "money-maker",
+    type: "project",
+    year: "2025 – 2026",
+    sortYear: 2025.8,
+    title: "PomodoroHub",
+    icon: Coins,
+    color: "#10B981",
+    github: "https://github.com/VictorGrabowski/MoneyMaker",
+    stack: [".NET", "C#"],
+    image: "https://opengraph.githubassets.com/1/VictorGrabowski/MoneyMaker",
+    imageAlt: "PomodoroHub GitHub preview",
+  },
+  {
+    id: "pachinko",
+    type: "project",
+    year: "2025",
+    sortYear: 2025.1,
+    title: "Pachinko",
+    icon: Dice6,
+    color: "#EC4899",
+    github: "https://github.com/VictorGrabowski/pachinko",
+    demo: "https://victorgrabowski.github.io/pachinko/",
+    screenshots: [
+      "https://opengraph.githubassets.com/1/VictorGrabowski/pachinko",
+    ],
+    stack: ["JavaScript", "HTML5", "CSS3", "Physics Engine"],
+    image: "https://opengraph.githubassets.com/1/VictorGrabowski/pachinko",
+    imageAlt: "Pachinko GitHub preview",
+  },
+  {
+    id: "aoc-2024",
+    type: "project",
+    year: "2024",
+    sortYear: 2024.15,
+    title: "AoC 2024",
+    icon: Code2,
+    color: "#6366F1",
+    github: "https://github.com/VictorGrabowski/Advent-of-code-2024",
+    stack: ["C#"],
+    image: "https://opengraph.githubassets.com/1/VictorGrabowski/Advent-of-code-2024",
+    imageAlt: "AoC 2024 GitHub preview",
   },
 ];
 
-/* Merge both tracks into a single array — components filter by `type` */
-const timelineData = [...careerData, ...projectData].sort(
+const sortedCareerData = [...careerData].sort((a, b) => a.sortYear - b.sortYear);
+const sortedProjectData = [...projectData].sort((a, b) => a.sortYear - b.sortYear);
+const sortedEducationData = [...educationData].sort((a, b) => a.sortYear - b.sortYear);
+
+/* Merge all tracks into a single array — components filter by `type` */
+const timelineData = [...sortedCareerData, ...sortedProjectData, ...sortedEducationData].sort(
   (a, b) => a.sortYear - b.sortYear
 );
 
-export { careerData, projectData };
+export { 
+  sortedCareerData as careerData, 
+  sortedProjectData as projectData, 
+  sortedEducationData as educationData 
+};
 export default timelineData;

@@ -1,84 +1,118 @@
 const en = {
   /* ── UI ── */
-  tagline: "Fullstack Developer",
+  tagline: "Fullstack Developer .NET + JS",
   trackCareer: "Career",
-  trackProjects: "Projects",
+  trackEducation: "Education",
+  trackProjects: "Personal Projects",
   viewOnGithub: "View on GitHub",
+  liveDemo: "Live Demo",
+  viewBenchmark: "Benchmark Dashboard",
+  keyFeatures: "Key Features",
   addImage: "Add image to",
   footer: (year) => `© ${year} Victor Grabowski — Built with React & Framer Motion`,
 
   /* ── Career ── */
   betclic: {
-    role: "Fullstack Developer (.NET C# / TypeScript)",
-    description:
-      "Within the SQIPI squad (Identity & Payment Integrity), I contributed to fraud prevention and anti-money laundering at one of Europe's leading online sports betting platforms. I joined the SQEXP team to work on an AI-powered user profile analysis project — a strategic bet that paid off: AML investigation reviews that were once fully manual are now largely automated.",
+    role: "Fullstack Developer .NET + JS",
+    description: "At the heart of innovation at Betclic, I work within the SQIPI Squad (Service Quality, Innovation & Productivity Initiative). Our mission is to transform the most complex business processes through technical excellence and AI. We operate in a highly collaborative Agile (Scrum) environment where transparency and continuous feedback are the standards.",
     highlights: [
-      "Built AML alert management, investigation creation & resolution, and player profile impact tracking",
-      "Contributed to Fraud-PEP: identity verification and conflict-of-interest detection to block risky accounts at creation",
-      "Multi-jurisdiction handling: differentiated thresholds, treatments, and restrictions per country / regulator",
-      "AI pioneer at Betclic: created Skills, Agent-instructions, and MCPs to automate 30% of PRs",
+      "AML Automation: Designing and deploying AI agents to automate investigation reviews, resulting in a 30% gain on the global validation workflow.",
+      "Fraud-PEP Project: Architecture and development of a real-time detection system for Politically Exposed Persons (PEP) and conflicts of interest during onboarding.",
+      "Modern Stack & Cloud: Mastery of the .NET 8 ecosystem, AWS (Lambda, DynamoDB, SNS/SQS) and Terraform for robust and scalable infrastructure.",
+      "AI-Assisted Productivity: Leading the use of CursorAI within engineering, creating custom MCPs and Skills to optimize the development cycle for the team.",
+      "Quality & Security: Strict application of TDD and Clean Architecture principles in a high-criticality context involving sensitive data.",
+    ],
+    cvDescription: "SQIPI Squad. Automated AML investigation reviews via AI agents (30% of PRs automated).",
+    cvHighlights: [
+      "Built AML alert management and multi-jurisdiction handling",
+      "Fraud-PEP Project: conflict-of-interest detection",
+      "Responsible AI Pioneer: Productivity gains reinvested in architecture and security",
     ],
   },
   delfox: {
     role: "Full-Stack Developer (React / Python / gRPC)",
-    description:
-      "Aerospace & defense startup building autonomous ML agents for weapons systems (missiles, drones, aircraft). I worked on Realmind, a platform enabling users to create scenarios, launch training sessions, and monitor AI agent training across multiple simulation engines (Unity, Unreal Engine, proprietary engines).",
+    description: "Aerospace & Defense startup specializing in Deep Reinforcement Learning (Deep RL). I led the development of 'Realmind', a software suite designed to monitor and interact with AI agents during training sessions.",
     highlights: [
-      "ReactJS front-end + Python back-end (no framework), 100% gRPC communication",
-      "Designed the application's visual identity — well-received by clients during demos",
-      "Scenario creation, real-time training monitoring, reward tuning, and agent comparison features",
-      "Technical demos to defense clients and active participation in Agile discussions",
+      "Real-time Communication Architecture: Implemented 100% gRPC integration for bidirectional exchanges between React frontend and Python training backends.",
+      "Complex Visualization: Created monitoring dashboards for massive simulations (drone swarms, autonomous underwater vehicles).",
+      "Game Engine Integration: Collaborated on interfaces between AI agents and Unity/Unreal Engine simulation environments.",
+      "Design System: Fully designed the visual identity and UI component library for the platform.",
+    ],
+    cvDescription: "Aerospace startup. Developed Realmind, a monitoring platform for autonomous ML agents.",
+    cvHighlights: [
+      "100% gRPC communication between React and Python",
+      "Designed visual identity and real-time monitoring dashboards",
     ],
   },
   tild: {
     role: "Full-Stack Developer (VueJS / Python)",
-    description:
-      "IT services agency specializing in custom software development. I contributed to Alma Mater, a modular school CRM built for the Collège de Paris.",
+    description: "Designed and maintained Alma Mater, a modular CRM/ERP solution for the Collège de Paris school group. The project involved managing complex data flows between students, teachers, and administration.",
     highlights: [
-      "Full-stack development: VueJS front-end, Python back-end",
-      "Built the calendar / timetable module of the CRM",
-      "Collaborated within one of two teams dedicated to the Alma Mater project",
+      "Calendar Module: Developed a dynamic timetable generation engine with room and trainer conflict management.",
+      "Data Backend: Refactored Python services to optimize enrollment processing and automated administrative document generation.",
+      "User Interface: Modernized the VueJS frontend to improve user experience and responsiveness.",
     ],
+    cvDescription: "Developed Alma Mater (modular CRM) for Collège de Paris.",
+    cvHighlights: ["Implemented complex calendar and timetable management module"],
   },
   cosderma: {
-    role: "Full-Stack Developer (Internship / Consulting)",
-    description:
-      "Company specializing in clinical cosmetic testing on volunteers for brands and labs. My first professional experience as a consultant deployed on-site — I was tasked with solving a critical oversized database problem, with no existing documentation or data model.",
+    role: "Developer (Internship / Consulting)",
+    description: "Clinical testing laboratory. My primary mission was to ensure the technical survival of a legacy data system and its compliance with new European regulations.",
     highlights: [
-      "Complete reverse-engineering of a DB with no foreign keys or indexes — created a full relational model (Merise) printed across 3 A2 sheets",
-      "Built an archival application to split and migrate data while preserving historical records",
-      "Implemented a GDPR anonymization system for volunteer personal data",
-      "Full autonomy in a client environment — first taste of professional life",
+      "Database Migration: Architectural reverse-engineering and migration of a 15-year-old critical SQL system without prior documentation.",
+      "GDPR Compliance: Technical implementation of patient data anonymization and automated retention policies.",
+      "Auditability: Created internal tools for secure archiving and report extraction for clinical audits.",
     ],
+    cvDescription: "Migration of a critical database without documentation and GDPR compliance.",
+    cvHighlights: ["Implemented archival system and GDPR anonymization"],
   },
   supdevinci: {
     title: "Sup de Vinci",
     role: "Master's in Software Engineering & Cloud",
     description:
-      "Software Engineering Expert (RNCP Level 7). Work-study program focusing on Cloud architecture, technical management, and complex real-world business challenges. Thesis: \"The Impact of Generative AI on Junior Developers.\"",
+      "Focused on technical project management and Cloud architecture. Discovery of numerous technologies, languages, and tools through intensive workshops.",
     highlights: [
       "Master's in Software Engineering & Cloud",
-      "Exchanges with industry professionals from diverse sectors",
-      "Thesis: hands-on feedback and best practices for juniors navigating generative AI",
+      "Agile Project Management & Technical leadership",
+      "Wide technology stack discovery and adoption",
     ],
   },
   epitech: {
     title: "Epitech Technology",
     role: "Expert in Information Technology",
-    description:
-      "Intensive project-based learning. Developed autonomy, rigor, and complex problem-solving skills. Progressive specialization in C# and TypeScript through major annual projects.",
-    highlights: [
-      "IT Expert (RNCP Level 7)",
-      "Project-based pedagogy: autonomy and teamwork",
-      "Personal side-projects driven by passion and a long-term roadmap",
-    ],
+    description: "Expertise Cycle (2021-2022). Advanced C# and TypeScript project-based learning.",
+    highlights: ["Master's level degree (RNCP Level 7)"],
+  },
+
+  /* ── Technical Skills ── */
+  technicalSkills: {
+    languages: {
+      title: "Specializations",
+      content: "TypeScript, .NET C#, Python (no framework), SQL",
+    },
+    technologies: {
+      title: "Technologies",
+      content: "ReactJS, .NET, Node.js, MongoDB, DynamoDB, gRPC",
+    },
+    tools: {
+      title: "Tools & Cloud",
+      content: "AWS (S3, SNS, SQS), Docker, Terraform, Jenkins, Jira, Confluence, GitHub, CursorAI",
+    },
+    methods: {
+      title: "Architecture & Methods",
+      content: "Agile, TDD, Spec-driven development, Event-driven, Micro-services, Security & Optimization",
+    },
+    ai_productivity: {
+      title: "AI & Productivity",
+      content: "Learning & productivity catalyst (pre-AI foundations), Responsible Code (zero unmastered push)",
+    },
   },
 
   /* ── Projects ── */
   tamagotchi: {
-    role: "Desktop Video Game",
+    role: "AutoBattler 2D",
     description:
-      "A Tamagotchi-inspired desktop video game built with ElectronJS. Collect potato creatures, level them up through turn-based combat, and watch them bounce around in a physics-driven jar — all rendered live on your desktop.",
+      "A desktop auto-battler inspired by Tamagotchi, built with ElectronJS. Collect potato creatures, level them up through turn-based combat, and watch them bounce around in a physics-driven jar — all rendered live on your desktop.",
     highlights: [
       "Turn-based combat system with stats, weapons & abilities",
       "Physics-powered \"Bocal\" sandbox mode",
@@ -86,43 +120,32 @@ const en = {
       "Persistent save system with multiple mob slots",
     ],
   },
-  discordkiller: {
-    role: "P2P Messaging",
-    description:
-      "A fully decentralised peer-to-peer messaging application written in Rust — no servers, no middlemen.",
-    highlights: [
-      "Peer discovery via mDNS and manual connect",
-      "End-to-end encrypted communication",
-      "Real-time audio channel support",
-      "Cross-platform desktop client",
-    ],
-  },
   aicontentremover: {
-    role: "Browser Extension API",
+    role: "Reporting API & Masking Extension",
     description:
-      "A community-driven API + browser extension that flags AI-generated tweets via crowdsourced voting. Features rate limiting, batch verification, and Swagger docs.",
+      "A community-driven API and browser extension to report and hide AI-generated content on social media. Relying on a collaborative consensus voting system.",
     highlights: [
-      "REST API with community upvote/downvote system",
+      "REST API with community voting system",
       "Browser extension integration (Chrome, Firefox)",
       "SQLite dev / PostgreSQL prod with EF Core",
-      "Consensus-based AI detection threshold",
+      "AI detection threshold based on consensus",
     ],
   },
   loutaupia: {
     role: "Geocaching Backend",
     description:
-      "A .NET backend API for Loutaupia V2 — a collaborative geocaching application with map-based treasure hunts.",
+      "A .NET API backend for Loutaupia V2 — a collaborative geocaching app with treasure hunts on a map.",
     highlights: [
-      "RESTful API in .NET / C#",
+      "RESTful API with .NET / C#",
       "Geolocation-based game mechanics",
       "User authentication & progress tracking",
       "Designed for mobile-first frontend",
     ],
   },
   imapunsub: {
-    role: "Email Automation",
+    role: "Newsletter Killer",
     description:
-      "A Python script that scans your inbox via IMAP, finds unsubscribe links in newsletters, and follows them automatically — reducing email clutter and carbon footprint.",
+      "A Python script that scans your inbox via IMAP, finds unsubscribe links in newsletters and follows them automatically — reducing email clutter and carbon footprint.",
     highlights: [
       "IMAP integration with Gmail app passwords",
       "HTML parsing with BeautifulSoup",
@@ -131,9 +154,9 @@ const en = {
     ],
   },
   bonobot: {
-    role: "Discord Bot",
+    role: "Bot Discord",
     description:
-      "A multi-purpose Discord bot for fun and utility — built with Python and managed via Jira for structured development.",
+      "A multi-purpose Discord bot for fun and utility — built in Python and managed via Jira for structured development.",
     highlights: [
       "Modular command architecture",
       "Jira-tracked development workflow",
@@ -142,15 +165,26 @@ const en = {
     ],
   },
   knightjumper: {
-    role: "Platformer Game",
-    description:
-      "A 2D platformer game built with the Godot engine featuring a knight character with jump mechanics and level progression.",
+    role: "Platformer2D",
+    description: "A dynamic platformer created with Godot 4. Exploring jump mechanics and 2D sprite management.",
     highlights: [
       "Godot 4 engine with GDScript",
       "Tile-based level design",
       "Character physics & animation",
       "Parallax scrolling backgrounds",
     ],
+  },
+  "money-maker": {
+    role: "PomodoroHub",
+    description: "Productivity management platform based on the Pomodoro method, integrated with a real-time earnings visualizer.",
+  },
+  pachinko: {
+    role: "Game Jam / Conference",
+    description: "Game developed in a group during Tugduall's conference, focusing on fun and retro gameplay mechanics.",
+  },
+  "aoc-2024": {
+    role: "AoC 2024",
+    description: "Solving Advent of Code 2024 puzzles to deepen C# skills and algorithmic thinking.",
   },
 };
 

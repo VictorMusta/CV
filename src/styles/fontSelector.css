@@ -1,0 +1,106 @@
+.font-selector {
+  position: relative;
+  z-index: 110;
+}
+
+.font-selector__trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.font-selector:hover .font-selector__trigger {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: var(--accent);
+}
+
+.font-selector__label {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.font-selector__dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  width: 240px;
+  max-height: 400px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(var(--glass-blur));
+}
+
+.font-selector:hover .font-selector__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.font-selector__list {
+  padding: 0.75rem;
+}
+
+.font-selector__group {
+  margin-bottom: 1rem;
+}
+
+.font-selector__group:last-child {
+  margin-bottom: 0;
+}
+
+.font-selector__group-title {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  padding-left: 0.4rem;
+}
+
+.font-selector__group-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.font-selector__option {
+  width: 100%;
+  text-align: left;
+  padding: 0.4rem 0.6rem;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.font-selector__option:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  transform: translateX(4px);
+}
+
+.font-selector__option.active {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}

@@ -1,84 +1,119 @@
 const fr = {
   /* ── UI ── */
-  tagline: "Développeur Fullstack",
-  trackCareer: "Parcours Pro",
+  tagline: "Développeur Fullstack .NET + JS",
+  trackCareer: "Parcours",
+  trackEducation: "Formation",
   trackProjects: "Projets Divers",
   viewOnGithub: "Voir sur GitHub",
-  addImage: "Ajouter une image dans",
+  liveDemo: "Démo Live",
+  viewBenchmark: "Dashboard Benchmark",
+  keyFeatures: "Fonctionnalités Clés",
+  addImage: "Ajouter une image à",
   footer: (year) => `© ${year} Victor Grabowski — Construit avec React & Framer Motion`,
 
   /* ── Parcours ── */
   betclic: {
-    role: "Développeur Fullstack (.NET C# / TypeScript)",
+    role: "Développeur Fullstack .NET + JS",
     description:
-      "Au sein de la squad SQIPI (Identity & Payment Integrity), j'ai contribué à la lutte contre la fraude et le blanchiment d'argent chez l'un des leaders européens des paris sportifs en ligne. J'ai rejoint l'équipe SQEXP pour travailler sur un projet d'analyse de profils utilisateurs par IA — un pari qui s'est révélé stratégique : les revues d'investigation AML autrefois manuelles sont aujourd'hui en grande partie automatisées.",
+      "Au cœur de l'innovation chez Betclic, j'évolue au sein de la Squad SQIPI (Service Quality, Innovation & Productivity Initiative). Notre mission est de transformer les processus métiers les plus complexes par l'excellence technique et l'IA. Nous travaillons dans un environnement Agile (Scrum) hautement collaboratif, où la transparence et le feedback continu sont la norme.",
     highlights: [
-      "Développement des alertes AML, création & résolution des investigations, et impacts sur les profils joueurs",
-      "Contribution au projet Fraud-PEP : vérification d'identité et détection de conflits d'intérêts pour bloquer les comptes à risque dès leur création",
-      "Gestion multi-juridictions : thresholds, traitements et restrictions différenciés par pays / régulateur",
-      "Pionnier IA chez Betclic : création de Skills, Agent-instructions et MCPs pour automatiser 30% des PR",
+      "Automatisation AML : Conception et déploiement d'agents IA pour automatiser les revues d'investigation, permettant un gain de 30% sur le flux global de validation.",
+      "Projet Fraud-PEP : Architecture et développement d'un système temps-réel de détection des Personnes Politiquement Exposées (PEP) et des conflits d'intérêts lors de l'onboarding.",
+      "Stack Moderne & Cloud : Maîtrise de l'écosystème .NET 8, AWS (Lambda, DynamoDB, SNS/SQS) et Terraform pour une infrastructure robuste et scalable.",
+      "Productivité Assistée par IA : Leader sur l'usage de CursorAI au sein de l'engineering, création de MCPs personnalisés et de Skills pour optimiser le cycle de développement.",
+      "Qualité & Sécurité : Application stricte du TDD et des principes de Clean Architecture dans un contexte de données sensibles à forte criticité.",
+    ],
+    cvDescription: "Squad SQIPI. Automatisation des revues d'investigation AML via agents IA (30% des PR automatisées).",
+    cvHighlights: [
+      "Développement des alertes AML et gestion multi-jurisdictions",
+      "Projet Fraud-PEP : détection de conflits d'intérêts",
+      "Pionnier IA Responsable : Productivité (CursorAI) réinvestie dans l'architecture et la sécurité",
     ],
   },
   delfox: {
     role: "Développeur Full-Stack (React / Python / gRPC)",
-    description:
-      "Startup aérospatiale & défense développant des agents autonomes par machine learning pour l'armement (missiles, drones, aéronefs). J'ai travaillé sur Realmind, une plateforme permettant aux utilisateurs de créer des scénarios, lancer des apprentissages et monitorer l'entraînement d'agents IA dans des moteurs de simulation variés (Unity, Unreal Engine, moteurs propriétaires).",
+    description: "Startup spécialisée dans l'apprentissage par renforcement profond (Deep RL) pour l'aérospatiale et la défense. J'étais responsable du développement de 'Realmind', la suite logicielle permettant de monitorer et d'interagir avec des agents IA en cours d'entraînement.",
     highlights: [
-      "Front-end ReactJS + back-end Python sans framework, communication 100% gRPC",
-      "Conception de la charte graphique de l'application, très appréciée par les clients lors des démos",
-      "Création de scénarios d'entraînement, monitoring temps réel, modification de récompenses et comparaison d'agents",
-      "Démonstrations techniques aux clients et participation aux discussions Agile",
+      "Architecture de communication temps-réel : intégration 100% gRPC pour les échanges bidirectionnels entre le frontend React et les backends d'entraînement Python.",
+      "Visualisation complexe : création de dashboards de monitoring pour des simulations massives (essaims de drones, véhicules sous-marins autonomes).",
+      "Intégration moteur de jeu : collaboration sur les interfaces entre les agents IA et les environnements de simulation Unity et Unreal Engine.",
+      "Design System : conception intégrale de la charte graphique et des composants UI de la plateforme.",
+    ],
+    cvDescription: "Startup aérospatiale. Développement de Realmind, plateforme de monitoring d'agents IA autonomes.",
+    cvHighlights: [
+      "Communication 100% gRPC entre React et Python",
+      "Conception de la charte graphique et dashboards de monitoring",
     ],
   },
   tild: {
     role: "Développeur Full-Stack (VueJS / Python)",
-    description:
-      "Agence de prestation de services spécialisée dans le développement sur mesure. J'ai contribué au développement d'Alma Mater, un CRM modulaire destiné aux écoles, conçu pour le Collège de Paris.",
+    description: "Conception et maintenance d'Alma Mater, une solution CRM/ERP modulaire destinée aux écoles du groupe Collège de Paris. Le projet impliquait la gestion de flux de données complexes entre étudiants, professeurs et administration.",
     highlights: [
-      "Développement full-stack : front-end VueJS, back-end Python",
-      "Implémentation du module agenda / emploi du temps du CRM",
-      "Collaboration au sein d'une des deux équipes dédiées au projet Alma Mater",
+      "Module Agenda : développement d'un moteur de génération d'emplois du temps dynamique avec gestion des conflits de salles et de formateurs.",
+      "Backend Data : refactorisation de services Python pour optimiser le traitement des inscriptions et la génération automatisée de documents administratifs.",
+      "Interface Utilisateur : modernisation du frontend en VueJS pour améliorer l'expérience utilisateur et la réactivité.",
     ],
+    cvDescription: "Développement d'Alma Mater (CRM modulaire) pour le Collège de Paris.",
+    cvHighlights: ["Implémentation du module agenda et gestion d'emploi du temps complexe"],
   },
   cosderma: {
-    role: "Développeur Full-Stack (Stage / Prestation)",
-    description:
-      "Entreprise spécialisée dans les tests cliniques cosmétiques sur volontaires pour des marques et laboratoires. Première expérience professionnelle en tant que prestataire déployé sur site client — j'ai été missionné pour résoudre un problème critique de base de données surdimensionnée, sans aucune documentation ni modélisation existante.",
+    role: "Développeur (Stage / Prestation)",
+    description: "Laboratoire de tests cliniques. Ma mission principale était d'assurer la survie technique d'un système de données vieillissant et sa mise en conformité avec les nouvelles régulations européennes.",
     highlights: [
-      "Reverse-engineering complet d'une BDD sans clés étrangères ni index — création d'un MDR (Merise) imprimé sur 3 feuilles A2",
-      "Développement d'une application d'archivage pour découper et migrer les données tout en préservant l'historique",
-      "Implémentation d'un système d'anonymisation RGPD pour les données personnelles des volontaires",
-      "Autonomie totale en environnement client, première expérience de la vie en entreprise",
+      "Migration de base de données : reverse-engineering architectural et migration d'un système SQL critique de 15 ans sans documentation préalable.",
+      "Compliance RGPD : mise en œuvre technique de l'anonymisation des données patients et des politiques de rétention automatiques.",
+      "Auditabilité : création d'outils internes pour assurer l'archivage sécurisé et l'extraction de rapports pour les audits cliniques.",
     ],
+    cvDescription: "Migration d'une base de données critique sans documentation et mise aux normes RGPD.",
+    cvHighlights: ["Mise en place d'un système d'archivage et anonymisation RGPD"],
   },
   supdevinci: {
     title: "Sup de Vinci",
     role: "Master Ingénierie Logicielle & Cloud",
     description:
-      "Expert en Ingénierie Logicielle (Titre RNCP Niveau 7). Formation en alternance permettant d'approfondir les problématiques de Cloud, de management technique et d'architecture complexe en environnement professionnel. Mémoire : « L'impact de l'IA générative sur les développeurs Juniors ».",
+      "Formation axée sur le management de projet technique et l'architecture Cloud. Découverte de nombreuses technos, langages et outils via des workshops intensifs.",
     highlights: [
       "Master Ingénierie Logicielle & Cloud",
-      "Échanges avec des intervenants professionnels de divers secteurs",
-      "Mémoire : retour d'expérience et bonnes pratiques face à l'IA générative",
+      "Management de projet Agile & Pilotage technique",
+      "Veille active et découverte de stacks variées",
     ],
   },
   epitech: {
     title: "Epitech Technology",
     role: "Expert en Technologies de l'Information",
-    description:
-      "Formation intensive basée sur la pédagogie par projets. Apprentissage de l'autonomie, de la rigueur et de la résolution de problèmes techniques complexes. Spécialisation progressive vers le C# et le TypeScript via des projets d'envergure annuelle.",
-    highlights: [
-      "Expert en Technologies de l'Information (Titre RNCP Niveau 7)",
-      "Pédagogie par projets : autonomie et travail en équipe",
-      "Side-projects personnels portés par la passion et une vision long terme",
-    ],
+    description: "Cycle Expertise (2021-2022). Perfectionnement C# et TypeScript en mode projet.",
+    highlights: ["Diplôme RNCP Niveau 7"],
+  },
+
+  /* ── Technical Skills ── */
+  technicalSkills: {
+    languages: {
+      title: "Spécialisations",
+      content: "TypeScript, .NET C#, Python (sans framework), SQL",
+    },
+    technologies: {
+      title: "Technologies",
+      content: "ReactJS, .NET, Node.js, MongoDB, DynamoDB, gRPC",
+    },
+    tools: {
+      title: "Outils & Cloud",
+      content: "AWS (S3, SNS, SQS), Docker, Terraform, Jenkins, Jira, Confluence, GitHub, CursorAI",
+    },
+    methods: {
+      title: "Architecture & Méthodes",
+      content: "Agile, TDD, Spec-driven development, Event-driven, Micro-services, Sécurité & Optimisation",
+    },
+    ai_productivity: {
+      title: "IA & Productivité",
+      content: "Catalyseur d'apprentissage & productivité (fondations pré-IA), Code responsable (zéro push non-maîtrisé)",
+    },
   },
 
   /* ── Projets ── */
   tamagotchi: {
-    role: "Jeu Vidéo de Bureau",
+    role: "AutoBattler 2D",
     description:
-      "Un jeu vidéo de bureau inspiré du Tamagotchi, développé avec ElectronJS. Collectionnez des créatures patates, faites-les combattre en tour par tour, montez-les en niveau et regardez-les rebondir dans un bocal à physique réaliste — le tout en overlay sur votre bureau.",
+      "Un jeu d'auto-combat de bureau inspiré du Tamagotchi, développé avec ElectronJS. Collectionnez des créatures patates, faites-les combattre en tour par tour, montez-les en niveau et regardez-les rebondir dans un bocal à physique réaliste — le tout en overlay sur votre bureau.",
     highlights: [
       "Système de combat tour par tour avec stats, armes & capacités",
       "Mode « Bocal » sandbox basé sur la physique",
@@ -86,21 +121,10 @@ const fr = {
       "Système de sauvegarde persistant multi-mobs",
     ],
   },
-  discordkiller: {
-    role: "Messagerie P2P",
-    description:
-      "Une application de messagerie décentralisée peer-to-peer écrite en Rust — sans serveurs, sans intermédiaires.",
-    highlights: [
-      "Découverte de pairs via mDNS et connexion manuelle",
-      "Communication chiffrée de bout en bout",
-      "Support de canaux audio en temps réel",
-      "Client desktop cross-platform",
-    ],
-  },
   aicontentremover: {
-    role: "API + Extension Navigateur",
+    role: "API de Signalement & Extension Camouflage",
     description:
-      "Une API communautaire + extension navigateur qui signale les tweets générés par IA via un système de vote collaboratif. Rate limiting, vérification par lots et documentation Swagger.",
+      "Une API communautaire et une extension de navigateur permettant de signaler et masquer les contenus générés par IA sur les réseaux sociaux. S'appuie sur un système de consensus collaboratif et de vote.",
     highlights: [
       "API REST avec système de votes communautaires",
       "Intégration extension navigateur (Chrome, Firefox)",
@@ -120,7 +144,7 @@ const fr = {
     ],
   },
   imapunsub: {
-    role: "Automatisation E-mail",
+    role: "Newsletter Killer",
     description:
       "Un script Python qui scanne votre boîte mail via IMAP, trouve les liens de désinscription dans les newsletters et les suit automatiquement — réduisant le désordre e-mail et l'empreinte carbone.",
     highlights: [
@@ -142,15 +166,26 @@ const fr = {
     ],
   },
   knightjumper: {
-    role: "Jeu de Plateformes",
-    description:
-      "Un jeu de plateformes 2D développé avec le moteur Godot, mettant en scène un chevalier avec des mécaniques de saut et une progression par niveaux.",
+    role: "Platformer2D",
+    description: "Un jeu de plateforme dynamique créé avec Godot 4. Exploration des mécaniques de saut et de la gestion des sprites 2D.",
     highlights: [
       "Moteur Godot 4 avec GDScript",
       "Level design basé sur des tiles",
       "Physique du personnage & animations",
       "Backgrounds en parallax scrolling",
     ],
+  },
+  "money-maker": {
+    role: "PomodoroHub",
+    description: "Plateforme de gestion de productivité basée sur la méthode Pomodoro, intégrée à un système de visualisation de gains en temps réel.",
+  },
+  "pachinko": {
+    role: "Game Jam / Conférence",
+    description: "Jeu développé en groupe lors de la conférence de Tugduall, axé sur l'amusement et les mécaniques de jeu rétro.",
+  },
+  "aoc-2024": {
+    role: "AoC 2024",
+    description: "Résolution des énigmes de l'Advent of Code 2024 pour approfondir mes compétences en C# et en algorithmique.",
   },
 };
 

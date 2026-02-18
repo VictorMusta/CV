@@ -8,7 +8,12 @@ export default function Timeline({ data, selectedId, onSelect, activeTrack, onTr
   const scrollRef = useRef(null);
   const activeNodeRef = useRef(null);
 
-  const TRACK_LABELS = { cv: "CV", career: t.trackCareer, project: t.trackProjects };
+  const TRACK_LABELS = { 
+    cv: "CV", 
+    career: t.trackCareer, 
+    education: t.trackEducation,
+    project: t.trackProjects 
+  };
 
   /* auto-scroll to keep the active node visible */
   useEffect(() => {
@@ -24,10 +29,12 @@ export default function Timeline({ data, selectedId, onSelect, activeTrack, onTr
   }, [selectedId]);
 
   const careerItems = data.filter((d) => d.type === "career");
+  const educationItems = data.filter((d) => d.type === "education");
   const projectItems = data.filter((d) => d.type === "project");
 
   const tracks = [
     { key: "career", items: careerItems },
+    { key: "education", items: educationItems },
     { key: "project", items: projectItems },
   ];
 
@@ -78,8 +85,6 @@ export default function Timeline({ data, selectedId, onSelect, activeTrack, onTr
                 className={`timeline__node ${isActive ? "timeline__node--active" : ""}`}
                 onClick={() => onSelect(item.id)}
                 style={{ "--node-color": item.color }}
-                whileHover={{ scale: 1.08 }}
-                whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.06, duration: 0.35 }}
@@ -87,19 +92,6 @@ export default function Timeline({ data, selectedId, onSelect, activeTrack, onTr
                 aria-selected={isActive}
                 aria-label={`${title} — ${item.year}`}
               >
-                {/* Glow ring */}
-                {isActive && (
-                  <motion.span
-                    className="timeline__glow"
-                    layoutId="glow"
-                    style={{
-                      borderColor: item.color,
-                      boxShadow: `0 0 24px ${item.color}55`,
-                    }}
-                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                  />
-                )}
-
                 <span className="timeline__icon">
                   <Icon size={18} strokeWidth={1.8} />
                 </span>
@@ -108,16 +100,6 @@ export default function Timeline({ data, selectedId, onSelect, activeTrack, onTr
                   <span className="timeline__title">{title}</span>
                   <span className="timeline__year">{item.year}</span>
                 </span>
-
-                {/* Active bottom bar */}
-                {isActive && (
-                  <motion.span
-                    className="timeline__indicator"
-                    layoutId="indicator"
-                    style={{ backgroundColor: item.color }}
-                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                  />
-                )}
               </motion.button>
             );
           })}

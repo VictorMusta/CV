@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import { useLang } from "../i18n/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { Download, MapPin, Mail, Github, Phone, ExternalLink, Sun, Moon } from "lucide-react";
-import { careerData, projectData } from "../data/timelineData";
+import { careerData, projectData, educationData } from "../data/timelineData";
 
 export default function CVView() {
   const { t, lang } = useLang();
@@ -88,7 +88,7 @@ export default function CVView() {
         {/* ─── Career ─── */}
         <section className="cv-section">
           <h2 className="cv-section__title">
-            {lang === "fr" ? "Expérience Professionnelle" : "Professional Experience"}
+            {lang === "fr" ? "Expériences Professionnelles" : "Professional Experience"}
           </h2>
 
           {career
@@ -105,12 +105,10 @@ export default function CVView() {
                     </div>
                     <span className="cv-entry__period">{item.year}</span>
                   </div>
-                  <p className="cv-entry__desc">{tr.description}</p>
-                  {tr.highlights?.length > 0 && (
+                  <p className="cv-entry__desc">{tr.cvDescription || tr.description}</p>
+                  {(tr.cvHighlights || tr.highlights)?.length > 0 && (
                     <ul className="cv-entry__highlights">
-                      {tr.highlights
-                        .slice(0, (item.id === "tild" || item.id === "cosderma") ? 2 : undefined)
-                        .map((h, i) => <li key={i}>{h}</li>)}
+                      {(tr.cvHighlights || tr.highlights).map((h, i) => <li key={i}>{h}</li>)}
                     </ul>
                   )}
                   {item.stack?.length > 0 && (
@@ -169,22 +167,12 @@ export default function CVView() {
             {lang === "fr" ? "Compétences Techniques" : "Technical Skills"}
           </h2>
           <div className="cv-skills">
-            <div className="cv-skill-group">
-              <h4>{lang === "fr" ? "Langages" : "Languages"}</h4>
-              <p>C#, TypeScript, Python, Rust, Go, GDScript, SQL</p>
-            </div>
-            <div className="cv-skill-group">
-              <h4>Frameworks & Tools</h4>
-              <p>.NET C#, React, VueJS, Electron, Godot 4, Entity Framework, Discord.py</p>
-            </div>
-            <div className="cv-skill-group">
-              <h4>Infrastructure & DevOps</h4>
-              <p>AWS (Fargate, Lambda, SQS, SNS, DynamoDB), Terraform, Docker, Jenkins, Kong, GitHub Actions</p>
-            </div>
-            <div className="cv-skill-group">
-              <h4>{lang === "fr" ? "Méthodologies" : "Methodologies"}</h4>
-              <p>Agile / Scrum, gRPC, REST, Event-Driven Architecture, CI/CD, RGPD</p>
-            </div>
+            {Object.entries(t.technicalSkills || {}).map(([key, skill]) => (
+              <div key={key} className="cv-skill-group">
+                <h4>{skill.title}</h4>
+                <p>{skill.content}</p>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -195,8 +183,7 @@ export default function CVView() {
           <h2 className="cv-section__title">
             {lang === "fr" ? "Formation" : "Education"}
           </h2>
-          {[...career]
-            .filter((item) => item.id === "supdevinci" || item.id === "epitech")
+          {[...educationData]
             .sort((a, b) => b.sortYear - a.sortYear)
             .map((item) => {
               const tr = t[item.id] || {};

@@ -3,15 +3,12 @@ import { Sunset, Moon, Sun } from "lucide-react";
 
 export default function ThemeToggle({ theme, onToggle }) {
   const getNextTheme = () => {
-    if (theme === "dark") return "light";
-    if (theme === "light") return "sunset";
-    return "dark";
+    return theme === "sunset" ? "light" : "sunset";
   };
 
   const renderIcon = () => {
-    if (theme === "dark") return <Sun size={18} strokeWidth={1.8} />;
-    if (theme === "light") return <Moon size={18} strokeWidth={1.8} />;
-    return <Sunset size={18} strokeWidth={1.8} />;
+    if (theme === "sunset") return <Sunset size={18} strokeWidth={1.8} />;
+    return <Sun size={18} strokeWidth={1.8} />;
   };
 
   return (
