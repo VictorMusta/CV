@@ -31,13 +31,13 @@ const fr = {
     ],
   },
   delfox: {
-    role: "Développeur Full-Stack (React / Python / gRPC)",
-    description: "Startup spécialisée dans l'apprentissage par renforcement profond (Deep RL) pour l'aérospatiale et la défense. J'étais responsable du développement de 'Realmind', la suite logicielle permettant de monitorer et d'interagir avec des agents IA en cours d'entraînement.",
+    role: "Développeur Full-Stack (React / Python / gRPC - Google Remote Procedure Call)",
+    description: "Startup spécialisée dans l'apprentissage par renforcement profond (Deep RL - Deep Reinforcement Learning) pour l'aérospatiale et la défense. J'étais responsable du développement de 'Realmind', la suite logicielle permettant de monitorer et d'interagir avec des agents IA en cours d'entraînement.",
     highlights: [
       "Architecture de communication temps-réel : intégration 100% gRPC pour les échanges bidirectionnels entre le frontend React et les backends d'entraînement Python.",
       "Visualisation complexe : création de dashboards de monitoring pour des simulations massives (essaims de drones, véhicules sous-marins autonomes).",
       "Intégration moteur de jeu : collaboration sur les interfaces entre les agents IA et les environnements de simulation Unity et Unreal Engine.",
-      "Design System : conception intégrale de la charte graphique et des composants UI de la plateforme.",
+      "Design System : conception intégrale de la charte graphique et des composants UI (User Interface) de la plateforme.",
     ],
     cvDescription: "Startup aérospatiale. Développement de Realmind, plateforme de monitoring d'agents IA autonomes.",
     cvHighlights: [
@@ -47,7 +47,7 @@ const fr = {
   },
   tild: {
     role: "Développeur Full-Stack (VueJS / Python)",
-    description: "Conception et maintenance d'Alma Mater, une solution CRM/ERP modulaire destinée aux écoles du groupe Collège de Paris. Le projet impliquait la gestion de flux de données complexes entre étudiants, professeurs et administration.",
+    description: "Conception et maintenance d'Alma Mater, une solution CRM/ERP (Customer Relationship Management / Enterprise Resource Planning) modulaire destinée aux écoles du groupe Collège de Paris. Le projet impliquait la gestion de flux de données complexes entre étudiants, professeurs et administration.",
     highlights: [
       "Module Agenda : développement d'un moteur de génération d'emplois du temps dynamique avec gestion des conflits de salles et de formateurs.",
       "Backend Data : refactorisation de services Python pour optimiser le traitement des inscriptions et la génération automatisée de documents administratifs.",
@@ -60,8 +60,8 @@ const fr = {
     role: "Développeur (Stage / Prestation)",
     description: "Laboratoire de tests cliniques. Ma mission principale était d'assurer la survie technique d'un système de données vieillissant et sa mise en conformité avec les nouvelles régulations européennes.",
     highlights: [
-      "Migration de base de données : reverse-engineering architectural et migration d'un système SQL critique de 15 ans sans documentation préalable.",
-      "Compliance RGPD : mise en œuvre technique de l'anonymisation des données patients et des politiques de rétention automatiques.",
+      "Migration de base de données : reverse-engineering architectural et migration d'un système SQL (Structured Query Language) critique de 15 ans sans documentation préalable.",
+      "Compliance RGPD (Règlement Général sur la Protection des Données) : mise en œuvre technique de l'anonymisation des données patients et des politiques de rétention automatiques.",
       "Auditabilité : création d'outils internes pour assurer l'archivage sécurisé et l'extraction de rapports pour les audits cliniques.",
     ],
     cvDescription: "Migration d'une base de données critique sans documentation et mise aux normes RGPD.",
@@ -82,7 +82,7 @@ const fr = {
     title: "Epitech Technology",
     role: "Expert en Technologies de l'Information",
     description: "Cycle Expertise (2021-2022). Perfectionnement C# et TypeScript en mode projet.",
-    highlights: ["Diplôme RNCP Niveau 7"],
+    highlights: ["Diplôme RNCP (Répertoire National des Certifications Professionnelles) Niveau 7"],
   },
 
   /* ── Technical Skills ── */
@@ -101,7 +101,7 @@ const fr = {
     },
     methods: {
       title: "Architecture & Méthodes",
-      content: "Agile, TDD, Spec-driven development, Event-driven, Micro-services, Sécurité & Optimisation",
+      content: "Agile, TDD (Test-Driven Development), Spec-driven development, Event-driven, Micro-services, Sécurité & Optimisation",
     },
     ai_productivity: {
       title: "IA & Productivité",
@@ -122,11 +122,11 @@ const fr = {
     ],
   },
   aicontentremover: {
-    role: "API de Signalement & Extension Camouflage",
+    role: "API (Application Programming Interface) de Signalement & Extension Camouflage",
     description:
       "Une API communautaire et une extension de navigateur permettant de signaler et masquer les contenus générés par IA sur les réseaux sociaux. S'appuie sur un système de consensus collaboratif et de vote.",
     highlights: [
-      "API REST avec système de votes communautaires",
+      "API REST (Representational State Transfer) avec système de votes communautaires",
       "Intégration extension navigateur (Chrome, Firefox)",
       "SQLite dev / PostgreSQL prod avec EF Core",
       "Seuil de détection IA basé sur le consensus",
@@ -146,10 +146,10 @@ const fr = {
   imapunsub: {
     role: "Newsletter Killer",
     description:
-      "Un script Python qui scanne votre boîte mail via IMAP, trouve les liens de désinscription dans les newsletters et les suit automatiquement — réduisant le désordre e-mail et l'empreinte carbone.",
+      "Un script Python qui scanne votre boîte mail via IMAP (Internet Message Access Protocol), trouve les liens de désinscription dans les newsletters et les suit automatiquement — réduisant le désordre e-mail et l'empreinte carbone.",
     highlights: [
       "Intégration IMAP avec mots de passe d'application Gmail",
-      "Parsing HTML avec BeautifulSoup",
+      "Parsing HTML (HyperText Markup Language) avec BeautifulSoup",
       "Suivi automatisé des liens via requests",
       "Sensibilisation à l'impact environnemental",
     ],

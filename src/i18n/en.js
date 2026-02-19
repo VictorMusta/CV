@@ -31,13 +31,13 @@ const en = {
     ],
   },
   delfox: {
-    role: "Full-Stack Developer (React / Python / gRPC)",
+    role: "Full-Stack Developer (React / Python / gRPC - Google Remote Procedure Call)",
     description: "Aerospace & Defense startup specializing in Deep Reinforcement Learning (Deep RL). I led the development of 'Realmind', a software suite designed to monitor and interact with AI agents during training sessions.",
     highlights: [
       "Real-time Communication Architecture: Implemented 100% gRPC integration for bidirectional exchanges between React frontend and Python training backends.",
       "Complex Visualization: Created monitoring dashboards for massive simulations (drone swarms, autonomous underwater vehicles).",
       "Game Engine Integration: Collaborated on interfaces between AI agents and Unity/Unreal Engine simulation environments.",
-      "Design System: Fully designed the visual identity and UI component library for the platform.",
+      "Design System: Fully designed the visual identity and UI (User Interface) component library for the platform.",
     ],
     cvDescription: "Aerospace startup. Developed Realmind, a monitoring platform for autonomous ML agents.",
     cvHighlights: [
@@ -47,7 +47,7 @@ const en = {
   },
   tild: {
     role: "Full-Stack Developer (VueJS / Python)",
-    description: "Designed and maintained Alma Mater, a modular CRM/ERP solution for the Collège de Paris school group. The project involved managing complex data flows between students, teachers, and administration.",
+    description: "Designed and maintained Alma Mater, a modular CRM/ERP (Customer Relationship Management / Enterprise Resource Planning) solution for the Collège de Paris school group. The project involved managing complex data flows between students, teachers, and administration.",
     highlights: [
       "Calendar Module: Developed a dynamic timetable generation engine with room and trainer conflict management.",
       "Data Backend: Refactored Python services to optimize enrollment processing and automated administrative document generation.",
@@ -60,8 +60,8 @@ const en = {
     role: "Developer (Internship / Consulting)",
     description: "Clinical testing laboratory. My primary mission was to ensure the technical survival of a legacy data system and its compliance with new European regulations.",
     highlights: [
-      "Database Migration: Architectural reverse-engineering and migration of a 15-year-old critical SQL system without prior documentation.",
-      "GDPR Compliance: Technical implementation of patient data anonymization and automated retention policies.",
+      "Database Migration: Architectural reverse-engineering and migration of a 15-year-old critical SQL (Structured Query Language) system without prior documentation.",
+      "GDPR (General Data Protection Regulation) Compliance: Technical implementation of patient data anonymization and automated retention policies.",
       "Auditability: Created internal tools for secure archiving and report extraction for clinical audits.",
     ],
     cvDescription: "Migration of a critical database without documentation and GDPR compliance.",
@@ -82,7 +82,7 @@ const en = {
     title: "Epitech Technology",
     role: "Expert in Information Technology",
     description: "Expertise Cycle (2021-2022). Advanced C# and TypeScript project-based learning.",
-    highlights: ["Master's level degree (RNCP Level 7)"],
+    highlights: ["Master's level degree (RNCP - Répertoire National des Certifications Professionnelles Level 7)"],
   },
 
   /* ── Technical Skills ── */
@@ -101,7 +101,7 @@ const en = {
     },
     methods: {
       title: "Architecture & Methods",
-      content: "Agile, TDD, Spec-driven development, Event-driven, Micro-services, Security & Optimization",
+      content: "Agile, TDD (Test-Driven Development), Spec-driven development, Event-driven, Micro-services, Security & Optimization",
     },
     ai_productivity: {
       title: "AI & Productivity",
@@ -122,11 +122,11 @@ const en = {
     ],
   },
   aicontentremover: {
-    role: "Reporting API & Masking Extension",
+    role: "Reporting API (Application Programming Interface) & Masking Extension",
     description:
       "A community-driven API and browser extension to report and hide AI-generated content on social media. Relying on a collaborative consensus voting system.",
     highlights: [
-      "REST API with community voting system",
+      "REST (Representational State Transfer) API with community voting system",
       "Browser extension integration (Chrome, Firefox)",
       "SQLite dev / PostgreSQL prod with EF Core",
       "AI detection threshold based on consensus",
@@ -146,10 +146,10 @@ const en = {
   imapunsub: {
     role: "Newsletter Killer",
     description:
-      "A Python script that scans your inbox via IMAP, finds unsubscribe links in newsletters and follows them automatically — reducing email clutter and carbon footprint.",
+      "A Python script that scans your inbox via IMAP (Internet Message Access Protocol), finds unsubscribe links in newsletters and follows them automatically — reducing email clutter and carbon footprint.",
     highlights: [
       "IMAP integration with Gmail app passwords",
-      "HTML parsing with BeautifulSoup",
+      "HTML (HyperText Markup Language) parsing with BeautifulSoup",
       "Automated link following via requests",
       "Environmental impact awareness",
     ],
