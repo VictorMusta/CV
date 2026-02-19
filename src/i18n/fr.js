@@ -31,41 +31,43 @@ const fr = {
     ],
   },
   delfox: {
-    role: "Développeur Full-Stack (React / Python / gRPC - Google Remote Procedure Call)",
-    description: "Startup spécialisée dans l'apprentissage par renforcement profond (Deep RL - Deep Reinforcement Learning) pour l'aérospatiale et la défense. J'étais responsable du développement de 'Realmind', la suite logicielle permettant de monitorer et d'interagir avec des agents IA en cours d'entraînement.",
+    role: "Développeur Full-Stack (Alternance - React / Python / gRPC)",
+    description: "Startup spécialisée dans l'IA (Apprentissage par renforcement profond - Deep RL). Durant cette alternance de 2 ans, j'ai développé 'Realmind', un POC (Proof of Concept) permettant de piloter des entraînements d'agents autonomes. Mon rôle consistait à créer une interface capable de lancer des scripts d'entraînement complexes, de monitorer les performances et de visualiser les simulations en 3D.",
     highlights: [
-      "Architecture de communication temps-réel : intégration 100% gRPC pour les échanges bidirectionnels entre le frontend React et les backends d'entraînement Python.",
-      "Visualisation complexe : création de dashboards de monitoring pour des simulations massives (essaims de drones, véhicules sous-marins autonomes).",
-      "Intégration moteur de jeu : collaboration sur les interfaces entre les agents IA et les environnements de simulation Unity et Unreal Engine.",
-      "Design System : conception intégrale de la charte graphique et des composants UI (User Interface) de la plateforme.",
+      "Développement de POC : Conception intégrale de l'interface de monitoring en ReactJS et du backend en Python.",
+      "Visualisation 3D temps-réel : Intégration de moteurs de jeu (Unity, Unreal Engine, WebGL) pour le rendu des simulations d'essaims de drones et véhicules autonomes.",
+      "Architecture gRPC (Google Remote Procedure Call) : Mise en œuvre de flux de données haute fréquence entre le frontend et les backends d'IA.",
+      "Collaboration inter-équipes : Travail étroit avec les ingénieurs Machine Learning pour interfacer l'interface avec leurs librairies d'entraînement.",
     ],
-    cvDescription: "Startup aérospatiale. Développement de Realmind, plateforme de monitoring d'agents IA autonomes.",
+    cvDescription: "Alternance de 2 ans. Développement de Realmind, plateforme de pilotage et visualisation 3D pour agents IA autonomes.",
     cvHighlights: [
-      "Communication 100% gRPC entre React et Python",
-      "Conception de la charte graphique et dashboards de monitoring",
+      "Communication temps-réel via gRPC entre React et Python",
+      "Visualisation complexe de simulations via Unity & Unreal Engine",
     ],
   },
   tild: {
     role: "Développeur Full-Stack (VueJS / Python)",
-    description: "Conception et maintenance d'Alma Mater, une solution CRM/ERP (Customer Relationship Management / Enterprise Resource Planning) modulaire destinée aux écoles du groupe Collège de Paris. Le projet impliquait la gestion de flux de données complexes entre étudiants, professeurs et administration.",
+    description: "Conception et maintenance d'Alma Mater, une solution CRM/ERP (Customer Relationship Management / Enterprise Resource Planning) monolithique. Dans un contexte 100% télétravail, j'ai assuré la liaison technique entre deux équipes aux pratiques distinctes, nécessitant une forte autonomie et une adaptation rapide aux standards de développement.",
     highlights: [
+      "Architecture Monolithique : Maintenance et évolution d'une API Python et d'un frontend VueJS communiquant via HTTP.",
+      "Interopérabilité des équipes : Intégration et réconciliation des bonnes pratiques de développement de deux pôles distincts.",
+      "Documentation API : Utilisation de Swagger pour assurer la clarté et l'auditabilité des endpoints.",
       "Module Agenda : développement d'un moteur de génération d'emplois du temps dynamique avec gestion des conflits de salles et de formateurs.",
-      "Backend Data : refactorisation de services Python pour optimiser le traitement des inscriptions et la génération automatisée de documents administratifs.",
-      "Interface Utilisateur : modernisation du frontend en VueJS pour améliorer l'expérience utilisateur et la réactivité.",
     ],
-    cvDescription: "Développement d'Alma Mater (CRM modulaire) pour le Collège de Paris.",
-    cvHighlights: ["Implémentation du module agenda et gestion d'emploi du temps complexe"],
+    cvDescription: "Développement du CRM/ERP Alma Mater (VueJS/Python). Réconciliation des pratiques inter-équipes en 100% remote.",
+    cvHighlights: ["Optimisation du module agenda et documentation API via Swagger"],
   },
   cosderma: {
     role: "Développeur (Stage / Prestation)",
-    description: "Laboratoire de tests cliniques. Ma mission principale était d'assurer la survie technique d'un système de données vieillissant et sa mise en conformité avec les nouvelles régulations européennes.",
+    description: "Mission de restructuration de données cliniques. En l'absence de documentation sur une base de données complexe, j'ai réalisé un reverse-engineering complet de 30+ tables (environ 600 propriétés) pour rétablir un modèle relationnel cohérent et implémenter une solution d'archivage performante.",
     highlights: [
-      "Migration de base de données : reverse-engineering architectural et migration d'un système SQL (Structured Query Language) critique de 15 ans sans documentation préalable.",
-      "Compliance RGPD (Règlement Général sur la Protection des Données) : mise en œuvre technique de l'anonymisation des données patients et des politiques de rétention automatiques.",
-      "Auditabilité : création d'outils internes pour assurer l'archivage sécurisé et l'extraction de rapports pour les audits cliniques.",
+      "Reverse-engineering SQL : Analyse approfondie et modélisation (Merise) de schémas non documentés sur papier puis en SQL.",
+      "Archivage à haute intégrité : Développement d'un système de transfert de données historiques garantissant le respect des contraintes d'intégrité référentielle.",
+      "Optimisation de Production : Réduction massive de la taille de la base de données active, accélérant les temps de réponse du back-office.",
+      "Conformité RGPD : Structuration des processus d'archivage pour répondre aux exigences de conservation des données sensibles.",
     ],
-    cvDescription: "Migration d'une base de données critique sans documentation et mise aux normes RGPD.",
-    cvHighlights: ["Mise en place d'un système d'archivage et anonymisation RGPD"],
+    cvDescription: "Reverse-engineering SQL et archivage de données critiques (30+ tables). Optimisation de la performance.",
+    cvHighlights: ["Modélisation relationnelle complète et réduction de l'empreinte DB"],
   },
   supdevinci: {
     title: "Sup de Vinci",
@@ -131,58 +133,38 @@ const fr = {
   tamagotchi: {
     role: "AutoBattler 2D",
     description:
-      "Un jeu d'auto-combat de bureau inspiré du Tamagotchi, développé avec ElectronJS. Collectionnez des créatures patates, faites-les combattre en tour par tour, montez-les en niveau et regardez-les rebondir dans un bocal à physique réaliste — le tout en overlay sur votre bureau.",
+      "Un jeu d'auto-combat délirant construit avec ElectronJS. Créez et collectionnez des guerriers patates, choisissez stratégiquement leurs montées en niveau et lancez-les dans des tournois automatiques contre des adversaires générés procéduralement.",
     highlights: [
-      "Système de combat tour par tour avec stats, armes & capacités",
-      "Mode « Bocal » sandbox basé sur la physique",
-      "Collection de créatures avec niveaux & évolution",
-      "Système de sauvegarde persistant multi-mobs",
+      "Système Auto-Battler : Combats gérés par l'IA, focus sur la gestion stratégique des stats.",
+      "Customisation & Progression : PC de stockage, traits uniques, équipements et arbres d'améliorations.",
+      "Mode Tournoi : Enchaînement de duels pour tester la viabilité des builds de patates.",
+      "Humour & Second degré : Un projet fun explorant les mécaniques de RPG avec un ton léger.",
     ],
   },
   aicontentremover: {
-    role: "API (Application Programming Interface) de Signalement & Extension Camouflage",
+    role: "Extension Camouflage & Vibe Coding",
     description:
-      "Une API communautaire et une extension de navigateur permettant de signaler et masquer les contenus générés par IA sur les réseaux sociaux. S'appuie sur un système de consensus collaboratif et de vote.",
+      "Né d'un ras-le-bol face à la prolifération des contenus générés par IA et des bots sur les réseaux (Twitter/X), AIContentRemover est un projet testant le concept de 'Vibe Coding'. Il permet à la communauté de voter pour masquer les publications suspectes, améliorant ainsi la qualité du feed pour tous.",
     highlights: [
-      "API REST (Representational State Transfer) avec système de votes communautaires",
-      "Intégration extension navigateur (Chrome, Firefox)",
-      "SQLite dev / PostgreSQL prod avec EF Core",
-      "Seuil de détection IA basé sur le consensus",
+      "Vibe Coding : Projet exploratoire sur le développement ultra-rapide et collaboratif.",
+      "Nettoyage du DOM : Suppression directe des éléments HTML des comptes signalés pour couper toute visibilité/reach.",
+      "Consensus Social : Système de vote pour valider collectivement la nature IA d'un post.",
+      "Motivation Éthique : Protection des artistes originaux face au vol de travail par l'IA générative.",
     ],
   },
-  loutaupia: {
-    role: "Backend Géocaching",
-    description:
-      "Un backend API .NET pour Loutaupia V2 — une application collaborative de géocaching avec des chasses au trésor sur carte.",
-    highlights: [
-      "API RESTful en .NET / C#",
-      "Mécaniques de jeu basées sur la géolocalisation",
-      "Authentification utilisateur & suivi de progression",
-      "Conçu pour un frontend mobile-first",
-    ],
-  },
+  // Loutaupia removed
   imapunsub: {
-    role: "Newsletter Killer",
+    role: "Newsletter Killer (Green IT)",
     description:
-      "Un script Python qui scanne votre boîte mail via IMAP (Internet Message Access Protocol), trouve les liens de désinscription dans les newsletters et les suit automatiquement — réduisant le désordre e-mail et l'empreinte carbone.",
+      "Un outil de désinscription automatique né d'une volonté de réduire la pollution numérique (Green IT). Une boîte mail saturée de newsletters non lues consomme une énergie considérable ; ce script automatise le processus fastidieux de désabonnement en un clic.",
     highlights: [
-      "Intégration IMAP avec mots de passe d'application Gmail",
-      "Parsing HTML (HyperText Markup Language) avec BeautifulSoup",
-      "Suivi automatisé des liens via requests",
-      "Sensibilisation à l'impact environnemental",
+      "Automatisation IMAP : Scan et parsing ultra-rapide des newsletters via Python.",
+      "One-click Unsubscribe : Repérage et suivi automatique des liens de désinscription conformes à la loi.",
+      "Écologie Numérique : Réduction drastique de l'empreinte carbone liée au stockage de données e-mail inutiles.",
+      "Audit de Sécurité : Analyse des risques liés aux faux liens de désabonnement (phishing/malwares).",
     ],
   },
-  bonobot: {
-    role: "Bot Discord",
-    description:
-      "Un bot Discord multi-usage pour le fun et l'utilitaire — construit en Python et géré via Jira pour un développement structuré.",
-    highlights: [
-      "Architecture de commandes modulaire",
-      "Développement tracké via Jira",
-      "Intégration événementielle Discord.py",
-      "Système de plugins extensible",
-    ],
-  },
+  // Bonobot removed
   knightjumper: {
     role: "Platformer2D",
     description: "Un jeu de plateforme dynamique créé avec Godot 4. Exploration des mécaniques de saut et de la gestion des sprites 2D.",
@@ -194,16 +176,33 @@ const fr = {
     ],
   },
   "money-maker": {
-    role: "PomodoroHub",
-    description: "Plateforme de gestion de productivité basée sur la méthode Pomodoro, intégrée à un système de visualisation de gains en temps réel.",
+    role: "Realtime Earnings",
+    description: "Une application cozy conçue pour visualiser ses gains financiers en temps réel tout en restant productif. Basée sur le salaire net et les heures travaillées, elle affiche l'argent s'accumulant dans un bocal interactif lors des sessions de travail.",
+    highlights: [
+      "Mode Bocal Interactif : Visualisation dynamique de l'argent tombant en temps réel avec moteur physique (secouez le bocal !).",
+      "Pomodoro Gourmand : Système de timer basé sur des recettes de pâtisseries (sucrées/salées) pour rythmer le travail.",
+      "Dashboard Productivité : Calcul automatique basé sur le check-in matinal et les paramètres de salaire.",
+      "Ambiance Chill : Radio intégrée avec plusieurs stations et animations visuelles (pluie/neige) sur le widget en fonction de la météo réelle.",
+    ],
   },
   "pachinko": {
-    role: "Game Jam / Conférence",
-    description: "Jeu développé en groupe lors de la conférence de Tugduall, axé sur l'amusement et les mécaniques de jeu rétro.",
+    role: "Pachinko (High Risk / High Reward)",
+    description: "Initié lors d'un atelier chez Betclic pour tester l'IA (Copilot / Coding Agents) dans un contexte de 'Vibe Coding' en équipe. J'ai ensuite poussé le concept en solo pour créer un jeu d'arcade addictif mêlant chance et stratégie.",
+    highlights: [
+      "Développement assisté par IA : POC développé à 4 mains en 3 heures, puis itéré de façon agile.",
+      "Mécaniques de Casino : Ajout de fonctionnalités 'High Risk / High Reward' et de multiplicateurs de gains.",
+      "Génération Procédurale : Niveaux générés aléatoirement avec des malus augmentant les récompenses.",
+      "Leaderboard Mondial : Système de score en temps réel hébergé sur Supabase.",
+    ],
   },
   "aoc-2024": {
-    role: "AoC 2024",
-    description: "Résolution des énigmes de l'Advent of Code 2024 pour approfondir mes compétences en C# et en algorithmique.",
+    role: "Advent of Code 2024 (C#)",
+    description: "Série de défis algorithmiques quotidiens pour monter en compétence sur la syntaxe C# et les structures de données complexes lors de mon arrivée chez Betclic.",
+    highlights: [
+      "Résolution de puzzles algorithmiques de complexité croissante.",
+      "Pratique intensive du .NET et de l'algorithmie pure.",
+      "Apprentissage par la pratique (Learning by doing).",
+    ],
   },
 };
 

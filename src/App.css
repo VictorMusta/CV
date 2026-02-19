@@ -493,11 +493,26 @@
   font-weight: 500;
 }
 
+.content-card__year-loc {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .content-card__year {
   font-size: 0.75rem;
   color: var(--text-muted);
   font-weight: 400;
   font-family: var(--font-mono);
+}
+
+.content-card__location {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 400;
 }
 
 .content-card__links {
@@ -806,6 +821,21 @@
 
 .cv-footer a:hover {
   color: var(--accent);
+}
+
+/* ─── CV Locations ─── */
+.cv-entry__period-loc {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.cv-entry__location {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-top: 0.2rem;
 }
 
 .cv-page {

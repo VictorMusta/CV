@@ -1,6 +1,6 @@
 import { useState as useImageState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, ImageOff } from "lucide-react";
+import { ExternalLink, ImageOff, MapPin } from "lucide-react";
 import { useLang } from "../i18n/LanguageContext";
 
 const variants = {
@@ -131,7 +131,14 @@ export default function ContentView({ item, direction }) {
 
             <h2 className="content-card__title">{title}</h2>
             <p className="content-card__role">{role}</p>
-            <span className="content-card__year">{item.year}</span>
+            <div className="content-card__year-loc">
+              <span className="content-card__year">{item.year}</span>
+              {item.location && (
+                <span className="content-card__location">
+                  <MapPin size={12} /> {item.location}
+                </span>
+              )}
+            </div>
 
             <div className="content-card__links">
               {item.github && (

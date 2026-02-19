@@ -31,41 +31,43 @@ const en = {
     ],
   },
   delfox: {
-    role: "Full-Stack Developer (React / Python / gRPC - Google Remote Procedure Call)",
-    description: "Aerospace & Defense startup specializing in Deep Reinforcement Learning (Deep RL). I led the development of 'Realmind', a software suite designed to monitor and interact with AI agents during training sessions.",
+    role: "Full-Stack Developer (Apprenticeship - React / Python / gRPC)",
+    description: "AI startup specializing in Deep Reinforcement Learning (Deep RL). During this 2-year apprenticeship, I developed 'Realmind', a POC (Proof of Concept) for piloting autonomous agent training. My role was to create an interface capable of launching complex training scripts, monitoring performance, and visualizing simulations in 3D.",
     highlights: [
-      "Real-time Communication Architecture: Implemented 100% gRPC integration for bidirectional exchanges between React frontend and Python training backends.",
-      "Complex Visualization: Created monitoring dashboards for massive simulations (drone swarms, autonomous underwater vehicles).",
-      "Game Engine Integration: Collaborated on interfaces between AI agents and Unity/Unreal Engine simulation environments.",
-      "Design System: Fully designed the visual identity and UI (User Interface) component library for the platform.",
+      "POC Development: Full design and implementation of the monitoring interface in ReactJS and the Python backend.",
+      "Real-time 3D Visualization: Integrated game engines (Unity, Unreal Engine, WebGL) to render simulations of drone swarms and autonomous vehicles.",
+      "gRPC (Google Remote Procedure Call) Architecture: Implemented high-frequency data flows between the frontend and AI backends.",
+      "Cross-team Collaboration: Worked closely with Machine Learning engineers to interface the UI with their training libraries.",
     ],
-    cvDescription: "Aerospace startup. Developed Realmind, a monitoring platform for autonomous ML agents.",
+    cvDescription: "2-year apprenticeship. Developed Realmind, a control and 3D visualization platform for autonomous AI agents.",
     cvHighlights: [
-      "100% gRPC communication between React and Python",
-      "Designed visual identity and real-time monitoring dashboards",
+      "Real-time gRPC communication between React and Python",
+      "Complex simulation visualization through Unity & Unreal Engine",
     ],
   },
   tild: {
     role: "Full-Stack Developer (VueJS / Python)",
-    description: "Designed and maintained Alma Mater, a modular CRM/ERP (Customer Relationship Management / Enterprise Resource Planning) solution for the Collège de Paris school group. The project involved managing complex data flows between students, teachers, and administration.",
+    description: "Designed and maintained Alma Mater, a monolithic CRM/ERP (Customer Relationship Management / Enterprise Resource Planning) solution. Working in a 100% remote environment, I served as a technical bridge between two teams with distinct practices, requiring high autonomy.",
     highlights: [
+      "Monolithic Architecture: Maintenance and evolution of a Python API and VueJS frontend communicating via HTTP.",
+      "Cross-team Interoperability: Integrated and reconciled development best practices from two different engineering poles.",
+      "API Documentation: Leveraged Swagger to ensure clarity and auditability of system endpoints.",
       "Calendar Module: Developed a dynamic timetable generation engine with room and trainer conflict management.",
-      "Data Backend: Refactored Python services to optimize enrollment processing and automated administrative document generation.",
-      "User Interface: Modernized the VueJS frontend to improve user experience and responsiveness.",
     ],
-    cvDescription: "Developed Alma Mater (modular CRM) for Collège de Paris.",
-    cvHighlights: ["Implemented complex calendar and timetable management module"],
+    cvDescription: "Development of the Alma Mater CRM/ERP (VueJS/Python). Reconciled inter-team practices in a 100% remote setup.",
+    cvHighlights: ["Optimized calendar module and API documentation through Swagger"],
   },
   cosderma: {
     role: "Developer (Internship / Consulting)",
-    description: "Clinical testing laboratory. My primary mission was to ensure the technical survival of a legacy data system and its compliance with new European regulations.",
+    description: "Clinical data restructuring mission. In the absence of documentation for a complex database, I performed full reverse-engineering of 30+ tables (approx. 600 properties) to restore a coherent relational model and implement a high-performance archiving solution.",
     highlights: [
-      "Database Migration: Architectural reverse-engineering and migration of a 15-year-old critical SQL (Structured Query Language) system without prior documentation.",
-      "GDPR (General Data Protection Regulation) Compliance: Technical implementation of patient data anonymization and automated retention policies.",
-      "Auditability: Created internal tools for secure archiving and report extraction for clinical audits.",
+      "SQL Reverse-engineering: Deep analysis and modeling (Merise) of undocumented schemas, transitioning from paper-based design to SQL implementation.",
+      "High-Integrity Archiving: Developed a historical data transfer system ensuring strict adherence to referential integrity constraints.",
+      "Production Optimization: Massive reduction in active database size, significantly speeding up back-office response times.",
+      "GDPR Compliance: Structured archiving processes to meet sensitive data retention requirements.",
     ],
-    cvDescription: "Migration of a critical database without documentation and GDPR compliance.",
-    cvHighlights: ["Implemented archival system and GDPR anonymization"],
+    cvDescription: "SQL reverse-engineering and critical data archiving (30+ tables). Performance optimization.",
+    cvHighlights: ["Full relational modeling and database footprint reduction"],
   },
   supdevinci: {
     title: "Sup de Vinci",
@@ -131,58 +133,38 @@ const en = {
   tamagotchi: {
     role: "AutoBattler 2D",
     description:
-      "A desktop auto-battler inspired by Tamagotchi, built with ElectronJS. Collect potato creatures, level them up through turn-based combat, and watch them bounce around in a physics-driven jar — all rendered live on your desktop.",
+      "A wacky auto-combat game built with ElectronJS. Create and collect potato warriors, strategically choose their level-up upgrades, and throw them into automatic tournaments against procedurally generated opponents.",
     highlights: [
-      "Turn-based combat system with stats, weapons & abilities",
-      "Physics-powered \"Bocal\" sandbox mode",
-      "Creature collection with leveling & evolution",
-      "Persistent save system with multiple mob slots",
+      "Auto-Battler Mechanics: AI-driven combat, focusing on strategic stat management.",
+      "Customization & Progression: Storage PC, unique traits, weapons, and upgrade trees.",
+      "Tournament Mode: A series of duels to test the viability of your potato builds.",
+      "Humor & Fun: A project exploring RPG mechanics with a lighthearted, second-degree tone.",
     ],
   },
   aicontentremover: {
-    role: "Reporting API (Application Programming Interface) & Masking Extension",
+    role: "Camouflage Extension & Vibe Coding",
     description:
-      "A community-driven API and browser extension to report and hide AI-generated content on social media. Relying on a collaborative consensus voting system.",
+      "Born from frustration with the proliferation of AI-generated content and bots on social networks (Twitter/X), AIContentRemover is a project testing the 'Vibe Coding' concept. It allows the community to vote to hide suspicious posts, improving feed quality for everyone.",
     highlights: [
-      "REST (Representational State Transfer) API with community voting system",
-      "Browser extension integration (Chrome, Firefox)",
-      "SQLite dev / PostgreSQL prod with EF Core",
-      "AI detection threshold based on consensus",
+      "Vibe Coding: Exploratory project on ultra-fast and collaborative development.",
+      "DOM Cleaning: Direct removal of HTML elements from reported accounts to cut off visibility and reach.",
+      "Social Consensus: Voting system to collectively validate the AI nature of a post.",
+      "Ethical Motivation: Protecting original artists from AI-generative work theft.",
     ],
   },
-  loutaupia: {
-    role: "Geocaching Backend",
-    description:
-      "A .NET API backend for Loutaupia V2 — a collaborative geocaching app with treasure hunts on a map.",
-    highlights: [
-      "RESTful API with .NET / C#",
-      "Geolocation-based game mechanics",
-      "User authentication & progress tracking",
-      "Designed for mobile-first frontend",
-    ],
-  },
+  // Loutaupia removed
   imapunsub: {
-    role: "Newsletter Killer",
+    role: "Newsletter Killer (Green IT)",
     description:
-      "A Python script that scans your inbox via IMAP (Internet Message Access Protocol), finds unsubscribe links in newsletters and follows them automatically — reducing email clutter and carbon footprint.",
+      "An automated unsubscription tool born from a desire to reduce digital pollution (Green IT). A mailbox saturated with unread newsletters consumes considerable energy; this script automates the tedious one-click unsubscription process.",
     highlights: [
-      "IMAP integration with Gmail app passwords",
-      "HTML (HyperText Markup Language) parsing with BeautifulSoup",
-      "Automated link following via requests",
-      "Environmental impact awareness",
+      "IMAP Automation: Ultra-fast scanning and parsing of newsletters via Python.",
+      "One-click Unsubscribe: Automatic detection and following of legally compliant unsubscribe links.",
+      "Digital Ecology: Drastic reduction of the carbon footprint associated with storing useless email data.",
+      "Security Audit: Assessment of risks associated with fake unsubscribe links (phishing/malware).",
     ],
   },
-  bonobot: {
-    role: "Bot Discord",
-    description:
-      "A multi-purpose Discord bot for fun and utility — built in Python and managed via Jira for structured development.",
-    highlights: [
-      "Modular command architecture",
-      "Jira-tracked development workflow",
-      "Event-driven Discord.py integration",
-      "Extensible plugin system",
-    ],
-  },
+  // Bonobot removed
   knightjumper: {
     role: "Platformer2D",
     description: "A dynamic platformer created with Godot 4. Exploring jump mechanics and 2D sprite management.",
@@ -194,16 +176,33 @@ const en = {
     ],
   },
   "money-maker": {
-    role: "PomodoroHub",
-    description: "Productivity management platform based on the Pomodoro method, integrated with a real-time earnings visualizer.",
+    role: "Realtime Earnings",
+    description: "A cozy application designed to visualize financial earnings in real-time while staying productive. Based on net salary and hours worked, it displays money accumulating in an interactive jar during work sessions.",
+    highlights: [
+      "Interactive Jar Mode: Dynamic visualization of money falling in real-time with a physics engine (shake the jar!).",
+      "Tasty Pomodoro: Timer system based on pastry recipes (sweet/savory) to pace your work.",
+      "Productivity Dashboard: Automatic calculation based on morning check-in and salary settings.",
+      "Chill Vibe: Integrated radio with several stations and visual animations (rain/snow) matching real-time weather.",
+    ],
   },
   pachinko: {
-    role: "Game Jam / Conference",
-    description: "Game developed in a group during Tugduall's conference, focusing on fun and retro gameplay mechanics.",
+    role: "Pachinko (High Risk / High Reward)",
+    description: "Started during a Betclic workshop to test AI development (Copilot / Coding Agents). I later expanded it solo to create an addictive arcade game blending luck and strategy.",
+    highlights: [
+      "AI-Assisted Development: POC developed by a 4-person team in 3 hours, then iterated solo.",
+      "Casino Mechanics: Added 'High Risk / High Reward' features and score multipliers.",
+      "Procedural Generation: Randomly generated levels with maluses increasing rewards.",
+      "Global Leaderboard: Real-time scoring system hosted on Supabase.",
+    ],
   },
   "aoc-2024": {
-    role: "AoC 2024",
-    description: "Solving Advent of Code 2024 puzzles to deepen C# skills and algorithmic thinking.",
+    role: "Advent of Code 2024 (C#)",
+    description: "A series of daily algorithmic challenges to master C# syntax and complex data structures when joining Betclic.",
+    highlights: [
+      "Solved algorithmic puzzles of increasing complexity.",
+      "Intensive practice of .NET and pure algorithms.",
+      "Learning by doing approach.",
+    ],
   },
 };
 

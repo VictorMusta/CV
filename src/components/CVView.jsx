@@ -103,7 +103,10 @@ export default function CVView() {
                       <h3 className="cv-entry__company">{title}</h3>
                       <p className="cv-entry__role">{tr.role}</p>
                     </div>
-                    <span className="cv-entry__period">{item.year}</span>
+                    <div className="cv-entry__period-loc">
+                      <span className="cv-entry__period">{item.year}</span>
+                      <span className="cv-entry__location">{item.location}</span>
+                    </div>
                   </div>
                   <p className="cv-entry__desc">{tr.cvDescription || tr.description}</p>
                   {(tr.cvHighlights || tr.highlights)?.length > 0 && (
@@ -133,7 +136,7 @@ export default function CVView() {
 
           <div className="cv-projects-grid">
             {projects
-              .filter((item) => ["loutaupia", "aicontentremover", "discordkiller"].includes(item.id))
+              .filter((item) => ["tamagotchi", "aicontentremover", "imapunsub", "knightjumper"].includes(item.id))
               .map((item) => {
                 const tr = t[item.id] || {};
                 return (
@@ -194,7 +197,10 @@ export default function CVView() {
                       <h3 className="cv-entry__company">{item.title}</h3>
                       <p className="cv-entry__role">{tr.role}</p>
                     </div>
-                    <span className="cv-entry__period">{item.year}</span>
+                    <div className="cv-entry__period-loc">
+                      <span className="cv-entry__period">{item.year}</span>
+                      <span className="cv-entry__location">{item.location}</span>
+                    </div>
                   </div>
                   <p className="cv-entry__desc">{tr.description}</p>
                 </article>
