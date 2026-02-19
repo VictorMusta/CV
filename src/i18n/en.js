@@ -14,18 +14,20 @@ const en = {
   /* ── Career ── */
   betclic: {
     role: "Fullstack Developer .NET + JS",
-    description: "Within the SQIPI squad (Identity & Payment Integrity), I contributed to the fight against fraud and money laundering at one of Europe's leading online sports betting platforms. I joined the SQEXP team to work on an AI-driven user profile analysis project — a strategic bet that paid off: AML investigation reviews, once manual, are now largely automated.",
+    description:
+      "Joined Betclic in 2024 (850+ employees) within the SQIPI squad (Identity & Payment Integrity), working on Juno, the core system for AML (Anti-Money Laundering). As part of the Experience team, my mission was to develop new asynchronous business rules and enhance the back-office to streamline agent workflows. Collaborating closely with POs and PMs, I contributed to process optimization and the visualization of critical performance metrics.",
     highlights: [
-      "Development of AML alerts, creation & resolution of investigations, and impact on player profiles",
-      "Contribution to the Fraud-PEP project: identity verification and detection of conflicts of interest to block high-risk accounts at creation",
-      "Multi-jurisdiction management: thresholds, processing, and restrictions tailored by country/regulator",
-      "AI Pioneer at Betclic: creation of Skills, Agent-instructions, and MCPs to automate 30% of PRs",
+      "Agile & Microservices Architecture: Operating within a large-scale agile organization, focusing on scalability and software quality through .NET microservices.",
+      "Reactive Architecture & Cloud: Developed asynchronous fraud rules using AWS (SNS, SQS) to analyze risky behaviors in real-time.",
+      "Juno Back-Office: Enhanced the investigation interface with new endpoints and data visualizations to accelerate agent efficiency.",
+      "Fraud-PEP (Publicly Exposed Person) Project: Integrated Dow Jones lists for automated identity verification, protecting the onboarding process from day one.",
+      "AI Automation: Participated in an experimental project using AI agents for profile reviews based on scoring thresholds (IA Threshold).",
     ],
-    cvDescription: "Fraud fighting (SQIPI). Automated AML investigation reviews via AI (30% of PRs automated).",
+    cvDescription: ".NET Microservices & AWS. Optimization of Juno back-office and AML anti-fraud rules.",
     cvHighlights: [
-      "Built AML alert management and multi-jurisdiction handling",
-      "Fraud-PEP Project: conflict-of-interest detection",
-      "AI Pioneer: Creation of Skills & Agent-instructions (CursorAI)",
+      "Development of asynchronous rules (SNS/SQS) and monitoring endpoints",
+      "Fraud-PEP (Publicly Exposed Person) Project: Automated identity verification",
+      "AI Project: Automated profile reviews through intelligent agents",
     ],
   },
   delfox: {

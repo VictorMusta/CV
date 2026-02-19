@@ -15,18 +15,19 @@ const fr = {
   betclic: {
     role: "Développeur Fullstack .NET + JS",
     description:
-      "Au sein de la squad SQIPI (Identity & Payment Integrity), j'ai contribué à la lutte contre la fraude et le blanchiment d'argent chez l'un des leaders européens des paris sportifs en ligne. J'ai rejoint l'équipe SQEXP pour travailler sur un projet d'analyse de profils utilisateurs par IA — un pari qui s'est révélé stratégique : les revues d'investigation AML autrefois manuelles sont aujourd'hui en grande partie automatisées.",
+      "Arrivé en 2024 au sein de Betclic (850+ collaborateurs), j'ai rejoint la squad SQIPI (Identity & Payment Integrity) pour œuvrer sur Juno, le cœur de la lutte anti-fraude (AML - Anti-Money Laundering). Au sein de l'équipe Expérience, ma mission était de développer de nouvelles règles métier asynchrones et d'enrichir le back-office pour faciliter le travail des agents. En collaboration étroite avec les PO/PM, j'ai contribué à l'optimisation des processus et à la visualisation de données critiques pour le pilotage de la performance.",
     highlights: [
-      "Développement des alertes AML, création & résolution des investigations, et impacts sur les profils joueurs",
-      "Contribution au projet Fraud-PEP : vérification d'identité et détection de conflits d'intérêts pour bloquer les comptes à risque dès leur création",
-      "Gestion multi-jurisdictions : thresholds, traitements et restrictions différenciés par pays / régulateur",
-      "Pionnier IA chez Betclic : création de Skills, Agent-instructions et MCPs pour automatiser 30% des PR",
+      "Agilité & Architecture Micro-services : Évolution au sein d'une organisation agile d'envergure, favorisant la scalabilité et la qualité logicielle via les micro-services .NET.",
+      "Architecture Réactive & Cloud : Développement de règles de fraude asynchrones s'appuyant sur AWS (SNS, SQS) pour analyser les comportements à risque en temps-réel.",
+      "Back-Office Juno : Enrichissement de l'interface d'investigation avec de nouveaux endpoints et visualisations de données pour accélérer le workflow des agents.",
+      "Projet Fraud-PEP (Publicly Exposed Person) : Intégration des listes Dow Jones pour automatiser la vérification d'identité et protéger l'onboarding dès la création de compte.",
+      "Automatisation par IA : Participation à un projet expérimental d'agents IA pour les reviews de profils, basé sur des seuils de scoring (IA Threshold).",
     ],
-    cvDescription: "Lutte contre la fraude (SQIPI). Automatisation des revues d'investigation AML via IA (30% des PRs automatisées).",
+    cvDescription: "Micro-services .NET & AWS. Optimisation du back-office Juno et des règles anti-fraude AML.",
     cvHighlights: [
-      "Développement alertes AML & gestion multi-juridictions",
-      "Projet Fraud-PEP : détection de conflits d'intérêts",
-      "Pionnier IA : Création de Skills & Agent-instructions (CursorAI)",
+      "Développement de règles asynchrones (SNS/SQS) et endpoints de monitoring",
+      "Projet Fraud-PEP (Publicly Exposed Person) : Automatisation de la vérification d'identité",
+      "Projet IA : Automatisation de reviews de profils via agents intelligents",
     ],
   },
   delfox: {
