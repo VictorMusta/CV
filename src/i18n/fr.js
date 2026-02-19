@@ -84,6 +84,24 @@ const fr = {
     description: "Cycle Expertise (2021-2022). Perfectionnement C# et TypeScript en mode projet.",
     highlights: ["Diplôme RNCP (Répertoire National des Certifications Professionnelles) Niveau 7"],
   },
+  keyce: {
+    title: "Keyce Informatique (OpenIt)",
+    role: "Bachelor Développeur Informatique",
+    description: "Formation généraliste à Montpellier axée sur le développement Web et logiciel. Apprentissage des fondamentaux du code et réalisation de projets fullstack en autonomie.",
+    highlights: ["Bachelor Développeur Fullstack", "Spécialisation Web & Mobile"],
+  },
+  btssio: {
+    title: "Lycée Gustave Eiffel (Bordeaux)",
+    role: "BTS SIO (Services Informatiques aux Organisations)",
+    description: "Apprentissage des bases fondamentales de l'informatique : Développement Orienté Objet (OOP), algorithmie et gestion de bases de données. Programme fullstack avec Java, C# et Python sur 2 ans.",
+    highlights: ["Bases de l'Algorithmie & POO", "Gestion de Bases de Données SQL", "Développement Java, C# & Python"],
+  },
+  bacpro: {
+    title: "Bac Pro SEN (Systèmes Électroniques Numériques)",
+    role: "Bases de l'Électronique & Électricité",
+    description: "Première immersion dans les systèmes numériques. Apprentissage de la recherche de pannes, utilisation d'outils de mesure (ampèremètre) et développement d'un raisonnement systémique. Stage en installation de cuisines professionnelles.",
+    highlights: ["Maintenance & Recherche de pannes", "Électronique & Électricité", "Approche Systémique"],
+  },
 
   /* ── Technical Skills ── */
   technicalSkills: {

@@ -84,6 +84,24 @@ const en = {
     description: "Expertise Cycle (2021-2022). Advanced C# and TypeScript project-based learning.",
     highlights: ["Master's level degree (RNCP - Répertoire National des Certifications Professionnelles Level 7)"],
   },
+  keyce: {
+    title: "Keyce Informatique (OpenIt)",
+    role: "Bachelor in Computer Science",
+    description: "Generalist training in Montpellier focused on Web and software development. Learning coding fundamentals and building autonomous fullstack projects.",
+    highlights: ["Fullstack Developer Bachelor", "Web & Mobile Specialization"],
+  },
+  btssio: {
+    title: "Lycée Gustave Eiffel (Bordeaux)",
+    role: "BTS SIO (IT Services for Organizations)",
+    description: "Learning the fundamental basics of computer science: Object-Oriented Programming (OOP), algorithms, and database management. Fullstack program with Java, C#, and Python over 2 years.",
+    highlights: ["Algorithm & OOP Foundations", "SQL Database Management", "Java, C# & Python Development"],
+  },
+  bacpro: {
+    title: "Bac Pro SEN (Digital Electronic Systems)",
+    role: "Electronics & Electricity Foundations",
+    description: "First immersion into digital systems. Learned troubleshooting, use of measurement tools (ammeter), and developed systemic reasoning. Internship as a professional kitchen installer.",
+    highlights: ["Maintenance & Troubleshooting", "Electronics & Electricity", "Systemic Approach"],
+  },
 
   /* ── Technical Skills ── */
   technicalSkills: {
