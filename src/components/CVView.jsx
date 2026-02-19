@@ -134,7 +134,7 @@ export default function CVView() {
             {lang === "fr" ? "Projets Personnels" : "Side Projects"}
           </h2>
 
-          <div className="cv-projects-grid">
+          <div className="cv-projects-grid print-hidden">
             {projects
               .filter((item) => ["tamagotchi", "aicontentremover", "imapunsub", "knightjumper"].includes(item.id))
               .map((item) => {
@@ -159,6 +159,13 @@ export default function CVView() {
                   </article>
                 );
               })}
+          </div>
+          {/* Simple Projects for Print */}
+          <div className="cv-projects-print print-only">
+            <p><strong>Projets :</strong> AutoBattler 2D, Realtime Earnings, AI Content Remover, Platformer 2D.</p>
+            <a href="https://github.com/VictorMusta" className="cv-github-link">
+              <Github size={12} /> Voir plus sur github.com/VictorMusta
+            </a>
           </div>
         </section>
 
@@ -188,6 +195,7 @@ export default function CVView() {
           </h2>
           {[...educationData]
             .sort((a, b) => b.sortYear - a.sortYear)
+            .filter((item) => item.id !== "bacpro") // Stops at Gustave Eiffel
             .map((item) => {
               const tr = t[item.id] || {};
               return (
@@ -210,12 +218,6 @@ export default function CVView() {
 
         <hr className="cv-divider" />
 
-        {/* ─── Footer link ─── */}
-        <div className="cv-footer">
-          <a href="https://victormusta.github.io/CV/" target="_blank" rel="noopener noreferrer">
-            <ExternalLink size={12} /> victormusta.github.io/CV
-          </a>
-        </div>
       </div>
     </div>
   );

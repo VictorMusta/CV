@@ -25,9 +25,10 @@ const en = {
     ],
     cvDescription: ".NET Microservices & AWS. Optimization of Juno back-office and AML anti-fraud rules.",
     cvHighlights: [
-      "Development of asynchronous rules (SNS/SQS) and monitoring endpoints",
-      "Fraud-PEP (Publicly Exposed Person) Project: Automated identity verification",
-      "AI Project: Automated profile reviews through intelligent agents",
+      "Developed asynchronous fraud rules (SNS/SQS) and monitoring endpoints",
+      "Fraud-PEP Project: Automated identity verification using Dow Jones lists",
+      "Optimized Juno back-office (React/.NET) for increased agent efficiency",
+      "AI Initiative: Profile review automation through intelligent agents",
     ],
   },
   delfox: {
@@ -41,8 +42,10 @@ const en = {
     ],
     cvDescription: "2-year apprenticeship. Developed Realmind, a control and 3D visualization platform for autonomous AI agents.",
     cvHighlights: [
-      "Real-time gRPC communication between React and Python",
-      "Complex simulation visualization through Unity & Unreal Engine",
+      "High-frequency real-time communication (gRPC) between React and Python",
+      "Complex simulation visualization (drones, vehicles) via Unity, Unreal & WebGL",
+      "Designed the Design System and Realmind monitoring dashboards",
+      "Technical debt management on a high-growth POC project",
     ],
   },
   tild: {
@@ -100,8 +103,8 @@ const en = {
   },
   bacpro: {
     title: "Bac Pro SEN (Digital Electronic Systems)",
-    role: "Electronics & Electricity Foundations",
-    description: "First immersion into digital systems. Learned troubleshooting, use of measurement tools (ammeter), and developed systemic reasoning. Internship as a professional kitchen installer.",
+    role: "Vocational Baccalaureate SEN (Digital Electronic Systems)",
+    description: "Versatile training in digital systems, power electronics, and industrial maintenance.",
     highlights: ["Maintenance & Troubleshooting", "Electronics & Electricity", "Systemic Approach"],
   },
 

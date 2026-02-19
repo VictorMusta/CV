@@ -25,9 +25,10 @@ const fr = {
     ],
     cvDescription: "Micro-services .NET & AWS. Optimisation du back-office Juno et des règles anti-fraude AML.",
     cvHighlights: [
-      "Développement de règles asynchrones (SNS/SQS) et endpoints de monitoring",
-      "Projet Fraud-PEP (Publicly Exposed Person) : Automatisation de la vérification d'identité",
-      "Projet IA : Automatisation de reviews de profils via agents intelligents",
+      "Développement de règles de fraude asynchrones (SNS/SQS) et endpoints de monitoring",
+      "Projet Fraud-PEP : Automatisation de la vérification d'identité via Dow Jones",
+      "Optimisation du back-office Juno (React/.NET) pour l'efficacité des agents",
+      "Initiative IA : Automatisation de la revue de profil par agents intelligents",
     ],
   },
   delfox: {
@@ -41,8 +42,10 @@ const fr = {
     ],
     cvDescription: "Alternance de 2 ans. Développement de Realmind, plateforme de pilotage et visualisation 3D pour agents IA autonomes.",
     cvHighlights: [
-      "Communication temps-réel via gRPC entre React et Python",
-      "Visualisation complexe de simulations via Unity & Unreal Engine",
+      "Communication temps-réel haut flux (gRPC) entre React et backends Python",
+      "Visualisation complexe (essaims de drones, véhicules) via Unity, Unreal & WebGL",
+      "Conception du Design System et des dashboards de monitoring Realmind",
+      "Gestion de la dette technique sur un projet POC à forte croissance",
     ],
   },
   tild: {
@@ -99,10 +102,8 @@ const fr = {
     highlights: ["Bases de l'Algorithmie & POO", "Gestion de Bases de Données SQL", "Développement Java, C# & Python"],
   },
   bacpro: {
-    title: "Bac Pro SEN (Systèmes Électroniques Numériques)",
-    role: "Bases de l'Électronique & Électricité",
-    description: "Première immersion dans les systèmes numériques. Apprentissage de la recherche de pannes, utilisation d'outils de mesure (ampèremètre) et développement d'un raisonnement systémique. Stage en installation de cuisines professionnelles.",
-    highlights: ["Maintenance & Recherche de pannes", "Électronique & Électricité", "Approche Systémique"],
+    role: "Bac Professionnel SEN (Système Électronique Numérique)",
+    description: "Formation polyvalente sur les systèmes numériques, l'électronique de puissance et la maintenance industrielle.",
   },
 
   /* ── Technical Skills ── */

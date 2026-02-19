@@ -145,6 +145,7 @@ function PortfolioApp() {
       <div className="portfolio__ambient" />
       <div className="portfolio__texture" />
 
+
       {/* Header */}
       <header className="portfolio__header no-print">
         <div className="portfolio__brand">
@@ -181,6 +182,7 @@ function PortfolioApp() {
       <footer className="portfolio__footer no-print">
         <p>{t.footer(new Date().getFullYear())}</p>
       </footer>
+
     </div>
   );
 }

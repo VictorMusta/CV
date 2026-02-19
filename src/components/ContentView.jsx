@@ -116,12 +116,6 @@ export default function ContentView({ item, direction }) {
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           style={{ "--card-accent": item.color }}
         >
-          {/* Image showcase */}
-          <ItemImage 
-            item={item}
-            color={item.color} 
-            hintLabel={t.addImage} 
-          />
 
           {/* Left column — meta */}
           <div className="content-card__meta">
@@ -211,6 +205,34 @@ export default function ContentView({ item, direction }) {
               </div>
             )}
           </div>
+
+          {/* Mosaic — Image collection */}
+          {(item.screenshots?.length > 0 || item.image) && (
+            <div className="content-card__mosaic">
+              {(item.screenshots || [item.image]).map((src, i) => {
+                const resolvedSrc = (src && src.startsWith("/") && !src.startsWith("//") && !src.startsWith("http"))
+                  ? `${import.meta.env.BASE_URL}${src.slice(1)}`
+                  : src;
+                
+                return (
+                  <motion.div 
+                    key={i}
+                    className="content-card__mosaic-item"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                  >
+                    <img 
+                      src={resolvedSrc} 
+                      alt={`${title} screenshot ${i + 1}`} 
+                      loading="lazy"
+                    />
+                  </motion.div>
+                );
+              })}
+            </div>
+          )}
         </motion.article>
       </AnimatePresence>
     </div>
