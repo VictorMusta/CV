@@ -13,7 +13,7 @@ const en = {
 
   /* ── Career ── */
   betclic: {
-    role: "Fullstack Developer .NET + JS",
+    role: "Backend Developer .NET + TypeScript",
     description:
       "Joined Betclic in 2024 (850+ employees) within the SQIPI squad (Identity & Payment Integrity), working on Juno, the core system for AML (Anti-Money Laundering). As part of the Experience team, my mission was to develop new asynchronous business rules and enhance the back-office to streamline agent workflows. Collaborating closely with POs and PMs, I contributed to process optimization and the visualization of critical performance metrics.",
     highlights: [
@@ -86,7 +86,7 @@ const en = {
   epitech: {
     title: "Epitech Technology",
     role: "Expert in Information Technology",
-    description: "Expertise Cycle (2021-2022). Advanced C# and TypeScript project-based learning.",
+    description: "Expertise Cycle (2023-2024). Advanced C# and TypeScript project-based learning.",
     highlights: ["Master's level degree (RNCP - Répertoire National des Certifications Professionnelles Level 7)"],
   },
   keyce: {

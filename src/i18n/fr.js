@@ -13,7 +13,7 @@ const fr = {
 
   /* ── Parcours ── */
   betclic: {
-    role: "Développeur Fullstack .NET + JS",
+    role: "Développeur Backend .NET + TypeScript",
     description:
       "Arrivé en 2024 au sein de Betclic (850+ collaborateurs), j'ai rejoint la squad SQIPI (Identity & Payment Integrity) pour œuvrer sur Juno, le cœur de la lutte anti-fraude (AML - Anti-Money Laundering). Au sein de l'équipe Expérience, ma mission était de développer de nouvelles règles métier asynchrones et d'enrichir le back-office pour faciliter le travail des agents. En collaboration étroite avec les PO/PM, j'ai contribué à l'optimisation des processus et à la visualisation de données critiques pour le pilotage de la performance.",
     highlights: [
@@ -23,12 +23,12 @@ const fr = {
       "Projet Fraud-PEP (Publicly Exposed Person) : Intégration des listes Dow Jones pour automatiser la vérification d'identité et protéger l'onboarding dès la création de compte.",
       "Automatisation par IA : Participation à un projet expérimental d'agents IA pour les reviews de profils, basé sur des seuils de scoring (IA Threshold).",
     ],
-    cvDescription: "Micro-services .NET & AWS. Optimisation du back-office Juno et des règles anti-fraude AML.",
+    cvDescription: "Micro-services .NET + TS sur AWS. Développement d'un Back-office et de règles anti-fraude et blanchissement d'argent.",
     cvHighlights: [
-      "Développement de règles de fraude asynchrones (SNS/SQS) et endpoints de monitoring",
+      "Développement d'endpoints d'API et de services asynchrones (SNS/SQS) et monitoring",
       "Projet Fraud-PEP : Automatisation de la vérification d'identité via Dow Jones",
-      "Optimisation du back-office Juno (React/.NET) pour l'efficacité des agents",
       "Initiative IA : Automatisation de la revue de profil par agents intelligents",
+      "Optimisation du back-office Juno .NET pour l'efficacité des agents",
     ],
   },
   delfox: {
@@ -86,7 +86,7 @@ const fr = {
   epitech: {
     title: "Epitech Technology",
     role: "Expert en Technologies de l'Information",
-    description: "Cycle Expertise (2021-2022). Perfectionnement C# et TypeScript en mode projet.",
+    description: "Cycle Expertise (2023-2024). Perfectionnement C# et TypeScript en mode projet.",
     highlights: ["Diplôme RNCP (Répertoire National des Certifications Professionnelles) Niveau 7"],
   },
   keyce: {
@@ -110,23 +110,23 @@ const fr = {
   technicalSkills: {
     languages: {
       title: "Spécialisations",
-      content: "TypeScript, .NET C#, Python (sans framework), SQL",
+      content: ".NET C#, TypeScript, Python (sans framework)",
     },
     technologies: {
       title: "Technologies",
-      content: "ReactJS, .NET, Node.js, MongoDB, DynamoDB, gRPC",
+      content: "ReactJS, MongoDB, DynamoDB",
     },
     tools: {
-      title: "Outils & Cloud",
+      title: "Outils",
       content: "AWS (S3, SNS, SQS), Docker, Terraform, Jenkins, Jira, Confluence, GitHub, CursorAI",
     },
     methods: {
       title: "Architecture & Méthodes",
-      content: "Agile, TDD (Test-Driven Development), Spec-driven development, Event-driven, Micro-services, Sécurité & Optimisation",
+      content: "Agile, TDD (Test-Driven Development), Spec-driven development, Event-driven, Micro-services",
     },
     ai_productivity: {
       title: "IA & Productivité",
-      content: "Catalyseur d'apprentissage & productivité (fondations pré-IA), Code responsable (zéro push non-maîtrisé)",
+      content: "Appris à coder avant l'IA, Utilisation de celle ci de manière Maïeutique, Pas de push non-maitrisé.",
     },
   },
 

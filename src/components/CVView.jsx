@@ -1,12 +1,11 @@
 import { useState, useCallback } from "react";
 import { useLang } from "../i18n/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { Download, MapPin, Mail, Github, Phone, ExternalLink, Sun, Moon } from "lucide-react";
+import { Download, MapPin, Mail, Github, Phone, ExternalLink } from "lucide-react";
 import { careerData, projectData, educationData } from "../data/timelineData";
 
 export default function CVView() {
   const { t, lang } = useLang();
-  const [showExportMenu, setShowExportMenu] = useState(false);
 
   const handleExport = useCallback((theme) => {
     /* Temporarily apply theme for print */
@@ -24,7 +23,6 @@ export default function CVView() {
       if (root) root.setAttribute("data-theme", original || "dark");
       document.body.classList.remove(`print-theme-${theme}`);
       document.documentElement.classList.remove(`print-theme-${theme}`);
-      setShowExportMenu(false);
     }, 100);
   }, []);
 
@@ -38,34 +36,13 @@ export default function CVView() {
       <div className="cv-export-wrapper no-print">
         <motion.button
           className="cv-export-btn"
-          onClick={() => setShowExportMenu((p) => !p)}
+          onClick={() => handleExport("light")}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.96 }}
         >
           <Download size={16} />
           {lang === "fr" ? "Exporter en PDF" : "Export to PDF"}
         </motion.button>
-
-        <AnimatePresence>
-          {showExportMenu && (
-            <motion.div
-              className="cv-export-menu"
-              initial={{ opacity: 0, y: 8, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 8, scale: 0.95 }}
-              transition={{ duration: 0.15 }}
-            >
-              <button className="cv-export-option" onClick={() => handleExport("light")}>
-                <Sun size={14} />
-                {lang === "fr" ? "Thème clair" : "Light theme"}
-              </button>
-              <button className="cv-export-option" onClick={() => handleExport("dark")}>
-                <Moon size={14} />
-                {lang === "fr" ? "Thème sombre" : "Dark theme"}
-              </button>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
 
       <div className="cv-page">
