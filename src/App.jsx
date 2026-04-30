@@ -5,10 +5,9 @@ import ContentView from "./components/ContentView";
 import CVView from "./components/CVView";
 import ThemeToggle from "./components/ThemeToggle";
 import LangToggle from "./components/LangToggle";
+import DebugPanel from "./components/DebugPanel";
 import { LanguageProvider, useLang } from "./i18n/LanguageContext";
 import timelineData, { careerData, projectData, educationData } from "./data/timelineData";
-import "./styles/theme.css";
-import "./App.css";
 
 function PortfolioApp() {
   const { t } = useLang();
@@ -17,15 +16,16 @@ function PortfolioApp() {
   const [isGlitching, setIsGlitching] = useState(false);
   const triggerGlitch = useCallback(() => {
     setIsGlitching(true);
-    setTimeout(() => setIsGlitching(false), 200);
+    setTimeout(() => setIsGlitching(false), 300);
   }, []);
 
   /* ─── Theme ─── */
-  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "sunset");
+  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "dark");
   const toggleTheme = useCallback(() => {
     triggerGlitch();
+    // In Cyberpunk mode, we only have one dark theme, but keeping logic for compatibility
     setTheme((prev) => {
-      const next = prev === "sunset" ? "light" : "sunset";
+      const next = prev === "dark" ? "light" : "dark";
       localStorage.setItem("theme", next);
       return next;
     });
@@ -34,7 +34,6 @@ function PortfolioApp() {
   /* ─── Track toggle (career / project / cv) ─── */
   const [activeTrack, setActiveTrack] = useState("cv");
 
-  /* ─── Selected item ─── */
   /* ─── Selected items persistence per track ─── */
   const [trackSelections, setTrackSelections] = useState({
     career: careerData[careerData.length - 1]?.id,
@@ -62,48 +61,14 @@ function PortfolioApp() {
       if (newIndex === currentIndex) return;
       if (jumpIntervalRef.current) clearInterval(jumpIntervalRef.current);
 
-      // Save for persistence
       setTrackSelections(prev => ({ ...prev, [activeTrack]: id }));
 
       const stepDirection = newIndex > currentIndex ? 1 : -1;
       setDirection(stepDirection);
 
-      // If it's a direct neighbor, just jump
-      if (Math.abs(newIndex - currentIndex) === 1) {
-        prevIndexRef.current = newIndex;
-        setSelectedId(id);
-        return;
-      }
-
-      // Sequential jump through indices
-      let tempIndex = currentIndex;
-      
-      const nextStep = () => {
-        tempIndex += stepDirection;
-        
-        // Safety check
-        if (tempIndex < 0 || tempIndex >= items.length) {
-          if (jumpIntervalRef.current) clearInterval(jumpIntervalRef.current);
-          jumpIntervalRef.current = null;
-          return;
-        }
-
-        setSelectedId(items[tempIndex].id);
-        prevIndexRef.current = tempIndex;
-
-        if (tempIndex === newIndex) {
-          if (jumpIntervalRef.current) clearInterval(jumpIntervalRef.current);
-          jumpIntervalRef.current = null;
-        }
-      };
-
-      // Start immediately
-      nextStep();
-
-      // Continue with interval if not finished
-      if (tempIndex !== newIndex) {
-        jumpIntervalRef.current = setInterval(nextStep, 150); // 150ms for a more dynamic feel
-      }
+      // Direct jump to avoid AnimatePresence queue getting stuck from rapid key changes
+      prevIndexRef.current = newIndex;
+      setSelectedId(id);
     },
     [activeTrack]
   );
@@ -133,35 +98,42 @@ function PortfolioApp() {
         prevIndexRef.current = targetIndex >= 0 ? targetIndex : items.length - 1;
       }
     },
-    [activeTrack]
+    [activeTrack, trackSelections, triggerGlitch]
   );
 
   const selectedItem = timelineData.find((d) => d.id === selectedId);
   const showCV = activeTrack === "cv";
 
   return (
-    <div className="portfolio" data-theme={theme} data-glitching={isGlitching}>
-      {/* Ambient gradient background */}
-      <div className="portfolio__ambient" />
-      <div className="portfolio__texture" />
-
+    <>
+    <div 
+      className={`relative flex flex-col min-h-screen bg-background text-foreground cyber-grid-bg ${isGlitching ? 'animate-glitch' : ''}`}
+      data-theme="dark"
+    >
+      <div className="scanline-overlay" />
 
       {/* Header */}
-      <header className="portfolio__header no-print">
-        <div className="portfolio__brand">
-          <h1 className="portfolio__name">
-            Victor <span className="portfolio__name--accent">Grabowski</span>
+      <header className="relative z-10 flex flex-col md:flex-row items-center justify-between px-6 py-4 border-b-2 border-border bg-card cyber-chamfer-sm no-print">
+        <div className="flex flex-col md:flex-row items-baseline gap-2 md:gap-4 mb-4 md:mb-0">
+          <h1 
+            className="text-2xl md:text-3xl font-display font-black uppercase tracking-[0.2em] cyber-glitch text-foreground"
+            data-text="VICTOR GRABOWSKI"
+          >
+            VICTOR <span className="text-accent drop-shadow-glow">GRABOWSKI</span>
           </h1>
-          <p className="portfolio__tagline">{t.tagline}</p>
+          <p className="text-xs font-mono text-accent-tertiary uppercase tracking-widest flex items-center">
+            <span className="mr-2 text-accent">{'>'}</span>{t.tagline}
+            <span className="inline-block w-2 h-4 ml-1 bg-accent animate-blink"></span>
+          </p>
         </div>
-        <div className="portfolio__controls">
+        <div className="flex items-center gap-4">
           <LangToggle />
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
         </div>
       </header>
 
       {/* Main */}
-      <main className="portfolio__main">
+      <main className="relative z-10 flex-1 flex flex-col overflow-hidden">
         <LayoutGroup>
           <Timeline
             data={timelineData}
@@ -179,11 +151,15 @@ function PortfolioApp() {
       </main>
 
       {/* Footer */}
-      <footer className="portfolio__footer no-print">
-        <p>{t.footer(new Date().getFullYear())}</p>
+      <footer className="relative z-10 text-center px-6 py-4 text-xs font-mono text-mutedForeground border-t border-border bg-card uppercase tracking-widest no-print">
+        <p className="flex items-center justify-center gap-2">
+          <span className="text-accent">{'>'}</span> {t.footer(new Date().getFullYear())}
+        </p>
       </footer>
 
     </div>
+      <DebugPanel />
+    </>
   );
 }
 

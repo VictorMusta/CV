@@ -1,46 +1,114 @@
-/* ============================================
-   GLOBAL RESET & BASE STYLES
-   ============================================ */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap");
 
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 10 10 15; /* #0a0a0f */
+    --foreground: 224 224 224; /* #e0e0e0 */
+    --card: 18 18 26; /* #12121a */
+    --muted: 28 28 46; /* #1c1c2e */
+    --mutedForeground: 107 114 128; /* #6b7280 */
+    --accent: 0 255 136; /* #00ff88 */
+    --accentSecondary: 255 0 255; /* #ff00ff */
+    --accentTertiary: 0 212 255; /* #00d4ff */
+    --border: 42 42 58; /* #2a2a3a */
+    --input: 18 18 26; /* #12121a */
+    --ring: 0 255 136; /* #00ff88 */
+    --destructive: 255 51 102; /* #ff3366 */
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono leading-relaxed overflow-x-hidden;
+  }
+
+  ::selection {
+    @apply bg-accent text-background;
+  }
 }
 
-html {
-  font-size: 18px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
+@layer utilities {
+  .cyber-chamfer {
+    clip-path: polygon(
+      0 10px, 10px 0,
+      calc(100% - 10px) 0, 100% 10px,
+      100% calc(100% - 10px), calc(100% - 10px) 100%,
+      10px 100%, 0 calc(100% - 10px)
+    );
+  }
 
-body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
+  .cyber-chamfer-sm {
+    clip-path: polygon(
+      0 5px, 5px 0,
+      calc(100% - 5px) 0, 100% 5px,
+      100% calc(100% - 5px), calc(100% - 5px) 100%,
+      5px 100%, 0 calc(100% - 5px)
+    );
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  .cyber-glitch {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .cyber-glitch::before,
+  .cyber-glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+  }
 
-button {
-  font-family: inherit;
-}
+  .cyber-glitch::before {
+    left: 2px;
+    text-shadow: -1px 0 rgb(var(--accentSecondary));
+    animation: glitch 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%);
+  }
 
-img {
-  max-width: 100%;
-  display: block;
-}
+  .cyber-glitch::after {
+    left: -2px;
+    text-shadow: -1px 0 rgb(var(--accentTertiary));
+    animation: glitch 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite reverse;
+    clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0 100%);
+  }
 
-::selection {
-  background: var(--accent);
-  color: #fff;
+  .scanline-overlay::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.3) 2px,
+      rgba(0, 0, 0, 0.3) 4px
+    );
+    pointer-events: none;
+    z-index: 50;
+  }
+  
+  .cyber-grid-bg {
+    background-image:
+      linear-gradient(rgb(var(--accent) / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--accent) / 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
 }

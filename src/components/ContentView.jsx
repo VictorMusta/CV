@@ -1,91 +1,30 @@
-import { useState as useImageState } from "react";
+
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, ImageOff, MapPin } from "lucide-react";
+import { ExternalLink, MapPin } from "lucide-react";
 import { useLang } from "../i18n/LanguageContext";
 
 const variants = {
   enter: (direction) => ({
-    x: direction > 0 ? -40 : 40,
+    x: direction > 0 ? -20 : 20,
     opacity: 0,
-    filter: "blur(8px) brightness(1.2)",
-    skewX: "4deg",
+    filter: "brightness(1.5)",
+    skewX: "2deg",
   }),
   center: {
     x: 0,
     opacity: 1,
-    filter: ["blur(2px)", "blur(0px)"],
-    skewX: ["-1deg", "0deg"],
+    filter: "brightness(1)",
+    skewX: "0deg",
     transition: { 
-      duration: 0.1, // Ultra snappy entry
+      duration: 0.15,
       ease: "easeOut"
     }
   },
   exit: (direction) => ({
-    x: direction < 0 ? -30 : 30,
+    x: direction < 0 ? -20 : 20,
     opacity: 0,
-    filter: "blur(2px)",
-    transition: { duration: 0.05 } // Near-instant exit
+    transition: { duration: 0.1 }
   }),
-};
-
-const ItemImage = ({ item, color, hintLabel }) => {
-  const [hasError, setHasError] = useImageState(false);
-  const [loaded, setLoaded] = useImageState(false);
-  const [currentIndex, setCurrentIndex] = useImageState(0);
-
-  const images = item.screenshots || (item.image ? [item.image] : []);
-  const src = images[currentIndex];
-
-  const resolvedSrc = (src && src.startsWith("/") && !src.startsWith("//") && !src.startsWith("http"))
-    ? `${import.meta.env.BASE_URL}${src.slice(1)}`
-    : src;
-
-  if (!src || hasError) {
-    return (
-      <div className="content-card__image content-card__image--placeholder" style={{ background: `${color}12` }}>
-        <ImageOff size={32} strokeWidth={1.2} color={color} style={{ opacity: 0.4 }} />
-        <span className="content-card__image-hint">{hintLabel} /public{src || "/images/..."}</span>
-      </div>
-    );
-  }
-
-  return (
-    <div className="content-card__image">
-      {!loaded && (
-        <div className="content-card__image-skeleton" style={{ background: `${color}08` }} />
-      )}
-      <AnimatePresence mode="wait">
-        <motion.img
-          key={currentIndex}
-          src={resolvedSrc}
-          alt={`${item.title} screen ${currentIndex + 1}`}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          onError={() => setHasError(true)}
-          onLoad={() => setLoaded(true)}
-          style={{ 
-            opacity: loaded ? 1 : 0,
-            objectPosition: item.imagePosition || "center"
-          }}
-        />
-      </AnimatePresence>
-
-      {images.length > 1 && (
-        <div className="content-card__gallery-nav">
-          {images.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentIndex(i)}
-              className={`content-card__gallery-dot ${i === currentIndex ? "active" : ""}`}
-              style={{ "--dot-color": color }}
-            />
-          ))}
-        </div>
-      )}
-    </div>
-  );
 };
 
 export default function ContentView({ item, direction }) {
@@ -103,46 +42,50 @@ export default function ContentView({ item, direction }) {
   const highlights = tr.highlights || [];
 
   return (
-    <div className="content-view" role="tabpanel">
+    <div className="flex-1 flex flex-col items-center justify-start p-6 md:p-12 overflow-y-auto [&::-webkit-scrollbar]:hidden" role="tabpanel">
       <AnimatePresence mode="wait" custom={direction}>
         <motion.article
           key={item.id}
-          className="content-card"
+          className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-[260px_1fr] gap-8 md:gap-12 p-6 md:p-10 bg-card/80 border border-border cyber-chamfer backdrop-blur-sm shadow-[0_0_20px_rgba(0,0,0,0.8)]"
           custom={direction}
           variants={variants}
           initial="enter"
           animate="center"
           exit="exit"
-          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          style={{ "--card-accent": item.color }}
         >
 
           {/* Left column — meta */}
-          <div className="content-card__meta">
-            <div className="content-card__icon-wrap" style={{ background: `${item.color}18` }}>
-              <Icon size={28} strokeWidth={1.6} color={item.color} />
+          <div className="flex flex-col gap-4">
+            <div 
+              className="w-16 h-16 grid place-items-center cyber-chamfer-sm border border-border bg-background" 
+              style={{ borderColor: item.color, boxShadow: `0 0 10px ${item.color}40` }}
+            >
+              <Icon size={32} strokeWidth={1.2} color={item.color} />
             </div>
 
-            <h2 className="content-card__title">{title}</h2>
-            <p className="content-card__role">{role}</p>
-            <div className="content-card__year-loc">
-              <span className="content-card__year">{item.year}</span>
+            <div className="mt-2">
+              <h2 className="text-xl font-display font-bold uppercase tracking-widest leading-tight">{title}</h2>
+              <p className="text-sm font-mono mt-1" style={{ color: item.color }}>{role}</p>
+            </div>
+
+            <div className="flex flex-col gap-2 mt-2">
+              <span className="text-xs font-mono text-mutedForeground uppercase tracking-widest">{item.year}</span>
               {item.location && (
-                <span className="content-card__location">
-                  <MapPin size={12} /> {item.location}
+                <span className="flex items-center gap-2 text-xs font-mono text-mutedForeground">
+                  <MapPin size={12} className="text-accent" /> {item.location}
                 </span>
               )}
             </div>
 
-            <div className="content-card__links">
+            <div className="flex flex-col gap-3 mt-4">
               {item.github && (
                 <a
                   href={item.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="content-card__link"
+                  className="inline-flex items-center gap-2 px-4 py-2 border border-border bg-background text-xs font-mono uppercase tracking-widest text-mutedForeground hover:border-accent hover:text-accent hover:drop-shadow-glow transition-all cyber-chamfer-sm group w-fit"
                 >
-                  <ExternalLink size={14} />
+                  <ExternalLink size={14} className="group-hover:text-accent" />
                   {t.viewOnGithub}
                 </a>
               )}
@@ -151,8 +94,18 @@ export default function ContentView({ item, direction }) {
                   href={item.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="content-card__link demo"
-                  style={{ "--link-color": item.color }}
+                  className="inline-flex items-center gap-2 px-4 py-2 border bg-accent/10 text-xs font-mono uppercase tracking-widest transition-all cyber-chamfer-sm w-fit"
+                  style={{ borderColor: item.color, color: item.color, boxShadow: `0 0 10px ${item.color}20` }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.backgroundColor = item.color;
+                    e.currentTarget.style.color = '#000';
+                    e.currentTarget.style.boxShadow = `0 0 20px ${item.color}80`;
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.backgroundColor = `${item.color}1A`;
+                    e.currentTarget.style.color = item.color;
+                    e.currentTarget.style.boxShadow = `0 0 10px ${item.color}20`;
+                  }}
                 >
                   <ExternalLink size={14} />
                   {t.liveDemo}
@@ -163,8 +116,7 @@ export default function ContentView({ item, direction }) {
                   href={item.benchmark}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="content-card__link demo"
-                  style={{ "--link-color": "#10B981" }}
+                  className="inline-flex items-center gap-2 px-4 py-2 border border-accent bg-accent/10 text-accent text-xs font-mono uppercase tracking-widest hover:bg-accent hover:text-background hover:drop-shadow-glow transition-all cyber-chamfer-sm w-fit"
                 >
                   <ExternalLink size={14} />
                   {t.viewBenchmark}
@@ -174,20 +126,24 @@ export default function ContentView({ item, direction }) {
           </div>
 
           {/* Right column — details */}
-          <div className="content-card__body">
-            <p className="content-card__desc">{description}</p>
+          <div className="flex flex-col gap-6 md:col-start-2">
+            <p className="text-sm md:text-base text-foreground/90 font-mono leading-relaxed bg-background/50 p-4 border-l-2 border-accent">
+              <span className="text-accent font-bold mr-2">{'>'}</span>{description}
+            </p>
 
             {highlights.length > 0 && (
-              <div className="content-card__section">
-                <h4 className="content-card__section-title">{t.keyFeatures}</h4>
-                <ul className="content-card__highlights">
+              <div className="mt-2">
+                <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-mutedForeground mb-4">{t.keyFeatures}</h4>
+                <ul className="flex flex-col gap-3">
                   {highlights.map((h, i) => (
                     <motion.li
                       key={i}
+                      className="relative pl-6 text-sm font-mono text-foreground/80 leading-relaxed"
                       initial={{ opacity: 0, x: 12 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.15 + i * 0.05 }}
                     >
+                      <span className="absolute left-0 top-[0.4rem] w-2 h-2 border border-accent bg-accent/20 rotate-45" style={{ borderColor: item.color, backgroundColor: `${item.color}40` }}></span>
                       {h}
                     </motion.li>
                   ))}
@@ -196,9 +152,9 @@ export default function ContentView({ item, direction }) {
             )}
 
             {item.stack?.length > 0 && (
-              <div className="content-card__stack">
+              <div className="flex flex-wrap gap-2 mt-auto pt-6">
                 {item.stack.map((tech) => (
-                  <span key={tech} className="content-card__tag">
+                  <span key={tech} className="px-3 py-1 bg-muted/50 border border-border text-xs font-mono uppercase tracking-wider text-mutedForeground cyber-chamfer-sm">
                     {tech}
                   </span>
                 ))}
@@ -208,7 +164,7 @@ export default function ContentView({ item, direction }) {
 
           {/* Mosaic — Image collection */}
           {(item.screenshots?.length > 0 || item.image) && (
-            <div className="content-card__mosaic">
+            <div className="md:col-span-2 flex flex-col gap-6 mt-8">
               {(item.screenshots || [item.image]).map((src, i) => {
                 const resolvedSrc = (src && src.startsWith("/") && !src.startsWith("//") && !src.startsWith("http"))
                   ? `${import.meta.env.BASE_URL}${src.slice(1)}`
@@ -217,7 +173,7 @@ export default function ContentView({ item, direction }) {
                 return (
                   <motion.div 
                     key={i}
-                    className="content-card__mosaic-item"
+                    className="w-full overflow-hidden border border-border bg-background cyber-chamfer"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -227,6 +183,7 @@ export default function ContentView({ item, direction }) {
                       src={resolvedSrc} 
                       alt={`${title} screenshot ${i + 1}`} 
                       loading="lazy"
+                      className="w-full h-auto opacity-80 hover:opacity-100 transition-opacity"
                     />
                   </motion.div>
                 );

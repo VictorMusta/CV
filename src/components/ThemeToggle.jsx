@@ -3,20 +3,20 @@ import { Sunset, Moon, Sun } from "lucide-react";
 
 export default function ThemeToggle({ theme, onToggle }) {
   const getNextTheme = () => {
-    return theme === "sunset" ? "light" : "sunset";
+    return theme === "dark" ? "light" : "dark";
   };
 
   const renderIcon = () => {
-    if (theme === "sunset") return <Sunset size={18} strokeWidth={1.8} />;
-    return <Sun size={18} strokeWidth={1.8} />;
+    if (theme === "dark") return <Moon size={16} strokeWidth={1.8} />;
+    return <Sun size={16} strokeWidth={1.8} />;
   };
 
   return (
     <motion.button
-      className="theme-toggle"
+      className="flex items-center justify-center w-10 h-10 border border-border bg-background text-mutedForeground hover:border-accent hover:text-accent cyber-chamfer-sm transition-all shadow-[0_0_10px_rgba(0,0,0,0.5)] hover:shadow-[0_0_10px_#00ff8840]"
       onClick={onToggle}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
       aria-label={`Switch to ${getNextTheme()} mode`}
       title={`Switch to ${getNextTheme()} mode`}
     >
