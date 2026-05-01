@@ -25,10 +25,11 @@ jobs:
           node-version: 20
           cache: npm
 
+      - run: rm -f package-lock.json
       - run: npm install
         env:
           NODE_ENV: development
-      - run: npm run build
+      - run: npx vite build
 
       - uses: actions/upload-pages-artifact@v3
         with:
