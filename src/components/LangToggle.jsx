@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { useLang } from "../i18n/LanguageContext";
 
 const languages = [
-  { code: "fr", label: "FR", flag: "🇫🇷" },
-  { code: "en", label: "EN", flag: "🇺🇸" },
-  { code: "ja", label: "JA", flag: "🇯🇵" },
-  { code: "ko", label: "KO", flag: "🇰🇷" },
+  { code: "fr", label: "FR", flag: "https://flagcdn.com/w40/fr.png" },
+  { code: "en", label: "EN", flag: "https://flagcdn.com/w40/us.png" },
+  { code: "ja", label: "JA", flag: "https://flagcdn.com/w40/jp.png" },
+  { code: "ko", label: "KO", flag: "https://flagcdn.com/w40/kr.png" },
 ];
 
 export default function LangToggle() {
@@ -26,9 +26,13 @@ export default function LangToggle() {
           whileTap={{ scale: 0.95 }}
           title={l.label}
         >
-          <span className="text-sm grayscale group-hover:grayscale-0 transition-all">
-            {l.flag}
-          </span>
+          <img 
+            src={l.flag} 
+            alt={l.label}
+            className={`w-4 h-auto object-contain transition-all ${
+              lang === l.code ? "grayscale-0 opacity-100" : "grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100"
+            }`}
+          />
           <span className="hidden lg:block text-[10px] font-mono font-bold uppercase tracking-widest">
             {l.code}
           </span>

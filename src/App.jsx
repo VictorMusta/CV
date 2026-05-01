@@ -1,15 +1,15 @@
 import { useState, useRef, useCallback, useMemo } from "react";
-import { LayoutGroup, AnimatePresence } from "framer-motion";
+import { LayoutGroup, AnimatePresence, motion } from "framer-motion";
 import Timeline from "./components/Timeline";
 import ContentView from "./components/ContentView";
 import CVView from "./components/CVView";
-import ThemeToggle from "./components/ThemeToggle";
+import ThemeCustomizer from "./components/ThemeCustomizer";
 import LangToggle from "./components/LangToggle";
-import DebugPanel from "./components/DebugPanel";
 import { LanguageProvider, useLang } from "./i18n/LanguageContext";
 import timelineData, { careerData, projectData, educationData } from "./data/timelineData";
 import Lightbox from "./components/Lightbox";
 import { Monitor } from "lucide-react";
+import SystemStatus from "./components/SystemStatus";
 
 function PortfolioApp() {
   const { t } = useLang();
@@ -47,21 +47,13 @@ function PortfolioApp() {
 
   /* ─── Glitch Effect ─── */
   const [isGlitching, setIsGlitching] = useState(false);
+
   const triggerGlitch = useCallback(() => {
     setIsGlitching(true);
     setTimeout(() => setIsGlitching(false), 300);
   }, []);
 
-  /* ─── Theme ─── */
-  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "dark");
-  const toggleTheme = useCallback(() => {
-    triggerGlitch();
-    setTheme((prev) => {
-      const next = prev === "dark" ? "light" : "dark";
-      localStorage.setItem("theme", next);
-      return next;
-    });
-  }, [triggerGlitch]);
+
 
   const handleSelect = useCallback(
     (id) => {
@@ -142,7 +134,7 @@ function PortfolioApp() {
         track: "project"
       }))
     ];
-  }, [t]), [t]);
+  }, []), [t]);
 
   const [lightbox, setLightbox] = useState({ isOpen: false, index: 0 });
 
@@ -178,7 +170,7 @@ function PortfolioApp() {
       {crtEnabled && <div className="scanline-overlay" />}
 
       {/* Header */}
-      <header className="relative z-10 flex flex-col md:flex-row items-center justify-between px-6 py-4 border-b-2 border-border bg-card cyber-chamfer-sm no-print">
+      <header className="relative z-50 flex flex-col md:flex-row items-center justify-between px-6 py-4 border-b-2 border-border bg-card/90 backdrop-blur-md no-print">
         <div className="flex flex-col md:flex-row items-baseline gap-2 md:gap-4 mb-4 md:mb-0">
           <h1 
             className="text-2xl md:text-3xl font-display font-black uppercase tracking-[0.2em] cyber-glitch text-foreground"
@@ -200,7 +192,7 @@ function PortfolioApp() {
             <Monitor size={18} />
           </button>
           <LangToggle />
-          <ThemeToggle theme={theme} onToggle={toggleTheme} />
+          <ThemeCustomizer onThemeChange={triggerGlitch} />
         </div>
       </header>
 
@@ -234,7 +226,7 @@ function PortfolioApp() {
       </footer>
 
     </div>
-      <DebugPanel />
+      <SystemStatus />
 
       <AnimatePresence>
         {lightbox.isOpen && (

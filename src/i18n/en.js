@@ -161,7 +161,7 @@ const en = {
     highlights: [
       "Dynamic seed system: every match is unique, influencing strategic choices (resources, terrain).",
       "Complete gameplay loop: Exploration (farming), Economy (crafting/shop), and Tactical PvP Combat.",
-      "NX Monorepo architecture with NestJS and React.",
+      "Modular monolith architecture via an NX Monorepo with NestJS and React.",
       "Optimized real-time communication via Server-Sent Events (SSE) and synchronized combat state in Redis.",
       "Forge & Crafting System: Polished interface for resource management (Iron, Leather, Crystals) and strategic equipment creation.",
       "Immersive 3D isometric interface powered by React Three Fiber."
