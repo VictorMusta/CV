@@ -133,6 +133,18 @@ const en = {
   },
 
   /* ── Projects ── */
+  moyenax: {
+    role: "Fullstack Developer / Technical Lead",
+    description: "A turn-based strategy game (1v1) for browsers, inspired by the Dofus universe. The project features a high-performance isometric 3D engine and a robust real-time architecture.",
+    highlights: [
+      "Dynamic seed system: every match is unique, influencing strategic choices (resources, terrain).",
+      "Complete gameplay loop: Exploration (farming), Economy (crafting/shop), and Tactical PvP Combat.",
+      "NX Monorepo architecture with NestJS and React.",
+      "Optimized real-time communication via Server-Sent Events (SSE) and synchronized combat state in Redis.",
+      "Forge & Crafting System: Polished interface for resource management (Iron, Leather, Crystals) and strategic equipment creation.",
+      "Immersive 3D isometric interface powered by React Three Fiber."
+    ]
+  },
   tamagotchi: {
     role: "AutoBattler 2D",
     description:

@@ -1,4 +1,3 @@
-
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, MapPin } from "lucide-react";
 import { useLang } from "../i18n/LanguageContext";
@@ -27,7 +26,7 @@ const variants = {
   }),
 };
 
-export default function ContentView({ item, direction }) {
+export default function ContentView({ item, direction, onOpenLightbox }) {
   const { t } = useLang();
 
   if (!item) return null;
@@ -170,8 +169,10 @@ export default function ContentView({ item, direction }) {
                   ? `${import.meta.env.BASE_URL}${src.slice(1)}`
                   : src;
                 
+                const isExpandable = item.type === "project" && src && !src.includes("opengraph.githubassets.com");
+
                 return (
-                  <motion.div 
+                   <motion.div 
                     key={i}
                     className="w-full overflow-hidden border border-border bg-background cyber-chamfer"
                     initial={{ opacity: 0, y: 20 }}
@@ -183,7 +184,8 @@ export default function ContentView({ item, direction }) {
                       src={resolvedSrc} 
                       alt={`${title} screenshot ${i + 1}`} 
                       loading="lazy"
-                      className="w-full h-auto opacity-80 hover:opacity-100 transition-opacity"
+                      className={`w-full h-auto opacity-80 hover:opacity-100 transition-opacity ${isExpandable ? 'cursor-pointer' : 'cursor-default'}`}
+                      onClick={() => isExpandable && onOpenLightbox(src)}
                     />
                   </motion.div>
                 );

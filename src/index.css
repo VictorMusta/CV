@@ -18,6 +18,7 @@
     --input: 18 18 26; /* #12121a */
     --ring: 0 255 136; /* #00ff88 */
     --destructive: 255 51 102; /* #ff3366 */
+    --scanline-color: 0 0 0; /* #000000 */
   }
 
   html {
@@ -98,8 +99,8 @@
       0deg,
       transparent,
       transparent 2px,
-      rgba(0, 0, 0, 0.3) 2px,
-      rgba(0, 0, 0, 0.3) 4px
+      rgb(var(--scanline-color) / 0.3) 2px,
+      rgb(var(--scanline-color) / 0.3) 4px
     );
     pointer-events: none;
     z-index: 50;

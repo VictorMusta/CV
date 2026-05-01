@@ -22,7 +22,8 @@ export default function DebugPanel() {
     '--background': '#0a0a0f',
     '--card': '#12121a',
     '--accent': '#00ff88',
-    '--border': '#2a2a3a'
+    '--border': '#2a2a3a',
+    '--scanline-color': '#000000'
   });
 
   // Read initial CSS variables from document on mount
@@ -41,7 +42,8 @@ export default function DebugPanel() {
       '--background': getHexFromVar('--background') || '#0a0a0f',
       '--card': getHexFromVar('--card') || '#12121a',
       '--accent': getHexFromVar('--accent') || '#00ff88',
-      '--border': getHexFromVar('--border') || '#2a2a3a'
+      '--border': getHexFromVar('--border') || '#2a2a3a',
+      '--scanline-color': getHexFromVar('--scanline-color') || '#000000'
     };
     
     setColors(newColors);

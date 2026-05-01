@@ -153,6 +153,23 @@ const educationData = [
 
 const projectData = [
   {
+    id: "moyenax",
+    type: "project",
+    year: "2026",
+    sortYear: 2026.1,
+    title: "Moyenax (Dofus-Like)",
+    icon: Gamepad2,
+    color: "#EB4B4B",
+    github: "https://github.com/Dofus-Like/Moyenax",
+    screenshots: [
+      "/images/projects/moyenax/combat.png",
+      "/images/projects/moyenax/forge.png",
+    ],
+    stack: ["React", "Three.js", "NestJS", "PostgreSQL", "Redis", "SSE", "NX"],
+    image: "/images/projects/moyenax/combat.png",
+    imageAlt: "Moyenax - Tour-based strategy game",
+  },
+  {
     id: "tamagotchi",
     type: "project",
     year: "2025 – 2026",

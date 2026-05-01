@@ -1,5 +1,5 @@
-import { useState, useRef, useCallback } from "react";
-import { LayoutGroup } from "framer-motion";
+import { useState, useRef, useCallback, useMemo } from "react";
+import { LayoutGroup, AnimatePresence } from "framer-motion";
 import Timeline from "./components/Timeline";
 import ContentView from "./components/ContentView";
 import CVView from "./components/CVView";
@@ -8,28 +8,11 @@ import LangToggle from "./components/LangToggle";
 import DebugPanel from "./components/DebugPanel";
 import { LanguageProvider, useLang } from "./i18n/LanguageContext";
 import timelineData, { careerData, projectData, educationData } from "./data/timelineData";
+import Lightbox from "./components/Lightbox";
+import { Monitor } from "lucide-react";
 
 function PortfolioApp() {
   const { t } = useLang();
-
-  /* ─── Glitch Effect ─── */
-  const [isGlitching, setIsGlitching] = useState(false);
-  const triggerGlitch = useCallback(() => {
-    setIsGlitching(true);
-    setTimeout(() => setIsGlitching(false), 300);
-  }, []);
-
-  /* ─── Theme ─── */
-  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "dark");
-  const toggleTheme = useCallback(() => {
-    triggerGlitch();
-    // In Cyberpunk mode, we only have one dark theme, but keeping logic for compatibility
-    setTheme((prev) => {
-      const next = prev === "dark" ? "light" : "dark";
-      localStorage.setItem("theme", next);
-      return next;
-    });
-  }, [triggerGlitch]);
 
   /* ─── Track toggle (career / project / cv) ─── */
   const [activeTrack, setActiveTrack] = useState("cv");
@@ -45,8 +28,40 @@ function PortfolioApp() {
   const prevIndexRef = useRef(careerData.length - 1);
   const [direction, setDirection] = useState(0);
 
+  /* ─── CRT Filter State ─── */
+  const [crtEnabled, setCrtEnabled] = useState(() => {
+    const saved = localStorage.getItem("crtEnabled");
+    return saved !== null ? JSON.parse(saved) : true;
+  });
+
+  const toggleCrt = useCallback(() => {
+    setCrtEnabled(prev => {
+      const next = !prev;
+      localStorage.setItem("crtEnabled", JSON.stringify(next));
+      return next;
+    });
+  }, []);
+
   /* Sequential Jump Logic */
   const jumpIntervalRef = useRef(null);
+
+  /* ─── Glitch Effect ─── */
+  const [isGlitching, setIsGlitching] = useState(false);
+  const triggerGlitch = useCallback(() => {
+    setIsGlitching(true);
+    setTimeout(() => setIsGlitching(false), 300);
+  }, []);
+
+  /* ─── Theme ─── */
+  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "dark");
+  const toggleTheme = useCallback(() => {
+    triggerGlitch();
+    setTheme((prev) => {
+      const next = prev === "dark" ? "light" : "dark";
+      localStorage.setItem("theme", next);
+      return next;
+    });
+  }, [triggerGlitch]);
 
   const handleSelect = useCallback(
     (id) => {
@@ -101,6 +116,56 @@ function PortfolioApp() {
     [activeTrack, trackSelections, triggerGlitch]
   );
 
+  // Flatten all images from projects for global carousel, filtering out uninteresting ones
+  const allImages = useMemo(() => timelineData.reduce((acc, item) => {
+    // Only include projects per user request
+    if (item.type !== "project") return acc;
+
+    const title = t[item.id]?.title || item.title;
+    const itemImages = item.screenshots || (item.image ? [item.image] : []);
+    
+    // Filter out generic github previews
+    const filteredImages = itemImages.filter(src => {
+      if (!src) return false;
+      if (src.includes("opengraph.githubassets.com")) return false;
+      return true;
+    });
+
+    if (filteredImages.length === 0) return acc;
+
+    return [
+      ...acc,
+      ...filteredImages.map(src => ({
+        src,
+        projectId: item.id,
+        projectTitle: title,
+        track: "project"
+      }))
+    ];
+  }, [t]), [t]);
+
+  const [lightbox, setLightbox] = useState({ isOpen: false, index: 0 });
+
+  const openLightbox = useCallback((src) => {
+    const index = allImages.findIndex(img => img.src === src);
+    if (index !== -1) {
+      setLightbox({ isOpen: true, index });
+    }
+  }, [allImages]);
+
+  const closeLightbox = useCallback(() => {
+    const currentImg = allImages[lightbox.index];
+    if (currentImg) {
+      if (currentImg.track !== activeTrack) {
+        handleTrackChange(currentImg.track);
+      }
+      if (currentImg.projectId !== selectedId) {
+        handleSelect(currentImg.projectId);
+      }
+    }
+    setLightbox(prev => ({ ...prev, isOpen: false }));
+  }, [allImages, lightbox.index, selectedId, activeTrack, handleSelect, handleTrackChange]);
+
   const selectedItem = timelineData.find((d) => d.id === selectedId);
   const showCV = activeTrack === "cv";
 
@@ -110,7 +175,7 @@ function PortfolioApp() {
       className={`relative flex flex-col min-h-screen bg-background text-foreground cyber-grid-bg ${isGlitching ? 'animate-glitch' : ''}`}
       data-theme="dark"
     >
-      <div className="scanline-overlay" />
+      {crtEnabled && <div className="scanline-overlay" />}
 
       {/* Header */}
       <header className="relative z-10 flex flex-col md:flex-row items-center justify-between px-6 py-4 border-b-2 border-border bg-card cyber-chamfer-sm no-print">
@@ -127,6 +192,13 @@ function PortfolioApp() {
           </p>
         </div>
         <div className="flex items-center gap-4">
+          <button
+            onClick={toggleCrt}
+            className={`flex items-center justify-center w-10 h-10 border transition-all cyber-chamfer-sm ${crtEnabled ? 'border-accent text-accent bg-accent/10 shadow-[0_0_10px_#00ff8840]' : 'border-border text-mutedForeground hover:border-accent hover:text-accent'}`}
+            title={crtEnabled ? "Disable CRT Effect" : "Enable CRT Effect"}
+          >
+            <Monitor size={18} />
+          </button>
           <LangToggle />
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
         </div>
@@ -145,7 +217,11 @@ function PortfolioApp() {
           {showCV ? (
             <CVView />
           ) : (
-            <ContentView item={selectedItem} direction={direction} />
+            <ContentView 
+              item={selectedItem} 
+              direction={direction} 
+              onOpenLightbox={openLightbox} 
+            />
           )}
         </LayoutGroup>
       </main>
@@ -159,6 +235,18 @@ function PortfolioApp() {
 
     </div>
       <DebugPanel />
+
+      <AnimatePresence>
+        {lightbox.isOpen && (
+          <Lightbox 
+            images={allImages}
+            currentIndex={lightbox.index}
+            onClose={closeLightbox}
+            onNext={() => setLightbox(prev => ({ ...prev, index: (prev.index + 1) % allImages.length }))}
+            onPrev={() => setLightbox(prev => ({ ...prev, index: (prev.index - 1 + allImages.length) % allImages.length }))}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 }
