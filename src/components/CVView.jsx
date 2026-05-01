@@ -5,7 +5,7 @@ import { Download, MapPin, Mail, Github, Phone, ExternalLink } from "lucide-reac
 import { careerData, projectData, educationData } from "../data/timelineData";
 
 export default function CVView() {
-  const { t, lang } = useLang();
+  const { t } = useLang();
 
   const handleExport = useCallback((theme) => {
     /* Temporarily apply theme for print */
@@ -41,7 +41,7 @@ export default function CVView() {
           whileTap={{ scale: 0.95 }}
         >
           <Download size={16} />
-          {lang === "fr" ? "Exporter en PDF" : "Export to PDF"}
+          {t.common.exportPdf}
         </motion.button>
       </div>
 
@@ -55,7 +55,7 @@ export default function CVView() {
             </p>
           </div>
           <div className="flex flex-col gap-2 text-xs text-mutedForeground uppercase tracking-wider">
-            <span className="flex items-center gap-2"><MapPin size={13} className="text-accent" /> Bordeaux, France</span>
+            <span className="flex items-center gap-2"><MapPin size={13} className="text-accent" /> {t.cv.contact.location}</span>
             <a href="mailto:victorgrabowski33@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors"><Mail size={13} className="text-accent" /> victorgrabowski33@gmail.com</a>
             <a href="tel:+33767302293" className="flex items-center gap-2 hover:text-accent transition-colors"><Phone size={13} className="text-accent" /> 07 67 30 22 93</a>
             <a href="https://github.com/VictorMusta" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors"><Github size={13} className="text-accent" /> github.com/VictorMusta</a>
@@ -68,7 +68,7 @@ export default function CVView() {
         <section className="mb-12">
           <h2 className="text-xl font-display font-bold text-accent uppercase tracking-widest mb-8 flex items-center gap-3">
             <span className="w-8 h-[2px] bg-accent"></span>
-            {lang === "fr" ? "Expériences Professionnelles" : "Professional Experience"}
+            {t.cv.professionalExperience}
           </h2>
 
           <div className="flex flex-col gap-10">
@@ -77,6 +77,8 @@ export default function CVView() {
               .map((item) => {
                 const tr = t[item.id] || {};
                 const title = item.title;
+                const displayYear = item.year.replace("Présent", t.common.present).replace("Present", t.common.present);
+
                 return (
                   <article key={item.id} className="relative pl-6 border-l border-border">
                     <span className="absolute left-[-5px] top-1 w-2 h-2 border border-accent bg-background rotate-45" />
@@ -87,7 +89,7 @@ export default function CVView() {
                         <p className="text-sm text-accent-tertiary mt-1">{tr.role}</p>
                       </div>
                       <div className="flex flex-col md:items-end text-xs text-mutedForeground tracking-widest uppercase">
-                        <span>{item.year}</span>
+                        <span>{displayYear}</span>
                         <span>{item.location}</span>
                       </div>
                     </div>
@@ -126,7 +128,7 @@ export default function CVView() {
         <section className="mb-12">
           <h2 className="text-xl font-display font-bold text-accent uppercase tracking-widest mb-8 flex items-center gap-3">
             <span className="w-8 h-[2px] bg-accent"></span>
-            {lang === "fr" ? "Projets Personnels" : "Side Projects"}
+            {t.cv.sideProjects}
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 print-hidden">
@@ -150,7 +152,7 @@ export default function CVView() {
                     </div>
                     {item.github && (
                       <a href={item.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-mutedForeground hover:text-accent transition-colors no-print">
-                        <ExternalLink size={12} /> GitHub
+                        <ExternalLink size={12} /> {t.common.github}
                       </a>
                     )}
                   </article>
@@ -159,9 +161,9 @@ export default function CVView() {
           </div>
           {/* Simple Projects for Print */}
           <div className="hidden print-only text-xs">
-            <p><strong>Projets :</strong> AutoBattler 2D, Realtime Earnings, AI Content Remover, Platformer 2D.</p>
+            <p><strong>{t.trackProjects} :</strong> AutoBattler 2D, Realtime Earnings, AI Content Remover, Platformer 2D.</p>
             <a href="https://github.com/VictorMusta" className="flex items-center gap-2 mt-2">
-              <Github size={12} /> Voir plus sur github.com/VictorMusta
+              <Github size={12} /> {t.common.viewMore} github.com/VictorMusta
             </a>
           </div>
         </section>
@@ -172,7 +174,7 @@ export default function CVView() {
         <section className="mb-12">
           <h2 className="text-xl font-display font-bold text-accent uppercase tracking-widest mb-8 flex items-center gap-3">
             <span className="w-8 h-[2px] bg-accent"></span>
-            {lang === "fr" ? "Compétences Techniques" : "Technical Skills"}
+            {t.cv.technicalSkills}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {Object.entries(t.technicalSkills || {}).map(([key, skill]) => (
@@ -192,7 +194,7 @@ export default function CVView() {
         <section>
           <h2 className="text-xl font-display font-bold text-accent uppercase tracking-widest mb-8 flex items-center gap-3">
             <span className="w-8 h-[2px] bg-accent"></span>
-            {lang === "fr" ? "Formation" : "Education"}
+            {t.cv.education}
           </h2>
           <div className="flex flex-col gap-8">
             {[...educationData]
@@ -200,6 +202,8 @@ export default function CVView() {
               .filter((item) => item.id !== "bacpro") // Stops at Gustave Eiffel
               .map((item) => {
                 const tr = t[item.id] || {};
+                const displayYear = item.year.replace("Présent", t.common.present).replace("Present", t.common.present);
+
                 return (
                   <article key={item.id} className="relative pl-6 border-l border-border">
                     <span className="absolute left-[-5px] top-1 w-2 h-2 border border-accent bg-background rotate-45" />
@@ -210,7 +214,7 @@ export default function CVView() {
                         <p className="text-xs text-accent mt-1">{tr.role}</p>
                       </div>
                       <div className="flex flex-col md:items-end text-xs text-mutedForeground tracking-widest uppercase">
-                        <span>{item.year}</span>
+                        <span>{displayYear}</span>
                         <span>{item.location}</span>
                       </div>
                     </div>

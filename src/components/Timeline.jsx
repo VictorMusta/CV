@@ -109,7 +109,9 @@ export default function Timeline({ data, selectedId, onSelect, activeTrack, onTr
                 {/* Label */}
                 <span className="flex flex-col text-center mt-auto">
                   <span className="font-mono text-xs font-bold uppercase tracking-widest">{title}</span>
-                  <span className="font-mono text-[10px] uppercase text-mutedForeground mt-1">{item.year}</span>
+                  <span className="font-mono text-[10px] uppercase text-mutedForeground mt-1">
+                    {item.year.replace("Present", t.common.present)}
+                  </span>
                 </span>
               </motion.button>
             );

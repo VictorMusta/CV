@@ -10,6 +10,28 @@ const en = {
   keyFeatures: "Key Features",
   addImage: "Add image to",
   footer: (year) => `© ${year} Victor Grabowski — Built with React & Framer Motion`,
+  common: {
+    present: "Present",
+    location: "Location",
+    viewMore: "View more on",
+    exportPdf: "Export to PDF",
+    github: "GitHub",
+    cities: {
+      bordeaux: "Bordeaux",
+      merignac: "Mérignac",
+      montpellier: "Montpellier",
+      lormont: "Lormont",
+    }
+  },
+  cv: {
+    professionalExperience: "Professional Experience",
+    sideProjects: "Side Projects",
+    technicalSkills: "Technical Skills",
+    education: "Education",
+    contact: {
+      location: "Bordeaux, France",
+    }
+  },
 
   /* ── Career ── */
   betclic: {

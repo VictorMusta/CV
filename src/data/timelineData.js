@@ -27,7 +27,7 @@ const careerData = [
   {
     id: "betclic",
     type: "career",
-    year: "2024 – Présent",
+    year: "2024 – Present",
     sortYear: 2024.9,
     title: "Betclic",
     location: "Bordeaux",

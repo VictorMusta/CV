@@ -68,10 +68,13 @@ export default function ContentView({ item, direction, onOpenLightbox }) {
             </div>
 
             <div className="flex flex-col gap-2 mt-2">
-              <span className="text-xs font-mono text-mutedForeground uppercase tracking-widest">{item.year}</span>
+              <span className="text-xs font-mono text-mutedForeground uppercase tracking-widest">
+                {item.year.replace("Present", t.common.present)}
+              </span>
               {item.location && (
                 <span className="flex items-center gap-2 text-xs font-mono text-mutedForeground">
-                  <MapPin size={12} className="text-accent" /> {item.location}
+                  <MapPin size={12} className="text-accent" /> 
+                  {t.common.cities?.[item.location.toLowerCase()] || item.location}
                 </span>
               )}
             </div>
