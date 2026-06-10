@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useMemo } from "react";
-import { LayoutGroup, AnimatePresence, motion } from "framer-motion";
+import { LayoutGroup, AnimatePresence } from "framer-motion";
 import Timeline from "./components/Timeline";
 import ContentView from "./components/ContentView";
 import CVView from "./components/CVView";
@@ -8,7 +8,6 @@ import AccessibilityToggle from "./components/AccessibilityToggle";
 import { LanguageProvider, useLang } from "./i18n/LanguageContext";
 import timelineData, { careerData, projectData, educationData } from "./data/timelineData";
 import Lightbox from "./components/Lightbox";
-import { Monitor } from "lucide-react";
 import SystemStatus from "./components/SystemStatus";
 
 function PortfolioApp() {
@@ -27,20 +26,6 @@ function PortfolioApp() {
   const [selectedId, setSelectedId] = useState(trackSelections.career);
   const prevIndexRef = useRef(careerData.length - 1);
   const [direction, setDirection] = useState(0);
-
-  /* ─── CRT Filter State ─── */
-  const [crtEnabled, setCrtEnabled] = useState(() => {
-    const saved = localStorage.getItem("crtEnabled");
-    return saved !== null ? JSON.parse(saved) : true;
-  });
-
-  const toggleCrt = useCallback(() => {
-    setCrtEnabled(prev => {
-      const next = !prev;
-      localStorage.setItem("crtEnabled", JSON.stringify(next));
-      return next;
-    });
-  }, []);
 
   /* Sequential Jump Logic */
   const jumpIntervalRef = useRef(null);
@@ -167,7 +152,8 @@ function PortfolioApp() {
       className={`relative flex flex-col min-h-screen bg-background text-foreground cyber-grid-bg ${isGlitching ? 'animate-glitch' : ''}`}
       data-theme="dark"
     >
-      {crtEnabled && <div className="scanline-overlay" />}
+      {/* Scanline overlay — shown only by design directions that opt in (CSS). */}
+      <div className="scanline-overlay" />
 
       {/* Header */}
       <header className="relative z-50 flex flex-col md:flex-row items-center justify-between px-6 py-4 border-b-2 border-border bg-card/90 backdrop-blur-md no-print">
@@ -184,13 +170,6 @@ function PortfolioApp() {
           </p>
         </div>
         <div className="flex items-center gap-4">
-          <button
-            onClick={toggleCrt}
-            className={`flex items-center justify-center w-10 h-10 border transition-all cyber-chamfer-sm ${crtEnabled ? 'border-accent text-accent bg-accent/10 shadow-[0_0_10px_#00ff8840]' : 'border-border text-mutedForeground hover:border-accent hover:text-accent'}`}
-            title={crtEnabled ? "Disable CRT Effect" : "Enable CRT Effect"}
-          >
-            <Monitor size={18} />
-          </button>
           <LangToggle />
           <AccessibilityToggle />
         </div>
