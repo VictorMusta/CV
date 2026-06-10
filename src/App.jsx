@@ -3,7 +3,6 @@ import { LayoutGroup, AnimatePresence, motion } from "framer-motion";
 import Timeline from "./components/Timeline";
 import ContentView from "./components/ContentView";
 import CVView from "./components/CVView";
-import ThemeCustomizer from "./components/ThemeCustomizer";
 import LangToggle from "./components/LangToggle";
 import AccessibilityToggle from "./components/AccessibilityToggle";
 import { LanguageProvider, useLang } from "./i18n/LanguageContext";
@@ -193,7 +192,6 @@ function PortfolioApp() {
             <Monitor size={18} />
           </button>
           <LangToggle />
-          <ThemeCustomizer onThemeChange={triggerGlitch} />
           <AccessibilityToggle />
         </div>
       </header>
