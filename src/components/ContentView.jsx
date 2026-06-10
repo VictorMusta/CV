@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, MapPin } from "lucide-react";
+import { ExternalLink, MapPin, Lock } from "lucide-react";
 import { useLang } from "../i18n/LanguageContext";
 
 const variants = {
@@ -123,6 +123,11 @@ export default function ContentView({ item, direction, onOpenLightbox }) {
                   <ExternalLink size={14} />
                   {t.viewBenchmark}
                 </a>
+              )}
+              {item.private && (
+                <span className="inline-flex items-center gap-2 px-4 py-2 border border-border bg-muted/40 text-xs font-mono uppercase tracking-widest text-mutedForeground cyber-chamfer-sm w-fit">
+                  <Lock size={14} /> {t.common?.privateRepo || "Repo privé"}
+                </span>
               )}
             </div>
           </div>

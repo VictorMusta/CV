@@ -16,6 +16,7 @@ const en = {
     viewMore: "View more on",
     exportPdf: "Export to PDF",
     github: "GitHub",
+    privateRepo: "Private repo",
     cities: {
       bordeaux: "Bordeaux",
       merignac: "Mérignac",
@@ -166,6 +167,17 @@ const en = {
       "Forge & Crafting System: Polished interface for resource management (Iron, Leather, Crystals) and strategic equipment creation.",
       "Immersive 3D isometric interface powered by React Three Fiber."
     ]
+  },
+  retour: {
+    role: "B2B SaaS — Citizen Reporting",
+    description: "A B2B SaaS platform letting small French town halls receive and handle citizen reports (roads, cleanliness, incidents). Built with the BMad methodology (brief, PRD, architecture).",
+    highlights: [
+      "Modern stack: Next.js 15 (App Router, Turbopack), Prisma, PostgreSQL.",
+      "Multi-role authentication via NextAuth 5 (town-hall agents / citizens).",
+      "Geolocated reports with EXIF metadata extraction from photos.",
+      "Transactional email notifications via Resend.",
+      "Quality-first: TDD, Vitest + Playwright e2e, Biome, Git hooks.",
+    ],
   },
   tamagotchi: {
     role: "AutoBattler 2D",

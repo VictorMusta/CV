@@ -272,3 +272,80 @@
   outline: 3px solid rgb(var(--accent)) !important;
   outline-offset: 2px !important;
 }
+
+/* ============================================================
+   PRINT / PDF EXPORT
+   The export forces data-a11y on (clean accessibility look), then
+   prints. These rules turn that into a compact, ~2-page CV at the
+   smallest comfortably-readable size, and strip all site chrome.
+   ============================================================ */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 11mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+  }
+
+  /* Nothing but the CV itself. */
+  .no-print,
+  .living-garden,
+  .scanline-overlay {
+    display: none !important;
+  }
+
+  /* The CV fills the page; drop the floating card chrome. */
+  #cv-view {
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  #cv-view > div {
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+
+  /* Compact, conventional CV type scale — 9pt body is the smallest
+     size that stays comfortably readable on a printed CV. */
+  #cv-view { font-size: 9pt !important; line-height: 1.3 !important; }
+  #cv-view .text-base { font-size: 9pt !important; }
+  #cv-view .text-sm { font-size: 9pt !important; }
+  #cv-view .text-xs,
+  #cv-view [class~="text-[10px]"] { font-size: 7.5pt !important; }
+  #cv-view .text-lg { font-size: 10pt !important; }
+  #cv-view .text-xl { font-size: 11.5pt !important; }
+  #cv-view h1,
+  #cv-view .text-3xl,
+  #cv-view .text-5xl { font-size: 19pt !important; letter-spacing: 0 !important; }
+
+  /* Tighten the vertical rhythm so it folds onto two pages. */
+  #cv-view .mb-12 { margin-bottom: 9px !important; }
+  #cv-view .mb-8 { margin-bottom: 7px !important; }
+  #cv-view .my-8 { margin-top: 6px !important; margin-bottom: 6px !important; }
+  #cv-view .gap-10 { gap: 9px !important; }
+  #cv-view .gap-8 { gap: 8px !important; }
+  #cv-view .mb-4 { margin-bottom: 4px !important; }
+  #cv-view ul { gap: 2px !important; }
+
+  /* Keep entries from splitting across the page fold. */
+  #cv-view article,
+  #cv-view section { break-inside: avoid; }
+
+  /* Links print as plain text. */
+  #cv-view a { text-decoration: none !important; color: inherit !important; }
+
+  /* Reveal the compact print-only project line, hide the on-screen grid. */
+  .print-hidden { display: none !important; }
+  .print-only { display: block !important; }
+
+  /* --- Space-saving trims (pre-approved, in order) --- */
+  /* 1. Older formations: keep only the two most recent (Sup de Vinci, Epitech). */
+  #cv-view section:last-of-type article:nth-child(n + 3) { display: none !important; }
+}

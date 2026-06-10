@@ -16,6 +16,7 @@ const fr = {
     viewMore: "Voir plus sur",
     exportPdf: "Exporter en PDF",
     github: "GitHub",
+    privateRepo: "Repo privé",
     cities: {
       bordeaux: "Bordeaux",
       merignac: "Mérignac",
@@ -164,6 +165,17 @@ const fr = {
       "Système de Forge & Crafting : Interface soignée pour la gestion des matériaux (Fer, Cuir, Cristaux) et la création d'équipements stratégiques.",
       "Interface 3D isométrique immersive avec React Three Fiber."
     ]
+  },
+  retour: {
+    role: "SaaS B2B — Signalement citoyen",
+    description: "Plateforme SaaS B2B permettant aux petites mairies françaises de recevoir et traiter les signalements citoyens (voirie, propreté, incidents). Projet mené en méthodologie BMad (brief, PRD, architecture).",
+    highlights: [
+      "Stack moderne : Next.js 15 (App Router, Turbopack), Prisma, PostgreSQL.",
+      "Authentification multi-rôles via NextAuth 5 (agents mairie / citoyens).",
+      "Signalements géolocalisés avec extraction des métadonnées EXIF des photos.",
+      "Notifications e-mail transactionnelles via Resend.",
+      "Qualité : TDD, tests Vitest + Playwright e2e, Biome, hooks Git.",
+    ],
   },
   tamagotchi: {
     role: "AutoBattler 2D",

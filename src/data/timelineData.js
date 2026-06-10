@@ -17,6 +17,7 @@ import {
   Smartphone,
   Dice6,
   Code2,
+  Megaphone,
 } from "lucide-react";
 
 /* ──────────────────────────────────────────────
@@ -152,6 +153,18 @@ const educationData = [
    ────────────────────────────────────────────── */
 
 const projectData = [
+  {
+    id: "retour",
+    type: "project",
+    year: "2026",
+    sortYear: 2026.2,
+    title: "Retour",
+    icon: Megaphone,
+    color: "#3B82F6",
+    private: true, // private repo — shown with a "privé" tag, no dead link
+    stack: ["Next.js 15", "Prisma", "NextAuth", "PostgreSQL", "Zod", "Tailwind"],
+    imageAlt: "Retour - SaaS de signalement citoyen pour mairies",
+  },
   {
     id: "moyenax",
     type: "project",
