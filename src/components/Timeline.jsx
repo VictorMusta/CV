@@ -45,7 +45,7 @@ export default function Timeline({ data, selectedId, onSelect, activeTrack, onTr
   };
 
   return (
-    <div className={`flex flex-col border-b border-border bg-card/90 backdrop-blur-md relative z-10 ${activeTrack === "cv" ? "mb-8 pb-4" : ""}`}>
+    <div className={`flex flex-col border-b border-border bg-card/90 backdrop-blur-md relative z-10 no-print ${activeTrack === "cv" ? "mb-8 pb-4" : ""}`}>
       {/* Track toggle pills */}
       <div className="flex gap-4 px-6 pt-4 pb-2 overflow-x-auto [&::-webkit-scrollbar]:hidden whitespace-nowrap">
         {Object.entries(TRACK_LABELS).map(([key, label]) => (

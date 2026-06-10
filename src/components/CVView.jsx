@@ -1,29 +1,25 @@
 import { useState, useCallback } from "react";
 import { useLang } from "../i18n/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { Download, MapPin, Mail, Github, Phone, ExternalLink } from "lucide-react";
+import { Download, MapPin, Mail, Github, Phone, ExternalLink, Lock } from "lucide-react";
 import { careerData, projectData, educationData } from "../data/timelineData";
 
 export default function CVView() {
   const { t } = useLang();
 
-  const handleExport = useCallback((theme) => {
-    /* Temporarily apply theme for print */
-    const root = document.querySelector(".portfolio");
-    const original = root?.getAttribute("data-theme");
-    if (root) root.setAttribute("data-theme", theme);
-
-    /* Also add a class to force colors in print */
-    document.body.classList.add(`print-theme-${theme}`);
-    document.documentElement.classList.add(`print-theme-${theme}`);
+  const handleExport = useCallback(() => {
+    /* The exported CV always uses the accessibility look: high-contrast,
+       no decorative effects, legible font. We force data-a11y on for the
+       print, then restore whatever the user had. The @media print rules
+       (in index.css) handle the compact, 2-page layout. */
+    const root = document.documentElement;
+    const wasA11y = root.getAttribute("data-a11y") === "on";
+    root.setAttribute("data-a11y", "on");
 
     setTimeout(() => {
       window.print();
-      /* Restore original theme after print dialog */
-      if (root) root.setAttribute("data-theme", original || "dark");
-      document.body.classList.remove(`print-theme-${theme}`);
-      document.documentElement.classList.remove(`print-theme-${theme}`);
-    }, 100);
+      if (!wasA11y) root.removeAttribute("data-a11y");
+    }, 120);
   }, []);
 
   /* career sorted most recent first */
@@ -36,7 +32,7 @@ export default function CVView() {
       <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-2 no-print">
         <motion.button
           className="flex items-center gap-2 px-6 py-3 bg-background border border-accent text-accent uppercase tracking-widest text-xs font-bold cyber-chamfer-sm hover:bg-accent hover:text-background hover:drop-shadow-glow transition-all shadow-[0_0_15px_#00ff8840]"
-          onClick={() => handleExport("light")}
+          onClick={handleExport}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -133,7 +129,7 @@ export default function CVView() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 print-hidden">
             {projects
-              .filter((item) => ["tamagotchi", "aicontentremover", "imapunsub", "knightjumper"].includes(item.id))
+              .filter((item) => ["moyenax", "money-maker", "retour"].includes(item.id))
               .map((item) => {
                 const tr = t[item.id] || {};
                 return (
@@ -155,13 +151,18 @@ export default function CVView() {
                         <ExternalLink size={12} /> {t.common.github}
                       </a>
                     )}
+                    {item.private && (
+                      <span className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-mutedForeground">
+                        <Lock size={12} /> {t.common?.privateRepo || "Repo privé"}
+                      </span>
+                    )}
                   </article>
                 );
               })}
           </div>
           {/* Simple Projects for Print */}
           <div className="hidden print-only text-xs">
-            <p><strong>{t.trackProjects} :</strong> AutoBattler 2D, Realtime Earnings, AI Content Remover, Platformer 2D.</p>
+            <p><strong>{t.trackProjects} :</strong> Moyenax (Dofus-like), Realtime Earnings, Retour (SaaS, privé).</p>
             <a href="https://github.com/VictorMusta" className="flex items-center gap-2 mt-2">
               <Github size={12} /> {t.common.viewMore} github.com/VictorMusta
             </a>
