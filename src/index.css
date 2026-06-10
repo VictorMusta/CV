@@ -326,17 +326,19 @@
   #cv-view .text-5xl { font-size: 19pt !important; letter-spacing: 0 !important; }
 
   /* Tighten the vertical rhythm so it folds onto two pages. */
-  #cv-view .mb-12 { margin-bottom: 9px !important; }
-  #cv-view .mb-8 { margin-bottom: 7px !important; }
-  #cv-view .my-8 { margin-top: 6px !important; margin-bottom: 6px !important; }
-  #cv-view .gap-10 { gap: 9px !important; }
-  #cv-view .gap-8 { gap: 8px !important; }
+  #cv-view .mb-12 { margin-bottom: 7px !important; }
+  #cv-view .mb-8 { margin-bottom: 6px !important; }
+  #cv-view .my-8 { margin-top: 4px !important; margin-bottom: 4px !important; }
+  #cv-view .gap-10 { gap: 8px !important; }
+  #cv-view .gap-8 { gap: 7px !important; }
   #cv-view .mb-4 { margin-bottom: 4px !important; }
   #cv-view ul { gap: 2px !important; }
 
-  /* Keep entries from splitting across the page fold. */
-  #cv-view article,
-  #cv-view section { break-inside: avoid; }
+  /* Let SECTIONS flow across the page break — forcing break-inside:avoid
+     on a tall section pushed it wholesale to page 2 and left page 1 nearly
+     empty. Only keep individual entries intact and never orphan a title. */
+  #cv-view article { break-inside: avoid; }
+  #cv-view h2 { break-after: avoid; }
 
   /* Links print as plain text. */
   #cv-view a { text-decoration: none !important; color: inherit !important; }
