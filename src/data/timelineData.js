@@ -43,7 +43,7 @@ const careerData = [
     type: "career",
     year: "2021 – 2023",
     sortYear: 2023,
-    title: "DELFOX - PREDICTIVE TECHNOLOGIES",
+    title: "Delfox - Predictive Technologies",
     location: "Mérignac",
     icon: Brain, // Keeping original icon as Rocket is not imported and not explicitly stated to be changed.
     color: "#457B9D",
@@ -57,7 +57,7 @@ const careerData = [
     type: "career",
     year: "2021 – 2022",
     sortYear: 2022,
-    title: "Agence TILD",
+    title: "Agence Tild",
     location: "Montpellier",
     icon: Globe, 
     color: "#2A9D8F",
