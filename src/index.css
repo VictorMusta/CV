@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,19 +6,20 @@
 
 @layer base {
   :root {
-    --background: 5 5 8; /* Deeper background for better contrast */
-    --foreground: 255 255 255; /* Pure white for maximum readability */
-    --card: 15 15 22;
-    --muted: 24 24 38;
-    --mutedForeground: 156 163 175; /* Lighter muted text (Tailwind gray-400) */
-    --accent: 0 255 136;
-    --accentSecondary: 255 0 255;
-    --accentTertiary: 0 212 255;
-    --border: 38 38 52;
-    --input: 15 15 22;
-    --ring: 0 255 136;
-    --destructive: 255 51 102;
-    --scanline-color: 0 0 0;
+    /* DA "Sober / Editorial" — warm off-white, ink-blue accent */
+    --background: 250 250 248;
+    --foreground: 24 24 27;
+    --card: 255 255 255;
+    --muted: 244 244 241;
+    --mutedForeground: 90 92 100;
+    --accent: 26 54 93;
+    --accentSecondary: 26 54 93;
+    --accentTertiary: 110 120 135;
+    --border: 226 224 218;
+    --input: 255 255 255;
+    --ring: 26 54 93;
+    --destructive: 176 42 42;
+    --scanline-color: 255 255 255;
   }
 
   html {
@@ -174,6 +175,62 @@
     z-index: 1000;
     animation: glitch-bar 0.15s linear infinite;
   }
+}
+
+/* ============================================================
+   DESIGN DIRECTION — "Sober / Editorial"
+   Light, calm, recruiter-friendly. Removes the cyberpunk motion,
+   recolours around an ink-blue accent on warm off-white, and pairs
+   a Fraunces serif (headings) with Inter (body).
+   ============================================================ */
+
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  letter-spacing: 0;
+}
+
+.font-display {
+  font-family: "Fraunces", Georgia, "Times New Roman", serif !important;
+  letter-spacing: -0.01em !important;
+}
+.font-mono,
+.font-label {
+  font-family: "JetBrains Mono", ui-monospace, monospace !important;
+}
+
+/* Calm the shouty header title: drop the glitch + caps. */
+.cyber-glitch::before,
+.cyber-glitch::after { content: none !important; }
+h1.cyber-glitch {
+  text-transform: none !important;
+  letter-spacing: -0.02em !important;
+  font-weight: 600 !important;
+}
+
+/* No CRT, neon grid or scanlines. */
+.scanline-overlay,
+.scanline-overlay::after { display: none !important; }
+.cyber-grid-bg { background-image: none !important; }
+
+/* Softly-rounded panels instead of chamfered cyber edges. */
+.cyber-chamfer { clip-path: none; border-radius: 14px; }
+.cyber-chamfer-sm { clip-path: none; border-radius: 10px; }
+
+/* Editorial shadows replace neon glows. */
+.shadow-neon,
+.shadow-neon-sm,
+.shadow-neon-lg,
+.shadow-neon-secondary,
+.shadow-neon-tertiary {
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06) !important;
+}
+.drop-shadow-glow,
+.drop-shadow-glitch { filter: none !important; }
+
+/* Kill the leftover hard-coded neon-green hover/active glows. */
+[class~="shadow-[0_0_10px_#00ff8840]"],
+[class~="hover:shadow-[0_0_10px_#00ff8840]"]:hover {
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.10) !important;
 }
 
 /* ============================================================
