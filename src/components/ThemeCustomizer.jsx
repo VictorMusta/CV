@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Palette, Shuffle, X, Check } from "lucide-react";
+import DevBranchSwitcher from "./DevBranchSwitcher";
 
 const themes = [
   {
@@ -188,6 +189,8 @@ export default function ThemeCustomizer({ onThemeChange }) {
                 <Shuffle size={14} className="group-hover:rotate-180 transition-transform duration-500" />
                 Random Theme
               </button>
+
+              {import.meta.env.DEV && <DevBranchSwitcher />}
             </div>
           </motion.div>
         )}
