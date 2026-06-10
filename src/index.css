@@ -175,3 +175,100 @@
     animation: glitch-bar 0.15s linear infinite;
   }
 }
+
+/* ============================================================
+   ACCESSIBILITY MODE
+   Toggled with the top-right button (data-a11y="on" on <html>).
+   Sits on TOP of any design direction: forces a high-contrast,
+   WCAG-readable palette, kills decorative motion/effects, uses a
+   legible font, and guarantees a visible focus ring.
+   ============================================================ */
+
+/* Always respect the OS "reduce motion" preference, even when the
+   accessibility toggle is off. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root[data-a11y="on"] {
+  /* High-contrast light palette (AA/AAA on white) */
+  --background: 255 255 255;
+  --foreground: 17 17 17;
+  --card: 255 255 255;
+  --muted: 240 240 240;
+  --mutedForeground: 51 51 51;
+  --accent: 0 82 204;
+  --accentSecondary: 0 82 204;
+  --accentTertiary: 0 82 204;
+  --border: 17 17 17;
+  --input: 255 255 255;
+  --ring: 0 82 204;
+  --destructive: 197 0 0;
+  --scanline-color: 255 255 255;
+
+  font-size: 18px;
+}
+
+/* Strip every decorative animation, glow and filter. */
+:root[data-a11y="on"] *,
+:root[data-a11y="on"] *::before,
+:root[data-a11y="on"] *::after {
+  animation: none !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  letter-spacing: normal !important;
+}
+
+:root[data-a11y="on"] .cyber-glitch::before,
+:root[data-a11y="on"] .cyber-glitch::after {
+  content: none !important;
+}
+
+:root[data-a11y="on"] .scanline-overlay,
+:root[data-a11y="on"] .scanline-overlay::after {
+  display: none !important;
+}
+
+:root[data-a11y="on"] .cyber-grid-bg {
+  background-image: none !important;
+}
+
+:root[data-a11y="on"] .cyber-chamfer,
+:root[data-a11y="on"] .cyber-chamfer-sm {
+  clip-path: none !important;
+  border-radius: 6px !important;
+}
+
+/* Readable typography — drop the display/mono faces and the wide tracking. */
+:root[data-a11y="on"] body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif !important;
+  line-height: 1.7 !important;
+}
+
+:root[data-a11y="on"] h1,
+:root[data-a11y="on"] h2,
+:root[data-a11y="on"] h3,
+:root[data-a11y="on"] h4 {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif !important;
+  text-transform: none !important;
+}
+
+/* Make every border solid and visible for contrast. */
+:root[data-a11y="on"] [class*="border-"] {
+  border-color: rgb(var(--border)) !important;
+}
+
+/* Guaranteed, always-visible focus ring. */
+:root[data-a11y="on"] *:focus-visible {
+  outline: 3px solid rgb(var(--accent)) !important;
+  outline-offset: 2px !important;
+}

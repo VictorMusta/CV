@@ -5,6 +5,7 @@ import ContentView from "./components/ContentView";
 import CVView from "./components/CVView";
 import ThemeCustomizer from "./components/ThemeCustomizer";
 import LangToggle from "./components/LangToggle";
+import AccessibilityToggle from "./components/AccessibilityToggle";
 import { LanguageProvider, useLang } from "./i18n/LanguageContext";
 import timelineData, { careerData, projectData, educationData } from "./data/timelineData";
 import Lightbox from "./components/Lightbox";
@@ -193,6 +194,7 @@ function PortfolioApp() {
           </button>
           <LangToggle />
           <ThemeCustomizer onThemeChange={triggerGlitch} />
+          <AccessibilityToggle />
         </div>
       </header>
 
