@@ -1,8 +1,10 @@
-# Victor Grabowski — Développeur Fullstack .NET / TypeScript
+# Victor Grabowski — Développeur Fullstack TypeScript · Micro-services .NET
 
 > CV et portfolio de Victor Grabowski, développeur fullstack basé à Bordeaux (France).
-> Backend .NET/C# et TypeScript sur AWS chez Betclic (lutte anti-fraude / AML).
+> Fullstack TypeScript de préférence, à l'aise sur les micro-services .NET/C# sur AWS.
+> Actuellement chez Betclic (lutte anti-fraude / AML).
 > Contact : victorgrabowski33@gmail.com · +33 7 67 30 22 93 · https://github.com/VictorMusta
+> LinkedIn : https://www.linkedin.com/in/vgrabowski/
 
 CV PDF (2 pages, à jour) : https://victormusta.github.io/CV/Victor_Grabowski_CV.pdf
 
@@ -28,10 +30,11 @@ Retour (SaaS de signalement citoyen, repo privé). Voir https://github.com/Victo
 
 ## Compétences
 
-.NET C#, TypeScript, Python · ReactJS, MongoDB, DynamoDB · AWS (S3, SNS, SQS), Docker, Terraform,
-Jenkins, Jira, Confluence · Agile, TDD, spec-driven, event-driven, micro-services.
+TypeScript, .NET C#, Python (scripting, tooling, gRPC) · ReactJS, MongoDB, DynamoDB · AWS (S3, SNS,
+SQS), Docker, Terraform, Jenkins, Jira, Confluence · Agile, TDD, spec-driven, event-driven,
+micro-services. Langues : français (natif), anglais (lecture technique courante, oral opérationnel).
 
 ## Formation
 
 Sup de Vinci — Master Ingénierie Logicielle & Cloud (2024 – 2026, Bordeaux).
-Epitech Technology — Expert en Technologies de l'Information (2022 – 2024, Bordeaux).
+Epitech Technology — Expert en Technologies de l'Information, en alternance chez Delfox (2022 – 2024, Bordeaux).

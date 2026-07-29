@@ -1,6 +1,6 @@
 const ja = {
   /* ── UI ── */
-  tagline: ".NET + JS フルスタックエンジニア",
+  tagline: "TypeScript フルスタックエンジニア · .NET マイクロサービス",
   trackCareer: "経歴",
   trackEducation: "学歴",
   trackProjects: "プロジェクト",
@@ -110,7 +110,7 @@ const ja = {
   epitech: {
     title: "Epitech Technology",
     role: "情報技術エキスパート",
-    description: "Expertiseサイクル (2022-2024)。プロジェクトベースでのC#およびTypeScriptの高度な習得。",
+    description: "Expertiseサイクル (2022-2024)、Delfoxでのアルテルナンス（実務並行）。プロジェクトベースでのC#およびTypeScriptの高度な習得。",
     highlights: ["フランス国家資格 (RNCP) レベル7 (修士相当)"],
   },
   keyce: {
@@ -216,7 +216,7 @@ const ja = {
   technicalSkills: {
     languages: {
       title: "専門分野",
-      content: ".NET C#, TypeScript, Python",
+      content: "TypeScript, .NET C#, Python (スクリプティング, ツーリング, gRPC)",
     },
     technologies: {
       title: "テクノロジー",
@@ -228,11 +228,15 @@ const ja = {
     },
     methods: {
       title: "アーキテクチャ & 手法",
-      content: "Agile, TDD, Spec-driven, Event-driven, Micro-services",
+      content: "Agile, TDD（日常的なred-green-refactor）, Spec-driven（実装前にスペックを確定）, Event-driven, Micro-services",
     },
     ai_productivity: {
       title: "AI & 生産性",
-      content: "AI以前からコーディングを学び、現在はマイエウティカ（産婆術）的に活用しています。制御不能なプッシュは行いません。",
+      content: "AI以前からコーディングを習得。AIは探索・レビュー・壁打ちの加速装置として活用し、プッシュする全ての行を自分で把握しています。",
+    },
+    spokenLanguages: {
+      title: "言語",
+      content: "フランス語（ネイティブ）· 英語（技術文書の読解は流暢、業務上の会話に対応可能）",
     },
   },
 };

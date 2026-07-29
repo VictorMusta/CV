@@ -1,6 +1,6 @@
 const fr = {
   /* ── UI ── */
-  tagline: "Développeur Fullstack .NET + JS",
+  tagline: "Développeur Fullstack TypeScript · Micro-services .NET",
   trackCareer: "Parcours",
   trackEducation: "Formation",
   trackProjects: "Projets Divers",
@@ -109,7 +109,7 @@ const fr = {
   epitech: {
     title: "Epitech Technology",
     role: "Expert en Technologies de l'Information",
-    description: "Cycle Expertise (2022-2024). Perfectionnement C# et TypeScript en mode projet.",
+    description: "Cycle Expertise (2022-2024), en alternance chez Delfox. Perfectionnement C# et TypeScript en mode projet.",
     highlights: ["Diplôme RNCP (Répertoire National des Certifications Professionnelles) Niveau 7"],
   },
   keyce: {
@@ -133,7 +133,7 @@ const fr = {
   technicalSkills: {
     languages: {
       title: "Spécialisations",
-      content: ".NET C#, TypeScript, Python (sans framework)",
+      content: "TypeScript, .NET C#, Python (scripting, tooling, gRPC)",
     },
     technologies: {
       title: "Technologies",
@@ -145,11 +145,15 @@ const fr = {
     },
     methods: {
       title: "Architecture & Méthodes",
-      content: "Agile, TDD (Test-Driven Development), Spec-driven development, Event-driven, Micro-services",
+      content: "Agile, TDD (red-green-refactor au quotidien), Spec-driven development (spec validée avant l'implémentation), Event-driven, Micro-services",
     },
     ai_productivity: {
       title: "IA & Productivité",
-      content: "Appris à coder avant l'IA, Utilisation de celle ci de manière Maïeutique, Pas de push non-maitrisé.",
+      content: "Appris à coder avant l'IA ; je l'utilise comme accélérateur (exploration, revue, questionnement) en gardant la maîtrise de chaque ligne poussée.",
+    },
+    spokenLanguages: {
+      title: "Langues",
+      content: "Français (natif) · Anglais (lecture technique courante, oral opérationnel en contexte pro)",
     },
   },
 

@@ -1,6 +1,6 @@
 const ko = {
   /* ── UI ── */
-  tagline: ".NET + JS 풀스택 개발자",
+  tagline: "TypeScript 풀스택 개발자 · .NET 마이크로서비스",
   trackCareer: "경력",
   trackEducation: "학력",
   trackProjects: "프로젝트",
@@ -110,7 +110,7 @@ const ko = {
   epitech: {
     title: "Epitech Technology",
     role: "정보 기술 전문가",
-    description: "Expertise 과정 (2022-2024). 프로젝트 기반 C# 및 TypeScript 심화 학습.",
+    description: "Expertise 과정 (2022-2024), Delfox 산학 병행(알터낭스). 프로젝트 기반 C# 및 TypeScript 심화 학습.",
     highlights: ["프랑스 국가 자격(RNCP) 레벨 7 (석사 상당)"],
   },
   keyce: {
@@ -216,7 +216,7 @@ const ko = {
   technicalSkills: {
     languages: {
       title: "전문 분야",
-      content: ".NET C#, TypeScript, Python",
+      content: "TypeScript, .NET C#, Python (스크립팅, 툴링, gRPC)",
     },
     technologies: {
       title: "기술 스택",
@@ -228,11 +228,15 @@ const ko = {
     },
     methods: {
       title: "아키텍처 및 방법론",
-      content: "Agile, TDD, Spec-driven, Event-driven, Micro-services",
+      content: "Agile, TDD(일상적인 red-green-refactor), Spec-driven(구현 전 스펙 확정), Event-driven, Micro-services",
     },
     ai_productivity: {
       title: "AI 및 생산성",
-      content: "AI 이전부터 코딩을 배웠으며, 현재는 산파술(Maieutics)적으로 활용하고 있습니다. 제어되지 않은 푸시는 하지 않습니다.",
+      content: "AI 이전부터 코딩을 배웠습니다. AI를 탐색·리뷰·질문의 가속 도구로 활용하며, 푸시하는 모든 코드를 직접 검증합니다.",
+    },
+    spokenLanguages: {
+      title: "언어",
+      content: "프랑스어(모국어) · 영어(기술 문서 독해 유창, 업무 회화 가능)",
     },
   },
 };
