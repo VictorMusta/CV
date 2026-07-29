@@ -41,8 +41,8 @@ const careerData = [
   {
     id: "delfox",
     type: "career",
-    year: "2021 – 2023",
-    sortYear: 2023,
+    year: "2022 – 2024",
+    sortYear: 2024,
     title: "Delfox - Predictive Technologies",
     location: "Mérignac",
     icon: Brain, // Keeping original icon as Rocket is not imported and not explicitly stated to be changed.
