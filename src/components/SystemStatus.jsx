@@ -62,7 +62,7 @@ export default function SystemStatus() {
   }, [currentLangStatuses.length]);
 
   return (
-    <div className="fixed bottom-6 left-6 z-40 hidden md:block select-none pointer-events-none">
+    <div className="fixed bottom-6 left-6 z-40 hidden md:block select-none pointer-events-none no-print">
       <div className="relative px-4 py-2 bg-card/40 backdrop-blur-md border-l-2 border-accent/50 shadow-xl">
         <div className="flex flex-col gap-0.5">
           {/* Header Label */}
