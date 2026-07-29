@@ -31,6 +31,12 @@ jobs:
           NODE_ENV: development
       - run: npx vite build
 
+      # Generate the static CV PDF served by the export button.
+      # puppeteer is installed here (not in package.json) because the
+      # Betclic-internal registry used on workstations can't provide it.
+      - run: npm install --no-save puppeteer
+      - run: node scripts/generate-pdf.mjs
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
