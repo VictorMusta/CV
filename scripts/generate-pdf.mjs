@@ -91,6 +91,9 @@ try {
   await page.evaluate(() => {
     document.documentElement.setAttribute("data-a11y", "on");
     document.body.classList.add("pdf-export");
+    /* Chrome copies document.title into the PDF's Title metadata,
+       which ATS parsers and PDF readers surface. */
+    document.title = "CV Victor Grabowski — Développeur Fullstack .NET / TypeScript";
   });
 
   /* Web fonts + the framer-motion entrance animations must settle before
