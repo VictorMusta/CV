@@ -30,15 +30,33 @@ export default function CVView() {
     <div className="relative w-full max-w-4xl mx-auto p-4 md:p-8 font-mono text-foreground" id="cv-view">
       {/* Export button with theme picker — hidden in print */}
       <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-2 no-print">
-        <motion.button
-          className="flex items-center gap-2 px-6 py-3 bg-background border border-accent text-accent uppercase tracking-widest text-xs font-bold cyber-chamfer-sm hover:bg-accent hover:text-background hover:drop-shadow-glow transition-all shadow-[0_0_15px_#00ff8840]"
-          onClick={handleExport}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Download size={16} />
-          {t.common.exportPdf}
-        </motion.button>
+        {import.meta.env.PROD ? (
+          /* The deployed site serves a PDF generated at build time
+             (scripts/generate-pdf.mjs) — no browser print dialog, so no
+             browser-injected header/footer in the downloaded file. */
+          <motion.a
+            className="flex items-center gap-2 px-6 py-3 bg-background border border-accent text-accent uppercase tracking-widest text-xs font-bold cyber-chamfer-sm hover:bg-accent hover:text-background hover:drop-shadow-glow transition-all shadow-[0_0_15px_#00ff8840]"
+            href={`${import.meta.env.BASE_URL}Victor_Grabowski_CV.pdf`}
+            download
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Download size={16} />
+            {t.common.exportPdf}
+          </motion.a>
+        ) : (
+          /* `npm run dev` has no generated PDF to link to — keep the
+             window.print() path as a dev-only fallback. */
+          <motion.button
+            className="flex items-center gap-2 px-6 py-3 bg-background border border-accent text-accent uppercase tracking-widest text-xs font-bold cyber-chamfer-sm hover:bg-accent hover:text-background hover:drop-shadow-glow transition-all shadow-[0_0_15px_#00ff8840]"
+            onClick={handleExport}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Download size={16} />
+            {t.common.exportPdf}
+          </motion.button>
+        )}
       </div>
 
       <div className="bg-card/80 backdrop-blur-sm border border-border cyber-chamfer p-8 md:p-12 shadow-[0_0_20px_rgba(0,0,0,0.8)]">
