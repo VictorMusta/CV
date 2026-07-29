@@ -417,6 +417,9 @@ h1.cyber-glitch {
   /* 1. Older formations: keep only the two most recent (Sup de Vinci, Epitech). */
   #cv-view section:last-of-type article:nth-child(n + 3) { display: none !important; }
 
+  /* Page 1 is experience only: Personal Projects opens page 2. */
+  #cv-view section:nth-of-type(2) { break-before: page; }
+
   /* ============================================================
      PRINT SKIN — same Accessibility DA as the site
      The export forces data-a11y="on", so the PDF naturally inherits
