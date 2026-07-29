@@ -110,7 +110,7 @@ const ja = {
   epitech: {
     title: "Epitech Technology",
     role: "情報技術エキスパート",
-    description: "Expertiseサイクル (2023-2024)。プロジェクトベースでのC#およびTypeScriptの高度な習得。",
+    description: "Expertiseサイクル (2022-2024)。プロジェクトベースでのC#およびTypeScriptの高度な習得。",
     highlights: ["フランス国家資格 (RNCP) レベル7 (修士相当)"],
   },
   keyce: {

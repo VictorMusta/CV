@@ -110,7 +110,7 @@ const ko = {
   epitech: {
     title: "Epitech Technology",
     role: "정보 기술 전문가",
-    description: "Expertise 과정 (2023-2024). 프로젝트 기반 C# 및 TypeScript 심화 학습.",
+    description: "Expertise 과정 (2022-2024). 프로젝트 기반 C# 및 TypeScript 심화 학습.",
     highlights: ["프랑스 국가 자격(RNCP) 레벨 7 (석사 상당)"],
   },
   keyce: {

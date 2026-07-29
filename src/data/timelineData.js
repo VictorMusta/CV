@@ -97,7 +97,7 @@ const educationData = [
   {
     id: "epitech",
     type: "education",
-    year: "2023 – 2024",
+    year: "2022 – 2024",
     sortYear: 2023,
     title: "Epitech Technology",
     location: "Bordeaux",

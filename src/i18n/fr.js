@@ -109,7 +109,7 @@ const fr = {
   epitech: {
     title: "Epitech Technology",
     role: "Expert en Technologies de l'Information",
-    description: "Cycle Expertise (2023-2024). Perfectionnement C# et TypeScript en mode projet.",
+    description: "Cycle Expertise (2022-2024). Perfectionnement C# et TypeScript en mode projet.",
     highlights: ["Diplôme RNCP (Répertoire National des Certifications Professionnelles) Niveau 7"],
   },
   keyce: {
