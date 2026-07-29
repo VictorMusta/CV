@@ -1,15 +1,114 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Victor Grabowski — Back-End Developer portfolio. Explore experiences at Betclic, Delfox, Tild and more." />
+    <title>Victor Grabowski — Développeur Fullstack .NET / TypeScript à Bordeaux</title>
+    <meta name="description" content="CV et portfolio de Victor Grabowski, développeur fullstack .NET/TypeScript à Bordeaux. Backend .NET & AWS chez Betclic (lutte anti-fraude/AML), React, Python. CV PDF téléchargeable." />
     <meta name="theme-color" content="#0f0f1a" />
-    <title>Victor Grabowski — Portfolio</title>
+    <link rel="canonical" href="https://victormusta.github.io/CV/" />
+    <link rel="alternate" type="application/pdf" title="CV PDF" href="https://victormusta.github.io/CV/Victor_Grabowski_CV.pdf" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="Victor Grabowski — Développeur Fullstack .NET / TypeScript" />
+    <meta property="og:description" content="Backend .NET & AWS chez Betclic (fraude/AML), TypeScript, React, Python. Portfolio + CV PDF." />
+    <meta property="og:url" content="https://victormusta.github.io/CV/" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Victor Grabowski — Développeur Fullstack .NET / TypeScript" />
+    <meta name="twitter:description" content="Backend .NET & AWS chez Betclic (fraude/AML), TypeScript, React, Python. Portfolio + CV PDF." />
+
+    <!-- Structured data for search engines and AI crawlers -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Victor Grabowski",
+      "jobTitle": "Développeur Fullstack .NET / TypeScript",
+      "email": "mailto:victorgrabowski33@gmail.com",
+      "telephone": "+33767302293",
+      "url": "https://victormusta.github.io/CV/",
+      "sameAs": ["https://github.com/VictorMusta"],
+      "address": { "@type": "PostalAddress", "addressLocality": "Bordeaux", "addressCountry": "FR" },
+      "worksFor": { "@type": "Organization", "name": "Betclic Everest Group" },
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "Sup de Vinci", "description": "Master Ingénierie Logicielle & Cloud (2024–2026)" },
+        { "@type": "CollegeOrUniversity", "name": "Epitech Technology", "description": "Expert en Technologies de l'Information (2022–2024)" }
+      ],
+      "knowsAbout": [
+        ".NET", "C#", "TypeScript", "React", "Python", "AWS", "DynamoDB",
+        "MongoDB", "SNS/SQS", "Terraform", "Jenkins", "Micro-services",
+        "TDD", "Event-driven architecture", "Lutte anti-fraude", "AML"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Développeur Backend .NET + TypeScript",
+        "occupationLocation": { "@type": "City", "name": "Bordeaux" }
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Full text CV for crawlers and agents that don't execute JavaScript.
+         Keep in sync with src/data/timelineData.js + src/i18n/fr.js. -->
+    <noscript>
+      <main>
+        <h1>Victor Grabowski — Développeur Fullstack .NET / TypeScript</h1>
+        <p>Bordeaux, France · victorgrabowski33@gmail.com · +33 7 67 30 22 93 ·
+          <a href="https://github.com/VictorMusta">github.com/VictorMusta</a> ·
+          <a href="https://victormusta.github.io/CV/Victor_Grabowski_CV.pdf">Télécharger le CV (PDF)</a>
+        </p>
+
+        <h2>Expériences professionnelles</h2>
+        <article>
+          <h3>Betclic Everest Group — Développeur Backend .NET + TypeScript (2024 – présent, Bordeaux)</h3>
+          <p>Micro-services .NET + TypeScript sur AWS. Développement d'un back-office et de règles anti-fraude et
+            blanchiment d'argent (AML). Endpoints d'API, services asynchrones (SNS/SQS) et monitoring ;
+            projet Fraud-PEP (vérification d'identité via Dow Jones) ; automatisation de la revue de profil
+            par agents intelligents ; optimisation du back-office Juno .NET.</p>
+          <p>Stack : .NET C#, TypeScript, DynamoDB, MongoDB, SQS/SNS, Terraform, Jenkins.</p>
+        </article>
+        <article>
+          <h3>Delfox — Predictive Technologies — Développeur Full-Stack en alternance (2022 – 2024, Mérignac)</h3>
+          <p>Alternance de 2 ans. Développement de Realmind, plateforme de pilotage et visualisation 3D pour agents
+            IA autonomes : communication temps réel haut flux (gRPC) entre React et backends Python, visualisation
+            complexe (essaims de drones, véhicules) via Unity, Unreal et WebGL, conception du design system et des
+            dashboards de monitoring.</p>
+          <p>Stack : React, Python, gRPC, Unity, Unreal Engine, WebGL.</p>
+        </article>
+        <article>
+          <h3>Agence Tild — Développeur Full-Stack (2021 – 2022, Montpellier)</h3>
+          <p>Développement du CRM/ERP Alma Mater (VueJS/Python) en 100 % remote. Optimisation du module agenda
+            et documentation API via Swagger.</p>
+          <p>Stack : VueJS, Python, Swagger.</p>
+        </article>
+        <article>
+          <h3>Laboratoire Cosderma — Développeur, stage/prestation (2020, Bordeaux)</h3>
+          <p>Reverse-engineering SQL et archivage de données critiques (30+ tables), modélisation relationnelle
+            complète et optimisation de la performance.</p>
+          <p>Stack : SQL, Merise, RGPD.</p>
+        </article>
+
+        <h2>Projets personnels</h2>
+        <p>Moyenax (jeu de stratégie web type Dofus — React, Three.js, NestJS, PostgreSQL), Realtime Earnings
+          (visualisation de gains en temps réel — .NET, C#), Retour (SaaS de signalement citoyen — Next.js 15,
+          Prisma, PostgreSQL). Plus sur <a href="https://github.com/VictorMusta">GitHub</a>.</p>
+
+        <h2>Compétences techniques</h2>
+        <p>Spécialisations : .NET C#, TypeScript, Python. Technologies : ReactJS, MongoDB, DynamoDB.
+          Outils : AWS (S3, SNS, SQS), Docker, Terraform, Jenkins, Jira, Confluence, GitHub.
+          Architecture et méthodes : Agile, TDD, spec-driven development, event-driven, micro-services.</p>
+
+        <h2>Formation</h2>
+        <p>Sup de Vinci — Master Ingénierie Logicielle & Cloud (2024 – 2026, Bordeaux).
+          Epitech Technology — Expert en Technologies de l'Information, Cycle Expertise (2022 – 2024, Bordeaux).</p>
+      </main>
+    </noscript>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

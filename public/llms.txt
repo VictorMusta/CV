@@ -1,0 +1,37 @@
+# Victor Grabowski — Développeur Fullstack .NET / TypeScript
+
+> CV et portfolio de Victor Grabowski, développeur fullstack basé à Bordeaux (France).
+> Backend .NET/C# et TypeScript sur AWS chez Betclic (lutte anti-fraude / AML).
+> Contact : victorgrabowski33@gmail.com · +33 7 67 30 22 93 · https://github.com/VictorMusta
+
+CV PDF (2 pages, à jour) : https://victormusta.github.io/CV/Victor_Grabowski_CV.pdf
+
+## Expériences
+
+- **Betclic Everest Group** (2024 – présent, Bordeaux) — Développeur Backend .NET + TypeScript.
+  Micro-services .NET + TS sur AWS ; back-office et règles anti-fraude / anti-blanchiment (AML) ;
+  API, services asynchrones (SNS/SQS), monitoring ; projet Fraud-PEP (vérification d'identité Dow Jones) ;
+  automatisation de la revue de profil par agents IA. Stack : .NET C#, TypeScript, DynamoDB, MongoDB,
+  SQS/SNS, Terraform, Jenkins.
+- **Delfox — Predictive Technologies** (2022 – 2024, Mérignac) — Développeur Full-Stack en alternance.
+  Realmind : plateforme de pilotage et visualisation 3D pour agents IA autonomes ; gRPC haut flux entre
+  React et backends Python ; visualisation Unity/Unreal/WebGL ; design system et dashboards.
+- **Agence Tild** (2021 – 2022, Montpellier) — Développeur Full-Stack. CRM/ERP Alma Mater (VueJS/Python),
+  100 % remote.
+- **Laboratoire Cosderma** (2020, Bordeaux) — Stage/prestation. Reverse-engineering SQL, archivage de
+  données critiques (30+ tables), modélisation Merise, RGPD.
+
+## Projets personnels
+
+Moyenax (jeu de stratégie web type Dofus), Realtime Earnings (visualisation de gains en temps réel),
+Retour (SaaS de signalement citoyen, repo privé). Voir https://github.com/VictorMusta
+
+## Compétences
+
+.NET C#, TypeScript, Python · ReactJS, MongoDB, DynamoDB · AWS (S3, SNS, SQS), Docker, Terraform,
+Jenkins, Jira, Confluence · Agile, TDD, spec-driven, event-driven, micro-services.
+
+## Formation
+
+Sup de Vinci — Master Ingénierie Logicielle & Cloud (2024 – 2026, Bordeaux).
+Epitech Technology — Expert en Technologies de l'Information (2022 – 2024, Bordeaux).
