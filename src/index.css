@@ -418,67 +418,19 @@ h1.cyber-glitch {
   #cv-view section:last-of-type article:nth-child(n + 3) { display: none !important; }
 
   /* ============================================================
-     EDITORIAL DESIGN PASS
-     The on-screen CV is deliberately mono/terminal-flavoured; on
-     paper that reads as harsh. Print swaps to the site's editorial
-     pairing — Fraunces for the name and section titles, Inter for
-     everything else — with the DA ink-blue accent, prose case, and
-     quieter markers (round dots, borderless tags, no "> " chevrons).
+     PRINT SKIN — same Accessibility DA as the site
+     The export forces data-a11y="on", so the PDF naturally inherits
+     the site's accessibility look (Inter headings, mono body, bright
+     blue accent, outlined tags). The only thing dropped is the
+     timeline chrome: the vertical bars read as clutter on paper and
+     their diamond markers were clipped at the article edge.
      ============================================================ */
-
-  /* Ink-blue accent from the Sober/Editorial DA instead of the bright
-     a11y blue the export mode would otherwise force. */
-  #cv-view {
-    --accent: 26 54 93;
-    --accentSecondary: 26 54 93;
-    --accentTertiary: 92 100 112;
-  }
-
-  #cv-view,
-  #cv-view .font-mono,
-  #cv-view .font-label {
-    font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif !important;
-  }
-  #cv-view h1,
-  #cv-view h2 {
-    font-family: "Fraunces", Georgia, "Times New Roman", serif !important;
-    font-weight: 600 !important;
-  }
-  #cv-view h2 { font-size: 12.5pt !important; }
-
-  /* Prose case everywhere; hierarchy comes from weight and colour. */
-  #cv-view .uppercase { text-transform: none !important; }
-
-  /* Terminal chevrons ("> ") before the tagline and the skill titles. */
-  #cv-view header p > span,
-  #cv-view h4 > span {
-    display: none !important;
-  }
-
-  /* Role lines under each entry title, in the accent colour. */
-  #cv-view h3 + p {
-    color: rgb(var(--accent)) !important;
-    font-weight: 500;
-  }
-
-  /* Round, calm markers instead of the rotated cyber squares. */
-  #cv-view article > span.absolute,
-  #cv-view li > span.absolute {
-    transform: none !important;
-    border-radius: 9999px !important;
+  #cv-view article {
+    border-left: none !important;
+    padding-left: 0 !important;
   }
   #cv-view article > span.absolute {
-    background: rgb(var(--accent)) !important;
-    border-color: rgb(var(--accent)) !important;
-  }
-
-  /* Quiet stack tags: borderless, soft grey. */
-  #cv-view .cyber-chamfer-sm {
-    border: none !important;
-    background: rgb(0 0 0 / 0.05) !important;
-    border-radius: 3px !important;
-    padding: 1px 6px !important;
-    color: rgb(70 74 82) !important;
+    display: none !important;
   }
 
   /* The 188mm printable width falls just short of the md: breakpoint
