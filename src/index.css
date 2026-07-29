@@ -337,9 +337,13 @@ h1.cyber-glitch {
    smallest comfortably-readable size, and strip all site chrome.
    ============================================================ */
 @media print {
+  /* Zero page margin: the browser's own header/footer (print date, tab
+     title, URL, page number) are drawn inside the page margin boxes, so
+     removing the margin removes them. The visual page margins move to
+     #cv-view's padding below. */
   @page {
     size: A4 portrait;
-    margin: 10mm 11mm;
+    margin: 0;
   }
 
   html,
@@ -359,6 +363,11 @@ h1.cyber-glitch {
     max-width: none !important;
     width: 100% !important;
     margin: 0 !important;
+    padding: 10mm 11mm !important;
+  }
+  /* The build-time export (scripts/generate-pdf.mjs) provides real page
+     margins through page.pdf(); drop the padding so they don't stack. */
+  body.pdf-export #cv-view {
     padding: 0 !important;
   }
   #cv-view > div {
