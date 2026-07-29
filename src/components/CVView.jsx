@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { useLang } from "../i18n/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { Download, MapPin, Mail, Github, Phone, ExternalLink, Lock } from "lucide-react";
+import { Download, MapPin, Mail, Github, Phone, ExternalLink, Lock, Globe } from "lucide-react";
 import { careerData, projectData, educationData } from "../data/timelineData";
 
 export default function CVView() {
@@ -73,6 +73,7 @@ export default function CVView() {
             <a href="mailto:victorgrabowski33@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors"><Mail size={13} className="text-accent" /> victorgrabowski33@gmail.com</a>
             <a href="tel:+33767302293" className="flex items-center gap-2 hover:text-accent transition-colors"><Phone size={13} className="text-accent" /> 07 67 30 22 93</a>
             <a href="https://github.com/VictorMusta" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors"><Github size={13} className="text-accent" /> github.com/VictorMusta</a>
+            <a href="https://victormusta.github.io/CV/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors"><Globe size={13} className="text-accent" /> victormusta.github.io/CV</a>
           </div>
         </header>
 
