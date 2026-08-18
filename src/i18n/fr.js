@@ -49,10 +49,37 @@ const fr = {
    * désormais comme TERRAIN de travail, pas comme passion déclarée : sur un CV, c'est ce qui
    * en fait un argument plutôt qu'une confidence.
    */
+  /*
+   * PRÉSENTATION — une accroche, pas un résumé de poste.
+   *
+   * PREMIÈRE PHRASE : « pour convaincre… j'ai fini par leur créer un site ». La version
+   * précédente disait « j'ai créé un site parce que je n'arrivais pas à convaincre », et on ne
+   * comprenait pas que le site SERVE à convaincre — l'échec y était la cause, pas l'objet.
+   * « J'ai fini par » raconte l'escalade en trois mots : j'ai essayé autrement, puis j'ai
+   * construit.
+   *
+   * On n'écrit PAS « ça a marché ». Qu'ils se servent du site est vérifiable ; qu'ils aient
+   * effectivement joué au jeu ne l'est pas, et une affirmation qu'on ne peut pas défendre en
+   * entretien n'a rien à faire ici.
+   *
+   * DEUXIÈME PARAGRAPHE : de Victor, presque mot pour mot. Sur un principe de conception, sa
+   * formulation gagne sur la mienne.
+   *
+   * TROISIÈME : la passion doit SERVIR le poste et non le concurrencer. Une accroche qui
+   * centre le jeu vidéo fait craindre un départ ; la même passion présentée comme la SOURCE
+   * d'un niveau d'exigence devient un argument pour embaucher. L'expérience utilisateur et
+   * l'accessibilité cessent d'être des cases cochées : elles deviennent la CONSÉQUENCE de
+   * cette exigence, ce que « j'attends la même chose du web » dit explicitement.
+   *
+   * La passion est au PRÉSENT et assumée — « est ce qui me passionne ». Une version antérieure
+   * la mettait au passé (« m'a appris »), ce qui la faisait passer pour un souvenir de
+   * formation. Et « le domaine le plus complet » est l'argument de Victor, pas le mien : la
+   * technique, le ressenti et l'attention tenus en même temps, peu de disciplines l'exigent.
+   */
   profil: [
-    "J'ai créé un site parce que je n'arrivais pas à convaincre cinq amis d'essayer un jeu. Ils s'en servent encore.",
+    "Pour convaincre cinq amis d'essayer un jeu vidéo, j'ai fini par leur créer un site. Ils s'en servent encore.",
     "Développeur fullstack junior, à Bordeaux. Monolithe ou micro-services, JavaScript ou .NET : la meilleure stack technologique est celle qui est la mieux adaptée au projet. Je m'adapte à ses besoins, pas à mes préférences.",
-    "Ce qui m'occupe aujourd'hui, c'est l'expérience utilisateur, l'accessibilité, et l'attention portée aux personnes qui vont réellement se servir de ce qu'on écrit. Le jeu vidéo est mon terrain d'expérimentation : c'est là que je confronte mes idées à de vrais utilisateurs.",
+    "Le développement de jeux vidéo est ce qui me passionne : c'est le domaine le plus complet qui existe, il faut y tenir la technique, le ressenti et l'attention du joueur en même temps. J'attends la même chose du web — et c'est de là que vient mon intérêt pour l'expérience utilisateur et l'accessibilité.",
   ],
   trackCareer: "Parcours",
   trackEducation: "Formation",

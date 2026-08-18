@@ -3,9 +3,9 @@ const en = {
   tagline: "Junior fullstack developer — TypeScript, .NET, and a lot of video games",
 
   profil: [
-    "I built a website because I could not convince five friends to try a game. They still use it.",
+    "To convince five friends to try a video game, I ended up building them a website. They still use it.",
     "Junior fullstack developer, based in Bordeaux. Monolith or micro-services, JavaScript or .NET: the best stack is the one that fits the project. I adapt to what it needs, not to my own preferences.",
-    "What I care about today is user experience, accessibility, and paying attention to the people who will actually use what we write. Video games are where I experiment: that is where I put my ideas in front of real users.",
+    "Video game development is what I am passionate about: it is the most complete field there is — you have to hold the engineering, the feel and the player's attention all at once. I expect the same from the web, and that is where my interest in user experience and accessibility comes from.",
   ],
   trackCareer: "Career",
   trackEducation: "Education",
