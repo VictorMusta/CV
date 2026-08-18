@@ -18,6 +18,7 @@ import {
   Dice6,
   Code2,
   Megaphone,
+  Star,
 } from "lucide-react";
 
 /* ──────────────────────────────────────────────
@@ -153,6 +154,27 @@ const educationData = [
    ────────────────────────────────────────────── */
 
 const projectData = [
+  {
+    id: "jvcritique",
+    type: "project",
+    year: "2026",
+    sortYear: 2026.3,
+    title: "jvcritiqué",
+    icon: Star,
+    color: "#C98A3C",
+    github: "https://github.com/VictorMusta/jvcritique",
+    demo: "https://jvcritique.duckdns.org/",
+    stack: [
+      "Next.js 16",
+      "TypeScript",
+      "Drizzle ORM",
+      "PostgreSQL",
+      "Auth.js",
+      "Tailwind v4",
+      "Docker",
+    ],
+    imageAlt: "jvcritiqué - avis de jeux notés selon les critères du lecteur",
+  },
   {
     id: "retour",
     type: "project",

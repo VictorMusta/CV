@@ -172,6 +172,20 @@ const en = {
       "Immersive 3D isometric interface powered by React Three Fiber."
     ]
   },
+  jvcritique: {
+    role: "Fullstack — Review sharing app",
+    description: "A site where a small group of friends rate video games per domain (gameplay, story, atmosphere…), and where every reader sees the score recomputed ACCORDING TO THEIR OWN CRITERIA. Born from a simple observation: an overall score means nothing to someone who wants something else from a game. Built with the BMad methodology (brief, PRD, architecture, ADRs).",
+    highlights: [
+      "One shared scoring engine: the author's score and the reader's recomputed score are the same arithmetic over different weightings — never two implementations.",
+      "Scores computed on read and never stored: changing your criteria updates the whole history, with no data migration.",
+      "A proper spoiler grammar, click-to-reveal, with three distinct audiences — one of which receives NO BYTE of the hidden passage, for Open Graph previews.",
+      "Business rules enforced by the database rather than the code: CHECK constraints on state exclusivity, case-insensitive uniqueness, self-notifications refused outright.",
+      "WCAG AA contrast measured by script across ten colour variants, and background textures generated in CSS with zero network bytes.",
+      "In-app and system notifications, share previews, game mentions, and a local draft that survives failed submissions.",
+      "Continuous deployment to a shared VPS — Docker Compose, migrations before startup, strict isolation from neighbouring services.",
+      "214 tests, 21 of them against a real PostgreSQL to prove the constraints code alone cannot guarantee.",
+    ]
+  },
   retour: {
     role: "B2B SaaS — Citizen Reporting",
     description: "A B2B SaaS platform letting small French town halls receive and handle citizen reports (roads, cleanliness, incidents). Built with the BMad methodology (brief, PRD, architecture).",

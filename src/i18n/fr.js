@@ -170,6 +170,20 @@ const fr = {
       "Interface 3D isométrique immersive avec React Three Fiber."
     ]
   },
+  jvcritique: {
+    role: "Fullstack — Application de partage d'avis",
+    description: "Un site où un petit groupe d'amis note des jeux vidéo par domaine (gameplay, histoire, ambiance…), et où chaque lecteur voit la note recalculée SELON SES PROPRES CRITÈRES. Né d'un constat : une note globale ne dit rien à quelqu'un qui ne cherche pas la même chose dans un jeu. Conçu en méthodologie BMad (brief, PRD, architecture, ADR).",
+    highlights: [
+      "Moteur de notation unique, partagé : la note de l'auteur et la note relue du lecteur sont la même arithmétique sur des pondérations différentes — jamais deux implémentations.",
+      "Notes recalculées à la lecture et jamais stockées : changer ses critères met à jour tout l'historique, sans migration de données.",
+      "Grammaire de spoilers propre, révélable au clic, avec trois audiences distinctes — dont une qui ne reçoit AUCUN octet du passage masqué, pour les aperçus Open Graph.",
+      "Règles métier portées par la base plutôt que par le code : contraintes CHECK sur l'exclusivité des états, unicité insensible à la casse, refus des auto-notifications.",
+      "Contrastes WCAG AA mesurés par script sur dix variantes de couleurs, et textures de fond générées en CSS sans un octet réseau.",
+      "Notifications in-app et système, aperçus de partage, mentions de jeux, brouillon local résistant aux coupures.",
+      "Déploiement continu sur VPS mutualisé — Docker Compose, migrations avant démarrage, cloisonnement strict des voisins.",
+      "214 tests, dont 21 contre un vrai PostgreSQL pour éprouver les contraintes que le code seul ne peut pas garantir.",
+    ]
+  },
   retour: {
     role: "SaaS B2B — Signalement citoyen",
     description: "Plateforme SaaS B2B permettant aux petites mairies françaises de recevoir et traiter les signalements citoyens (voirie, propreté, incidents). Projet mené en méthodologie BMad (brief, PRD, architecture).",
