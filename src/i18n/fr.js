@@ -17,10 +17,25 @@ const fr = {
    * Un tableau et non une chaîne unique : trois paragraphes courts se lisent, un pavé de six
    * lignes se saute.
    */
+  /*
+   * PRÉSENTATION — une ACCROCHE, pas un résumé de poste.
+   *
+   * La première version décrivait correctement le profil et se lisait comme toutes les autres :
+   * « développeur fullstack junior, j'ai travaillé en… ». Victor voulait quelque chose qui
+   * interpelle sans être bizarre.
+   *
+   * D'où l'ouverture par un FAIT, et le plus spécifique qu'il possède : un site écrit pour
+   * convaincre cinq amis, qui tourne encore. C'est la seule phrase de cette page que personne
+   * d'autre ne pourrait écrire — et elle prouve en deux lignes ce qu'un paragraphe de qualités
+   * ne fait que promettre : il finit ce qu'il commence, et pour de vrais utilisateurs.
+   *
+   * Une seule formule à la fin, pas trois. Empiler les aphorismes est exactement ce qui rend
+   * un profil « bizarre » : on cesse de croire celui qui parle.
+   */
   profil: [
-    "Développeur fullstack junior, à Bordeaux. J'ai travaillé en monolithe comme en micro-services, en JavaScript comme en .NET — je choisis maintenant selon ce que le projet demande plutôt que selon ce que je connais déjà.",
-    "Les jeux vidéo m'ont amené au code et ne l'ont jamais quitté : la plupart de mes projets personnels en parlent, et l'un d'eux tourne tous les jours pour un groupe d'amis.",
-    "Ce qui m'occupe en ce moment, c'est l'expérience utilisateur, l'accessibilité, et les personnes pour qui on écrit — une fonctionnalité que personne ne trouve n'existe pas.",
+    "J'ai écrit un site entier parce que je n'arrivais pas à convaincre cinq amis d'essayer un jeu. Ils s'en servent encore.",
+    "Développeur fullstack junior, à Bordeaux. Monolithe ou micro-services, JavaScript ou .NET — j'ai pratiqué les deux côtés, et j'ai surtout appris à choisir selon ce que le projet demande plutôt que selon ce que je connais déjà.",
+    "Les jeux vidéo m'ont amené au code et n'en sont jamais repartis. Ce qui m'occupe aujourd'hui, c'est l'expérience utilisateur, l'accessibilité, et les personnes pour qui on écrit : une fonctionnalité que personne ne trouve n'existe pas.",
   ],
   trackCareer: "Parcours",
   trackEducation: "Formation",
