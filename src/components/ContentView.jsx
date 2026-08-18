@@ -39,6 +39,7 @@ export default function ContentView({ item, direction, onOpenLightbox }) {
   const role = tr.role || "";
   const description = tr.description || "";
   const highlights = tr.highlights || [];
+  const award = tr.award;
 
   return (
     <div className="flex-1 flex flex-col items-center justify-start p-6 md:p-12 overflow-y-auto [&::-webkit-scrollbar]:hidden" role="tabpanel">
@@ -137,6 +138,12 @@ export default function ContentView({ item, direction, onOpenLightbox }) {
             <p className="text-sm md:text-base text-foreground/90 font-mono leading-relaxed bg-background/50 p-4 border-l-2 border-accent">
               <span className="text-accent font-bold mr-2">{'>'}</span>{description}
             </p>
+
+            {award && (
+              <p className="font-mono text-sm font-bold uppercase tracking-widest text-accent-secondary">
+                ★ {award}
+              </p>
+            )}
 
             {highlights.length > 0 && (
               <div className="mt-2">

@@ -35,7 +35,7 @@ export default function CVView() {
    * document qu'un recruteur reçoit. Deux listes pour une même sélection finissent toujours
    * par ne plus dire la même chose.
    */
-  const RETENUS = ["jvcritique", "taille-and-retry", "moyenax", "retour"];
+  const RETENUS = ["jvcritique", "bankal", "taille-and-retry", "moyenax"];
   const projetsDuCv = projects.filter((item) => RETENUS.includes(item.id));
 
   return (
@@ -182,6 +182,11 @@ export default function CVView() {
                       <h3 className="text-base font-bold uppercase tracking-wide text-foreground">{item.title}</h3>
                       <span className="text-xs text-accent-secondary uppercase tracking-widest">{tr.role}</span>
                     </div>
+                    {tr.award && (
+                      <p className="mb-3 text-xs font-bold uppercase tracking-wider text-accent-secondary">
+                        ★ {tr.award}
+                      </p>
+                    )}
                     <p className="text-xs text-foreground/80 leading-relaxed mb-6 flex-1">{tr.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {item.stack?.map((tech) => (
@@ -234,6 +239,13 @@ export default function CVView() {
                       <span>{item.year}</span>
                     </div>
                   </div>
+                  {/* Un prix se lit avant la description : c'est le seul élément de la
+                      fiche qu'un tiers a validé. */}
+                  {tr.award && (
+                    <p className="mb-2 text-xs font-bold uppercase tracking-wider text-accent-secondary">
+                      ★ {tr.award}
+                    </p>
+                  )}
                   {tr.description && (
                     <p className="text-sm text-foreground/80 leading-relaxed mb-4">{tr.description}</p>
                   )}

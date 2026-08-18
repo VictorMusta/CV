@@ -166,7 +166,18 @@ const en = {
   },
 
   /* ── Projects ── */
+  bankal: {
+    award: "Best Gameplay award — Winter Game Jam, La Horde",
+    role: "Four-player local co-op — Winter Game Jam",
+    description: "Four players carry the same table, one joystick each across only two controllers. It has to leave the restaurant kitchen and reach its two waiting customers, through an obstacle course. When the directions given contradict each other, the table wobbles.",
+    highlights: [
+      "One object, four wills: each player holds a corner of the table, and two players share a controller — the hardware constraint is part of the game.",
+      "Disagreement is felt before it is understood: contradictory directions make the table wobble, which teaches cooperation without a line of tutorial.",
+      "Built by a team of seven in Unity, with a soundtrack finished to the end — in a jam that is usually the first thing sacrificed.",
+    ]
+  },
   "taille-and-retry": {
+    award: "Best Gameplay award — Winter Game Jam, La Horde",
     role: "3D puzzle-platformer — Winter Game Jam",
     description: "A puzzle-platformer where the player bends the world at will: flatten the level, widen it, stretch it along all three axes to open a way through. \"The story of a turnip farmer, for whom size really mattered\" — a race against the clock to save an indebted family's land from seizure.",
     highlights: [

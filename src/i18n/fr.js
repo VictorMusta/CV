@@ -238,7 +238,18 @@ const fr = {
   },
 
   /* ── Projets ── */
+  bankal: {
+    award: "Prix du meilleur gameplay — Winter Game Jam, La Horde",
+    role: "Coopération locale à quatre — Winter Game Jam",
+    description: "Quatre joueurs portent la même table, un joystick chacun sur deux manettes seulement. Il faut la sortir de la cuisine d'un restaurant et l'amener jusqu'à ses deux clients, à travers un parcours d'obstacles. Quand les directions données se contredisent, la table tremble.",
+    highlights: [
+      "Un seul objet pour quatre volontés : chaque joueur tient un coin de la table, et deux joueurs se partagent une manette — la contrainte matérielle fait partie du jeu.",
+      "Le désaccord se voit avant de se comprendre : des directions contradictoires font trembler la table, ce qui enseigne la coopération sans une ligne de tutoriel.",
+      "Fait à sept sous Unity, avec une bande-son travaillée jusqu'au bout — dans une jam, c'est ce qu'on sacrifie d'habitude en premier.",
+    ]
+  },
   "taille-and-retry": {
+    award: "Prix du meilleur gameplay — Winter Game Jam, La Horde",
     role: "Puzzle-platformer 3D — Winter Game Jam",
     description: "Un puzzle-platformer où le joueur plie le monde à sa volonté : aplatir le niveau, l'élargir, l'étirer sur les trois axes pour ouvrir un passage. « L'histoire d'un cultivateur de navets, pour qui la taille comptait vraiment » — une course contre le chrono pour sauver de la saisie les terres d'une famille endettée.",
     highlights: [

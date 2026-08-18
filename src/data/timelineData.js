@@ -20,6 +20,7 @@ import {
   Megaphone,
   Star,
   Scaling,
+  Utensils,
 } from "lucide-react";
 
 /* ──────────────────────────────────────────────
@@ -184,6 +185,30 @@ const projectData = [
     imageAlt: "jvcritiqué - avis de jeux notés selon les critères du lecteur",
   },
   {
+    /*
+     * DATE ÉTABLIE PAR LE DIPLÔME, pas par mémoire : le certificat « Meilleur Visuel » de la
+     * même édition, remis à une autre équipe, porte « 14-15-16 mars 2025 » et exactement la
+     * même maquette que celui de Bankal!. Les 48 h de jam tiennent donc dans un week-end de
+     * trois jours — ce qui réconcilie les « 3 jours » de Victor et les « 48h » de l'école.
+     */
+    id: "bankal",
+    type: "project",
+    year: "2025",
+    sortYear: 2025.2,
+    title: "Bankal!",
+    icon: Utensils,
+    color: "#F2C230",
+    stack: ["Unity", "C#", "Game Jam 48 h"],
+    screenshots: [
+      "/images/projects/bankal/titre.webp",
+      "/images/projects/bankal/fin.webp",
+      "/images/projects/bankal/concept-cuisine.webp",
+      "/images/projects/bankal/concept-restaurant.webp",
+    ],
+    image: "/images/projects/bankal/titre.webp",
+    imageAlt: "Bankal! - quatre joueurs portent une même table jusqu'à ses clients",
+  },
+  {
     id: "taille-and-retry",
     type: "project",
     year: "2026",
@@ -192,6 +217,12 @@ const projectData = [
     icon: Scaling,
     color: "#7BA05B",
     stack: ["Unity", "C#", "Game Jam 48 h"],
+    screenshots: [
+      "/images/projects/taille-and-retry/niveau.webp",
+      "/images/projects/taille-and-retry/titre.webp",
+      "/images/projects/taille-and-retry/cinematique.webp",
+    ],
+    image: "/images/projects/taille-and-retry/niveau.webp",
     imageAlt: "Taille and Retry - puzzle-platformer où le niveau se déforme sur trois axes",
   },
   {
