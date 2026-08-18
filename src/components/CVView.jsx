@@ -96,7 +96,7 @@ export default function CVView() {
           la seule occasion de dire qui on est avant que la page ne devienne une liste de
           technologies. Elle est imprimée aussi — quelqu'un qui reçoit le PDF la lit d'abord.
         */}
-        <section className="mb-12 flex max-w-3xl flex-col gap-3">
+        <section className="cv-profil mb-12 flex max-w-3xl flex-col gap-3">
           {t.profil?.map((paragraphe, i) => (
             <p key={i} className="text-sm leading-relaxed text-foreground/85">
               {paragraphe}
@@ -107,7 +107,7 @@ export default function CVView() {
         <div className="h-[1px] w-full bg-border my-8" />
 
         {/* ─── Career ─── */}
-        <section className="mb-12">
+        <section className="cv-experience mb-12">
           <h2 className="text-xl font-display font-bold text-accent uppercase tracking-widest mb-8 flex items-center gap-3">
             <span className="w-8 h-[2px] bg-accent"></span>
             {t.cv.professionalExperience}
@@ -167,7 +167,7 @@ export default function CVView() {
         <div className="h-[1px] w-full bg-border my-8" />
 
         {/* ─── Projects ─── */}
-        <section className="mb-12">
+        <section className="cv-projets mb-12">
           <h2 className="text-xl font-display font-bold text-accent uppercase tracking-widest mb-8 flex items-center gap-3">
             <span className="w-8 h-[2px] bg-accent"></span>
             {t.cv.sideProjects}
@@ -204,24 +204,57 @@ export default function CVView() {
                 );
               })}
           </div>
-          {/* Simple Projects for Print */}
-          <div className="hidden print-only text-xs">
-            {/* Les mêmes projets que la grille, dans le même ordre : la ligne se met à jour
-                toute seule le jour où la sélection change. */}
-            <p>
-              <strong>{t.trackProjects} :</strong>{" "}
-              {projetsDuCv.map((item) => item.title).join(", ")}.
+          {/*
+            LES PROJETS À L'IMPRESSION. Ils tenaient auparavant sur une seule ligne — les
+            quatre titres séparés par des virgules — ce qui rendait la section illisible
+            pour qui ne reçoit que le PDF : aucun projet n'y disait ce qu'il était, ni avec
+            quoi il était construit. Sur un CV de développeur junior, les projets
+            personnels sont la seule preuve de travail que le candidat contrôle entièrement ;
+            les réduire à une énumération enlève précisément ce qu'un recruteur y cherche.
+
+            Ils reprennent donc la forme des expériences juste au-dessus : titre, rôle,
+            année, une phrase, puis la stack. La stack est une ligne de texte et non des
+            étiquettes encadrées, pour la place — l'écran garde les étiquettes.
+          */}
+          <div className="hidden print-only">
+            {projetsDuCv.map((item) => {
+              const tr = t[item.id] || {};
+              return (
+                <article key={item.id}>
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-4">
+                    <div>
+                      <h3 className="text-lg font-bold uppercase tracking-wide text-foreground">{item.title}</h3>
+                      {/* Realtime Earnings a pour « rôle » son propre nom : l'afficher
+                          donnerait deux fois la même ligne. */}
+                      {tr.role && tr.role !== item.title && (
+                        <p className="text-sm text-accent-tertiary mt-1">{tr.role}</p>
+                      )}
+                    </div>
+                    <div className="flex flex-col md:items-end text-xs text-mutedForeground tracking-widest uppercase">
+                      <span>{item.year}</span>
+                    </div>
+                  </div>
+                  {tr.description && (
+                    <p className="text-sm text-foreground/80 leading-relaxed mb-4">{tr.description}</p>
+                  )}
+                  {item.stack?.length > 0 && (
+                    <p className="text-xs text-mutedForeground uppercase tracking-wider">
+                      {item.stack.join(" · ")}
+                    </p>
+                  )}
+                </article>
+              );
+            })}
+            <p className="text-xs text-mutedForeground">
+              {t.common.viewMore} github.com/VictorMusta
             </p>
-            <a href="https://github.com/VictorMusta" className="flex items-center gap-2 mt-2">
-              <Github size={12} /> {t.common.viewMore} github.com/VictorMusta
-            </a>
           </div>
         </section>
 
         <div className="h-[1px] w-full bg-border my-8" />
 
         {/* ─── Skills ─── */}
-        <section className="mb-12">
+        <section className="cv-competences mb-12">
           <h2 className="text-xl font-display font-bold text-accent uppercase tracking-widest mb-8 flex items-center gap-3">
             <span className="w-8 h-[2px] bg-accent"></span>
             {t.cv.technicalSkills}
@@ -241,7 +274,7 @@ export default function CVView() {
         <div className="h-[1px] w-full bg-border my-8" />
 
         {/* ─── Education ─── */}
-        <section>
+        <section className="cv-formation">
           <h2 className="text-xl font-display font-bold text-accent uppercase tracking-widest mb-8 flex items-center gap-3">
             <span className="w-8 h-[2px] bg-accent"></span>
             {t.cv.education}

@@ -402,23 +402,105 @@ h1.cyber-glitch {
 
   /* Let SECTIONS flow across the page break — forcing break-inside:avoid
      on a tall section pushed it wholesale to page 2 and left page 1 nearly
-     empty. Only keep individual entries intact and never orphan a title. */
-  #cv-view article { break-inside: avoid; }
+     empty.
+
+     ENTRIES may now be split too. Keeping each one intact sounds tidier, but
+     an entry that does not fit is pushed WHOLE to the next page, and four
+     experience entries of 43–58 mm left up to 20 mm of dead space at the foot
+     of a page. Measured: with entries kept intact the CV could not fit two
+     pages at any type scale worth reading; letting them split, it does. A
+     title is still never left behind alone — h2 for sections, h3 for entries. */
+  #cv-view article { break-inside: auto; }
   #cv-view h2 { break-after: avoid; }
+  #cv-view article h3 { break-after: avoid; }
 
   /* Links print as plain text. */
   #cv-view a { text-decoration: none !important; color: inherit !important; }
 
-  /* Reveal the compact print-only project line, hide the on-screen grid. */
+  /* Reveal the print-only project entries, hide the on-screen card grid. */
   .print-hidden { display: none !important; }
   .print-only { display: block !important; }
+  /* `display: block` above wins over any flex utility on the container, so the
+     spacing between printed projects is stated here — 8px, the same gap the
+     experience entries end up with once .gap-10 is tightened. */
+  #cv-view .print-only > article { margin-bottom: 8px; }
 
   /* --- Space-saving trims (pre-approved, in order) --- */
   /* 1. Older formations: keep only the two most recent (Sup de Vinci, Epitech). */
-  #cv-view section:last-of-type article:nth-child(n + 3) { display: none !important; }
+  #cv-view .cv-formation article:nth-child(n + 3) { display: none !important; }
 
-  /* Page 1 is experience only: Personal Projects opens page 2. */
-  #cv-view section:nth-of-type(2) { break-before: page; }
+  /* NO FORCED PAGE BREAK any more. It used to open page 2 on Personal
+     Projects, which only made sense while page 1 held nothing but the
+     experience section; with the profile block above it, the break wasted a
+     third of a page. The content now simply flows. */
+
+  /* Printed projects and formations sit two per row, and skills three — the
+     same information, half to a third of the height. This is where the two
+     pages come from: the projects section alone dropped from 174 mm to
+     141 mm, the formations from 56 mm to 38 mm. Prose is NOT columnised —
+     the profile paragraphs stay full width, because narrow columns cost
+     prose more in readability than they save in paper. */
+  #cv-view .cv-projets .print-only {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 8mm;
+    align-items: start;
+  }
+  #cv-view .cv-formation > div {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 8mm;
+    align-items: start;
+  }
+  #cv-view .cv-competences > div {
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
+  /* The closing "see more on GitHub" line is not a project: without this it
+     became a grid cell of its own and sat in the left column, under the third
+     project, as if it belonged to it. */
+  #cv-view .cv-projets .print-only > p {
+    grid-column: 1 / -1;
+  }
+
+  /* Last few millimetres, taken from the spacing rather than from the text:
+     bullet lists lose their gap and tighten their leading, and the technology
+     tags lose their horizontal padding. Nothing disappears. */
+  #cv-view article ul { gap: 0 !important; }
+  #cv-view article ul li { line-height: 1.15 !important; }
+  #cv-view article span[class*="px-2"] { padding: 0 3px !important; }
+
+  /* ------------------------------------------------------------------
+     THESE TWO RULES USED TO COUNT SECTIONS BY POSITION — `section:
+     nth-of-type(2)` and `section:last-of-type`. Adding the profile block
+     on 18 Aug 2026 inserted a fifth section at the TOP, so the forced
+     page break silently moved onto Experience: page 1 held nothing but
+     the name and three paragraphs, and the CV spilled onto a third page.
+
+     It also explains why hiding the profile block in print did not bring
+     the page count back down — `display: none` still counts for
+     :nth-of-type, so the break stayed on the wrong section.
+
+     Positional selectors describe a document that never changes. Named
+     hooks describe the one we have.
+     ------------------------------------------------------------------ */
+
+  /* The tagline shares the header row with six contact lines. Left to its
+     own devices it wrapped UNDER that column and stranded the `>` marker
+     alone on a line. Cap the name column, refuse to shrink the contacts,
+     and let the marker sit inline so the text wraps after it. */
+  #cv-view header > div:first-child {
+    max-width: 62% !important;
+  }
+  #cv-view header > div:last-child {
+    flex-shrink: 0 !important;
+  }
+  #cv-view header p {
+    display: block !important;
+  }
+  #cv-view header p > span:first-child {
+    float: left !important;
+    margin-right: 0.4em !important;
+  }
 
   /* ============================================================
      PRINT SKIN — same Accessibility DA as the site
