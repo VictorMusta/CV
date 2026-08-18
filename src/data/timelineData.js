@@ -356,12 +356,19 @@ const projectData = [
     color: "#EC4899",
     github: "https://github.com/VictorGrabowski/pachinko",
     demo: "https://victorgrabowski.github.io/pachinko/",
+    /*
+     * DE VRAIES CAPTURES, à la place de la carte OpenGraph de GitHub. Celle-ci n'affichait
+     * que le nom du dépôt sur fond gris : elle prouvait l'existence du projet, pas son
+     * contenu — et c'était le seul projet du site dans ce cas.
+     */
     screenshots: [
-      "https://opengraph.githubassets.com/1/VictorGrabowski/pachinko",
+      "/images/projects/pachinko/jeu.webp",
+      "/images/projects/pachinko/mise.webp",
+      "/images/projects/pachinko/menu.webp",
     ],
     stack: ["JavaScript", "Physics", "AI-Assisted (Copilot)", "Supabase"],
-    image: "https://opengraph.githubassets.com/1/VictorGrabowski/pachinko",
-    imageAlt: "Pachinko - High Risk High Reward Game",
+    image: "/images/projects/pachinko/jeu.webp",
+    imageAlt: "Pachinko - une bille tombe dans un champ de pins, combo à 8x et multiplicateur de mise",
   },
   {
     id: "aoc-2024",
