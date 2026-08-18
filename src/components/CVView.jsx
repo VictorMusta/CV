@@ -26,6 +26,18 @@ export default function CVView() {
   const career = [...careerData].sort((a, b) => b.sortYear - a.sortYear);
   const projects = [...projectData].sort((a, b) => b.sortYear - a.sortYear);
 
+  /*
+   * LA SÉLECTION DU CV, en un seul endroit.
+   *
+   * Elle sert à DEUX rendus : la grille de cartes à l'écran, et la ligne de résumé du PDF —
+   * où les cartes sont masquées. Cette ligne était écrite à la main, et elle avait déjà
+   * divergé : jvcritiqué figurait dans la grille et manquait du PDF, c'est-à-dire du seul
+   * document qu'un recruteur reçoit. Deux listes pour une même sélection finissent toujours
+   * par ne plus dire la même chose.
+   */
+  const RETENUS = ["jvcritique", "moyenax", "money-maker", "retour"];
+  const projetsDuCv = projects.filter((item) => RETENUS.includes(item.id));
+
   return (
     <div className="relative w-full max-w-4xl mx-auto p-4 md:p-8 font-mono text-foreground" id="cv-view">
       {/* Export button with theme picker — hidden in print */}
@@ -77,6 +89,20 @@ export default function CVView() {
             <a href="https://victormusta.github.io/CV/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors"><Globe size={13} className="text-accent" /> victormusta.github.io/CV</a>
           </div>
         </header>
+
+        {/*
+          PRÉSENTATION, juste après l'en-tête et avant les expériences.
+          C'est la place d'un profil sur un CV : la première chose qu'on lit après le nom, et
+          la seule occasion de dire qui on est avant que la page ne devienne une liste de
+          technologies. Elle est imprimée aussi — quelqu'un qui reçoit le PDF la lit d'abord.
+        */}
+        <section className="mb-12 flex max-w-3xl flex-col gap-3">
+          {t.profil?.map((paragraphe, i) => (
+            <p key={i} className="text-sm leading-relaxed text-foreground/85">
+              {paragraphe}
+            </p>
+          ))}
+        </section>
 
         <div className="h-[1px] w-full bg-border my-8" />
 
@@ -148,20 +174,7 @@ export default function CVView() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 print-hidden">
-            {projects
-              /*
-                 * Liste EXPLICITE, et non les N plus récents : la section CV est une
-                 * sélection, pas un inventaire. Le portfolio complet vit dans la piste
-                 * « Projets Divers » ; ici on ne garde que ce qu'on veut faire lire à
-                 * quelqu'un qui accorde trente secondes à la page.
-                 *
-                 * jvcritiqué ajouté le 18 août 2026. L'ordre reste celui de `sortYear`, donc
-                 * il passe en tête sans qu'on ait à toucher à cette liste-ci.
-                 */
-                .filter((item) =>
-                  ["jvcritique", "moyenax", "money-maker", "retour"].includes(item.id),
-                )
-              .map((item) => {
+            {projetsDuCv.map((item) => {
                 const tr = t[item.id] || {};
                 return (
                   <article key={item.id} className="flex flex-col p-6 bg-background border border-border cyber-chamfer-sm hover:border-accent/50 transition-colors">
@@ -193,7 +206,12 @@ export default function CVView() {
           </div>
           {/* Simple Projects for Print */}
           <div className="hidden print-only text-xs">
-            <p><strong>{t.trackProjects} :</strong> Moyenax (Dofus-like), Realtime Earnings, Retour (SaaS, privé).</p>
+            {/* Les mêmes projets que la grille, dans le même ordre : la ligne se met à jour
+                toute seule le jour où la sélection change. */}
+            <p>
+              <strong>{t.trackProjects} :</strong>{" "}
+              {projetsDuCv.map((item) => item.title).join(", ")}.
+            </p>
             <a href="https://github.com/VictorMusta" className="flex items-center gap-2 mt-2">
               <Github size={12} /> {t.common.viewMore} github.com/VictorMusta
             </a>

@@ -1,6 +1,27 @@
 const fr = {
   /* ── UI ── */
-  tagline: "Développeur Fullstack TypeScript · Micro-services .NET",
+  /*
+   * Accroche RÉÉCRITE le 18 août 2026 : « Développeur Fullstack TypeScript · Micro-services
+   * .NET » était une liste de mots-clés, pas une phrase. Elle disait ce qu'il a touché, jamais
+   * qui il est — et sur un CV les mots-clés se lisent déjà dans les compétences.
+   */
+  tagline: "Développeur fullstack junior — TypeScript, .NET, et beaucoup de jeux vidéo",
+
+  /*
+   * Présentation, en trois temps courts : d'où il part, d'où lui vient l'envie, ce qui
+   * l'occupe maintenant.
+   *
+   * « Junior » est ÉCRIT, et c'est un choix. Le cacher se voit toujours à l'entretien, et
+   * l'assumer permet de parler de ce qu'on a déjà pratiqué sans avoir l'air de le surjouer.
+   *
+   * Un tableau et non une chaîne unique : trois paragraphes courts se lisent, un pavé de six
+   * lignes se saute.
+   */
+  profil: [
+    "Développeur fullstack junior, à Bordeaux. J'ai travaillé en monolithe comme en micro-services, en JavaScript comme en .NET — je choisis maintenant selon ce que le projet demande plutôt que selon ce que je connais déjà.",
+    "Les jeux vidéo m'ont amené au code et ne l'ont jamais quitté : la plupart de mes projets personnels en parlent, et l'un d'eux tourne tous les jours pour un groupe d'amis.",
+    "Ce qui m'occupe en ce moment, c'est l'expérience utilisateur, l'accessibilité, et les personnes pour qui on écrit — une fonctionnalité que personne ne trouve n'existe pas.",
+  ],
   trackCareer: "Parcours",
   trackEducation: "Formation",
   trackProjects: "Projets Divers",
