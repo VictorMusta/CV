@@ -3,9 +3,9 @@ const en = {
   tagline: "Junior fullstack developer — TypeScript, .NET, and a lot of video games",
 
   profil: [
-    "I built an entire website because I could not convince five friends to try a game. They still use it.",
-    "Junior fullstack developer, based in Bordeaux. Monolith or micro-services, JavaScript or .NET — I have worked on both sides, and mostly learned to choose based on what the project needs rather than on what I already know.",
-    "Video games brought me to code and never left. What I care about today is user experience, accessibility, and the people we write for: a feature nobody can find does not exist.",
+    "I built a website because I could not convince five friends to try a game. They still use it.",
+    "Junior fullstack developer, based in Bordeaux. Monolith or micro-services, JavaScript or .NET: the best stack is the one that fits the project. I adapt to what it needs, not to my own preferences.",
+    "What I care about today is user experience, accessibility, and paying attention to the people who will actually use what we write. Video games are where I experiment: that is where I put my ideas in front of real users.",
   ],
   trackCareer: "Career",
   trackEducation: "Education",

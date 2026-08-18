@@ -32,10 +32,27 @@ const fr = {
    * Une seule formule à la fin, pas trois. Empiler les aphorismes est exactement ce qui rend
    * un profil « bizarre » : on cesse de croire celui qui parle.
    */
+  /*
+   * PRÉSENTATION — une accroche, pas un résumé de poste.
+   *
+   * Elle ouvre sur le fait le plus spécifique qu'il possède : un site créé pour convaincre
+   * cinq amis d'essayer un jeu, et qui tourne encore. C'est la seule phrase de cette page que
+   * personne d'autre ne pourrait écrire, et elle démontre en deux lignes ce qu'un paragraphe
+   * de qualités ne fait que promettre.
+   *
+   * LE DEUXIÈME PARAGRAPHE EST DE VICTOR, presque mot pour mot. Ma version disait la même
+   * chose en plus long et en moins net : sur un principe de conception, sa formulation gagne.
+   *
+   * LE TROISIÈME A ÉTÉ REFAIT. Il portait « une fonctionnalité que personne ne trouve n'existe
+   * pas » — une formule de moi, que Victor ne reconnaissait pas comme sienne, et « les jeux
+   * vidéo m'ont amené au code », qui appuyait trop sur le goût personnel. Le jeu vidéo y est
+   * désormais comme TERRAIN de travail, pas comme passion déclarée : sur un CV, c'est ce qui
+   * en fait un argument plutôt qu'une confidence.
+   */
   profil: [
-    "J'ai écrit un site entier parce que je n'arrivais pas à convaincre cinq amis d'essayer un jeu. Ils s'en servent encore.",
-    "Développeur fullstack junior, à Bordeaux. Monolithe ou micro-services, JavaScript ou .NET — j'ai pratiqué les deux côtés, et j'ai surtout appris à choisir selon ce que le projet demande plutôt que selon ce que je connais déjà.",
-    "Les jeux vidéo m'ont amené au code et n'en sont jamais repartis. Ce qui m'occupe aujourd'hui, c'est l'expérience utilisateur, l'accessibilité, et les personnes pour qui on écrit : une fonctionnalité que personne ne trouve n'existe pas.",
+    "J'ai créé un site parce que je n'arrivais pas à convaincre cinq amis d'essayer un jeu. Ils s'en servent encore.",
+    "Développeur fullstack junior, à Bordeaux. Monolithe ou micro-services, JavaScript ou .NET : la meilleure stack technologique est celle qui est la mieux adaptée au projet. Je m'adapte à ses besoins, pas à mes préférences.",
+    "Ce qui m'occupe aujourd'hui, c'est l'expérience utilisateur, l'accessibilité, et l'attention portée aux personnes qui vont réellement se servir de ce qu'on écrit. Le jeu vidéo est mon terrain d'expérimentation : c'est là que je confronte mes idées à de vrais utilisateurs.",
   ],
   trackCareer: "Parcours",
   trackEducation: "Formation",
