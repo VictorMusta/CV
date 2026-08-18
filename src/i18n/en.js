@@ -168,10 +168,10 @@ const en = {
   /* ── Projects ── */
   "taille-and-retry": {
     role: "3D puzzle-platformer — Winter Game Jam",
-    description: "A puzzle-platformer where the player bends the world at will: flatten the level, widen it, stretch it along all three axes to open a way through. All of it in service of a race against the clock, to save an indebted farming family's land from seizure.",
+    description: "A puzzle-platformer where the player bends the world at will: flatten the level, widen it, stretch it along all three axes to open a way through. \"The story of a turnip farmer, for whom size really mattered\" — a race against the clock to save an indebted family's land from seizure.",
     highlights: [
       "Deforming the level along three axes is the only verb in the game: every puzzle is solved by changing the shape of the world, never that of the character.",
-      "Built as a team during La Horde's Winter Game Jam in Bordeaux, in Unity.",
+      "Built as a team in Unity, in 48 hours, during La Horde's Winter Game Jam in Bordeaux.",
       "A light narrative thread carries the time pressure: the family's debt is what gives the countdown a reason to exist.",
     ]
   },

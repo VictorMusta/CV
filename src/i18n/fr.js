@@ -240,10 +240,10 @@ const fr = {
   /* ── Projets ── */
   "taille-and-retry": {
     role: "Puzzle-platformer 3D — Winter Game Jam",
-    description: "Un puzzle-platformer où le joueur plie le monde à sa volonté : aplatir le niveau, l'élargir, l'étirer sur les trois axes pour ouvrir un passage. Le tout au service d'une course contre le chrono, pour sauver de la saisie les terres d'une famille de cultivateurs endettés.",
+    description: "Un puzzle-platformer où le joueur plie le monde à sa volonté : aplatir le niveau, l'élargir, l'étirer sur les trois axes pour ouvrir un passage. « L'histoire d'un cultivateur de navets, pour qui la taille comptait vraiment » — une course contre le chrono pour sauver de la saisie les terres d'une famille endettée.",
     highlights: [
       "Déformation du niveau sur les trois axes comme unique verbe de jeu : chaque énigme se résout en changeant la forme du monde, jamais celle du personnage.",
-      "Fait en équipe pendant la Winter Game Jam de La Horde, à Bordeaux, sous Unity.",
+      "Fait en équipe sous Unity, en 48 h, pendant la Winter Game Jam de La Horde à Bordeaux.",
       "Une trame narrative légère porte la contrainte de temps : la dette de la famille donne une raison au chronomètre.",
     ]
   },

@@ -191,7 +191,7 @@ const projectData = [
     title: "Taille and Retry",
     icon: Scaling,
     color: "#7BA05B",
-    stack: ["Unity", "C#", "Game Jam"],
+    stack: ["Unity", "C#", "Game Jam 48 h"],
     imageAlt: "Taille and Retry - puzzle-platformer où le niveau se déforme sur trois axes",
   },
   {
