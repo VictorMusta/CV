@@ -1,11 +1,11 @@
 const en = {
   /* ── UI ── */
-  tagline: "Junior fullstack developer — TypeScript, .NET, and a lot of video games",
+  tagline: "Junior fullstack developer — TypeScript and .NET",
 
   profil: [
-    "To convince five friends to try a video game, I ended up building them a website. They still use it.",
-    "Junior fullstack developer, based in Bordeaux. Monolith or micro-services, JavaScript or .NET: the best stack is the one that fits the project. I adapt to what it needs, not to my own preferences.",
-    "Video game development is what I am passionate about: it is the most complete field there is — you have to hold the engineering, the feel and the player's attention all at once. I expect the same from the web, and that is where my interest in user experience and accessibility comes from.",
+    "To talk five friends into trying one video game, I ended up building them a website. They still use it.",
+    "Junior fullstack developer in Bordeaux. Monolith or micro-services, JavaScript or .NET: I pick what the project needs, not what I already prefer.",
+    "Game development is what I am passionate about: it has to hold the engineering, the feel and the player's attention all at once. I expect the same of the web — which is where my interest in user experience and accessibility comes from.",
   ],
   trackCareer: "Career",
   trackEducation: "Education",
@@ -166,6 +166,15 @@ const en = {
   },
 
   /* ── Projects ── */
+  "taille-and-retry": {
+    role: "3D puzzle-platformer — Winter Game Jam",
+    description: "A puzzle-platformer where the player bends the world at will: flatten the level, widen it, stretch it along all three axes to open a way through. All of it in service of a race against the clock, to save an indebted farming family's land from seizure.",
+    highlights: [
+      "Deforming the level along three axes is the only verb in the game: every puzzle is solved by changing the shape of the world, never that of the character.",
+      "Built as a team during La Horde's Winter Game Jam in Bordeaux, in Unity.",
+      "A light narrative thread carries the time pressure: the family's debt is what gives the countdown a reason to exist.",
+    ]
+  },
   moyenax: {
     role: "Fullstack Developer / Technical Lead",
     description: "A turn-based strategy game (1v1) for browsers, inspired by the Dofus universe. The project features a high-performance isometric 3D engine and a robust real-time architecture.",

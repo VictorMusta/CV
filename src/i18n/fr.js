@@ -5,7 +5,7 @@ const fr = {
    * .NET » était une liste de mots-clés, pas une phrase. Elle disait ce qu'il a touché, jamais
    * qui il est — et sur un CV les mots-clés se lisent déjà dans les compétences.
    */
-  tagline: "Développeur fullstack junior — TypeScript, .NET, et beaucoup de jeux vidéo",
+  tagline: "Développeur fullstack junior — TypeScript et .NET",
 
   /*
    * Présentation, en trois temps courts : d'où il part, d'où lui vient l'envie, ce qui
@@ -78,8 +78,8 @@ const fr = {
    */
   profil: [
     "Pour convaincre cinq amis d'essayer un jeu vidéo, j'ai fini par leur créer un site. Ils s'en servent encore.",
-    "Développeur fullstack junior, à Bordeaux. Monolithe ou micro-services, JavaScript ou .NET : la meilleure stack technologique est celle qui est la mieux adaptée au projet. Je m'adapte à ses besoins, pas à mes préférences.",
-    "Le développement de jeux vidéo est ce qui me passionne : c'est le domaine le plus complet qui existe, il faut y tenir la technique, le ressenti et l'attention du joueur en même temps. J'attends la même chose du web — et c'est de là que vient mon intérêt pour l'expérience utilisateur et l'accessibilité.",
+    "Fullstack junior à Bordeaux. Monolithe ou micro-services, JavaScript ou .NET : je choisis selon le projet, pas selon mes préférences.",
+    "Le jeu vidéo est ce qui me passionne : il faut y tenir la technique et l'attention du joueur en même temps. J'attends la même chose du web — d'où mon intérêt pour l'expérience utilisateur et l'accessibilité.",
   ],
   trackCareer: "Parcours",
   trackEducation: "Formation",
@@ -238,6 +238,15 @@ const fr = {
   },
 
   /* ── Projets ── */
+  "taille-and-retry": {
+    role: "Puzzle-platformer 3D — Winter Game Jam",
+    description: "Un puzzle-platformer où le joueur plie le monde à sa volonté : aplatir le niveau, l'élargir, l'étirer sur les trois axes pour ouvrir un passage. Le tout au service d'une course contre le chrono, pour sauver de la saisie les terres d'une famille de cultivateurs endettés.",
+    highlights: [
+      "Déformation du niveau sur les trois axes comme unique verbe de jeu : chaque énigme se résout en changeant la forme du monde, jamais celle du personnage.",
+      "Fait en équipe pendant la Winter Game Jam de La Horde, à Bordeaux, sous Unity.",
+      "Une trame narrative légère porte la contrainte de temps : la dette de la famille donne une raison au chronomètre.",
+    ]
+  },
   moyenax: {
     role: "Fullstack Developer / Lead Technique",
     description: "Un jeu de stratégie au tour par tour (1v1) sur navigateur, inspiré de l'univers de Dofus. Le projet repose sur un moteur isométrique 3D performant et une architecture temps réel robuste.",

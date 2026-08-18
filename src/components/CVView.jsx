@@ -35,7 +35,7 @@ export default function CVView() {
    * document qu'un recruteur reçoit. Deux listes pour une même sélection finissent toujours
    * par ne plus dire la même chose.
    */
-  const RETENUS = ["jvcritique", "moyenax", "money-maker", "retour"];
+  const RETENUS = ["jvcritique", "taille-and-retry", "moyenax", "retour"];
   const projetsDuCv = projects.filter((item) => RETENUS.includes(item.id));
 
   return (

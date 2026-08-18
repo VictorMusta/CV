@@ -19,6 +19,7 @@ import {
   Code2,
   Megaphone,
   Star,
+  Scaling,
 } from "lucide-react";
 
 /* ──────────────────────────────────────────────
@@ -181,6 +182,17 @@ const projectData = [
     ],
     image: "/images/projects/jvcritique/jeu.webp",
     imageAlt: "jvcritiqué - avis de jeux notés selon les critères du lecteur",
+  },
+  {
+    id: "taille-and-retry",
+    type: "project",
+    year: "2026",
+    sortYear: 2026.15,
+    title: "Taille and Retry",
+    icon: Scaling,
+    color: "#7BA05B",
+    stack: ["Unity", "C#", "Game Jam"],
+    imageAlt: "Taille and Retry - puzzle-platformer où le niveau se déforme sur trois axes",
   },
   {
     id: "retour",
