@@ -149,7 +149,18 @@ export default function CVView() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 print-hidden">
             {projects
-              .filter((item) => ["moyenax", "money-maker", "retour"].includes(item.id))
+              /*
+                 * Liste EXPLICITE, et non les N plus récents : la section CV est une
+                 * sélection, pas un inventaire. Le portfolio complet vit dans la piste
+                 * « Projets Divers » ; ici on ne garde que ce qu'on veut faire lire à
+                 * quelqu'un qui accorde trente secondes à la page.
+                 *
+                 * jvcritiqué ajouté le 18 août 2026. L'ordre reste celui de `sortYear`, donc
+                 * il passe en tête sans qu'on ait à toucher à cette liste-ci.
+                 */
+                .filter((item) =>
+                  ["jvcritique", "moyenax", "money-maker", "retour"].includes(item.id),
+                )
               .map((item) => {
                 const tr = t[item.id] || {};
                 return (

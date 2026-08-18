@@ -173,6 +173,13 @@ const projectData = [
       "Tailwind v4",
       "Docker",
     ],
+    screenshots: [
+      "/images/projects/jvcritique/jeu.webp",
+      "/images/projects/jvcritique/fil.webp",
+      "/images/projects/jvcritique/avis.webp",
+      "/images/projects/jvcritique/profil.webp",
+    ],
+    image: "/images/projects/jvcritique/jeu.webp",
     imageAlt: "jvcritiqué - avis de jeux notés selon les critères du lecteur",
   },
   {
