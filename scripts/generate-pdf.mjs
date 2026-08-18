@@ -20,11 +20,36 @@ import { readFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { execFileSync } from "node:child_process";
 import puppeteer from "puppeteer";
 
 const BASE_PATH = "/CV/"; // must match `base` in vite.config.js
 const OUTPUT_NAME = "Victor_Grabowski_CV.pdf";
 const PAGE_MARGIN = { top: "10mm", bottom: "10mm", left: "11mm", right: "11mm" };
+
+/*
+ * A CV that runs past two pages does not get read past two pages, so overflow fails the
+ * build rather than shipping quietly.
+ *
+ * The escape hatch is the COMMIT MESSAGE, deliberately: an environment variable or a
+ * workflow flag would silence the check for every future commit too, and nobody would
+ * notice the day the CV drifted to four pages. A marker in one commit message excuses
+ * exactly that commit — the next push is guarded again without anyone having to remember
+ * to put the guard back.
+ */
+const MAX_PAGES = 2;
+const WAIVER = "[pdf-pages-ok]";
+
+function overflowWaived() {
+  try {
+    // -1 suffices, and works on the shallow clone actions/checkout leaves behind.
+    const message = execFileSync("git", ["log", "-1", "--pretty=%B"], { encoding: "utf8" });
+    return message.includes(WAIVER);
+  } catch {
+    // No git, no history, no waiver — the guard stands.
+    return false;
+  }
+}
 
 const distDir = fileURLToPath(new URL("../dist", import.meta.url));
 
@@ -121,9 +146,19 @@ try {
   const pdf = await readFile(outPath);
   const count = countPdfPages(pdf);
   console.log(`Wrote ${outPath} (${(pdf.length / 1024).toFixed(0)} kB, ${count ?? "?"} page(s))`);
-  if (count != null && count > 2) {
-    console.error(`Expected the CV to fit on 2 pages, got ${count}.`);
-    process.exit(1);
+  if (count != null && count > MAX_PAGES) {
+    if (overflowWaived()) {
+      console.warn(
+        `WARNING: the CV spills onto ${count} pages, over the ${MAX_PAGES}-page limit. ` +
+          `Letting it through because this commit says ${WAIVER}. Deploying anyway.`,
+      );
+    } else {
+      console.error(`Expected the CV to fit on ${MAX_PAGES} pages, got ${count}.`);
+      console.error(
+        `If that is deliberate, put ${WAIVER} in the commit message — it only ever excuses that one commit.`,
+      );
+      process.exit(1);
+    }
   }
 } finally {
   await browser.close();
