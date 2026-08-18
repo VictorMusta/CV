@@ -204,15 +204,23 @@ const projectData = [
       "/images/projects/bankal/fin.webp",
       "/images/projects/bankal/concept-cuisine.webp",
       "/images/projects/bankal/concept-restaurant.webp",
+      "/images/projects/winter-game-jam/diplome-bankal.webp",
+      "/images/projects/winter-game-jam/trophee.webp",
     ],
     image: "/images/projects/bankal/titre.webp",
     imageAlt: "Bankal! - quatre joueurs portent une même table jusqu'à ses clients",
   },
   {
+    /*
+     * MARS 2026, d'après le nom du fichier de la photo du trophée (IMG_20260321) : la remise
+     * a eu lieu le 21 mars 2026, au même moment de l'année que l'édition précédente
+     * (14-15-16 mars 2025, celle de Bankal!). La médaille de cette dernière est gravée
+     * « GAMEJAM 2025 », ce qui distingue sans ambiguïté les deux récompenses.
+     */
     id: "taille-and-retry",
     type: "project",
     year: "2026",
-    sortYear: 2026.15,
+    sortYear: 2026.22,
     title: "Taille and Retry",
     icon: Scaling,
     color: "#7BA05B",
@@ -221,6 +229,7 @@ const projectData = [
       "/images/projects/taille-and-retry/niveau.webp",
       "/images/projects/taille-and-retry/titre.webp",
       "/images/projects/taille-and-retry/cinematique.webp",
+      "/images/projects/winter-game-jam/trophee.webp",
     ],
     image: "/images/projects/taille-and-retry/niveau.webp",
     imageAlt: "Taille and Retry - puzzle-platformer où le niveau se déforme sur trois axes",
