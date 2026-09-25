@@ -1,0 +1,43 @@
+---
+/* Les petites pages (merci, oups, 404, mentions) reviennent au feu de camp. */
+import Base from '../layouts/Base.astro';
+import Wordmark from './Wordmark.astro';
+import Campfire from './Campfire.astro';
+
+interface Props {
+  titre: string;
+  description: string;
+  indexer?: boolean;
+  feu?: boolean;
+}
+const { titre, description, indexer = false, feu = true } = Astro.props;
+---
+<Base titre={`${titre} — Victor Grabowski`} description={description} mode="hub" polices={['--font-mono']} indexer={indexer}>
+  <header class="tete"><Wordmark /></header>
+  <main id="contenu" class="clairiere">
+    {feu && <Campfire size={128} />}
+    <slot />
+  </main>
+</Base>
+
+<style>
+  .tete { padding: 16px clamp(16px, 4vw, 56px); }
+  .clairiere {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: min(calc(100% - 2 * var(--gutter)), 760px);
+    margin: 4vh auto 80px;
+    text-align: center;
+  }
+  .clairiere :global(h1) {
+    font-family: var(--font-fraunces);
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+  .clairiere :global(p) { font-family: var(--font-fraunces); font-size: 19px; line-height: 1.6; color: var(--body); }
+  .clairiere :global(.actions) { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 8px; }
+</style>

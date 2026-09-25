@@ -1,0 +1,81 @@
+---
+import Wordmark from './Wordmark.astro';
+import ModeSwitch from './ModeSwitch.astro';
+import Icon from './Icon.astro';
+
+interface Action {
+  href: string;
+  label: string;
+  icone?: 'typewriter' | 'download' | 'chat' | 'mail';
+  telecharger?: boolean;
+  primaire?: boolean;
+}
+interface Props {
+  actif: 'jeu' | 'dev' | 'sites';
+  liens: { href: string; label: string }[];
+  action?: Action;
+}
+const { actif, liens, action } = Astro.props;
+---
+<header class="entete">
+  <div class="barre">
+    <Wordmark />
+    <nav class="sections" aria-label="Sections de la page">
+      {liens.map((l) => <a href={l.href}>{l.label}</a>)}
+    </nav>
+    <div class="actions">
+      <ModeSwitch actif={actif} />
+      {action && (
+        <a
+          class:list={['btn', 'btn--small', action.primaire ? 'btn--primary' : 'btn--ghost', 'cta']}
+          href={action.href}
+          download={action.telecharger ? '' : undefined}
+        >
+          {action.icone && <Icon name={action.icone} size={18} />}
+          {action.label}
+        </a>
+      )}
+    </div>
+  </div>
+</header>
+
+<style>
+  .entete {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  .barre {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 24px;
+    min-height: 84px;
+    padding: 12px clamp(16px, 4vw, 56px);
+  }
+  .sections {
+    display: flex;
+    gap: 28px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .sections a { text-decoration: none; padding: 10px 0; }
+  .sections a:hover { color: var(--text); }
+  .actions { display: flex; align-items: center; gap: 14px; }
+  .cta { white-space: nowrap; }
+
+  @media (max-width: 1180px) {
+    .sections { display: none; }
+  }
+  @media (max-width: 900px) {
+    .entete { position: static; }
+    .cta { display: none; }
+  }
+  @media (max-width: 560px) {
+    .barre { flex-wrap: wrap; justify-content: center; }
+  }
+</style>

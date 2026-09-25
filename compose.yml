@@ -1,0 +1,23 @@
+# Nom de projet EXPLICITE, comme jvcritiqué : toutes les ressources créées ici en
+# héritent, ce qui rend le cloisonnement vérifiable et le nettoyage d'images borné.
+name: portfolio
+
+services:
+  site:
+    build: .
+    restart: unless-stopped
+    environment:
+      # Facultatives : sans elles, le site tourne et le formulaire propose l'e-mail direct.
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      CONTACT_TO: ${CONTACT_TO:-}
+      CONTACT_FROM: ${CONTACT_FROM:-}
+    ports:
+      # Publié sur la boucle locale uniquement : Caddy est la seule porte d'entrée.
+      # 8081 est l'ancien port du client Lootopia : le bloc Caddy de lootopia.site y
+      # envoyait déjà ses requêtes, il sert donc ce site sans modification.
+      - "127.0.0.1:8081:4321"
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true

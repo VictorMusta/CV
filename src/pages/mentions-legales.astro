@@ -1,0 +1,24 @@
+---
+/*
+ * MENTIONS LÉGALES — obligatoires pour un site qui présente une activité professionnelle.
+ * Les champs entre crochets restent à compléter avant la mise en ligne du mode Sites.
+ */
+import PageSimple from '../components/PageSimple.astro';
+---
+<PageSimple titre="Mentions légales" description="Éditeur, hébergement et données personnelles du site lootopia.site." indexer={true} feu={false}>
+  <h1>Mentions légales</h1>
+  <div class="mentions">
+    <h2>Éditeur</h2>
+    <p>Victor Grabowski — [statut, par exemple entrepreneur individuel] — SIRET [à compléter].<br />Contact : <a href="mailto:victorgrabowski33@gmail.com">victorgrabowski33@gmail.com</a></p>
+    <h2>Hébergement</h2>
+    <p>[Nom de l’hébergeur du serveur, adresse, téléphone]</p>
+    <h2>Données personnelles</h2>
+    <p>Le formulaire de contact transmet votre nom, votre e-mail, votre activité et votre message par e-mail, via le service Resend (Resend, Inc., États-Unis), dans le seul but de vous répondre. Rien n’est enregistré sur ce site. Pour toute question ou demande de suppression, écrivez à l’adresse ci-dessus.</p>
+    <p>Le site ne dépose aucun cookie et ne charge aucune ressource tierce : les polices sont servies par le site lui-même.</p>
+  </div>
+</PageSimple>
+
+<style>
+  .mentions { display: flex; flex-direction: column; gap: 12px; text-align: left; }
+  h2 { margin-top: 12px; font-family: var(--font-fraunces); font-size: 22px; font-weight: 600; }
+</style>
