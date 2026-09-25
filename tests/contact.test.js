@@ -62,7 +62,7 @@ test('le limiteur compte chaque adresse séparément', () => {
 });
 
 test('origineAutorisee accepte le site derrière Caddy et refuse un autre site', () => {
-  const derriereCaddy = (origin) => new Headers({ origin, host: '127.0.0.1:8084', 'x-forwarded-host': 'lootopia.site' });
+  const derriereCaddy = (origin) => new Headers({ origin, host: '127.0.0.1:8081', 'x-forwarded-host': 'lootopia.site' });
   assert.equal(origineAutorisee(derriereCaddy('https://lootopia.site')), true);
   assert.equal(origineAutorisee(derriereCaddy('https://ailleurs.example')), false);
   assert.equal(origineAutorisee(derriereCaddy('pas une url')), false);

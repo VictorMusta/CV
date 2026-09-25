@@ -3,6 +3,10 @@
 Même modèle que jvcritiqué : un dossier par projet dans `/opt`, un projet Compose nommé,
 un port sur la boucle locale, Caddy devant. Le site répond sur **lootopia.site**.
 
+Le conteneur écoute sur `127.0.0.1:8081`, l'ancien port du client Lootopia : le bloc Caddy
+de `lootopia.site` y envoyait déjà ses requêtes, il sert donc ce site sans modification,
+HTTPS compris.
+
 ## Principes
 
 - **L'automatisation ne touche jamais l'infrastructure partagée.** Le `Caddyfile` se
@@ -17,17 +21,17 @@ un port sur la boucle locale, Caddy devant. Le site répond sur **lootopia.site*
 1. Build et impression des deux PDF sur le runner GitHub (Chrome n'a rien à faire sur le VPS).
 2. `rsync` vers `/opt/portfolio/`, sans `.git`, `node_modules`, `dist` ni `.env`.
 3. `docker compose up -d --build` avec le nom de projet `portfolio`.
-4. Vérification que `http://127.0.0.1:8084/api/sante` répond.
+4. Vérification que `http://127.0.0.1:8081/api/sante` répond.
 
-## Préparation du serveur — une seule fois, à la main
+Le workflow se lance aussi à la main, sur n'importe quelle branche :
+`gh workflow run deploy.yml --repo VictorMusta/CV --ref <branche>`.
 
-### 1. Le dossier et le port
+## Préparation du serveur — une seule fois
 
-```bash
-sudo mkdir -p /opt/portfolio
-sudo chown "$USER":"$USER" /opt/portfolio
-ss -ltnp | grep 8084   # doit être vide
-```
+### 1. Le dossier
+
+Le déploiement se fait en root : rsync crée `/opt/portfolio` tout seul. Avec un utilisateur
+dédié, il faudrait le créer et le lui donner (`sudo mkdir -p` puis `sudo chown`).
 
 ### 2. Le fichier d'environnement
 
@@ -45,17 +49,54 @@ chmod 600 /opt/portfolio/.env
 
 ### 3. Les secrets GitHub du dépôt CV
 
-`SSH_HOST`, `SSH_USER`, `SSH_PRIVATE_KEY`, `SSH_KNOWN_HOSTS` — les mêmes que jvcritiqué.
-`SSH_KNOWN_HOSTS` est l'empreinte de l'hôte, vérifiée une fois à la main : on ne la
-redécouvre jamais par `ssh-keyscan` pendant un déploiement.
+`SSH_HOST`, `SSH_USER`, `SSH_PRIVATE_KEY`, `SSH_KNOWN_HOSTS`. `SSH_KNOWN_HOSTS` est
+l'empreinte de l'hôte, vérifiée une fois à la main : on ne la redécouvre jamais par
+`ssh-keyscan` pendant un déploiement.
 
 ### 4. Le DNS
 
-`A lootopia.site` → IP du VPS (et `AAAA` s'il a une IPv6), idem pour `www`.
+`A lootopia.site` → IP du VPS, idem pour `www`. Un enregistrement `AAAA` ne doit exister
+que s'il pointe vers l'IPv6 du VPS lui-même ; sinon, les visiteurs en IPv6 arrivent ailleurs.
 
-### 5. Le bloc Caddy
+### 5. Resend, pour le formulaire
 
-Le `Caddyfile` est partagé avec les autres services : on l'édite à la main.
+1. Ajouter le domaine `lootopia.site` dans Resend et créer les enregistrements DNS demandés (SPF, DKIM).
+2. Créer une clé limitée à l'envoi, pour ce domaine.
+3. La mettre dans `/opt/portfolio/.env`, puis `docker compose -p portfolio up -d` pour relire l'environnement.
+
+## Bascule depuis Lootopia
+
+Le port 8081 ne peut pas être tenu par deux services : Lootopia s'arrête d'abord, le
+portfolio se déploie ensuite. Entre les deux, `lootopia.site` répond une erreur 502
+pendant quelques minutes.
+
+1. **Vérifier que Caddy envoie bien `lootopia.site` vers 8081** :
+   ```bash
+   grep -n "8081" /etc/caddy/Caddyfile
+   ```
+2. **Sauvegarder la base de Lootopia** :
+   ```bash
+   mkdir -p /opt/backups
+   docker exec lootopia-db pg_dump -U lootopia lootopia | gzip > /opt/backups/lootopia-$(date +%F).sql.gz
+   ```
+3. **Arrêter Lootopia** — les conteneurs sont supprimés, le volume est gardé :
+   ```bash
+   cd /opt/lootopia && docker compose down
+   ```
+   Effet de bord bienvenu : sa base était publiée sur le port 5432 de l'hôte, avec un mot
+   de passe écrit dans son `docker-compose.yml`. Elle n'est plus joignable.
+4. **Déployer le portfolio** : fusionner dans `master`, ou relancer le workflow à la main.
+   Dès que la vérification de santé passe, `lootopia.site` affiche le nouveau site.
+5. **Plus tard**, quand la sauvegarde suffit : `docker volume ls | grep lootopia`, puis
+   `docker volume rm <nom>` et `rm -rf /opt/lootopia`.
+
+Le déploiement automatique de Lootopia est déjà désactivé sur GitHub : un push sur son
+dépôt ne le relancera pas.
+
+## Pour aller plus loin : un bloc Caddy dédié
+
+Le bloc actuel suffit. Un bloc dédié ajoute la compression et des en-têtes de sécurité ; il
+remplacerait celui de `lootopia.site` dans le `Caddyfile`, partagé, donc édité à la main :
 
 ```
 lootopia.site {
@@ -67,7 +108,7 @@ lootopia.site {
         Permissions-Policy "camera=(), microphone=(), geolocation=()"
         -Server
     }
-    reverse_proxy 127.0.0.1:8084
+    reverse_proxy 127.0.0.1:8081
 }
 
 www.lootopia.site {
@@ -84,40 +125,6 @@ sudo systemctl reload caddy
 
 Caddy transmet l'hôte d'origine et `X-Forwarded-For` : le formulaire s'en sert pour
 vérifier l'origine des envois et limiter les demandes par visiteur.
-
-### 6. Resend, pour le formulaire
-
-1. Ajouter le domaine `lootopia.site` dans Resend et créer les enregistrements DNS demandés (SPF, DKIM).
-2. Créer une clé limitée à l'envoi, pour ce domaine.
-3. La mettre dans `/opt/portfolio/.env`, puis `docker compose -p portfolio up -d` pour relire l'environnement.
-
-## Bascule depuis Lootopia
-
-Dans cet ordre, pour que `lootopia.site` ne pointe jamais vers un service arrêté.
-
-1. **Déployer le portfolio** : préparation ci-dessus, puis fusion de la branche dans `master`.
-   Le site tourne sur `127.0.0.1:8084`, pas encore exposé.
-2. **Le vérifier par un tunnel SSH** : `ssh -L 8084:127.0.0.1:8084 <user>@<vps>`, puis
-   ouvrir `http://localhost:8084`.
-3. **Sauvegarder la base de Lootopia** :
-   ```bash
-   mkdir -p /opt/backups
-   docker exec lootopia-db pg_dump -U lootopia lootopia | gzip > /opt/backups/lootopia-$(date +%F).sql.gz
-   ```
-4. **Basculer Caddy** : remplacer le bloc qui sert Lootopia (celui qui proxifie vers
-   `127.0.0.1:8081`) par le bloc `lootopia.site` ci-dessus. Valider, recharger.
-5. **Arrêter Lootopia** — les conteneurs sont supprimés, le volume est gardé :
-   ```bash
-   cd /opt/lootopia && docker compose down
-   ```
-   Effet de bord bienvenu : sa base était publiée sur le port 5432 de l'hôte, avec un mot
-   de passe écrit dans son `docker-compose.yml`. Elle n'est plus joignable.
-6. **Couper son déploiement automatique**, sinon le prochain push le relancerait :
-   ```bash
-   gh workflow disable "CI/CD Deployment to VPS" --repo VictorMusta/Loutaupia-V2-dotnet-api
-   ```
-7. **Plus tard**, quand la sauvegarde suffit : `docker volume ls | grep lootopia`, puis
-   `docker volume rm <nom>` et `rm -rf /opt/lootopia`.
 
 ## L'ancien site GitHub Pages
 
