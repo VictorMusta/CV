@@ -1,0 +1,219 @@
+---
+/*
+ * LES CV IMPRIMABLES. Deux lectures du même contenu (src/data/cv.js) : /cv/dev et /cv/jeu.
+ * scripts/generate-pdf.mjs les imprime en PDF au déploiement ; à l'écran, elles servent
+ * d'aperçu. La mise en page vise deux pages A4 : le script refuse d'en livrer plus.
+ */
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import { identite, profil, experiences, projets, competences, formation, profils } from '../../data/cv.js';
+
+export function getStaticPaths() {
+  return [{ params: { profil: 'dev' } }, { params: { profil: 'jeu' } }];
+}
+
+const cle = Astro.params.profil;
+const lecture = profils[cle];
+const estJeu = cle === 'jeu';
+const polices = estJeu ? ['--font-cinzel', '--font-alegreya', '--font-mono'] : ['--font-grotesk', '--font-plex', '--font-mono'];
+const selection = lecture.projets.map((id) => projets[id]);
+---
+<Base titre={lecture.titrePdf} description={`${identite.nom} — ${lecture.accroche}`} mode="cv" polices={polices} indexer={false}>
+  <div class:list={['page', { 'page--jeu': estJeu }]}>
+    <nav class="outils" aria-label="Aperçu du CV">
+      <a href={estJeu ? '/jeu' : '/dev'}><Icon name="arrow" size={16} class="retour" />Retour au site</a>
+      <a href={`/pdf/${lecture.fichier}`} download><Icon name="download" size={16} />Télécharger le PDF</a>
+    </nav>
+
+    <main id="contenu" class="feuille">
+      <header class="tete">
+        <div>
+          <h1>{identite.nom}</h1>
+          <p class="accroche">{lecture.accroche}</p>
+        </div>
+        <ul class="contacts">
+          <li><Icon name="pin" size={13} />{identite.ville}</li>
+          <li><Icon name="mail" size={13} /><a href={`mailto:${identite.email}`}>{identite.email}</a></li>
+          <li><Icon name="phone" size={13} /><a href={`tel:${identite.telephone.lien}`}>{identite.telephone.affiche}</a></li>
+          <li><Icon name="code" size={13} /><a href={identite.github.lien}>{identite.github.affiche}</a></li>
+          <li><Icon name="user" size={13} /><a href={identite.linkedin.lien}>{identite.linkedin.affiche}</a></li>
+          <li><Icon name="globe" size={13} /><a href={identite.site.lien}>{identite.site.affiche}</a></li>
+        </ul>
+      </header>
+
+      <section class="profil">
+        {profil.map((p) => <p>{p}</p>)}
+      </section>
+
+      {lecture.ordre.map((section) => {
+        if (section === 'experiences') return (
+          <section>
+            <h2>Expériences professionnelles</h2>
+            {experiences.map((e) => (
+              <article class="bloc">
+                <div class="bloc__tete">
+                  <div>
+                    <h3>{e.entreprise}</h3>
+                    <p class="role">{e.role}</p>
+                  </div>
+                  <p class="quand">{e.periode}<br />{e.lieu}</p>
+                </div>
+                <p>{e.resume}</p>
+                {!estJeu && (
+                  <ul class="points">{e.points.map((p) => <li>{p}</li>)}</ul>
+                )}
+                <p class="stack">{e.stack.join(' · ')}</p>
+              </article>
+            ))}
+          </section>
+        );
+        if (section === 'projets') return (
+          <section>
+            <h2>{estJeu ? 'Jeux, jams et mods' : 'Projets personnels'}</h2>
+            {selection.map((p) => (
+              <article class="bloc">
+                <div class="bloc__tete">
+                  <div>
+                    <h3>{p.titre}</h3>
+                    <p class="role">{p.role}</p>
+                  </div>
+                  <p class="quand">{p.annee}</p>
+                </div>
+                {p.prix && <p class="prix">★ {p.prix}</p>}
+                <p>{p.description}</p>
+                <p class="stack">{p.stack.join(' · ')}</p>
+              </article>
+            ))}
+            <p class="plus">Plus sur {identite.github.affiche}</p>
+          </section>
+        );
+        if (section === 'competences') return (
+          <section>
+            <h2>Compétences</h2>
+            <dl class="competences">
+              {competences[cle].map((c) => (
+                <div><dt>{c.titre}</dt><dd>{c.contenu}</dd></div>
+              ))}
+            </dl>
+          </section>
+        );
+        if (section === 'formation') return (
+          <section>
+            <h2>Formation</h2>
+            {formation.map((f) => (
+              <article class="bloc bloc--court">
+                <div class="bloc__tete">
+                  <div>
+                    <h3>{f.ecole}</h3>
+                    <p class="role">{f.diplome}</p>
+                  </div>
+                  <p class="quand">{f.periode}<br />{f.lieu}</p>
+                </div>
+              </article>
+            ))}
+          </section>
+        );
+        return null;
+      })}
+    </main>
+  </div>
+</Base>
+
+<style>
+  .page {
+    --papier: #FFFFFF;
+    --encre: #141A26;
+    --gris: #4A5468;
+    --bleu: #1A365D;
+    --filet: #D8D2C4;
+    --titre: var(--font-grotesk);
+    --texte: var(--font-plex);
+    min-height: 100vh;
+    padding: 24px 16px 64px;
+    background: #E9E6DF;
+    color: var(--encre);
+    font-family: var(--texte);
+  }
+  .page--jeu {
+    --bleu: #7A5412;
+    --titre: var(--font-cinzel);
+    --texte: var(--font-alegreya);
+  }
+
+  .outils { display: flex; justify-content: space-between; gap: 16px; max-width: 820px; margin: 0 auto 16px; font-size: 15px; font-weight: 600; }
+  .outils a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--bleu); text-decoration: none; }
+  .outils :global(.retour) { transform: rotate(180deg); }
+
+  .feuille {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 48px 52px;
+    background: var(--papier);
+    box-shadow: 0 10px 30px rgba(20, 26, 38, 0.12);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .tete { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; padding-bottom: 18px; border-bottom: 2px solid var(--bleu); }
+  h1 { font-family: var(--titre); font-size: 34px; line-height: 1.05; font-weight: 700; letter-spacing: -0.01em; }
+  .accroche { margin-top: 6px; font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.04em; color: var(--bleu); }
+  .contacts { display: flex; flex-direction: column; gap: 3px; font-family: var(--font-mono); font-size: 11px; color: var(--gris); }
+  .contacts li { display: flex; align-items: center; gap: 7px; }
+  .contacts :global(svg) { color: var(--bleu); flex-shrink: 0; }
+  .contacts a { color: inherit; text-decoration: none; }
+
+  .profil { display: flex; flex-direction: column; gap: 6px; margin: 18px 0 4px; color: #2C3444; }
+
+  section > h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 22px 0 10px;
+    font-family: var(--titre);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bleu);
+  }
+  section > h2::before { content: ''; width: 22px; height: 2px; background: var(--flame); }
+
+  .bloc { display: flex; flex-direction: column; gap: 4px; padding: 8px 0 10px; border-bottom: 1px solid var(--filet); break-inside: avoid; }
+  .bloc:last-of-type { border-bottom: 0; }
+  .bloc--court { padding: 5px 0; }
+  .bloc__tete { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  h3 { font-family: var(--titre); font-size: 15px; font-weight: 700; }
+  .role { font-size: 13px; font-weight: 600; color: var(--bleu); }
+  .quand { flex-shrink: 0; font-family: var(--font-mono); font-size: 10.5px; text-align: right; color: var(--gris); }
+  .points { padding-left: 16px; list-style: disc; color: #2C3444; font-size: 13px; }
+  .prix { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #9A5410; }
+  .stack { font-family: var(--font-mono); font-size: 10.5px; color: var(--gris); }
+  .plus { margin-top: 6px; font-family: var(--font-mono); font-size: 11px; color: var(--gris); }
+
+  .competences { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 28px; margin: 0; }
+  .competences dt { font-family: var(--titre); font-size: 13px; font-weight: 700; }
+  .competences dd { margin: 0; font-size: 12.5px; color: #2C3444; }
+
+  @page { size: A4; margin: 11mm 12mm; }
+
+  /* À l'impression, tout se resserre : deux pages A4, pas une ligne de plus. */
+  @media print {
+    .page { padding: 0; background: var(--papier); }
+    .outils { display: none; }
+    .feuille { max-width: none; padding: 0; box-shadow: none; font-size: 10pt; line-height: 1.42; }
+    h1 { font-size: 24pt; }
+    .tete { padding-bottom: 12px; }
+    .profil { margin: 12px 0 0; gap: 4px; }
+    section > h2 { margin: 14px 0 6px; font-size: 12.5px; break-after: avoid; }
+    .bloc { gap: 2px; padding: 5px 0 7px; }
+    .bloc--court { padding: 3px 0; }
+    .points { font-size: 9.5pt; }
+  }
+
+  @media (max-width: 640px) {
+    .feuille { padding: 28px 22px; }
+    .tete, .bloc__tete { flex-direction: column; align-items: flex-start; }
+    .quand { text-align: left; }
+    .competences { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>

@@ -1,0 +1,33 @@
+---
+/* La signature : identique sur les trois chemins. La flamme ne change jamais de
+   couleur ; le nom prend l'encre du chemin courant. */
+import Icon from './Icon.astro';
+
+interface Props {
+  size?: number;
+}
+const { size = 22 } = Astro.props;
+---
+<a class="marque" href="/" style={`--taille: ${size}px`} aria-label="Victor Grabowski — retour au feu de camp">
+  <span class="flamme"><Icon name="flame" size={size + 4} stroke={1.9} /></span>
+  <span class="nom">Victor Grabowski</span>
+</a>
+
+<style>
+  .marque {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .flamme { display: flex; color: var(--flame); }
+  .nom {
+    font-family: var(--font-fraunces);
+    font-size: var(--taille);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+</style>

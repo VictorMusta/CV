@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://victormusta.github.io/CV/</loc>
-    <changefreq>monthly</changefreq>
-  </url>
+  <url><loc>https://lootopia.site/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://lootopia.site/jeu</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://lootopia.site/dev</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://lootopia.site/sites</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://lootopia.site/60-secondes</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://lootopia.site/mentions-legales</loc><changefreq>yearly</changefreq></url>
 </urlset>
