@@ -84,7 +84,7 @@ jobs:
           script: |
             set -eu
             for i in $(seq 1 30); do
-              if curl -fsS -o /dev/null http://127.0.0.1:8084/api/sante; then
+              if curl -fsS -o /dev/null http://127.0.0.1:8081/api/sante; then
                 echo "Le site répond."
                 exit 0
               fi
