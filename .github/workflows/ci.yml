@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches-ignore: [master]
+  pull_request:
+  # Appelable par deploy.yml : la porte de qualité devient une vraie dépendance du
+  # déploiement, pas une exécution parallèle qu'on pourrait ignorer.
+  workflow_call:
+
+jobs:
+  verifier:
+    name: Tests, build et PDF
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      # Le PDF fait partie de la porte : un CV qui déborde de deux pages bloque la fusion,
+      # sauf [pdf-pages-ok] dans le message du commit.
+      - name: Générer les PDF
+        run: |
+          npm install --no-save puppeteer
+          npm run pdf

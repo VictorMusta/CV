@@ -1,52 +1,95 @@
-name: Deploy to GitHub Pages
+name: Déploiement sur le VPS
 
 on:
   push:
     branches: [master]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
+# Deux déploiements simultanés se marcheraient dessus pendant le rsync et le build.
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: deploy-portfolio
+  cancel-in-progress: false
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - run: rm -f package-lock.json
-      - run: npm install
-        env:
-          NODE_ENV: development
-      - run: npx vite build
-
-      # Generate the static CV PDF served by the export button.
-      # puppeteer is installed here (not in package.json) because the
-      # Betclic-internal registry used on workstations can't provide it.
-      - run: npm install --no-save puppeteer
-      - run: node scripts/generate-pdf.mjs
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
+  # Un test rouge, un build cassé ou un CV de trois pages empêchent le déploiement.
+  ci:
+    uses: ./.github/workflows/ci.yml
 
   deploy:
-    needs: build
+    name: Générer les PDF, synchroniser, redémarrer
+    needs: ci
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      # Les PDF sont imprimés ici, par un Chrome que le VPS n'a pas besoin d'héberger ;
+      # ils partent avec le code dans public/pdf, que le build du VPS reprend.
+      - name: Générer les PDF
+        run: |
+          npm ci
+          npm run build
+          npm install --no-save puppeteer
+          npm run pdf
+
+      # Empreinte de l'hôte ÉPINGLÉE via un secret (modèle de jvcritiqué) : un
+      # ssh-keyscan à chaque exécution accepterait en silence un hôte usurpé.
+      - name: Installer la clé de déploiement
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+
+      # --delete purge ce qui a disparu de la source. Le .env de production n'existe que
+      # sur le VPS : il est exclu, donc jamais effacé.
+      - name: Synchroniser le code
+        run: |
+          rsync -avz --delete \
+            --exclude='.git/' \
+            --exclude='node_modules/' \
+            --exclude='dist/' \
+            --exclude='.astro/' \
+            --exclude='.env' \
+            ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/opt/portfolio/
+
+      - name: Construire et redémarrer le conteneur
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            set -eu
+            cd /opt/portfolio
+            # En cas d'échec, les journaux portent le diagnostic : pas besoin de se
+            # connecter au serveur pour comprendre.
+            if ! docker compose --project-name portfolio up -d --build --remove-orphans; then
+              docker compose --project-name portfolio logs --no-color --tail=50 site || true
+              docker compose --project-name portfolio ps --all || true
+              exit 1
+            fi
+            # Nettoyage BORNÉ au projet : un prune sans filtre balaierait les images des voisins.
+            docker image prune -f --filter label=com.docker.compose.project=portfolio
+
+      - name: Vérifier que le site répond
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            set -eu
+            for i in $(seq 1 30); do
+              if curl -fsS -o /dev/null http://127.0.0.1:8084/api/sante; then
+                echo "Le site répond."
+                exit 0
+              fi
+              sleep 2
+            done
+            echo "Le site ne répond pas après 60 s. Journaux :"
+            docker compose --project-name portfolio logs --tail=50 site
+            exit 1
