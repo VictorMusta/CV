@@ -1,0 +1,21 @@
+# Nom de projet EXPLICITE, comme jvcritiqué : toutes les ressources créées ici en
+# héritent, ce qui rend le cloisonnement vérifiable et le nettoyage d'images borné.
+name: portfolio
+
+services:
+  site:
+    build: .
+    restart: unless-stopped
+    environment:
+      # Facultatives : sans elles, le site tourne et le formulaire propose l'e-mail direct.
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      CONTACT_TO: ${CONTACT_TO:-}
+      CONTACT_FROM: ${CONTACT_FROM:-}
+    ports:
+      # Publié sur la boucle locale uniquement : Caddy est la seule porte d'entrée.
+      - "127.0.0.1:8084:4321"
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
