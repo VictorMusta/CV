@@ -1,0 +1,392 @@
+---
+import Base from '../layouts/Base.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import Icon from '../components/Icon.astro';
+
+const PDF = '/pdf/Victor_Grabowski_CV_Game_Design.pdf';
+
+/*
+ * LES RUNS. Chaque jam est racontée comme une partie : la contrainte (meta), le verbe
+ * de jeu, le résultat. Les liens sont des preuves, jamais des promesses : tant que les
+ * builds ne sont pas publiés (itch.io), on montre le diplôme et le trophée plutôt
+ * qu'un bouton « Jouer » qui ne mènerait nulle part.
+ */
+const runs = [
+  {
+    titre: 'Taille and Retry',
+    image: '/images/projects/taille-and-retry/cinematique.webp',
+    alt: 'Taille and Retry : la cinématique d’ouverture, un sorcier au milieu des pièces d’or',
+    prime: true,
+    meta: '2026 · 48 h · Unity',
+    verbe: 'Déformer le monde',
+    texte: 'Un puzzle-platformer où l’on aplatit, élargit et étire le niveau sur trois axes pour ouvrir un passage.',
+    liens: [{ label: 'Le trophée', href: '/images/projects/winter-game-jam/trophee.webp' }],
+  },
+  {
+    titre: 'Bankal!',
+    image: '/images/projects/bankal/titre.webp',
+    alt: 'Bankal! : l’écran titre, une table dressée sur une nappe à carreaux',
+    prime: true,
+    meta: '2025 · 48 h · 7 pers. · Unity',
+    verbe: 'Porter ensemble',
+    texte: 'Quatre joueurs, deux manettes, une seule table à livrer. Quand les ordres se contredisent, la table tremble.',
+    liens: [{ label: 'Le diplôme', href: '/images/projects/winter-game-jam/diplome-bankal.webp' }],
+  },
+  {
+    titre: 'AutoBattler 2D',
+    image: '/images/projects/autobattler/onsen.png',
+    alt: 'AutoBattler 2D : un onsen en pixel art où se reposent les guerriers patates',
+    prime: false,
+    meta: 'Perso · TypeScript · Electron',
+    verbe: 'Parier sur un build',
+    texte: 'Des guerriers patates, des tournois automatiques, des adversaires générés : tout se joue dans la préparation.',
+    liens: [{ label: 'Le code', href: 'https://github.com/VictorMusta/Tamagotchi-in-ElectronJS' }],
+  },
+];
+
+const inventaire = [
+  { nom: 'Moyenax', meta: 'Dofus-like · combat, forge, économie', image: '/images/projects/moyenax/combat.png', href: 'https://github.com/Dofus-Like/Moyenax' },
+  { nom: 'Platformer2D', meta: 'Godot 4 · pixel art · Aseprite', image: '/images/projects/platformer/victory.png', href: 'https://github.com/VictorMusta/KnightJumper' },
+  { nom: 'Pachinko', meta: 'Arcade · risque et multiplicateurs', image: '/images/projects/pachinko/jeu.webp', href: 'https://victorgrabowski.github.io/pachinko/' },
+  { nom: 'SuperSoja', meta: 'Game jam · thème Green IT', icone: 'sprout', href: 'https://github.com/VictorMusta/SuperSoja' },
+] as const;
+
+const principes = [
+  { icone: 'eye', titre: 'Montrer avant d’expliquer', texte: 'Dans Bankal!, des ordres contradictoires font trembler la table : le désaccord se voit avant de se comprendre.', source: 'Bankal!' },
+  { icone: 'loop', titre: 'Un seul verbe, poussé au bout', texte: 'Taille and Retry n’a qu’une action : changer la forme du niveau. Chaque énigme en découle.', source: 'Taille and Retry' },
+  { icone: 'sound', titre: 'L’accessibilité est une mécanique', texte: 'EyesOfHeimdall traduit un sens en un autre, sans jamais en dire plus que ce qu’on entendrait.', source: 'EyesOfHeimdall' },
+] as const;
+---
+<Base
+  titre="Game design — Victor Grabowski · jams, prototypes, mods"
+  description="Deux prix du meilleur gameplay en game jam (Winter Game Jam, La Horde, Bordeaux). Game jams, prototypes et mods : des mécaniques qui s’apprennent sans tutoriel."
+  mode="jeu"
+  polices={['--font-cinzel', '--font-alegreya', '--font-bangers', '--font-mono']}
+  precharger={['--font-cinzel', '--font-alegreya']}
+  image="/og/jeu.png"
+>
+  <SiteHeader
+    actif="jeu"
+    liens={[{ href: '#runs', label: 'Runs' }, { href: '#mods', label: 'Mods' }, { href: '#principes', label: 'Principes' }, { href: '#contact', label: 'Contact' }]}
+    action={{ href: PDF, label: 'Sauvegarder', icone: 'typewriter', telecharger: true }}
+  />
+
+  <main id="contenu">
+    <section class="heros container">
+      <div class="heros__texte">
+        <p class="eyebrow ornee">Game design · jams · prototypes · mods</p>
+        <h1>Deux jams, deux prix du meilleur gameplay.</h1>
+        <p class="lead">Je conçois des mécaniques qui s’apprennent sans tutoriel : une table que quatre joueurs portent ensemble, un monde qu’on déforme sur trois axes.</p>
+        <div class="boutons">
+          <a class="btn btn--primary" href="#runs"><Icon name="play" size={18} />Voir les runs</a>
+          <a class="btn btn--ghost" href={PDF} download><Icon name="typewriter" size={18} />CV Game Design</a>
+        </div>
+        <p class="outils">Unity · Godot · C# · Aseprite · Bordeaux</p>
+      </div>
+      <figure class="cadre">
+        <div class="cadre__bord">
+          <img src="/images/projects/taille-and-retry/niveau.webp" alt="Taille and Retry : un niveau en diorama isométrique, une rivière et un moulin" width="1600" height="899" />
+          <span class="coin coin--hg" aria-hidden="true"></span>
+          <span class="coin coin--hd" aria-hidden="true"></span>
+          <span class="coin coin--bg" aria-hidden="true"></span>
+          <span class="coin coin--bd" aria-hidden="true"></span>
+          <p class="sticker">
+            <span class="sticker__titre">Prix du meilleur gameplay</span>
+            <span class="sticker__sous">Winter Game Jam 2026 · La Horde</span>
+          </p>
+        </div>
+        <figcaption>Taille and Retry — on ne déplace pas le héros, on déforme le niveau.</figcaption>
+      </figure>
+    </section>
+
+    <section id="runs" class="section container">
+      <div class="section__tete">
+        <div>
+          <p class="eyebrow ornee">Les runs</p>
+          <h2>Chaque jam, racontée comme une partie</h2>
+        </div>
+        <p class="section__intro">La contrainte, le verbe, le résultat — et ce que j’en retire.</p>
+      </div>
+
+      <div class="runs">
+        {runs.map((r) => (
+          <article class="run">
+            <div class="run__image">
+              <img src={r.image} alt={r.alt} loading="lazy" width="800" height="450" />
+              {r.prime && <p class="ruban"><Icon name="medal" size={16} />Prix du meilleur gameplay</p>}
+            </div>
+            <div class="run__corps">
+              <p class="run__meta">
+                <span class:list={['rarete', { 'rarete--proto': !r.prime }]}><span class="losange" aria-hidden="true"></span>{r.prime ? 'Primé' : 'Prototype'}</span>
+                <span>{r.meta}</span>
+              </p>
+              <h3>{r.titre}</h3>
+              <p class="verbe"><span>Verbe</span>{r.verbe}</p>
+              <p class="run__texte">{r.texte}</p>
+              <p class="run__liens">
+                {r.liens.map((l) => <a class="lien" href={l.href}>{l.label}<Icon name="arrow" size={16} /></a>)}
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="inventaire">
+        <h3 class="inventaire__titre">Aussi dans l’inventaire</h3>
+        <ul class="emplacements">
+          {inventaire.map((o) => (
+            <li>
+              <a class="emplacement" href={o.href}>
+                <span class="emplacement__vignette">
+                  {'image' in o && o.image
+                    ? <img src={o.image} alt="" loading="lazy" width="84" height="84" />
+                    : <span class="emplacement__icone"><Icon name={'icone' in o ? o.icone : 'gamepad'} size={30} /></span>}
+                </span>
+                <span class="emplacement__texte"><strong>{o.nom}</strong><span>{o.meta}</span></span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section id="mods" class="mods">
+      <div class="mods__grille container">
+        <figure class="mods__image">
+          <img src="/images/projects/eyesofheimdall/troll.webp" alt="EyesOfHeimdall en jeu : un arc autour du viseur indique la direction d’un troll" loading="lazy" width="1284" height="1439" />
+          <figcaption>Capture en jeu : l’arc autour du viseur indique d’où vient le son.</figcaption>
+        </figure>
+        <div class="mods__texte">
+          <p class="eyebrow ornee">Mod Valheim · C# · Harmony</p>
+          <h2>EyesOfHeimdall</h2>
+          <p class="lead lead--clair">Rendre visible la direction des sons, pour un joueur qui n’entend que d’une oreille.</p>
+          <ol class="decisions">
+            <li><span class="numero" aria-hidden="true">I</span><span>Rien ne s’affiche tant qu’aucun son ne se produit : ce n’est pas un radar.</span></li>
+            <li><span class="numero" aria-hidden="true">II</span><span>Chaque son devient un arc bref, dans la bonne direction, avec l’icône réelle de la créature.</span></li>
+            <li><span class="numero" aria-hidden="true">III</span><span>Pas d’icône disponible ? Rien ne s’affiche : mieux vaut aucun indice qu’un indice bancal.</span></li>
+          </ol>
+          <a class="lien" href="https://github.com/VictorMusta/EyesOfHeimdall">Voir le mod<Icon name="external" size={16} /></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="principes" class="section container">
+      <div>
+        <p class="eyebrow ornee">Principes</p>
+        <h2>Trois choses que je défends en design</h2>
+      </div>
+      <ul class="principes">
+        {principes.map((p) => (
+          <li class="principe">
+            <span class="embleme"><span><Icon name={p.icone} size={34} /></span></span>
+            <h3>{p.titre}</h3>
+            <p>{p.texte}</p>
+            <p class="source">— {p.source}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </main>
+
+  <footer id="contact" class="pied">
+    <div class="container pied__grille">
+      <p class="pied__appel">Un studio, une jam, un prototype à tester ? Parlons‑en.</p>
+      <div class="boutons">
+        <a class="btn btn--primary" href="mailto:victorgrabowski33@gmail.com"><Icon name="mail" size={18} />Écrire</a>
+        <a class="btn btn--ghost" href={PDF} download><Icon name="typewriter" size={18} />Sauvegarder le CV</a>
+      </div>
+      <p class="bibliotheque">Dans ma bibliothèque : Outer Wilds · Hades · Dark Souls · Minit · Loop Hero · Valheim · Deep Rock Galactic · Monster Hunter · The Witcher · Clair Obscur : Expedition 33</p>
+    </div>
+  </footer>
+</Base>
+
+<style>
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 700; color: var(--text); }
+  h2 { font-size: clamp(28px, 3.2vw, 42px); line-height: 1.15; }
+
+  .ornee { font-family: var(--font-display); letter-spacing: 0.26em; font-size: 14px; }
+
+  .lead { font-size: clamp(19px, 1.7vw, 22px); line-height: 1.5; color: var(--muted); }
+  .lead--clair { color: var(--text); }
+
+  .boutons { display: flex; flex-wrap: wrap; gap: 14px; }
+
+  /* ── Héros ── */
+  .heros {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 56px;
+    padding: 72px 0 76px;
+  }
+  .heros__texte { display: flex; flex-direction: column; gap: 22px; }
+  .heros h1 { font-size: clamp(34px, 4vw, 52px); line-height: 1.1; }
+  .outils { font-family: var(--font-label); font-size: 13px; letter-spacing: 0.04em; color: var(--muted); }
+
+  .cadre { display: flex; flex-direction: column; gap: 18px; }
+  .cadre__bord { position: relative; padding: 10px; border: 2px solid var(--accent); border-radius: 4px; }
+  .cadre__bord img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid rgba(217, 164, 65, 0.45); }
+  .coin {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    transform: rotate(45deg);
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  .coin--hg { left: -9px; top: -9px; }
+  .coin--hd { right: -9px; top: -9px; }
+  .coin--bg { left: -9px; bottom: -9px; }
+  .coin--bd { right: -9px; bottom: -9px; }
+  .sticker {
+    position: absolute;
+    right: -20px;
+    top: -30px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 18px 11px;
+    transform: rotate(6deg);
+    background: var(--blood);
+    border: 3px solid #070A14;
+    box-shadow: 6px 6px 0 #070A14;
+  }
+  .sticker__titre { font-family: var(--font-bangers); font-size: clamp(22px, 2.2vw, 31px); line-height: 1; letter-spacing: 0.05em; color: #FFF4E0; }
+  .sticker__sous { font-size: 13.5px; font-weight: 700; color: #FFE3C4; }
+  .cadre figcaption { font-style: italic; font-size: 17px; color: var(--muted); }
+
+  /* ── Sections ── */
+  .section { display: flex; flex-direction: column; gap: 36px; padding: 56px 0 72px; }
+  .section__tete { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px 48px; flex-wrap: wrap; }
+  .section__tete h2 { margin-top: 10px; }
+  .section__intro { max-width: 420px; font-size: 18px; color: var(--muted); }
+
+  /* ── Runs ── */
+  .runs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .run { display: flex; flex-direction: column; overflow: hidden; border-radius: 16px; background: var(--surf); border: 1px solid var(--line); }
+  .run__image { position: relative; }
+  .run__image img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  .ruban {
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px 6px 9px;
+    border-radius: 999px;
+    background: var(--blood);
+    color: #FFF4E0;
+    font-size: 13.5px;
+    font-weight: 700;
+  }
+  .run__corps { display: flex; flex-direction: column; gap: 12px; flex-grow: 1; padding: 22px 24px 18px; }
+  .run__meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-family: var(--font-label); font-size: 12px; color: var(--muted); }
+  .rarete { display: flex; align-items: center; gap: 8px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--accent); }
+  .rarete--proto { color: var(--proto); }
+  .losange { width: 9px; height: 9px; transform: rotate(45deg); background: currentColor; }
+  .run h3 { font-size: 26px; }
+  .verbe { display: flex; align-items: baseline; gap: 10px; font-size: 19px; font-weight: 500; }
+  .verbe span { font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+  .run__texte { font-size: 16.5px; line-height: 1.5; color: var(--muted); }
+  .run__liens { display: flex; gap: 20px; margin-top: auto; }
+
+  /* ── Inventaire ── */
+  .inventaire { display: flex; flex-direction: column; gap: 14px; }
+  .inventaire__titre { font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
+  .emplacements { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+  .emplacement {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: 100%;
+    padding: 8px 14px 8px 8px;
+    border-radius: 12px;
+    background: var(--surf);
+    border: 1px solid var(--line);
+    text-decoration: none;
+  }
+  .emplacement:hover { border-color: var(--accent); }
+  .emplacement__vignette { flex-shrink: 0; padding: 3px; border-radius: 9px; border: 1px solid var(--line); background: var(--bg); }
+  .emplacement__vignette img { width: 84px; height: 84px; object-fit: cover; border-radius: 6px; }
+  .emplacement__icone { display: flex; align-items: center; justify-content: center; width: 84px; height: 84px; border-radius: 6px; background: #35603A; color: #FFF4E0; }
+  .emplacement__texte { display: flex; flex-direction: column; gap: 4px; }
+  .emplacement__texte strong { font-size: 18px; }
+  .emplacement__texte span { font-family: var(--font-label); font-size: 12px; line-height: 1.45; color: var(--muted); }
+
+  /* ── Mods ── */
+  .mods { padding: 72px 0; background: var(--deep); border-block: 1px solid var(--line); }
+  .mods__grille { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 64px; }
+  .mods__image { display: flex; flex-direction: column; gap: 12px; }
+  .mods__image img { width: 100%; aspect-ratio: 6 / 5; object-fit: cover; object-position: center 40%; border-radius: 14px; border: 1px solid var(--line); }
+  .mods__image figcaption { font-family: var(--font-label); font-size: 12px; color: var(--muted); }
+  .mods__texte { display: flex; flex-direction: column; gap: 22px; }
+  .mods__texte h2 { font-size: clamp(32px, 3.4vw, 46px); }
+  .decisions { display: flex; flex-direction: column; gap: 16px; }
+  .decisions li { display: flex; gap: 16px; align-items: flex-start; font-size: 18.5px; line-height: 1.5; }
+  .numero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    margin-top: -6px;
+    border-radius: 50%;
+    border: 1.5px solid var(--accent);
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  /* ── Principes ── */
+  .principes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .principe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 34px 32px 30px;
+    border-radius: 18px;
+    background: var(--surf);
+    border: 1px solid var(--line);
+    text-align: center;
+  }
+  .embleme { display: flex; align-items: center; justify-content: center; width: 96px; height: 96px; border-radius: 50%; border: 2px solid var(--accent); }
+  .embleme span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    border: 1px solid rgba(217, 164, 65, 0.5);
+    background: rgba(217, 164, 65, 0.08);
+    color: var(--accent);
+  }
+  .principe h3 { font-size: 22px; line-height: 1.25; }
+  .principe p { font-size: 17.5px; line-height: 1.55; color: var(--muted); }
+  .principe .source { font-family: var(--font-label); font-size: 12px; letter-spacing: 0.06em; color: var(--accent); }
+
+  /* ── Pied ── */
+  .pied { padding: 56px 0 64px; border-top: 1px solid var(--line); }
+  .pied__grille { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 28px 40px; }
+  .pied__appel { font-family: var(--font-display); font-size: clamp(24px, 2.4vw, 32px); line-height: 1.3; font-weight: 700; }
+  .bibliotheque { grid-column: 1 / -1; font-family: var(--font-label); font-size: 12.5px; line-height: 1.6; color: var(--muted); }
+
+  @media (max-width: 1100px) {
+    .runs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .emplacements { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 900px) {
+    .heros, .mods__grille, .pied__grille { grid-template-columns: minmax(0, 1fr); }
+    .heros { padding-top: 48px; gap: 64px; }
+    .principes { grid-template-columns: minmax(0, 1fr); }
+    .mods__grille { gap: 36px; }
+  }
+  @media (max-width: 640px) {
+    .runs, .emplacements { grid-template-columns: minmax(0, 1fr); }
+    .sticker { right: -6px; top: -36px; }
+  }
+</style>

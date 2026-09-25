@@ -11,6 +11,13 @@ node_modules
 dist
 dist-ssr
 *.local
+.astro
+
+# Secrets : le .env réel vit sur le VPS (et en local), jamais dans le dépôt.
+.env
+
+# PDF générés par scripts/generate-pdf.mjs en CI, puis synchronisés avec le code.
+public/pdf
 
 # Editor directories and files
 .vscode/*

@@ -1,0 +1,136 @@
+---
+/*
+ * LES CARTES D'APERÇU (Open Graph), 1200 × 630 : ce que LinkedIn affiche quand on
+ * partage un lien. Dessinées ici avec les vraies polices, puis capturées en PNG dans
+ * public/og par `npm run og` (serveur de dev lancé). Pages non indexées.
+ */
+import Base from '../../layouts/Base.astro';
+import Campfire from '../../components/Campfire.astro';
+import Icon from '../../components/Icon.astro';
+
+export function getStaticPaths() {
+  return ['accueil', 'jeu', 'dev', 'sites'].map((carte) => ({ params: { carte } }));
+}
+const { carte } = Astro.params;
+const mode = carte === 'accueil' ? 'hub' : carte;
+---
+<Base
+  titre={`Carte d’aperçu — ${carte}`}
+  description="Carte d’aperçu"
+  mode="hub"
+  polices={['--font-mono', '--font-cinzel', '--font-alegreya', '--font-bangers', '--font-grotesk', '--font-plex', '--font-figtree', '--font-caveat']}
+  indexer={false}
+>
+  <div class:list={['carte', `carte--${carte}`]} data-mode={mode}>
+    {carte === 'accueil' && (
+      <>
+        <div class="lueur"></div>
+        <div class="accueil__feu"><Campfire size={264} /></div>
+        <div class="accueil__texte">
+          <p class="annonce">Feu de camp allumé</p>
+          <p class="nom">Victor Grabowski</p>
+          <p class="sous">Trois chemins partent de ce feu.</p>
+          <ul class="chemins">
+            <li data-mode="jeu"><Icon name="gamepad" size={22} />Game design</li>
+            <li data-mode="dev"><Icon name="code" size={22} />Développement web</li>
+            <li data-mode="sites"><Icon name="browser" size={22} />Création de sites</li>
+          </ul>
+        </div>
+      </>
+    )}
+    {carte === 'jeu' && (
+      <>
+        <div class="texte">
+          <p class="eyebrow">Game design · jams · mods</p>
+          <p class="titre">Deux jams, deux prix du meilleur gameplay.</p>
+          <p class="signature">Victor Grabowski · Bordeaux</p>
+        </div>
+        <div class="jeu__cadre">
+          <img src="/images/projects/taille-and-retry/niveau.webp" alt="" />
+          <p class="sticker">Prix du meilleur gameplay</p>
+        </div>
+      </>
+    )}
+    {carte === 'dev' && (
+      <>
+        <div class="texte">
+          <p class="eyebrow">Fullstack TypeScript &amp; .NET</p>
+          <p class="titre">Victor Grabowski, fullstack junior à Bordeaux.</p>
+          <p class="signature">Aujourd’hui chez Betclic, dans la lutte <mark>anti-fraude</mark>.</p>
+        </div>
+        <div class="dev__panneau">
+          <p><span class="point"></span>En ce moment</p>
+          <p class="activite">Bannissement de vilains fraudeurs…</p>
+          <p class="stack">.NET C# · TypeScript · AWS</p>
+        </div>
+      </>
+    )}
+    {carte === 'sites' && (
+      <>
+        <div class="texte">
+          <p class="note">fait main, à Bordeaux</p>
+          <p class="titre">Des sites qui vendent, et que vous gérez vous-même.</p>
+          <p class="signature">Vitrines · boutiques · abonnements — Victor Grabowski</p>
+        </div>
+        <div class="sites__fenetre">
+          <p class="barre"><span></span><span></span><span></span></p>
+          <p class="bandeau">La protection transformée en style.</p>
+          <p class="coques"><i style="--f:#F4E1AB;--c:#E73E1E"></i><i style="--f:#C7D8C8;--c:#54815B"></i><i style="--f:#D5E0F0;--c:#396BB2"></i></p>
+        </div>
+      </>
+    )}
+  </div>
+</Base>
+
+<style>
+  .carte {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 56px;
+    width: 1200px;
+    height: 630px;
+    padding: 64px 72px;
+    overflow: hidden;
+    background-color: var(--bg);
+    background-image: var(--paper-grid, none);
+    background-size: 32px 32px;
+    color: var(--text);
+    border-top: 10px solid var(--flame);
+  }
+  .texte { display: flex; flex-direction: column; gap: 22px; flex: 1; }
+  .eyebrow { font-size: 20px; }
+  .titre { font-family: var(--font-display); font-size: 64px; line-height: 1.08; font-weight: 700; letter-spacing: -0.02em; }
+  .signature { font-family: var(--font-body); font-size: 24px; color: var(--muted); }
+
+  .lueur { position: absolute; left: 60px; top: 40px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(240, 163, 58, 0.25), rgba(240, 163, 58, 0) 65%); }
+  .accueil__feu { position: relative; }
+  .accueil__texte { position: relative; display: flex; flex-direction: column; gap: 18px; }
+  .annonce { font-family: var(--font-mono); font-size: 18px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--flame); }
+  .nom { font-family: var(--font-fraunces); font-size: 76px; line-height: 1; font-weight: 600; letter-spacing: -0.02em; }
+  .sous { font-family: var(--font-fraunces); font-style: italic; font-size: 28px; color: var(--muted); }
+  .chemins { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+  .chemins li { display: inline-flex; align-items: center; gap: 12px; align-self: flex-start; padding: 10px 18px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); color: var(--accent); font-family: var(--font-display); font-size: 24px; font-weight: 700; }
+
+  .carte--jeu .titre { font-size: 58px; }
+  .jeu__cadre { position: relative; width: 470px; padding: 10px; border: 2px solid var(--accent); }
+  .jeu__cadre img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  .sticker { position: absolute; right: -18px; top: -26px; padding: 10px 18px; transform: rotate(6deg); background: var(--blood); border: 3px solid #070A14; box-shadow: 6px 6px 0 #070A14; font-family: var(--font-bangers); font-size: 30px; letter-spacing: 0.05em; color: #FFF4E0; }
+
+  .carte--dev .titre { font-size: 56px; }
+  .carte--dev mark { background: linear-gradient(transparent 58%, var(--mark) 58%); color: inherit; }
+  .dev__panneau { display: flex; flex-direction: column; gap: 14px; width: 400px; padding: 28px; border-radius: 16px; background: var(--panel); color: #8A93A6; font-family: var(--font-mono); font-size: 16px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .dev__panneau p:first-child { display: flex; align-items: center; gap: 10px; color: var(--flame); }
+  .point { width: 10px; height: 10px; border-radius: 50%; background: var(--flame); }
+  .activite { font-family: var(--font-plex); font-size: 24px; letter-spacing: 0; text-transform: none; color: var(--flame); }
+
+  .note { font-family: var(--font-caveat); font-size: 36px; font-weight: 700; color: var(--terra); transform: rotate(-2deg); align-self: flex-start; }
+  .carte--sites .titre { font-weight: 600; }
+  .sites__fenetre { width: 400px; overflow: hidden; border-radius: 14px; background: #FFFBF3; border: 1px solid var(--line); box-shadow: 0 22px 48px rgba(30, 27, 22, 0.16); transform: rotate(-2deg); }
+  .barre { display: flex; gap: 7px; padding: 12px 14px; background: #EDE6D8; }
+  .barre span { width: 11px; height: 11px; border-radius: 50%; background: #D8CDBA; }
+  .bandeau { padding: 34px 22px; background: #E73E1E; font-family: var(--font-fraunces); font-style: italic; font-size: 26px; font-weight: 600; color: #FFFBF3; }
+  .coques { display: flex; gap: 12px; padding: 18px; }
+  .coques i { display: flex; align-items: center; justify-content: center; flex: 1; height: 120px; border-radius: 10px; background: var(--f); }
+  .coques i::before { content: ''; width: 44px; height: 84px; border-radius: 11px; background: var(--c); }
+</style>
