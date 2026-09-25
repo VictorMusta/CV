@@ -1,0 +1,526 @@
+---
+import Base from '../layouts/Base.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import Icon from '../components/Icon.astro';
+
+/*
+ * LE MÈTRE DES PRIX. Une fourchette seule ne dit rien : chaque repère est un projet réel.
+ * À CONFIRMER AVANT MISE EN LIGNE : l'accord des deux clients pour afficher leur budget,
+ * et le prix de départ d'une vitrine simple (null tant qu'il n'est pas fixé).
+ */
+const prixVitrine = null;
+const echelle = { max: 6000, marge: 2, largeur: 96 };
+const position = (euros) => echelle.marge + (euros / echelle.max) * echelle.largeur;
+const graduations = [];
+for (let v = 250; v < echelle.max; v += 250) graduations.push({ v, pos: position(v), majeure: v % 1000 === 0 && v <= 5000 });
+const euros = (v) => `${v / 1000} 000 €`;
+
+const reperes = [
+  { nom: 'Turf-Horses', prix: '≈ 1 500 €', pos: position(1500), texte: 'Vitrine + abonnements Stripe, espace membre, administration' },
+  { nom: 'Coquelicots', prix: '≈ 4 500 €', pos: position(4500), texte: 'Boutique en ligne : 408 produits, trois langues, fidélité' },
+];
+
+const variables = [
+  { icone: 'layout', texte: 'Le nombre de pages, ou de produits à mettre en ligne' },
+  { icone: 'globe', texte: 'Le nombre de langues' },
+  { icone: 'card', texte: 'Le paiement en ligne, les abonnements, l’espace membre' },
+  { icone: 'book', texte: 'Les contenus : fournis par vous, ou à créer ensemble' },
+  { icone: 'grid', texte: 'Les outils à brancher : fidélité, publicité, e-mailing' },
+] as const;
+
+const etapes = [
+  { icone: 'chat', titre: 'On se parle', texte: 'Un premier échange pour comprendre votre activité et vos objectifs.' },
+  { icone: 'search', titre: 'Audit & cadrage', texte: 'Ce qui existe, ce qui manque, ce qui coûte : on décide ensemble.' },
+  { icone: 'layout', titre: 'Maquettes', texte: 'Des maquettes cliquables : vous validez avant que je code.' },
+  { icone: 'code', titre: 'Développement', texte: 'Rapide, sécurisé, accessible, testé.' },
+  { icone: 'rocket', titre: 'Mise en ligne', texte: 'Avec une prise en main pour que vous soyez autonome.' },
+] as const;
+---
+<Base
+  titre="Création de sites à Bordeaux — Victor Grabowski · vitrines, boutiques, abonnements"
+  description="Des sites qui vendent, et que vous gérez vous-même : vitrine, boutique en ligne ou abonnements, conçus et développés à Bordeaux. Réalisations : Coquelicots, Turf-Horses."
+  mode="sites"
+  polices={['--font-figtree', '--font-caveat', '--font-mono']}
+  precharger={['--font-figtree']}
+  image="/og/sites.png"
+>
+  <SiteHeader
+    actif="sites"
+    liens={[{ href: '#realisations', label: 'Réalisations' }, { href: '#methode', label: 'Méthode' }, { href: '#tarifs', label: 'Tarifs' }]}
+    action={{ href: '#contact', label: 'Parlons de votre projet', primaire: true }}
+  />
+
+  <main id="contenu">
+    <section class="heros container">
+      <div class="heros__texte">
+        <p class="note-main">fait main, à Bordeaux
+          <svg class="fleche-main" width="70" height="46" viewBox="0 0 70 46" fill="none" aria-hidden="true"><path d="M4 8c18-6 40 0 52 26" /><path d="M47 30l9 6 3-11" /></svg>
+        </p>
+        <h1>Des sites qui vendent, et que vous gérez vous-même.</h1>
+        <p class="lead">Vitrine, boutique en ligne ou abonnements : je conçois, développe et mets en ligne votre site. Puis je vous montre comment le faire vivre, sans dépendre de moi.</p>
+        <div class="boutons">
+          <a class="btn btn--primary" href="#contact">Parlons de votre projet<Icon name="arrow" size={18} /></a>
+          <a class="lien lien--souligne" href="#realisations">Voir les réalisations</a>
+        </div>
+        <ul class="confiance">
+          <li><span class="pastille"><Icon name="user" size={19} /></span>Un seul interlocuteur, du devis à la mise en ligne</li>
+          <li><span class="pastille"><Icon name="card" size={19} /></span>Paiements sécurisés : Stripe, WooCommerce</li>
+          <li><span class="pastille"><Icon name="globe" size={19} /></span>Multilingue si besoin : FR · ES · EN</li>
+        </ul>
+      </div>
+
+      <div class="vitrines" aria-hidden="true">
+        <div class="fenetre fenetre--turf">
+          <p class="fenetre__barre"><span></span><span></span><span></span><em>turf-horses.fr</em></p>
+          <p class="turf__nav"><strong>Turf-Horses</strong><span>Mon compte</span></p>
+          <p class="turf__heros"><strong>Le Quinté du jour</strong><span>S’abonner</span></p>
+          <p class="turf__prix">{['30 €', '160 €', '300 €'].map((p) => <span><strong>{p}</strong><i></i><i></i></span>)}</p>
+        </div>
+        <div class="fenetre fenetre--coq">
+          <p class="fenetre__barre"><span></span><span></span><span></span><em>coquelicots.co</em></p>
+          <p class="coq__nav"><strong>COQUELICOTS</strong><span>FR · ES · EN</span></p>
+          <p class="coq__heros">La protection transformée en style.</p>
+          <p class="coq__produits">
+            {[['#F4E1AB', '#E73E1E'], ['#C7D8C8', '#54815B'], ['#EFD9C4', '#B78E68'], ['#D5E0F0', '#396BB2']].map(([fond, coque]) => (
+              <span class="coque" style={`--fond: ${fond}; --coque: ${coque}`}><i></i><small>39,99 €</small></span>
+            ))}
+          </p>
+        </div>
+        <p class="note-main note-main--vitrines">deux clients, deux univers</p>
+      </div>
+    </section>
+
+    <section id="realisations" class="container section">
+      <div>
+        <p class="note-main">vrais projets, vrais clients</p>
+        <h2>Réalisations</h2>
+      </div>
+      <div class="realisations">
+        <article class="realisation">
+          <div class="realisation__bandeau realisation__bandeau--coq">
+            <p class="marque-coq">COQUELICOTS</p>
+            <p>Coques de téléphone · art et lifestyle</p>
+          </div>
+          <div class="realisation__corps">
+            <p class="type">Refonte e-commerce · WordPress / WooCommerce</p>
+            <h3>408 produits, trois langues, et un programme de fidélité conservé.</h3>
+            <div class="choix">
+              <p class="note-main">le choix qui a compté</p>
+              <p>Rester sur WooCommerce plutôt que migrer vers Shopify : la cliente garde son programme de fidélité déjà payé, ses produits et son domaine — et ajoute elle-même ses nouveautés.</p>
+            </div>
+            <ul class="pilules"><li>Audit &amp; cadrage</li><li>Maquettes cliquables</li><li>Thème sur mesure</li><li>FR · ES · EN</li><li>Suivi publicitaire</li></ul>
+            <a class="lien" href="https://coquelicots.co/">Voir le site<Icon name="external" size={16} /></a>
+          </div>
+        </article>
+        <article class="realisation">
+          <div class="realisation__bandeau realisation__bandeau--turf">
+            <p class="marque-turf">Turf-Horses</p>
+            <p>Pronostics hippiques · abonnements</p>
+          </div>
+          <div class="realisation__corps">
+            <p class="type">Vitrine + abonnements · Astro / Stripe</p>
+            <h3>Deux anciens sites réunis en un seul, avec trois formules d’abonnement.</h3>
+            <div class="choix">
+              <p class="note-main">le choix qui a compté</p>
+              <p>Remettre la sécurité à plat avant d’ajouter quoi que ce soit : les mots de passe ne sont plus stockés dans le navigateur, et le contenu payant ne fuit plus dans la page.</p>
+            </div>
+            <ul class="pilules"><li>Espace abonné</li><li>Paiement Stripe</li><li>Administration</li><li>E-mails et désinscription</li></ul>
+            <a class="lien" href="https://www.turf-horses.fr/">Voir le site<Icon name="external" size={16} /></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="methode" class="container section">
+      <div class="methode__tete">
+        <h2>Comment on travaille</h2>
+        <p class="note-main">chaque étape se valide avec vous</p>
+      </div>
+      <ol class="recette">
+        {etapes.map((e, i) => (
+          <li class="etape">
+            <span class="emplacement"><span class="emplacement__n">{i + 1}</span><Icon name={e.icone} size={46} stroke={1.6} /></span>
+            <strong>{e.titre}</strong>
+            <span class="etape__texte">{e.texte}</span>
+          </li>
+        ))}
+        <li class="resultat">
+          <Icon name="flame" size={56} stroke={1.6} />
+          <strong>Votre site,<br />en ligne</strong>
+        </li>
+      </ol>
+    </section>
+
+    <section id="tarifs" class="container section">
+      <div>
+        <p class="note-main">chaque devis est sur mesure</p>
+        <h2>Combien ça coûte ?</h2>
+        <p class="intro">Chaque projet est chiffré sur devis, après un premier échange. Pour vous situer, voici deux projets réels : le prix dépend surtout de ce que le site doit faire.</p>
+      </div>
+
+      <div class="regle">
+        <div class="regle__barre" aria-hidden="true">
+          {graduations.map((g) => (
+            <span class:list={['trait', { 'trait--majeur': g.majeure }]} style={`--pos: ${g.pos}`}>{g.majeure && <b>{euros(g.v)}</b>}</span>
+          ))}
+          <span class="regle__fleche"><Icon name="arrow" size={22} /></span>
+        </div>
+        {reperes.map((r) => (
+          <article class="repere" style={`--pos: ${r.pos}`}>
+            <p class="repere__tete"><strong>{r.nom}</strong><span>{r.prix}</span></p>
+            <p class="repere__texte">{r.texte}</p>
+          </article>
+        ))}
+        <div class="vitrine" style={`--fin: ${position(1500)}`}>
+          <p><strong>Site vitrine simple</strong><span>à partir de <em>{prixVitrine ? euros(prixVitrine) : '[à définir]'}</em></span></p>
+        </div>
+        <p class="note-main au-dela">au-delà : sur devis</p>
+      </div>
+
+      <div class="tarifs__bas">
+        <div>
+          <h3>Ce qui fait varier le prix</h3>
+          <ul class="variables">
+            {variables.map((v) => <li><span class="pastille"><Icon name={v.icone} size={20} /></span>{v.texte}</li>)}
+          </ul>
+        </div>
+        <div class="inclus">
+          <h3>Toujours inclus</h3>
+          <ul>
+            <li><Icon name="check" size={20} stroke={2} />Des maquettes cliquables, validées avant la moindre ligne de code</li>
+            <li><Icon name="check" size={20} stroke={2} />Un site rapide, sécurisé et accessible</li>
+            <li><Icon name="check" size={20} stroke={2} />Une prise en main pour que vous soyez autonome</li>
+          </ul>
+          <a class="btn btn--primary" href="#contact">Demander un devis<Icon name="arrow" size={18} /></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="contact" class="contact">
+    <div class="container contact__grille">
+      <div class="contact__texte">
+        <p class="note-main note-main--flamme">à Bordeaux, ou en visio</p>
+        <h2>Un projet ? Parlons‑en.</h2>
+        <p>Racontez-moi votre activité et ce que vous attendez de votre site. Je reviens vers vous avec des questions, puis une proposition claire.</p>
+        <a class="lien lien--clair" href="mailto:victorgrabowski33@gmail.com"><Icon name="mail" size={20} />victorgrabowski33@gmail.com</a>
+      </div>
+
+      <form class="formulaire" method="post" action="/api/contact" data-formulaire>
+        <div class="champ"><label for="nom">Votre nom</label><input id="nom" name="nom" autocomplete="name" required maxlength="100" /></div>
+        <div class="champ"><label for="email">Votre e-mail</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="200" /></div>
+        <div class="champ"><label for="activite">Votre activité <span>(facultatif)</span></label><input id="activite" name="activite" autocomplete="organization" maxlength="150" /></div>
+        <div class="champ"><label for="projet">Votre projet en quelques mots</label><textarea id="projet" name="projet" rows="5" required minlength="10" maxlength="5000"></textarea></div>
+        <div class="piege" aria-hidden="true"><label for="site">Laisser vide</label><input id="site" name="site" tabindex="-1" autocomplete="off" /></div>
+        <button class="btn envoyer" type="submit">Envoyer<Icon name="arrow" size={18} /></button>
+        <p class="statut" role="status" aria-live="polite" data-statut></p>
+      </form>
+    </div>
+    <p class="container mentions">© Victor Grabowski — Bordeaux · <a href="/mentions-legales">Mentions légales</a></p>
+  </section>
+</Base>
+
+<script>
+  /* Envoi sans rechargement quand JavaScript est là ; sans lui, le formulaire poste
+     normalement et le serveur redirige vers /merci ou /oups. */
+  const formulaire = document.querySelector<HTMLFormElement>('[data-formulaire]');
+  const statut = formulaire?.querySelector<HTMLElement>('[data-statut]');
+  const bouton = formulaire?.querySelector<HTMLButtonElement>('button[type="submit"]');
+
+  formulaire?.addEventListener('submit', async (evenement) => {
+    evenement.preventDefault();
+    if (!statut || !bouton) return;
+    bouton.disabled = true;
+    statut.dataset.etat = '';
+    statut.textContent = 'Envoi en cours…';
+    try {
+      const reponse = await fetch(formulaire.action, {
+        method: 'POST',
+        body: new FormData(formulaire),
+        headers: { accept: 'application/json' },
+      });
+      const donnees = await reponse.json().catch(() => ({}));
+      if (reponse.ok && donnees.ok) {
+        formulaire.reset();
+        statut.dataset.etat = 'ok';
+        statut.textContent = 'Merci, votre message est bien parti. Je reviens vers vous au plus vite.';
+      } else {
+        statut.dataset.etat = 'erreur';
+        statut.textContent = donnees.message ?? 'L’envoi n’a pas abouti. Écrivez-moi directement : victorgrabowski33@gmail.com';
+      }
+    } catch {
+      statut.dataset.etat = 'erreur';
+      statut.textContent = 'Connexion impossible. Écrivez-moi directement : victorgrabowski33@gmail.com';
+    } finally {
+      bouton.disabled = false;
+    }
+  });
+</script>
+
+<style>
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(32px, 3.4vw, 46px); line-height: 1.1; }
+  .lead { font-size: clamp(18px, 1.5vw, 20px); line-height: 1.6; color: var(--body); }
+  .boutons { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
+  .btn { font-size: 17px; font-weight: 600; }
+  .lien { color: var(--accent); }
+  .lien--souligne { text-decoration: underline; text-underline-offset: 5px; }
+
+  .note-main {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 10px;
+    transform: rotate(-2deg);
+    font-family: var(--font-caveat);
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--terra);
+  }
+  .fleche-main { stroke: var(--terra); stroke-width: 2.4; stroke-linecap: round; }
+
+  .pastille {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(31, 59, 45, 0.09);
+    color: var(--accent);
+  }
+
+  .section { display: flex; flex-direction: column; gap: 36px; padding: 72px 0; }
+
+  /* ── Héros ── */
+  .heros {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 48px;
+    padding: 72px 0 84px;
+  }
+  .heros__texte { display: flex; flex-direction: column; gap: 22px; }
+  .heros h1 { font-size: clamp(38px, 4.8vw, 66px); line-height: 1.04; letter-spacing: -0.025em; }
+  .confiance { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .confiance li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; line-height: 1.45; color: var(--body); }
+
+  /* Les deux sites clients, dessinés en miniature. */
+  .vitrines { position: relative; width: 100%; max-width: 564px; height: 530px; justify-self: end; }
+  .fenetre {
+    position: absolute;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    box-shadow: 0 22px 48px rgba(30, 27, 22, 0.16);
+  }
+  .fenetre p { margin: 0; }
+  .fenetre__barre { display: flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; background: #EDE6D8; }
+  .fenetre__barre span { width: 9px; height: 9px; border-radius: 50%; background: #D8CDBA; }
+  .fenetre__barre em { margin-left: 10px; padding: 3px 12px; border-radius: 999px; background: #FFFDF8; font-family: var(--font-mono); font-size: 11px; font-style: normal; color: var(--muted); }
+  .fenetre--turf { left: 110px; top: 0; width: 450px; transform: rotate(3deg); }
+  .turf__nav { display: flex; align-items: center; justify-content: space-between; height: 34px; padding: 0 16px; background: #0F2E1D; font-size: 10px; color: #CFE3D6; }
+  .turf__nav strong { font-family: var(--font-fraunces); font-size: 15px; font-weight: 600; color: #E3C558; }
+  .turf__heros { display: flex; align-items: center; justify-content: space-between; height: 84px; padding: 0 18px; background: #1A5336; }
+  .turf__heros strong { font-family: var(--font-fraunces); font-size: 20px; font-weight: 600; color: #FFFFFF; }
+  .turf__heros span { padding: 6px 12px; border-radius: 999px; background: #C9A227; font-size: 11px; font-weight: 700; color: #0F2E1D; }
+  .turf__prix { display: flex; gap: 10px; padding: 14px 16px; background: #FBFAF6; }
+  .turf__prix > span { display: flex; flex-direction: column; gap: 7px; flex-grow: 1; padding: 12px; border-radius: 8px; background: #FFFFFF; border: 1px solid #E6E3D8; }
+  .turf__prix strong { font-size: 18px; color: #0F2E1D; }
+  .turf__prix i { height: 6px; width: 70%; border-radius: 3px; background: #E6E3D8; }
+  .turf__prix i + i { width: 50%; }
+  .fenetre--coq { left: 0; top: 190px; z-index: 2; width: 470px; transform: rotate(-2.5deg); }
+  .coq__nav { display: flex; align-items: center; justify-content: space-between; height: 34px; padding: 0 16px; background: #FFFBF3; border-bottom: 1px solid #F4E1AB; font-size: 10px; color: #252C59; }
+  .coq__nav strong { font-size: 12px; letter-spacing: 0.24em; }
+  .coq__heros { display: flex; align-items: center; height: 96px; padding: 0 18px; background: #E73E1E; font-family: var(--font-fraunces); font-size: 21px; font-style: italic; font-weight: 600; color: #FFFBF3; }
+  .coq__produits { display: flex; gap: 10px; padding: 14px 16px; background: #FFFBF3; }
+  .coque { display: flex; flex-direction: column; align-items: center; gap: 6px; flex-grow: 1; }
+  .coque i { position: relative; display: flex; align-items: center; justify-content: center; width: 100%; height: 92px; border-radius: 8px; background: var(--fond); }
+  .coque i::before { content: ''; width: 34px; height: 64px; border-radius: 9px; background: var(--coque); }
+  .coque small { font-size: 11px; font-weight: 600; color: #252C59; }
+  .note-main--vitrines { position: absolute; left: 330px; top: 478px; transform: rotate(3deg); font-size: 24px; }
+
+  /* ── Réalisations ── */
+  .realisations { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
+  .realisation { overflow: hidden; border-radius: 18px; background: var(--surf); border: 1px solid var(--line); box-shadow: 0 12px 30px rgba(30, 27, 22, 0.06); }
+  .realisation__bandeau { display: flex; flex-direction: column; justify-content: center; gap: 8px; min-height: 150px; padding: 24px 32px; font-size: 14.5px; }
+  .realisation__bandeau--coq { background: #E73E1E; color: #FFE7DA; }
+  .realisation__bandeau--turf { background: #0F2E1D; color: #CFE3D6; }
+  .marque-coq { font-size: 27px; font-weight: 700; letter-spacing: 0.3em; color: #FFFBF3; }
+  .marque-turf { font-family: var(--font-fraunces); font-size: 32px; font-weight: 600; color: #E3C558; }
+  .realisation__corps { display: flex; flex-direction: column; gap: 16px; padding: 28px 32px 26px; }
+  .type { font-size: 12.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terra); }
+  .realisation h3 { font-size: 27px; line-height: 1.25; }
+  .choix { display: flex; flex-direction: column; gap: 6px; padding: 16px 20px 18px; border-radius: 12px; background: var(--note); font-size: 16.5px; line-height: 1.55; color: var(--body); }
+  .choix .note-main { font-size: 22px; transform: rotate(-1.5deg); }
+  .pilules { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pilules li { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); font-size: 13.5px; font-weight: 500; }
+
+  /* ── Méthode : la recette ── */
+  .methode__tete { display: flex; align-items: flex-end; gap: 12px 28px; flex-wrap: wrap; }
+  .recette { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)) minmax(0, 1.2fr); gap: 20px 40px; align-items: start; counter-reset: etape; }
+  .etape { position: relative; display: flex; flex-direction: column; gap: 12px; }
+  .etape:not(:first-child)::before,
+  .resultat::before {
+    content: '+';
+    position: absolute;
+    left: -30px;
+    top: 52px;
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--terra);
+  }
+  .resultat::before { content: '='; }
+  .emplacement {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    border-radius: 14px;
+    background: var(--surf);
+    border: 2px solid var(--slot);
+    box-shadow: inset 0 0 0 5px var(--bg);
+    color: var(--accent);
+  }
+  .emplacement__n { position: absolute; left: 14px; top: 6px; font-family: var(--font-caveat); font-size: 24px; font-weight: 700; color: var(--terra); }
+  .etape strong { font-size: 17px; }
+  .etape__texte { font-size: 14.5px; line-height: 1.45; color: var(--muted); }
+  .resultat {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    aspect-ratio: 1;
+    margin-top: -12px;
+    border-radius: 18px;
+    background: var(--accent);
+    box-shadow: inset 0 0 0 6px #2A4D3B;
+    color: var(--flame);
+  }
+  .resultat strong { font-family: var(--font-display); font-size: 20px; font-weight: 600; text-align: center; color: var(--on-accent); }
+
+  /* ── Tarifs : le mètre ── */
+  .intro { max-width: 900px; margin-top: 12px; font-size: 18px; line-height: 1.6; color: var(--muted); }
+  .regle { position: relative; height: 280px; }
+  .regle__barre {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 118px;
+    height: 60px;
+    border-radius: 8px;
+    background: #E9D3AE;
+    border: 1.5px solid #B98E58;
+  }
+  .trait { position: absolute; left: calc(var(--pos) * 1%); top: 0; width: 1.5px; height: 12px; background: #B98E58; }
+  .trait--majeur { width: 2px; height: 22px; background: #8A6436; }
+  .trait b { position: absolute; left: -40px; top: 28px; width: 80px; text-align: center; font-size: 13px; font-weight: 700; color: #5A3A25; white-space: nowrap; }
+  .regle__fleche { position: absolute; right: 12px; top: 18px; display: flex; color: #5A3A25; }
+  .repere {
+    position: absolute;
+    left: calc(var(--pos) * 1%);
+    top: 0;
+    width: 300px;
+    padding: 12px 16px 13px;
+    transform: translateX(-50%);
+    border-radius: 12px;
+    background: var(--surf);
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 22px rgba(30, 27, 22, 0.08);
+  }
+  .repere::before { content: ''; position: absolute; left: calc(50% - 1px); top: 100%; width: 2px; height: 28px; background: var(--terra); }
+  .repere::after {
+    content: '';
+    position: absolute;
+    left: calc(50% - 8px);
+    top: calc(100% + 19px);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--terra);
+    border: 3px solid var(--surf);
+    box-shadow: 0 0 0 1px var(--terra);
+  }
+  .repere__tete { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; font-family: var(--font-display); font-size: 19px; }
+  .repere__tete strong { font-weight: 600; }
+  .repere__tete span { font-weight: 700; color: var(--terra); white-space: nowrap; }
+  .repere__texte { margin-top: 4px; font-size: 13.5px; line-height: 1.45; color: var(--muted); }
+  .vitrine { position: absolute; left: 2%; top: 188px; width: calc((var(--fin) - 2) * 1%); }
+  .vitrine::before { content: ''; display: block; height: 12px; border: 2px dashed var(--terra); border-top: 0; border-radius: 0 0 6px 6px; }
+  .vitrine p { display: flex; flex-direction: column; gap: 2px; margin-top: 10px; }
+  .vitrine strong { font-size: 15px; }
+  .vitrine span { font-family: var(--font-display); font-size: 18px; font-weight: 600; }
+  .vitrine em { font-style: normal; border-bottom: 2px dashed var(--terra); }
+  .au-dela { position: absolute; left: 82%; top: 196px; transform: rotate(2deg); font-size: 22px; }
+
+  .tarifs__bas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .tarifs__bas h3 { font-size: 24px; }
+  .variables { display: flex; flex-direction: column; gap: 12px; margin-top: 18px; }
+  .variables li { display: flex; align-items: center; gap: 14px; font-size: 16.5px; line-height: 1.45; color: var(--body); }
+  .inclus { display: flex; flex-direction: column; gap: 18px; padding: 28px 30px; border-radius: 16px; background: var(--surf); border: 1px solid var(--line); }
+  .inclus ul { display: flex; flex-direction: column; gap: 12px; }
+  .inclus li { display: flex; gap: 12px; font-size: 16.5px; line-height: 1.45; color: var(--body); }
+  .inclus :global(svg) { flex-shrink: 0; color: var(--accent); }
+  .inclus .btn { align-self: flex-start; margin-top: auto; }
+
+  /* ── Contact ── */
+  .contact { padding: 72px 0 40px; background: var(--accent); color: var(--on-accent); }
+  .contact__grille { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: start; }
+  .contact__texte { display: flex; flex-direction: column; gap: 16px; }
+  .contact__texte h2 { font-size: clamp(36px, 3.6vw, 50px); color: var(--on-accent); }
+  .contact__texte > p:not(.note-main) { font-size: 18px; line-height: 1.6; color: #D3E3D7; }
+  .note-main--flamme { color: var(--flame); font-size: 27px; }
+  .lien--clair { color: var(--on-accent); font-weight: 600; }
+  .formulaire { display: flex; flex-direction: column; gap: 16px; padding: 32px; border-radius: 18px; background: var(--bg); color: var(--text); }
+  .champ { display: flex; flex-direction: column; gap: 8px; }
+  .champ label { font-size: 14.5px; font-weight: 600; }
+  .champ label span { font-weight: 400; color: var(--muted); }
+  .champ input, .champ textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1.5px solid var(--slot);
+    background: var(--surf);
+    font-size: 16px;
+  }
+  .champ input { height: 48px; }
+  .champ textarea { resize: vertical; min-height: 120px; }
+  .champ input:focus-visible, .champ textarea:focus-visible { outline: 3px solid var(--flame); outline-offset: 1px; border-color: var(--accent); }
+  .piege { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .envoyer { margin-top: 6px; border: 0; background: var(--ember); color: var(--text); }
+  .envoyer:disabled { opacity: 0.6; cursor: progress; }
+  .statut { min-height: 1.5em; font-size: 15.5px; font-weight: 600; }
+  .statut[data-etat='ok'] { color: var(--accent); }
+  .statut[data-etat='erreur'] { color: var(--terra); }
+  .mentions { margin-top: 40px; padding-top: 22px; border-top: 1px solid rgba(247, 240, 228, 0.2); font-size: 13.5px; color: #D3E3D7; }
+
+  @media (max-width: 1100px) {
+    .recette { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .etape::before, .resultat::before { display: none; }
+    .resultat { margin-top: 0; }
+  }
+  @media (max-width: 980px) {
+    .heros, .realisations, .tarifs__bas, .contact__grille { grid-template-columns: minmax(0, 1fr); }
+    .vitrines { justify-self: center; }
+    /* Sous cette largeur, le mètre devient une liste : les repères gardent leur sens. */
+    .regle { display: flex; flex-direction: column; gap: 14px; height: auto; }
+    .regle__barre, .repere::before, .repere::after { display: none; }
+    .repere, .vitrine, .au-dela { position: static; width: auto; transform: none; }
+    .vitrine::before { display: none; }
+    .vitrine p { margin: 0; padding: 12px 16px; border-radius: 12px; border: 2px dashed var(--terra); }
+  }
+  @media (max-width: 640px) {
+    .confiance { grid-template-columns: minmax(0, 1fr); }
+    .recette { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .vitrines { height: auto; }
+    .fenetre--turf, .note-main--vitrines { display: none; }
+    .fenetre--coq { position: static; width: 100%; transform: none; }
+    .coque small { display: none; }
+    .formulaire { padding: 22px; }
+  }
+</style>

@@ -1,0 +1,87 @@
+---
+/*
+ * LE CV EN 60 SECONDES — pour qui n'a qu'une minute. Clin d'œil à Minit : un compte à
+ * rebours discret, et à la fin, rien ne se passe de grave. L'essentiel tient en cinq
+ * lignes ; le reste est à un clic.
+ */
+import Base from '../layouts/Base.astro';
+import Wordmark from '../components/Wordmark.astro';
+import Icon from '../components/Icon.astro';
+
+const lignes = [
+  { cle: 'Qui', texte: 'Victor Grabowski, fullstack junior à Bordeaux. TypeScript et .NET.' },
+  { cle: 'Aujourd’hui', texte: 'Chez Betclic, dans la lutte anti-fraude : micro-services .NET et TypeScript sur AWS.' },
+  { cle: 'Preuves', texte: 'Deux prix du meilleur gameplay en game jam (2025 et 2026). jvcritiqué et ses 214 tests. Deux sites livrés pour des clients.' },
+  { cle: 'Stack', texte: 'TypeScript, .NET C#, Python · React, Next.js, Astro · PostgreSQL, MongoDB, DynamoDB · AWS, Docker, Terraform.' },
+  { cle: 'Contact', texte: 'victorgrabowski33@gmail.com · linkedin.com/in/vgrabowski' },
+];
+---
+<Base
+  titre="Le CV en 60 secondes — Victor Grabowski"
+  description="L’essentiel en une minute : qui, quoi, les preuves, la stack et le contact."
+  mode="hub"
+  polices={['--font-mono']}
+  precharger={['--font-fraunces']}
+>
+  <header class="tete">
+    <Wordmark />
+    <a class="retour" href="/"><Icon name="flame" size={18} />Retour au feu de camp</a>
+  </header>
+
+  <main id="contenu" class="minute">
+    <div class="chrono" aria-hidden="true"><span class="chrono__barre"></span></div>
+    <h1>Le CV en 60 secondes</h1>
+
+    <dl class="lignes">
+      {lignes.map((l) => (
+        <div class="ligne">
+          <dt>{l.cle}</dt>
+          <dd>{l.texte}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <p class="fin" aria-hidden="true">Temps écoulé. Le reste est à un clic.</p>
+
+    <nav class="suite" aria-label="Pour aller plus loin">
+      <a class="btn btn--primary" href="/pdf/Victor_Grabowski_CV_Dev.pdf" download><Icon name="typewriter" size={18} />Le CV complet (PDF)</a>
+      <a class="btn btn--ghost" href="/jeu">Game design</a>
+      <a class="btn btn--ghost" href="/dev">Dev web</a>
+      <a class="btn btn--ghost" href="/sites">Création de sites</a>
+    </nav>
+  </main>
+</Base>
+
+<style>
+  .tete { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; padding: 16px clamp(16px, 4vw, 56px); }
+  .retour { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-family: var(--font-mono); font-size: 13px; color: var(--muted); text-decoration: none; }
+  .retour :global(svg) { color: var(--flame); }
+
+  .minute { display: flex; flex-direction: column; gap: 28px; width: min(calc(100% - 2 * var(--gutter)), 860px); margin: 24px auto 80px; }
+
+  .chrono { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
+  .chrono__barre { display: block; height: 100%; background: var(--flame); transform-origin: left; animation: minute 60s linear forwards; }
+  @keyframes minute { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+
+  h1 { font-family: var(--font-fraunces); font-size: clamp(32px, 4.4vw, 52px); font-weight: 600; letter-spacing: -0.015em; }
+
+  .lignes { display: flex; flex-direction: column; margin: 0; border-top: 1px solid var(--line); }
+  .ligne { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  dt { font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--flame); padding-top: 4px; }
+  dd { margin: 0; font-family: var(--font-fraunces); font-size: 20px; line-height: 1.5; }
+
+  .fin { font-family: var(--font-mono); font-size: 13px; color: var(--muted); opacity: 0; animation: apparait 0.6s ease 60s forwards; }
+  @keyframes apparait { to { opacity: 1; } }
+
+  .suite { display: flex; flex-wrap: wrap; gap: 12px; }
+  .suite .btn { font-family: var(--font-mono); font-size: 14px; }
+
+  @media (max-width: 640px) {
+    .ligne { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+    dd { font-size: 18px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .chrono { display: none; }
+    .fin { animation: none; opacity: 1; }
+  }
+</style>

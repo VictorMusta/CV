@@ -1,176 +1,118 @@
 /**
- * Build-time PDF export.
+ * Export PDF au build : les deux lectures du CV (/cv/dev et /cv/jeu).
  *
- * Serves the built site from dist/ (honouring the /CV/ base path), opens
- * it in headless Chrome and prints the CV view to dist/Victor_Grabowski_CV.pdf.
- * The deployed site links to that static file instead of calling
- * window.print() in the visitor's browser, so the PDF never carries the
- * browser-injected header/footer (print date, tab title, URL, page number).
+ * Sert les pages pré-rendues de dist/client, les ouvre dans un Chrome headless et les
+ * imprime dans public/pdf (repris par le build suivant, celui du VPS) et dans
+ * dist/client/pdf (pour un `npm start` local juste après). Les liens du site pointent
+ * vers ces fichiers statiques : pas de window.print(), donc pas d'en-tête ni de pied
+ * injectés par le navigateur dans le document téléchargé.
  *
- * Chrome resolution:
- *   - GitHub Actions runner: plain `npm install puppeteer` downloads a
- *     matching Chrome, nothing else to do.
- *   - Local Betclic workstation: the internal npm registry + the global
- *     `ignore-scripts=true` prevent Puppeteer's Chrome download, so set
- *     PUPPETEER_EXECUTABLE_PATH to the locally installed Chrome, e.g.
- *     PUPPETEER_EXECUTABLE_PATH="C:\Program Files\Google\Chrome\Application\chrome.exe"
+ * Puppeteer n'est volontairement pas dans package.json : la CI l'installe à la volée
+ * (`npm install --no-save puppeteer`). Sur un poste dont le registre npm ne fournit pas
+ * Chrome, pointer PUPPETEER_EXECUTABLE_PATH vers un Chrome installé.
  */
-import http from "node:http";
-import { readFile } from "node:fs/promises";
-import { existsSync } from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { execFileSync } from "node:child_process";
-import puppeteer from "puppeteer";
-
-const BASE_PATH = "/CV/"; // must match `base` in vite.config.js
-const OUTPUT_NAME = "Victor_Grabowski_CV.pdf";
-const PAGE_MARGIN = { top: "10mm", bottom: "10mm", left: "11mm", right: "11mm" };
+import http from 'node:http';
+import { readFile, mkdir, copyFile } from 'node:fs/promises';
+import { existsSync, statSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
+import puppeteer from 'puppeteer';
+import { profils } from '../src/data/cv.js';
 
 /*
- * A CV that runs past two pages does not get read past two pages, so overflow fails the
- * build rather than shipping quietly.
+ * Un CV qui déborde de deux pages n'est pas lu au-delà : le débordement fait échouer le
+ * build au lieu de partir en silence.
  *
- * The escape hatch is the COMMIT MESSAGE, deliberately: an environment variable or a
- * workflow flag would silence the check for every future commit too, and nobody would
- * notice the day the CV drifted to four pages. A marker in one commit message excuses
- * exactly that commit — the next push is guarded again without anyone having to remember
- * to put the guard back.
+ * L'exemption passe par le MESSAGE DE COMMIT, exprès : une variable d'environnement ou un
+ * drapeau de workflow ferait taire la vérification pour tous les commits suivants. Un
+ * marqueur dans un message excuse exactement ce commit-là.
  */
 const MAX_PAGES = 2;
-const WAIVER = "[pdf-pages-ok]";
+const EXEMPTION = '[pdf-pages-ok]';
 
-function overflowWaived() {
-  try {
-    // -1 suffices, and works on the shallow clone actions/checkout leaves behind.
-    const message = execFileSync("git", ["log", "-1", "--pretty=%B"], { encoding: "utf8" });
-    return message.includes(WAIVER);
-  } catch {
-    // No git, no history, no waiver — the guard stands.
-    return false;
-  }
-}
+const racine = fileURLToPath(new URL('..', import.meta.url));
+const client = path.join(racine, 'dist', 'client');
+const sorties = [path.join(racine, 'public', 'pdf'), path.join(client, 'pdf')];
 
-const distDir = fileURLToPath(new URL("../dist", import.meta.url));
-
-if (!existsSync(path.join(distDir, "index.html"))) {
-  console.error("dist/index.html not found — run `npx vite build` first.");
+if (!existsSync(path.join(client, 'cv', 'dev', 'index.html'))) {
+  console.error('dist/client/cv/dev/index.html introuvable : lancer `npm run build` avant.');
   process.exit(1);
 }
 
 const MIME = {
-  ".html": "text/html; charset=utf-8",
-  ".js": "text/javascript",
-  ".css": "text/css",
-  ".json": "application/json",
-  ".svg": "image/svg+xml",
-  ".png": "image/png",
-  ".jpg": "image/jpeg",
-  ".jpeg": "image/jpeg",
-  ".webp": "image/webp",
-  ".gif": "image/gif",
-  ".ico": "image/x-icon",
-  ".woff": "font/woff",
-  ".woff2": "font/woff2",
+  '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
+  '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp',
+  '.woff': 'font/woff', '.woff2': 'font/woff2', '.ttf': 'font/ttf',
 };
 
-/* Minimal static server mirroring GitHub Pages: everything lives under
-   the /CV/ base path, unknown paths fall back to index.html. */
-const server = http.createServer(async (req, res) => {
-  const urlPath = new URL(req.url, "http://localhost").pathname;
-  if (!urlPath.startsWith(BASE_PATH)) {
-    res.writeHead(404).end("outside base path");
-    return;
-  }
-  let rel = urlPath.slice(BASE_PATH.length) || "index.html";
-  let file = path.join(distDir, rel);
-  if (!path.normalize(file).startsWith(path.normalize(distDir)) || !existsSync(file)) {
-    file = path.join(distDir, "index.html");
-  }
-  try {
-    const body = await readFile(file);
-    res.writeHead(200, { "Content-Type": MIME[path.extname(file)] ?? "application/octet-stream" });
-    res.end(body);
-  } catch (e) {
-    res.writeHead(500).end(String(e));
-  }
+/* Serveur statique minimal : /cv/dev -> dist/client/cv/dev/index.html. */
+const serveur = http.createServer(async (req, res) => {
+  const chemin = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+  let fichier = path.normalize(path.join(client, chemin));
+  if (!fichier.startsWith(path.normalize(client))) return res.writeHead(403).end();
+  if (existsSync(fichier) && statSync(fichier).isDirectory()) fichier = path.join(fichier, 'index.html');
+  if (!existsSync(fichier)) return res.writeHead(404).end();
+  res.writeHead(200, { 'content-type': MIME[path.extname(fichier)] ?? 'application/octet-stream' });
+  res.end(await readFile(fichier));
 });
+await new Promise((ok) => serveur.listen(0, '127.0.0.1', ok));
+const { port } = serveur.address();
 
-await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
-const { port } = server.address();
-const pageUrl = `http://127.0.0.1:${port}${BASE_PATH}`;
-console.log(`Serving dist/ at ${pageUrl}`);
-
-const browser = await puppeteer.launch({
+const navigateur = await puppeteer.launch({
   executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
-  args: ["--no-sandbox", "--font-render-hinting=none"],
+  args: ['--no-sandbox', '--font-render-hinting=none'],
 });
 
+let echec = false;
 try {
-  const page = await browser.newPage();
-  await page.goto(pageUrl, { waitUntil: "networkidle0", timeout: 60_000 });
+  for (const d of sorties) await mkdir(d, { recursive: true });
 
-  /* The print stylesheet is designed around the accessibility look
-     (data-a11y="on"), and body.pdf-export tells the CSS that real page
-     margins come from page.pdf() below. */
-  await page.evaluate(() => {
-    document.documentElement.setAttribute("data-a11y", "on");
-    document.body.classList.add("pdf-export");
-    /* Chrome copies document.title into the PDF's Title metadata,
-       which ATS parsers and PDF readers surface. */
-    document.title = "CV Victor Grabowski — Développeur Fullstack TypeScript · Micro-services .NET";
-  });
+  for (const [cle, lecture] of Object.entries(profils)) {
+    const page = await navigateur.newPage();
+    await page.goto(`http://127.0.0.1:${port}/cv/${cle}`, { waitUntil: 'networkidle0', timeout: 60_000 });
+    // Les polices doivent être là avant la mise en page, sinon le texte se mesure mal.
+    await page.evaluate(() => document.fonts.ready);
 
-  /* Web fonts + the framer-motion entrance animations must settle before
-     printing, otherwise text measures wrong or elements are mid-fade. */
-  await page.evaluate(() => document.fonts.ready);
-  await new Promise((r) => setTimeout(r, 600));
+    const cible = path.join(sorties[0], lecture.fichier);
+    // Le <title> de la page devient le titre du PDF, que les ATS et les lecteurs affichent.
+    await page.pdf({ path: cible, format: 'A4', printBackground: true, displayHeaderFooter: false, preferCSSPageSize: true });
+    await copyFile(cible, path.join(sorties[1], lecture.fichier));
+    await page.close();
 
-  /* index.css sets `@page { margin: 0 }` so the browser-print fallback
-     can't draw its header/footer. CSS @page margins take precedence over
-     the page.pdf() margin option, so re-declare the real margins here —
-     this stylesheet loads last and wins the cascade. */
-  await page.addStyleTag({
-    content: `@page { margin: ${PAGE_MARGIN.top} ${PAGE_MARGIN.right} ${PAGE_MARGIN.bottom} ${PAGE_MARGIN.left}; }`,
-  });
-
-  const outPath = path.join(distDir, OUTPUT_NAME);
-  await page.pdf({
-    path: outPath,
-    format: "A4",
-    printBackground: true,
-    displayHeaderFooter: false,
-    margin: PAGE_MARGIN,
-  });
-
-  const pdf = await readFile(outPath);
-  const count = countPdfPages(pdf);
-  console.log(`Wrote ${outPath} (${(pdf.length / 1024).toFixed(0)} kB, ${count ?? "?"} page(s))`);
-  if (count != null && count > MAX_PAGES) {
-    if (overflowWaived()) {
-      console.warn(
-        `WARNING: the CV spills onto ${count} pages, over the ${MAX_PAGES}-page limit. ` +
-          `Letting it through because this commit says ${WAIVER}. Deploying anyway.`,
-      );
-    } else {
-      console.error(`Expected the CV to fit on ${MAX_PAGES} pages, got ${count}.`);
-      console.error(
-        `If that is deliberate, put ${WAIVER} in the commit message — it only ever excuses that one commit.`,
-      );
-      process.exit(1);
+    const pdf = await readFile(cible);
+    const pages = compterPages(pdf);
+    console.log(`${lecture.fichier} : ${(pdf.length / 1024).toFixed(0)} ko, ${pages ?? '?'} page(s)`);
+    if (pages != null && pages > MAX_PAGES) {
+      if (exemptionAccordee()) {
+        console.warn(`ATTENTION : ${lecture.fichier} fait ${pages} pages ; ce commit porte ${EXEMPTION}, on laisse passer.`);
+      } else {
+        console.error(`${lecture.fichier} devrait tenir sur ${MAX_PAGES} pages, il en fait ${pages}.`);
+        console.error(`Si c'est voulu, mettre ${EXEMPTION} dans le message de commit : il n'excuse que ce commit.`);
+        echec = true;
+      }
     }
   }
 } finally {
-  await browser.close();
-  server.close();
+  await navigateur.close();
+  serveur.close();
+}
+if (echec) process.exit(1);
+
+function exemptionAccordee() {
+  try {
+    // -1 suffit, et fonctionne sur le clone superficiel laissé par actions/checkout.
+    return execFileSync('git', ['log', '-1', '--pretty=%B'], { encoding: 'utf8' }).includes(EXEMPTION);
+  } catch {
+    return false;
+  }
 }
 
-/* Chrome writes an uncompressed page tree, so the /Type /Pages object's
-   /Count is readable with a plain scan. Returns null if not found. */
-function countPdfPages(buf) {
-  const text = buf.toString("latin1");
-  const counts = [...text.matchAll(/\/Type\s*\/Pages[^>]*?\/Count\s+(\d+)/g)].map((m) => Number(m[1]));
-  if (counts.length) return Math.max(...counts);
-  const pages = text.match(/\/Type\s*\/Page[^s]/g);
+/* Chrome écrit un arbre de pages non compressé : le /Count de l'objet /Pages se lit à plat. */
+function compterPages(buf) {
+  const texte = buf.toString('latin1');
+  const comptes = [...texte.matchAll(/\/Type\s*\/Pages[^>]*?\/Count\s+(\d+)/g)].map((m) => Number(m[1]));
+  if (comptes.length) return Math.max(...comptes);
+  const pages = texte.match(/\/Type\s*\/Page[^s]/g);
   return pages ? pages.length : null;
 }

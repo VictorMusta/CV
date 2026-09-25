@@ -1,0 +1,432 @@
+---
+import Base from '../layouts/Base.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import Icon from '../components/Icon.astro';
+
+const PDF = '/pdf/Victor_Grabowski_CV_Dev.pdf';
+
+const loadout = [
+  { nom: 'Spécialisations', items: ['TypeScript', '.NET C#', 'Python'] },
+  { nom: 'Front', items: ['React', 'Next.js', 'Astro', 'VueJS'] },
+  { nom: 'Données', items: ['PostgreSQL', 'MongoDB', 'DynamoDB'] },
+  { nom: 'Cloud & outils', items: ['AWS S3 · SNS · SQS', 'Docker', 'Terraform', 'Jenkins'] },
+];
+
+const journal = [
+  {
+    date: '2024 — auj.', actuel: true, entreprise: 'Betclic Everest Group', lieu: 'Bordeaux',
+    role: 'Backend .NET + TypeScript — squad SQIPI',
+    resume: 'Juno, le cœur de la lutte anti-fraude et anti-blanchiment : règles métier asynchrones et back-office pour les agents.',
+    points: [
+      'Règles de fraude asynchrones sur AWS (SNS/SQS), pour repérer les comportements à risque en temps réel',
+      'Fraud-PEP : vérification d’identité via les listes Dow Jones dès la création de compte',
+      'Expérimentation d’agents IA pour la revue de profils, sur seuils de scoring',
+    ],
+    stack: ['.NET C#', 'TypeScript', 'DynamoDB', 'MongoDB', 'SQS/SNS', 'Terraform', 'Jenkins'],
+  },
+  {
+    date: '2022 — 2024', entreprise: 'Delfox — Predictive Technologies', lieu: 'Mérignac',
+    role: 'Fullstack en alternance — React / Python / gRPC',
+    resume: 'Realmind : piloter l’entraînement d’agents IA autonomes et visualiser leurs simulations en 3D.',
+    points: [
+      'Flux gRPC haute fréquence entre React et les backends Python',
+      'Rendu d’essaims de drones et de véhicules via Unity, Unreal et WebGL',
+      'Design system et dashboards de monitoring',
+    ],
+    stack: ['React', 'Python', 'gRPC', 'Unity', 'Unreal Engine', 'WebGL'],
+  },
+  {
+    date: '2021 — 2022', entreprise: 'Agence Tild', lieu: 'Montpellier · 100 % remote',
+    role: 'Fullstack — VueJS / Python',
+    resume: 'Alma Mater, un CRM/ERP : liaison technique entre deux équipes aux pratiques différentes.',
+    points: ['Moteur d’emplois du temps avec gestion des conflits de salles et de formateurs'],
+    stack: ['VueJS', 'Python', 'Swagger'],
+  },
+  {
+    date: '2020', entreprise: 'Laboratoire Cosderma', lieu: 'Bordeaux',
+    role: 'Stage / prestation',
+    resume: 'Reverse-engineering d’une base non documentée — plus de 30 tables, environ 600 propriétés — puis archivage conforme RGPD.',
+    points: [],
+    stack: ['SQL', 'Merise', 'RGPD'],
+  },
+];
+
+const avantApres = [
+  ['−', 'mot de passe en clair dans le localStorage'],
+  ['+', 'session signée, cookie httpOnly, hash scrypt'],
+  ['−', 'contenu payant envoyé au navigateur'],
+  ['+', 'paywall décidé côté serveur'],
+  ['−', 'montant envoyé par le client'],
+  ['+', 'prix résolu côté serveur'],
+];
+
+const methode = [
+  { n: '01', titre: 'TDD au quotidien', texte: 'Red, green, refactor. Ce que le code ne peut pas garantir va en base : contraintes CHECK, unicité.' },
+  { n: '02', titre: 'La spec avant le code', texte: 'Une spec validée avant l’implémentation. Brief, PRD, architecture et ADR sur mes projets.' },
+  { n: '03', titre: 'L’IA comme accélérateur', texte: 'J’ai appris à coder avant l’IA. Je m’en sers pour explorer et relire, en gardant la maîtrise de chaque ligne poussée.' },
+  { n: '04', titre: 'L’accessibilité se vérifie', texte: 'Contrastes mesurés par script, navigation au clavier, mouvement réduit respecté.' },
+];
+---
+<Base
+  titre="Développement web — Victor Grabowski · fullstack TypeScript et .NET"
+  description="Développeur fullstack junior à Bordeaux, TypeScript et .NET. Aujourd’hui chez Betclic dans la lutte anti-fraude : micro-services .NET et TypeScript sur AWS. CV PDF téléchargeable."
+  mode="dev"
+  polices={['--font-grotesk', '--font-plex', '--font-mono']}
+  precharger={['--font-grotesk', '--font-plex']}
+  image="/og/dev.png"
+>
+  <SiteHeader
+    actif="dev"
+    liens={[{ href: '#parcours', label: 'Parcours' }, { href: '#projets', label: 'Projets' }, { href: '#methode', label: 'Méthode' }, { href: '#contact', label: 'Contact' }]}
+    action={{ href: PDF, label: 'CV (PDF)', icone: 'typewriter', telecharger: true }}
+  />
+
+  <main id="contenu" class="papier">
+    <section class="heros container">
+      <div class="heros__texte">
+        <p class="eyebrow">Fullstack TypeScript &amp; .NET — Bordeaux</p>
+        <h1>Pour convaincre cinq amis d’essayer un jeu vidéo, j’ai fini par <mark>leur créer un site</mark>.</h1>
+        <p class="lead">Ils s’en servent encore. Je suis fullstack junior, aujourd’hui chez Betclic dans la lutte anti-fraude : micro-services .NET et TypeScript sur AWS.</p>
+        <div class="boutons">
+          <a class="btn btn--primary" href={PDF} download><Icon name="download" size={18} />Télécharger le CV</a>
+          <a class="btn btn--ghost" href="https://github.com/VictorMusta"><Icon name="external" size={18} />GitHub</a>
+          <a class="btn btn--ghost" href="https://www.linkedin.com/in/vgrabowski/"><Icon name="external" size={18} />LinkedIn</a>
+        </div>
+      </div>
+
+      <aside class="panneau" aria-label="En ce moment">
+        <p class="panneau__haut"><span class="panneau__etat"><span class="point" aria-hidden="true"></span>En ce moment</span><span>Betclic · Bordeaux</span></p>
+        <p class="panneau__activite">Bannissement de vilains fraudeurs…<span class="curseur" aria-hidden="true"></span></p>
+        <dl class="panneau__table">
+          <div><dt>Poste</dt><dd>Backend .NET + TypeScript</dd></div>
+          <div><dt>Équipe</dt><dd>SQIPI · Identity &amp; Payment Integrity</dd></div>
+          <div><dt>Projet</dt><dd>Juno, anti-fraude et anti-blanchiment</dd></div>
+          <div><dt>Stack</dt><dd>.NET C# · TypeScript · DynamoDB · SQS/SNS · Terraform</dd></div>
+        </dl>
+      </aside>
+    </section>
+
+    <section class="container loadout" aria-labelledby="titre-loadout">
+      <p class="loadout__tete"><span class="eyebrow">Loadout</span><span id="titre-loadout" class="loadout__titre">Compétences</span></p>
+      <ul class="emplacements">
+        {loadout.map((s) => (
+          <li class="emplacement">
+            <p class="emplacement__nom">{s.nom}<span class="losange" aria-hidden="true"></span></p>
+            <ul class="puces">{s.items.map((i) => <li>{i}</li>)}</ul>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section id="parcours" class="container section">
+      <div>
+        <p class="eyebrow">Parcours</p>
+        <h2>Journal de bord</h2>
+      </div>
+      <ol class="journal">
+        {journal.map((e) => (
+          <li class="entree">
+            <p class="entree__date">{e.date}</p>
+            <span class:list={['entree__noeud', { 'entree__noeud--actuel': e.actuel }]} aria-hidden="true"></span>
+            <article class="entree__carte">
+              <div class="entree__tete">
+                <h3>{e.entreprise}</h3>
+                <p class="entree__lieu"><Icon name="pin" size={14} />{e.lieu}</p>
+              </div>
+              <p class="entree__role">{e.role}</p>
+              <p>{e.resume}</p>
+              {e.points.length > 0 && (
+                <ul class="entree__points">
+                  {e.points.map((p) => <li><Icon name="check" size={18} stroke={2} /><span>{p}</span></li>)}
+                </ul>
+              )}
+              <ul class="puces">{e.stack.map((s) => <li>{s}</li>)}</ul>
+            </article>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section id="projets" class="container section">
+      <div>
+        <p class="eyebrow">Projets</p>
+        <h2>Études de cas</h2>
+      </div>
+      <div class="cas">
+        <article class="fiche">
+          <span class="reperes reperes--haut" aria-hidden="true"></span><span class="reperes reperes--bas" aria-hidden="true"></span>
+          <img class="fiche__visuel" src="/images/projects/jvcritique/fil.webp" alt="jvcritiqué : fil d’avis de jeux, avec une note par domaine" loading="lazy" width="620" height="1344" />
+          <div class="fiche__corps">
+            <h3>jvcritiqué</h3>
+            <p>Des avis de jeux dont la note se recalcule selon les critères de chaque lecteur.</p>
+            <ul class="mesures">
+              <li><strong>214</strong><span>tests, dont 21 contre un vrai PostgreSQL</span></li>
+              <li><strong>AA</strong><span>contrastes WCAG mesurés par script, sur dix variantes</span></li>
+              <li><strong>0</strong><span>migration quand un lecteur change ses critères</span></li>
+            </ul>
+            <ul class="puces"><li>Next.js 16</li><li>Drizzle</li><li>PostgreSQL</li><li>Docker</li></ul>
+            <p class="fiche__liens">
+              <a class="lien" href="https://jvcritique.duckdns.org/">Démo<Icon name="external" size={15} /></a>
+              <a class="lien" href="https://github.com/VictorMusta/jvcritique">Code<Icon name="external" size={15} /></a>
+            </p>
+          </div>
+        </article>
+
+        <article class="fiche">
+          <span class="reperes reperes--haut" aria-hidden="true"></span><span class="reperes reperes--bas" aria-hidden="true"></span>
+          <div class="fiche__visuel diff" role="img" aria-label="Avant et après : mots de passe, paywall et prix passent tous côté serveur">
+            {avantApres.map(([signe, texte]) => (
+              <p class:list={['diff__ligne', signe === '+' ? 'diff__ligne--plus' : 'diff__ligne--moins']}><span aria-hidden="true">{signe}</span>{texte}</p>
+            ))}
+          </div>
+          <div class="fiche__corps">
+            <h3>Turf-Horses</h3>
+            <p>Pour un client : deux sites fusionnés en un, et une sécurité remise à plat.</p>
+            <ul class="mesures">
+              <li><strong>3</strong><span>formules d’abonnement Stripe, webhook compris</span></li>
+              <li><strong>2→1</strong><span>une vitrine et une app d’abonnement réunies</span></li>
+            </ul>
+            <ul class="puces"><li>Astro</li><li>Stripe</li><li>SQLite</li><li>Docker</li></ul>
+            <p class="fiche__liens"><a class="lien" href="/sites#realisations">Le projet côté client<Icon name="arrow" size={15} /></a></p>
+          </div>
+        </article>
+
+        <article class="fiche">
+          <span class="reperes reperes--haut" aria-hidden="true"></span><span class="reperes reperes--bas" aria-hidden="true"></span>
+          <div class="fiche__visuel flux" role="img" aria-label="Parcours : QR code en mairie, photo géolocalisée, traitement par la mairie, habitant prévenu">
+            <span>QR code en mairie</span><Icon name="arrow" size={16} />
+            <span>photo géolocalisée</span><Icon name="arrow" size={16} />
+            <span class="flux__chaud">la mairie traite</span><Icon name="arrow" size={16} />
+            <span>l’habitant est prévenu</span>
+          </div>
+          <div class="fiche__corps">
+            <h3>Retour</h3>
+            <p>SaaS pour petites mairies : les habitants signalent, la mairie traite, ils savent qu’elle a agi.</p>
+            <ul class="mesures">
+              <li><strong>TDD</strong><span>Vitest et Playwright de bout en bout</span></li>
+              <li><strong>2</strong><span>rôles : agents de mairie et citoyens</span></li>
+            </ul>
+            <ul class="puces"><li>Next.js 15</li><li>Prisma</li><li>NextAuth</li><li>PostgreSQL</li></ul>
+            <p class="fiche__liens"><span class="prive"><Icon name="lock" size={15} />Dépôt privé</span></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="methode" class="container section">
+      <div>
+        <p class="eyebrow">Méthode</p>
+        <h2>Comment je travaille</h2>
+      </div>
+      <ul class="methode">
+        {methode.map((m) => (
+          <li>
+            <span class="methode__n">{m.n}</span>
+            <h3>{m.titre}</h3>
+            <p>{m.texte}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </main>
+
+  <footer id="contact" class="pied">
+    <div class="container pied__grille">
+      <p class="pied__appel">Un poste fullstack, TypeScript ou .NET ? Parlons‑en.</p>
+      <div class="boutons">
+        <a class="btn btn--clair" href="mailto:victorgrabowski33@gmail.com"><Icon name="mail" size={18} />victorgrabowski33@gmail.com</a>
+        <a class="btn btn--contour" href={PDF} download><Icon name="download" size={18} />Le CV (PDF)</a>
+      </div>
+      <p class="pied__langues">Bordeaux · Français natif · Anglais : lecture technique courante, oral opérationnel</p>
+    </div>
+  </footer>
+</Base>
+
+<style>
+  .papier { background-image: var(--paper-grid); background-size: 32px 32px; }
+
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em; }
+  h2 { margin-top: 10px; font-size: clamp(30px, 3vw, 40px); line-height: 1.15; }
+  .lead { font-size: clamp(18px, 1.5vw, 20px); line-height: 1.6; color: var(--body); }
+  .boutons { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { font-size: 16px; font-weight: 600; }
+  .btn--ghost { background: var(--surf); border-color: var(--accent); color: var(--accent); }
+
+  .puces { display: flex; flex-wrap: wrap; gap: 8px; }
+  .puces li {
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    background: var(--bg);
+    font-family: var(--font-label);
+    font-size: 12.5px;
+  }
+  .losange { width: 8px; height: 8px; border: 1.5px solid var(--accent); transform: rotate(45deg); }
+
+  /* ── Héros ── */
+  .heros {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 56px;
+    padding: 80px 0 64px;
+  }
+  .heros__texte { display: flex; flex-direction: column; gap: 22px; }
+  .heros h1 { font-size: clamp(32px, 3.9vw, 54px); line-height: 1.1; letter-spacing: -0.025em; }
+  mark { background: linear-gradient(transparent 58%, var(--mark) 58%); color: inherit; padding: 0 2px; }
+
+  .panneau {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 24px 26px 26px;
+    border-radius: 14px;
+    background: var(--panel);
+    color: #E6E1D6;
+    font-family: var(--font-label);
+    font-size: 13px;
+    line-height: 1.5;
+    box-shadow: 0 18px 40px rgba(20, 26, 38, 0.18);
+  }
+  .panneau__haut { display: flex; justify-content: space-between; gap: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #8A93A6; }
+  .panneau__etat { display: flex; align-items: center; gap: 8px; color: var(--flame); }
+  .point { width: 8px; height: 8px; border-radius: 50%; background: var(--flame); }
+  .panneau__activite { font-family: var(--font-body); font-size: 19px; font-weight: 500; color: var(--flame); padding-bottom: 18px; border-bottom: 1px solid #273142; }
+  .curseur { display: inline-block; width: 9px; height: 19px; margin-left: 4px; vertical-align: -3px; background: var(--flame); animation: clignote 1s steps(1, end) infinite; }
+  @keyframes clignote { 50% { opacity: 0; } }
+  .panneau__table { display: flex; flex-direction: column; gap: 9px; margin: 0; }
+  .panneau__table div { display: flex; gap: 14px; }
+  .panneau__table dt { width: 64px; flex-shrink: 0; text-transform: uppercase; color: #8A93A6; }
+  .panneau__table dd { margin: 0; }
+
+  /* ── Loadout ── */
+  .loadout { display: flex; flex-direction: column; gap: 18px; padding-bottom: 64px; }
+  .loadout__tete { display: flex; align-items: baseline; gap: 16px; }
+  .loadout__titre { font-family: var(--font-display); font-size: 22px; font-weight: 700; }
+  .emplacements { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .emplacement { display: flex; flex-direction: column; gap: 14px; padding: 18px 18px 20px; border-radius: 12px; background: var(--surf); border: 1px solid var(--line); }
+  .emplacement__nom { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-label); font-size: 11.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+
+  /* ── Sections ── */
+  .section { display: flex; flex-direction: column; gap: 36px; padding: 64px 0 72px; }
+
+  /* ── Journal ── */
+  .journal { display: flex; flex-direction: column; gap: 20px; }
+  .entree { display: grid; grid-template-columns: 170px 48px minmax(0, 1fr); }
+  .entree__date { padding-top: 26px; font-family: var(--font-label); font-size: 14px; font-weight: 700; color: var(--accent); }
+  .entree__noeud { position: relative; display: flex; justify-content: center; }
+  .entree__noeud::before { content: ''; position: absolute; top: 0; bottom: -20px; width: 2px; background: var(--line); }
+  .entree:last-child .entree__noeud::before { bottom: 0; }
+  .entree__noeud::after {
+    content: '';
+    position: relative;
+    margin-top: 28px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2.5px solid var(--accent);
+    background: var(--bg);
+  }
+  .entree__noeud--actuel::after { background: var(--flame); }
+  .entree__carte { display: flex; flex-direction: column; gap: 12px; padding: 22px 28px 24px; border-radius: 12px; background: var(--surf); border: 1px solid var(--line); color: var(--body); font-size: 17px; line-height: 1.55; }
+  .entree__tete { display: flex; align-items: baseline; justify-content: space-between; gap: 8px 16px; flex-wrap: wrap; }
+  .entree__tete h3 { font-size: 24px; color: var(--text); }
+  .entree__lieu { display: flex; align-items: center; gap: 6px; font-family: var(--font-label); font-size: 12.5px; color: var(--muted); }
+  .entree__role { font-size: 16px; font-weight: 600; color: var(--accent); }
+  .entree__points { display: flex; flex-direction: column; gap: 8px; font-size: 16px; }
+  .entree__points li { display: flex; gap: 10px; }
+  .entree__points :global(svg) { flex-shrink: 0; margin-top: 2px; color: var(--accent); }
+
+  /* ── Études de cas ── */
+  .cas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: start; }
+  .fiche { position: relative; display: flex; flex-direction: column; background: var(--surf); border: 1px solid rgba(26, 54, 93, 0.28); }
+  /* Repères de cadrage aux quatre coins, comme sur un plan. */
+  .reperes { position: absolute; left: -1px; right: -1px; height: 14px; pointer-events: none; }
+  .reperes--haut { top: -1px; }
+  .reperes--bas { bottom: -1px; }
+  .reperes::before, .reperes::after { content: ''; position: absolute; top: 0; width: 14px; height: 14px; border: 0 solid var(--accent); }
+  .reperes::before { left: 0; border-left-width: 2px; }
+  .reperes::after { right: 0; border-right-width: 2px; }
+  .reperes--haut::before, .reperes--haut::after { border-top-width: 2px; }
+  .reperes--bas::before, .reperes--bas::after { border-bottom-width: 2px; }
+  .fiche__visuel { width: 100%; height: 210px; object-fit: cover; object-position: top; border-bottom: 1px solid rgba(26, 54, 93, 0.2); }
+  .fiche__corps { display: flex; flex-direction: column; gap: 14px; padding: 22px 24px 20px; font-size: 16px; line-height: 1.5; color: var(--body); }
+  .fiche__corps h3 { font-size: 25px; color: var(--text); }
+  .mesures { display: flex; flex-direction: column; gap: 10px; }
+  .mesures li { display: flex; align-items: baseline; gap: 14px; }
+  .mesures strong { width: 58px; flex-shrink: 0; font-family: var(--font-label); font-size: 22px; color: var(--accent); }
+  .mesures span { font-size: 15px; line-height: 1.45; }
+  .fiche__liens { display: flex; gap: 20px; }
+  .prive { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; font-weight: 600; color: var(--muted); }
+
+  .diff { display: flex; flex-direction: column; justify-content: center; gap: 3px; padding: 12px 0; background: var(--surf); }
+  .diff__ligne { display: flex; gap: 10px; padding: 5px 14px; font-family: var(--font-label); font-size: 12.5px; line-height: 1.35; }
+  .diff__ligne span { width: 10px; flex-shrink: 0; font-weight: 700; }
+  .diff__ligne--moins { background: #FBECEC; color: #8A1C1C; }
+  .diff__ligne--plus { background: #E8F4EB; color: #1D5A2C; }
+
+  /* Le parcours d'un signalement, de haut en bas : lisible à toutes les largeurs. */
+  .flux {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 10px;
+    background-color: var(--bg);
+    background-image: var(--paper-grid);
+    background-size: 16px 16px;
+    color: var(--accent);
+  }
+  .flux :global(svg) { transform: rotate(90deg); width: 14px; height: 14px; }
+  .flux span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(100%, 240px);
+    height: 32px;
+    border-radius: 8px;
+    border: 1.5px solid var(--accent);
+    background: var(--surf);
+    font-family: var(--font-label);
+    font-size: 12px;
+    color: var(--text);
+  }
+  .flux .flux__chaud { background: rgba(240, 163, 58, 0.25); }
+
+  /* ── Méthode ── */
+  .methode { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+  .methode li { display: flex; flex-direction: column; gap: 12px; padding-top: 18px; border-top: 3px solid var(--accent); }
+  .methode__n { font-family: var(--font-label); font-size: 13px; font-weight: 700; color: var(--accent); }
+  .methode h3 { font-size: 21px; }
+  .methode p { font-size: 16px; line-height: 1.55; color: var(--body); }
+
+  /* ── Pied ── */
+  .pied { padding: 60px 0 64px; background: var(--accent); color: #F4F1EA; }
+  .pied__grille { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 26px 40px; }
+  .pied__appel { font-family: var(--font-display); font-size: clamp(26px, 2.6vw, 34px); line-height: 1.25; font-weight: 700; letter-spacing: -0.02em; }
+  .btn--clair { background: #F4F1EA; color: var(--accent); border: 1.5px solid #F4F1EA; }
+  .btn--contour { background: transparent; color: #F4F1EA; border: 1.5px solid rgba(244, 241, 234, 0.6); }
+  .pied__langues { grid-column: 1 / -1; font-family: var(--font-label); font-size: 12.5px; color: #C9D3E3; }
+
+  @media (max-width: 1100px) {
+    .emplacements, .methode { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 900px) {
+    .heros, .pied__grille { grid-template-columns: minmax(0, 1fr); }
+    .heros { padding-top: 48px; }
+    .entree { grid-template-columns: 28px minmax(0, 1fr); }
+    .entree__date { grid-column: 2; padding: 0 0 8px; }
+    .entree__noeud { grid-column: 1; grid-row: 1 / span 2; }
+    .entree__noeud::after { margin-top: 4px; }
+    .entree__carte { grid-column: 2; }
+  }
+  @media (max-width: 640px) {
+    .emplacements, .methode, .cas { grid-template-columns: minmax(0, 1fr); }
+    .entree__carte { padding: 18px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .curseur { animation: none; }
+  }
+</style>

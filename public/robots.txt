@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /cv/
+Disallow: /api/
+Disallow: /carte-og/
 
-Sitemap: https://victormusta.github.io/CV/sitemap.xml
+Sitemap: https://lootopia.site/sitemap.xml

@@ -6,7 +6,11 @@
 > Contact : victorgrabowski33@gmail.com · +33 7 67 30 22 93 · https://github.com/VictorMusta
 > LinkedIn : https://www.linkedin.com/in/vgrabowski/
 
-CV PDF (2 pages, à jour) : https://victormusta.github.io/CV/Victor_Grabowski_CV.pdf
+Site : https://lootopia.site — trois chemins : game design (/jeu), développement web (/dev),
+création de sites pour les commerces et indépendants (/sites).
+
+CV PDF (2 pages, à jour) : https://lootopia.site/pdf/Victor_Grabowski_CV_Dev.pdf
+CV game design (PDF) : https://lootopia.site/pdf/Victor_Grabowski_CV_Game_Design.pdf
 
 ## Expériences
 
@@ -23,10 +27,23 @@ CV PDF (2 pages, à jour) : https://victormusta.github.io/CV/Victor_Grabowski_CV
 - **Laboratoire Cosderma** (2020, Bordeaux) — Stage/prestation. Reverse-engineering SQL, archivage de
   données critiques (30+ tables), modélisation Merise, RGPD.
 
+## Game design
+
+Deux prix du meilleur gameplay à la Winter Game Jam de La Horde (Bordeaux) : Bankal! (2025, coopération
+locale à quatre, Unity) et Taille and Retry (2026, puzzle-platformer où l'on déforme le niveau, Unity).
+EyesOfHeimdall : mod Valheim qui rend visible la direction des sons pour un joueur qui n'entend que
+d'une oreille (C#, BepInEx, Harmony).
+
 ## Projets personnels
 
-Moyenax (jeu de stratégie web type Dofus), Realtime Earnings (visualisation de gains en temps réel),
-Retour (SaaS de signalement citoyen, repo privé). Voir https://github.com/VictorMusta
+jvcritiqué (avis de jeux notés selon les critères du lecteur — Next.js, PostgreSQL, 214 tests),
+Moyenax (jeu de stratégie web type Dofus), Retour (SaaS de signalement citoyen, repo privé).
+Voir https://github.com/VictorMusta
+
+## Création de sites
+
+Coquelicots (refonte e-commerce WooCommerce, 408 produits, trois langues) et Turf-Horses (vitrine et
+abonnements Stripe, Astro). Contact : https://lootopia.site/sites#contact
 
 ## Compétences
 

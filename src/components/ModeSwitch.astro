@@ -1,0 +1,66 @@
+---
+/* Le sélecteur de chemin : même composant partout, il prend les couleurs du chemin
+   courant. Sur petit écran, seuls les pictogrammes restent visibles, sauf pour le
+   chemin actif ; les libellés restent lus par les lecteurs d'écran. */
+import Icon from './Icon.astro';
+
+interface Props {
+  actif: 'jeu' | 'dev' | 'sites';
+}
+const { actif } = Astro.props;
+
+const chemins = [
+  { cle: 'jeu', href: '/jeu', icone: 'gamepad', label: 'Game design' },
+  { cle: 'dev', href: '/dev', icone: 'code', label: 'Dev web' },
+  { cle: 'sites', href: '/sites', icone: 'browser', label: 'Sites' },
+] as const;
+---
+<nav class="chemins" aria-label="Changer de chemin">
+  {chemins.map((c) => (
+    <a
+      href={c.href}
+      class:list={['chemin', { actif: c.cle === actif }]}
+      aria-current={c.cle === actif ? 'page' : undefined}
+    >
+      <Icon name={c.icone} size={18} />
+      <span class="libelle">{c.label}</span>
+    </a>
+  ))}
+</nav>
+
+<style>
+  .chemins {
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surf);
+  }
+  .chemin {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 16px;
+    border-radius: 999px;
+    color: var(--muted);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .chemin:hover { color: var(--text); }
+  .actif, .actif:hover { background: var(--accent); color: var(--on-accent); }
+
+  @media (max-width: 720px) {
+    .chemin { padding: 0 12px; }
+    .chemin:not(.actif) .libelle {
+      position: absolute; width: 1px; height: 1px; overflow: hidden;
+      clip: rect(0 0 0 0); white-space: nowrap;
+    }
+  }
+</style>
